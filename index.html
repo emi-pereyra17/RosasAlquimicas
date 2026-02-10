@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="public/1.png" as="image" />
+    <link rel="icon" type="image/png" href="public/icon1.png" />
+    <title>Rosas Alquímicas: Un Espacio de Transformación</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+      (function () {
+        emailjs.init("TU_USER_ID"); // Reemplaza con tu user_id de EmailJS
+      })();
+
+      function enviarEmail(e) {
+        e.preventDefault();
+        emailjs.sendForm("TU_SERVICE_ID", "TU_TEMPLATE_ID", e.target).then(
+          function () {
+            alert("¡Mensaje enviado correctamente!");
+            e.target.reset();
+          },
+          function (error) {
+            alert("Error al enviar el mensaje.");
+          }
+        );
+      }
+
+      document
+        .getElementById("form-contacto")
+        .addEventListener("submit", enviarEmail);
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Quicksand:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8B5CF6", // Violet-500 equivalent
+              secondary: "#6D28D9", // Deeper purple
+              accent: "#C4B5FD", // Light purple
+              "background-light": "#F9FAFB",
+              "background-dark": "#0B0915",
+              "mystic-purple": "#2E1065",
+              "deep-violet": "#1e0b36",
+              "soft-lilac": "#E9D5FF",
+              "gold-accent": "#D4AF37",
+            },
+            fontFamily: {
+              display: ["Playfair Display", "serif"],
+              sans: ["Montserrat", "sans-serif"],
+              title: ["Quicksand", "sans-serif"],
+            },
+            backgroundImage: {
+              "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+              "mystic-pattern":
+                "url('https://www.transparenttextures.com/patterns/stardust.png')",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .hero-bg {
+        background-image: url("public/1.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+      }
+      @media (max-width: 768px) {
+        .hero-bg {
+          background-attachment: scroll;
+        }
+      }
+      .rose-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuA2pW4KwswbaD9PTVpTAApcNOCoD0pbjwjtnRyJTyXUIhuEIg0Y6Go-SDx1MGrQ7k1JM0nxNRGAzOJTRf5MuCeybFO0cTfYRMjxwweB-Aa0GxBxo73V0D28jA8JuE5I-YtZ4V_SyoDW9JUZQ5JZBn0ZrT623LTHwjQq_O3L-2HIGEHxX_JnGkrWRh8YdQ0nPysI69ZKvxIYWoV9B2Pxfe0z17y5i-Bl_c8kldUzaMgnG1vWj0Afytrr_S-CCt20CD38Wgiw_Xepk48);
+        background-size: cover;
+        opacity: 0.1;
+        mix-blend-mode: soft-light;
+        pointer-events: none;
+      }
+      .sacred-geometry-bg {
+        background-color: #1e0b36;
+        background-image: linear-gradient(
+            rgba(30, 11, 54, 0.95),
+            rgba(30, 11, 54, 0.9)
+          ),
+          url(https://lh3.googleusercontent.com/aida-public/AB6AXuD1_iDriWSHPqE6eaLsYbtxL8qeD_eOTlT_qgiBk6D2C9wg6pZn-tJFFkgKewf8N8IKHSLM2ansBm_zePf1IhvqgD5YW7QmNN0p_9HxJ-rUedCxa7zEXOqUUla1eGyev8T8lZ05gNvXrj2N6YbsDAdHnFkW3z_IThepVRNJbVO8VvebGR5Bhwv7IYfAPaz0mNUtGb6wI9tJrfrXQQFWD4SpeMsJaSVbGeBfFDjdLrT0rVWOMKIG9u7P52D3werhzPWvB6NaBBrXFCs);
+        background-size: cover;
+        background-position: center;
+      }
+      .floral-texture-bg {
+        background-color: #f3e8ff;
+        background-image: linear-gradient(
+            to bottom,
+            rgba(243, 232, 255, 0.8),
+            rgba(255, 255, 255, 0.9)
+          ),
+          url(https://lh3.googleusercontent.com/aida-public/AB6AXuA9PXGGLtT7-JVE3BKi54dh55vCBvJnzyqQJ6Lgs45v9S6SX8NsUzqjlR8p2QqK2K7_4-TvGlHG-_CxLH0eh1KQ33hONVgNE3V80byctgD-cKCk4FLMzQP0JCqS9pAkaarAhczjFa9mCXfBnTMNdsxTHZ2oDHKnybsUUndot2geQzEHNR32BK97zwJDcUhNaWaVKxZEPRuUmTeNZC4nqxjRnOg_0pZUJkY4ppd-_InE1gtQcBNg-tUsK2zeyq21jeRLGI0jbMZvQko);
+        background-size: cover;
+        background-blend-mode: overlay;
+      }
+      .divider-rose-petals {
+        height: 60px;
+        width: 100%;
+        background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCmiNrN7_ZbjgGDtDwQpvzrAM4H-eu-vW6IjdxFm_z2azDtxOT_0E_lOCme1vzF6i38lFdUhiKmQT0LGh6rm-O7-7JEoBb5Pcs7Vkxu0IJdNb517Y7Mno5ejmzdkH9tL3QFuB1JWIBez3DjJl6KT_V5K1JjR95ICAb3Df-_ZCbxrIv85DVXSDIf-xa6PpduS6Dl-iAd9aeFQH6okE1xfLoj5rfrK2ofHgubhRxccT64fI3XUUNMw4BLVo8uOAznm5mmJ1kQ-Ua4X9s);
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        z-index: 20;
+        transform: rotate(180deg);
+      }
+      .divider-top-rose {
+        height: 40px;
+        width: 100%;
+        position: absolute;
+        top: -1px;
+        left: 0;
+        z-index: 20;
+        background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDEyMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PHBhdGggZD0iTTAgMHY0NmgxMjAwVjBIMHoiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNMCAwdjQ2aDEyMDBWMHoiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48cGF0aCBkPSJNMCAwdjQ2QzIwMCA0NiA0MDAgMjMgNjAwIDIzczQwMCAyMyA2MDAgMjNWMHoiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==")
+          no-repeat bottom center;
+        background-size: cover;
+      }
+      .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+      .text-shadow-light {
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      }
+      .arch-mask {
+        mask-image: radial-gradient(
+          circle at center top,
+          black 55%,
+          transparent 100%
+        );
+        -webkit-mask-image: radial-gradient(
+          circle at center top,
+          black 55%,
+          transparent 100%
+        );
+        border-radius: 50% 50% 0 0;
+      }
+      .floral-pattern {
+        background-color: #fcfbfd;
+        background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuD1rdf_-7x6p-GuKkECZYmEyLwWKePgQv2rX8GbkudtR3dQwJRGY5rNHGjOJXHveT2kEonwosV-_IC1yakpdyPVN3rMD21j2YadgRDNA0F89EeLFsLpGTOW4dnannQ7Y16BD9tLT1OkU6teb3QclmcQLS8X11ZmbVapzC0Ia4T2eBlwL_iNvquD3HabnFT5O1znPOz6PE_o6wwjIgWAaCZu6P8l-3VQkdlkoxXtLNRGFGIUPJUl8Anz7LsjQFxBycLCijLnCGkOeDI);
+      }
+      .stars-pattern {
+        background-image: radial-gradient(#fff 1px, transparent 1px),
+          radial-gradient(#fff 1px, transparent 1px);
+        background-size: 50px 50px;
+        background-position: 0 0, 25px 25px;
+        opacity: 0.1;
+      }
+      .card-hover-effect {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      .card-hover-effect:hover {
+        transform: translatey(-8px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-sans text-gray-800 dark:text-gray-100 antialiased selection:bg-primary selection:text-white"
+  >
+    <header
+      class="hero-bg min-h-[750px] flex items-center justify-center relative overflow-hidden"
+    >
+      <!-- Desktop (lg+): una sola fila, más arriba, sin intermedios -->
+      <div
+        class="hidden lg:flex lg:flex-col lg:items-center lg:gap-2 lg:px-4"
+        style="
+          position: absolute;
+          top: 12px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 30;
+        "
+      >
+        <a
+          href="index2.html"
+          class="px-2.5 py-1.5 text-sm bg-primary text-white font-semibold rounded-full border-2 border-primary hover:bg-secondary transition-colors duration-300 tracking-wide font-display animate-pulse hover:scale-110 hover:animate-none shadow-2xl shadow-primary/80 ring-2 ring-primary/30 ring-offset-2 ring-offset-white shrink-0"
+          style="
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.5px;
+            transition: transform 0.2s;
+            box-shadow: 0 0 16px 4px #d84feb, 0 2px 8px #fff;
+          "
+        >
+          ¡Ya disponible: Haz Click para ir a La Rosa del Desierto!
+        </a>
+        <span class="flex items-center gap-1.5 flex-nowrap justify-center">
+          <a
+            href="index3.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors whitespace-nowrap"
+            >Retiros</a
+          >
+          <a
+            href="quien-soy.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors whitespace-nowrap"
+            >Quien Soy</a
+          >
+          <a
+            href="cursos-talleres.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors whitespace-nowrap"
+            >Cursos y Talleres</a
+          >
+          <a
+            href="libro-canalizaciones.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors whitespace-nowrap"
+            >Libro y canalizaciones</a
+          >
+          <a
+            href="contenido-gratuito.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors whitespace-nowrap"
+            >Contenido gratuito</a
+          >
+          <a
+            href="labores-planetarias.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors whitespace-nowrap"
+            >Labores planetarias</a
+          >
+        </span>
+      </div>
+
+      <div
+        class="hidden lg:block"
+        style="
+          position: absolute;
+          top: 12px;
+          right: 48px;
+          z-index: 20;
+          font-family: 'Playfair Display', cursive, serif;
+          font-size: 1.25rem;
+          color: #b91c1c;
+          opacity: 0.85;
+          pointer-events: none;
+          text-align: right;
+          text-shadow: 0 2px 8px #fff, 0 1px 0 #e9d5ff;
+          font-style: italic;
+        "
+      >
+        By Carla Calcaterra
+      </div>
+
+      <div
+        class="container mx-auto px-6 py-20 text-center relative z-10 lg:pt-28"
+      >
+        <div
+          class="lg:hidden w-full text-center mb-4"
+          style="
+            font-family: 'Playfair Display', cursive, serif;
+            font-size: 1.1rem;
+            color: #b91c1c;
+            opacity: 0.9;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            font-style: italic;
+          "
+        >
+          By Carla Calcaterra
+        </div>
+
+        <div class="lg:hidden w-full flex flex-col items-center gap-2 mb-8">
+          <a
+            href="index2.html"
+            class="px-3 py-1.5 text-sm bg-primary text-white font-semibold rounded-full border border-primary hover:bg-secondary transition-colors duration-300 tracking-wide font-display animate-pulse hover:scale-110 hover:animate-none shadow-xl shadow-primary/60 shrink-0"
+            style="
+              font-family: 'Playfair Display', serif;
+              letter-spacing: 0.5px;
+              transition: transform 0.2s;
+            "
+          >
+            ¡Ya disponible: Haz Click para ir a La Rosa del Desierto!
+          </a>
+          <span class="flex flex-wrap justify-center items-center gap-2">
+            <a
+              href="index3.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors"
+              >Retiros</a
+            >
+            <a
+              href="quien-soy.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors"
+              >Quien Soy</a
+            >
+            <a
+              href="cursos-talleres.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors"
+              >Cursos y Talleres</a
+            >
+            <a
+              href="libro-canalizaciones.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors"
+              >Libro y canalizaciones</a
+            >
+            <a
+              href="contenido-gratuito.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors"
+              >Contenido gratuito</a
+            >
+            <a
+              href="labores-planetarias.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors"
+              >Labores planetarias</a
+            >
+          </span>
+        </div>
+
+        <span
+          class="block font-display text-xl md:text-2xl italic mb-4 text-pink-700 tracking-wider animate-fade-in-up drop-shadow-[0_2px_2px_rgba(255,255,255,0.7)]"
+          >Bienvenido al Santuario</span
+        >
+        <h1
+          class="font-title text-5xl md:text-7xl lg:text-8xl font-bold mb-8 text-fuchsia-700 drop-shadow-xl leading-tight"
+        >
+          Rosas Alquímicas <br />
+          <span
+            class="text-3xl md:text-5xl font-light text-pink-500 block mt-4 font-sans tracking-widest uppercase border-t border-pink-300 inline-block pt-4 drop-shadow-md"
+            >Un Espacio de Transformación</span
+          >
+        </h1>
+        <p
+          class="text-lg md:text-xl max-w-3xl mx-auto mb-12 text-fuchsia-800 font-light leading-relaxed drop-shadow-md bg-white/70 backdrop-blur-sm p-4 rounded-xl border border-pink-200"
+        >
+          Un viaje de autodescubrimiento para despertar tu energía divina
+          femenina.
+          <br class="hidden md:inline" />
+          Recordamos dones innatos y activamos propósitos a través del arte, la
+          danza y la voz.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a
+            class="px-8 py-3 bg-transparent text-fuchsia-700 font-medium tracking-wide border border-pink-400 rounded-full hover:bg-pink-100 hover:text-fuchsia-900 transition-all duration-300 shadow-lg flex items-center justify-center text-center"
+            href="#contacto"
+          >
+            Contáctame
+          </a>
+          <a
+            href="index2.html"
+            class="px-8 py-3 bg-gradient-to-r from-yellow-400 via-pink-500 to-fuchsia-700 text-white font-bold tracking-wide rounded-full shadow-2xl border-2 border-yellow-300 hover:from-yellow-500 hover:via-pink-600 hover:to-fuchsia-800 hover:scale-110 transition-all duration-300 ring-4 ring-yellow-200/40 ring-offset-2 ring-offset-white animate-pulse text-lg mt-4 sm:mt-0"
+            style="font-family: 'Playfair Display', serif; letter-spacing: 1px"
+          >
+            🌹 Accede a mi nueva membresía
+          </a>
+        </div>
+      </div>
+    </header>
+    <section
+      class="relative py-28"
+      style="
+        background-image: url('public/5.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      "
+    >
+      <!-- Fondo personalizado con 5.png y overlay para resaltar textos -->
+      <div
+        style="
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(255, 255, 255, 0.4);
+          backdrop-filter: blur(2px);
+          z-index: 0;
+        "
+      ></div>
+      <div class="container mx-auto px-6 relative z-10">
+        <!-- El overlay anterior está detrás, los textos quedan por encima -->
+        <div class="text-center mb-20">
+          <span
+            class="text-primary font-bold tracking-widest text-sm uppercase mb-2 block"
+            style="color: #2e1065"
+          >
+            Nuestra Esencia</span
+          >
+          <h2
+            class="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-lg"
+            style="color: #1e0b36"
+          >
+            Misión: Despertar la Energía <br class="hidden md:block" />
+            <span class="italic font-light" style="color: #4c1d95">
+              Divina Femenina
+            </span>
+          </h2>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent mx-auto"
+          ></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div
+            class="relative group p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_25px_rgba(139,92,246,0.3)]"
+          >
+            <div
+              class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-mystic-purple border border-purple-500/30 w-12 h-12 rounded-full flex items-center justify-center shadow-lg shadow-purple-900/50 group-hover:scale-110 transition-transform"
+            >
+              <span class="font-display font-bold text-xl text-white">1</span>
+            </div>
+            <h3
+              class="text-2xl font-display font-bold mb-4 mt-4 text-center"
+              style="color: #2e1065"
+            >
+              Reconexión
+            </h3>
+            <p
+              class="text-base md:text-lg leading-relaxed text-center font-medium drop-shadow-sm"
+              style="color: #1e0b36"
+            >
+              Facilitamos el reencuentro con tu esencia divina femenina,
+              equilibrando las energías internas más allá del género.
+            </p>
+          </div>
+          <div
+            class="relative group p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all duration-500 mt-8 lg:mt-0 hover:shadow-[0_0_25px_rgba(139,92,246,0.3)]"
+          >
+            <div
+              class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-mystic-purple border border-purple-500/30 w-12 h-12 rounded-full flex items-center justify-center shadow-lg shadow-purple-900/50 group-hover:scale-110 transition-transform"
+            >
+              <span class="font-display font-bold text-xl text-white">2</span>
+            </div>
+            <h3
+              class="text-2xl font-display font-bold mb-4 mt-4 text-center"
+              style="color: #2e1065"
+            >
+              Transformación
+            </h3>
+            <p
+              class="text-base md:text-lg leading-relaxed text-center font-medium drop-shadow-sm"
+              style="color: #1e0b36"
+            >
+              Acompañamos el proceso alquímico donde la conciencia se expande y
+              las limitaciones antiguas se disuelven.
+            </p>
+          </div>
+          <div
+            class="relative group p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_25px_rgba(139,92,246,0.3)]"
+          >
+            <div
+              class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-mystic-purple border border-purple-500/30 w-12 h-12 rounded-full flex items-center justify-center shadow-lg shadow-purple-900/50 group-hover:scale-110 transition-transform"
+            >
+              <span class="font-display font-bold text-xl text-white">3</span>
+            </div>
+            <h3
+              class="text-2xl font-display font-bold mb-4 mt-4 text-center"
+              style="color: #2e1065"
+            >
+              Integración
+            </h3>
+            <p
+              class="text-base md:text-lg leading-relaxed text-center font-medium drop-shadow-sm"
+              style="color: #1e0b36"
+            >
+              Guiamos hacia la manifestación del Ser Trino: la unión perfecta y
+              sagrada entre lo físico, emocional y espiritual.
+            </p>
+          </div>
+          <div
+            class="relative group p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all duration-500 mt-8 lg:mt-0 hover:shadow-[0_0_25px_rgba(139,92,246,0.3)]"
+          >
+            <div
+              class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-mystic-purple border border-purple-500/30 w-12 h-12 rounded-full flex items-center justify-center shadow-lg shadow-purple-900/50 group-hover:scale-110 transition-transform"
+            >
+              <span class="font-display font-bold text-xl text-white">4</span>
+            </div>
+            <h3
+              class="text-2xl font-display font-bold mb-4 mt-4 text-center"
+              style="color: #2e1065"
+            >
+              Transcendencia
+            </h3>
+            <p
+              class="text-base md:text-lg leading-relaxed text-center font-medium drop-shadow-sm"
+              style="color: #1e0b36"
+            >
+              Vivir emociones pasadas desde el amor, trascendiendo el dolor para
+              habitar la alegría plena del presente.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--
+    Labor Planetaria Misiones
+    <section
+      class="py-24 bg-gradient-to-b from-purple-50 via-white to-pink-50 dark:from-mystic-purple dark:via-background-dark dark:to-deep-violet"
+    >
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-12">
+          <span
+            class="text-primary font-bold tracking-widest text-sm uppercase mb-2 block"
+            style="color: #6d28d9"
+            >Labor Planetaria</span
+          >
+          <h2
+            class="font-display text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg text-mystic-purple"
+          >
+            Misiones
+          </h2>
+        </div>
+        <div class="max-w-2xl mx-auto">
+          <ul
+            class="space-y-6 text-lg md:text-xl text-fuchsia-800 font-light leading-relaxed bg-white/70 dark:bg-mystic-purple/40 backdrop-blur-sm p-6 rounded-xl border border-pink-200"
+          >
+            <li>
+              <strong>Misión Reconexión Tierra en cada uno de nosotros</strong>
+            </li>
+            <li><strong>Misión Códigos Estelares</strong></li>
+            <li><strong>Misión Nuevas Generaciones</strong></li>
+            <li><strong>Retiros a lugares de poder</strong></li>
+            <li><strong>Niños crísticos</strong></li>
+            <li><strong>Discos Solares en nuestros cuerpos</strong></li>
+            <li>
+              <strong
+                >Misión puente Arco iris Europa y América desde 2018 hasta
+                hoy</strong
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    -->
+
+    <!-- Sección de Danza Espiritual para Mover Energías -->
+    <section
+      class="py-24 bg-gradient-to-br from-pink-50 via-yellow-50 to-purple-100 relative overflow-hidden"
+    >
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <h2
+            class="font-display text-4xl md:text-5xl font-bold text-fuchsia-700 mb-4 leading-tight drop-shadow-lg"
+          >
+            Danza Espiritual: Mueve tu Energía
+          </h2>
+          <p
+            class="text-lg md:text-xl text-fuchsia-900 font-light leading-relaxed mb-6"
+          >
+            La danza es una poderosa herramienta de transformación. A través del
+            movimiento consciente, liberamos bloqueos, armonizamos nuestro
+            cuerpo y permitimos que la energía vital fluya con mayor libertad.
+            Estos videos te invitan a explorar la danza como un ritual sagrado
+            para tu bienestar físico, emocional y espiritual.
+          </p>
+          <div class="mb-8">
+            <span
+              class="block text-base md:text-lg font-semibold text-fuchsia-700 bg-fuchsia-100 rounded-lg px-4 py-2 shadow inline-block"
+            >
+              Haz click en cada imagen para ver el video completo en YouTube.
+            </span>
+          </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+            <div
+              class="bg-white/80 rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+            >
+              <div class="relative w-full aspect-video group">
+                <a
+                  href="https://www.youtube.com/watch?v=rUcwqEU6JCo"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <img
+                    src="public/baile1.png"
+                    alt="Portada Baile 1"
+                    loading="lazy"
+                    decoding="async"
+                    class="absolute inset-0 w-full h-full object-cover z-10 cursor-pointer transition-transform duration-500 group-hover:scale-105"
+                  />
+                </a>
+                <!-- Eliminado el botón individual "Ver video" para dejar solo la instrucción general -->
+              </div>
+              <div class="p-6 text-center flex flex-col items-center">
+                <span
+                  class="text-lg md:text-xl font-bold text-fuchsia-700 mb-3 block"
+                  >Presencia y meditación en movimiento</span
+                >
+                <p
+                  class="text-base md:text-lg text-gray-700 font-medium leading-relaxed"
+                >
+                  Comienza tu viaje moviendo la energía con esta danza suave y
+                  meditativa.<br />Permite que tu cuerpo se exprese libremente y
+                  siente cómo se despierta tu vitalidad interior.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="bg-white/80 rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+            >
+              <div class="relative w-full aspect-video group">
+                <a
+                  href="https://www.youtube.com/watch?v=yHUAyAZwIgs"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <img
+                    src="public/baile2.png"
+                    alt="Portada Baile 2"
+                    loading="lazy"
+                    decoding="async"
+                    class="absolute inset-0 w-full h-full object-cover z-10 cursor-pointer transition-transform duration-500 group-hover:scale-105"
+                  />
+                </a>
+                <!-- Eliminado el botón individual "Ver video" para dejar solo la instrucción general -->
+              </div>
+              <div class="p-6 text-center flex flex-col items-center">
+                <span
+                  class="text-lg md:text-xl font-bold text-fuchsia-700 mb-3 block"
+                  >Conexión grupal y apertura de corazón</span
+                >
+                <p
+                  class="text-base md:text-lg text-gray-700 font-medium leading-relaxed"
+                >
+                  Explora movimientos circulares y expansivos para abrir el
+                  corazón y conectar con la energía grupal.<br />Ideal para
+                  sentir la unión y la alegría de danzar en comunidad.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-center mb-10">
+            <div
+              class="bg-white/80 rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 w-full max-w-lg"
+            >
+              <div class="relative w-full aspect-video group">
+                <a
+                  href="https://www.youtube.com/watch?v=-Xt0CVxnMGw"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <img
+                    src="public/baile3.png"
+                    alt="Portada Baile 3"
+                    loading="lazy"
+                    decoding="async"
+                    class="absolute inset-0 w-full h-full object-cover z-10 cursor-pointer transition-transform duration-500 group-hover:scale-105"
+                  />
+                </a>
+                <!-- Eliminado el botón individual "Ver video" para dejar solo la instrucción general -->
+              </div>
+              <div class="p-6 text-center flex flex-col items-center">
+                <span
+                  class="text-lg md:text-xl font-bold text-fuchsia-700 mb-3 block"
+                  >Libera tensiones y emociones</span
+                >
+                <p
+                  class="text-base md:text-lg text-gray-700 font-medium leading-relaxed"
+                >
+                  Esta práctica te ayuda a soltar tensiones y emociones
+                  estancadas.<br />Deja que la música te guíe y permite que cada
+                  movimiento sea una ofrenda de sanación para tu ser.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div
+              class="bg-white/80 rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+            >
+              <div class="relative w-full aspect-video group">
+                <a
+                  href="https://www.youtube.com/watch?v=m0WvM_dkFk4"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <img
+                    src="public/baile4.png"
+                    alt="Portada Baile 4"
+                    loading="lazy"
+                    decoding="async"
+                    class="absolute inset-0 w-full h-full object-cover z-10 cursor-pointer transition-transform duration-500 group-hover:scale-105"
+                  />
+                </a>
+                <!-- Eliminado el botón individual "Ver video" para dejar solo la instrucción general -->
+              </div>
+              <div class="p-6 text-center flex flex-col items-center">
+                <span
+                  class="text-lg md:text-xl font-bold text-fuchsia-700 mb-3 block"
+                  >Activa tu energía interior</span
+                >
+                <p
+                  class="text-base md:text-lg text-gray-700 font-medium leading-relaxed"
+                >
+                  Permite que tu cuerpo se convierta en un canal de luz y
+                  creatividad.<br />Esta danza activa la energía kundalini y
+                  despierta tu poder interior.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="bg-white/80 rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+            >
+              <div class="relative w-full aspect-video group">
+                <a
+                  href="https://www.youtube.com/watch?v=c2NiJFyt6FA"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <img
+                    src="public/baile5.png"
+                    alt="Portada Baile 5"
+                    loading="lazy"
+                    decoding="async"
+                    class="absolute inset-0 w-full h-full object-cover z-10 cursor-pointer transition-transform duration-500 group-hover:scale-105"
+                  />
+                </a>
+                <!-- Eliminado el botón individual "Ver video" para dejar solo la instrucción general -->
+              </div>
+              <div class="p-6 text-center flex flex-col items-center">
+                <span
+                  class="text-lg md:text-xl font-bold text-fuchsia-700 mb-3 block"
+                  >Integra y agradece</span
+                >
+                <p
+                  class="text-base md:text-lg text-gray-700 font-medium leading-relaxed"
+                >
+                  Finaliza tu recorrido con una danza de integración y
+                  gratitud.<br />Siente cómo la energía renovada recorre todo tu
+                  ser y agradece a tu cuerpo por este viaje sagrado.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-16">
+          <p class="text-lg text-fuchsia-800 font-semibold">
+            Recuerda: no hay pasos correctos ni incorrectos. Permítete sentir,
+            fluir y disfrutar el movimiento. ¡Tu cuerpo es el templo de tu alma!
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="py-24 relative overflow-hidden" id="camino">
+      <div
+        class="absolute inset-0 bg-cover bg-center"
+        style="background-image: url('public/2.png'); opacity: 0.7"
+      ></div>
+      <div
+        class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-purple-200/40 to-transparent dark:from-purple-900/20 pointer-events-none"
+      ></div>
+      <div
+        class="absolute top-20 left-20 text-purple-300/30 text-8xl font-serif opacity-30 pointer-events-none rotate-12"
+      >
+        ❀
+      </div>
+      <div class="container mx-auto px-6 relative z-10">
+        <h2
+          class="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-lg text-center"
+          style="
+            color: #1e0b36;
+            text-shadow: 0 2px 12px #fff, 0 1px 0 #e9d5ff, 0 0 8px #e9d5ff;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        >
+          El Camino del Recuerdo <br class="hidden md:block" />
+        </h2>
+        <p
+          class="text-center mb-16 font-bold text-xl italic"
+          style="
+            color: #1e0b36;
+            text-shadow: 0 2px 12px #fff, 0 1px 0 #e9d5ff, 0 0 8px #e9d5ff;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        >
+          Descubre tus dones a través de la memoria ancestral
+        </p>
+        <div class="relative mt-8">
+          <div
+            class="absolute inset-0 flex justify-center items-center opacity-10 dark:opacity-20 pointer-events-none"
+          >
+            <img
+              alt="Woman smiling in background"
+              loading="lazy"
+              decoding="async"
+              class="w-full max-w-5xl object-cover rounded-full h-[500px] blur-[3px]"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6JBmChJsYvRj3sJtYN9ANZXDMqfroW5qXMJ6nnXGg7PrIEE_nv7EQD819lrc0YcwL-lm1ZZlsPALR3jiJROWAIOmuoNFIOK0mCKNM3fiziW6htC9LvOjwZ7ffPxWyXl3jqNJax62COfyG7Pww-sPflgUreh7oyWRBJAD8OOYV2aM6ob4a3JoYduLXrFq_0U98zI04QxfYeWxJQRPZqNLr7GVH8BYSQGOtVvcsUufZbVBP24weMOaoSU7BbTtuGn_WfhVJ-Y88_KQ"
+            />
+          </div>
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto pt-10"
+          >
+            <div
+              class="card-hover-effect bg-white/80 dark:bg-[#1A1625]/80 backdrop-blur-md p-8 rounded-xl shadow-xl border border-purple-200 dark:border-purple-800/30 flex flex-col items-center text-center relative overflow-hidden"
+            >
+              <div
+                class="absolute -right-4 -top-4 w-20 h-20 bg-purple-100 dark:bg-purple-900/30 rounded-full blur-xl opacity-60"
+              ></div>
+              <span
+                class="material-icons text-4xl text-purple-500 mb-4 bg-purple-50 dark:bg-purple-900/30 p-3 rounded-full relative z-10"
+                >visibility</span
+              >
+              <h4
+                class="font-display font-bold text-2xl text-mystic-purple dark:text-purple-200 mb-3 relative z-10"
+              >
+                Observación
+              </h4>
+              <p
+                class="text-gray-600 dark:text-black-300 text-sm font-bold leading-relaxed relative z-10"
+              >
+                Reconocemos los patrones limitantes que han ocultado tus
+                verdaderos dones y habilidades innatas.
+              </p>
+            </div>
+            <div
+              class="card-hover-effect bg-white/80 dark:bg-[#1A1625]/80 backdrop-blur-md p-8 rounded-xl shadow-xl border border-purple-200 dark:border-purple-800/30 flex flex-col items-center text-center lg:mt-12 relative overflow-hidden"
+            >
+              <div
+                class="absolute -left-4 -bottom-4 w-20 h-20 bg-pink-100 dark:bg-pink-900/30 rounded-full blur-xl opacity-60"
+              ></div>
+              <span
+                class="material-icons text-4xl text-purple-600 mb-4 bg-purple-50 dark:bg-purple-900/30 p-3 rounded-full relative z-10"
+                >flight_takeoff</span
+              >
+              <h4
+                class="font-display font-bold text-2xl text-mystic-purple dark:text-purple-200 mb-3 relative z-10"
+              >
+                Liberación
+              </h4>
+              <p
+                class="text-gray-600 dark:text-black-300 text-sm font-bold leading-relaxed relative z-10"
+              >
+                Mediante técnicas ancestrales, liberamos las capas densas que
+                cubren tu verdadera naturaleza luminosa.
+              </p>
+            </div>
+            <div
+              class="card-hover-effect bg-white/80 dark:bg-[#1A1625]/80 backdrop-blur-md p-8 rounded-xl shadow-xl border border-purple-200 dark:border-purple-800/30 flex flex-col items-center text-center relative overflow-hidden"
+            >
+              <div
+                class="absolute -right-4 -top-4 w-20 h-20 bg-purple-100 dark:bg-purple-900/30 rounded-full blur-xl opacity-60"
+              ></div>
+              <span
+                class="material-icons text-4xl text-purple-700 mb-4 bg-purple-50 dark:bg-purple-900/30 p-3 rounded-full relative z-10"
+                >bolt</span
+              >
+              <h4
+                class="font-display font-bold text-2xl text-mystic-purple dark:text-purple-200 mb-3 relative z-10"
+              >
+                Activación
+              </h4>
+              <p
+                class="text-gray-600 dark:text-black-300 text-sm font-bold leading-relaxed relative z-10"
+              >
+                Despertamos los códigos de memoria celular que contienen tus
+                talentos divinos y misión de vida.
+              </p>
+            </div>
+            <div
+              class="card-hover-effect bg-white/80 dark:bg-[#1A1625]/80 backdrop-blur-md p-8 rounded-xl shadow-xl border border-purple-200 dark:border-purple-800/30 flex flex-col items-center text-center lg:mt-12 relative overflow-hidden"
+            >
+              <div
+                class="absolute -left-4 -bottom-4 w-20 h-20 bg-pink-100 dark:bg-pink-900/30 rounded-full blur-xl opacity-60"
+              ></div>
+              <span
+                class="material-icons text-4xl text-purple-800 mb-4 bg-purple-50 dark:bg-purple-900/30 p-3 rounded-full relative z-10"
+                >favorite</span
+              >
+              <h4
+                class="font-display font-bold text-2xl text-mystic-purple dark:text-purple-200 mb-3 relative z-10"
+              >
+                Integración
+              </h4>
+              <p
+                class="text-gray-600 dark:text-black-300 text-sm font-bold leading-relaxed relative z-10"
+              >
+                Incorporamos estos dones a tu vida cotidiana, manifestando tu
+                máximo potencial en cada acción.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="divider-top-rose rotate-180 bottom-0 top-auto"></div>
+    </section>
+    <section class="py-24 relative overflow-hidden">
+      <div
+        class="absolute inset-0 bg-cover bg-center"
+        style="background-image: url('public/7.png'); opacity: 0.86; z-index: 0"
+      ></div>
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2
+            class="font-display text-4xl md:text-5xl font-bold text-mystic-purple dark:text-purple-200 mb-4 leading-tight drop-shadow-sm"
+          >
+            Alquimia en Movimiento
+          </h2>
+          <div class="h-px w-20 bg-primary mx-auto mb-4"></div>
+          <p
+            class="text-black-600 dark:text-black-300 text-sm font-bold leading-relaxed relative z-10"
+          >
+            Sanación profunda a través del cuerpo, la danza y la voz.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="group cursor-pointer">
+            <div
+              class="relative overflow-hidden rounded-t-[100px] rounded-b-lg mb-6 h-64 shadow-xl border border-white/40"
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity"
+              ></div>
+              <img
+                alt="Danza Expresiva"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out"
+                src="public/danza.jpeg"
+              />
+            </div>
+            <div class="text-center px-4">
+              <h3
+                class="font-display font-bold text-xl mb-2 text-mystic-purple dark:text-purple-200 group-hover:text-primary transition-colors"
+              >
+                Danza Expresiva
+              </h3>
+              <p
+                class="text-black-600 dark:text-black-300 text-sm font-bold leading-relaxed relative z-10"
+              >
+                Movimientos que liberan emociones estancadas y restauran el
+                flujo de energía vital.
+              </p>
+            </div>
+          </div>
+          <div class="group cursor-pointer mt-8 md:mt-0 lg:mt-12">
+            <div
+              class="relative overflow-hidden rounded-t-[100px] rounded-b-lg mb-6 h-64 shadow-xl border border-white/40"
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity"
+              ></div>
+              <img
+                alt="Danza Circular grupal"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out"
+                src="public/danzacircular.jpeg"
+              />
+            </div>
+            <div class="text-center px-4">
+              <h3
+                class="font-display font-bold text-xl mb-2 text-mystic-purple dark:text-purple-200 group-hover:text-primary transition-colors"
+              >
+                Danza Circular
+              </h3>
+              <p
+                class="text-black-600 dark:text-black-300 text-sm font-bold leading-relaxed relative z-10"
+              >
+                Conexión colectiva a través de movimientos ancestrales que
+                activan la memoria grupal.
+              </p>
+            </div>
+          </div>
+          <div class="group cursor-pointer">
+            <div
+              class="relative overflow-hidden rounded-t-[100px] rounded-b-lg mb-6 h-64 shadow-xl border border-white/40"
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity"
+              ></div>
+              <img
+                alt="Trance Danzario"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out"
+                src="public/trance.jpeg"
+              />
+            </div>
+            <div class="text-center px-4">
+              <h3
+                class="font-display font-bold text-xl mb-2 text-mystic-purple dark:text-purple-200 group-hover:text-primary transition-colors"
+              >
+                Trance Danzario
+              </h3>
+              <p
+                class="text-black-600 dark:text-black-300 text-sm font-bold leading-relaxed relative z-10"
+              >
+                Estados alterados de conciencia alcanzados a través del
+                movimiento repetitivo y música vibracional.
+              </p>
+            </div>
+          </div>
+          <div class="group cursor-pointer mt-8 md:mt-0 lg:mt-12">
+            <div
+              class="relative overflow-hidden rounded-t-[100px] rounded-b-lg mb-6 h-64 shadow-xl border border-white/40"
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity"
+              ></div>
+              <img
+                alt="Cantos Sagrados - Mujer cantando con expresión emocional"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out"
+                src="public/cantos.jpeg"
+              />
+            </div>
+            <div class="text-center px-4">
+              <h3
+                class="font-display font-bold text-xl mb-2 text-mystic-purple dark:text-purple-200 group-hover:text-primary transition-colors"
+              >
+                Cantos Sagrados
+              </h3>
+              <p
+                class="text-black-600 dark:text-black-300 text-sm font-bold leading-relaxed relative z-10"
+              >
+                Exploración de la Voz y utilización de sonidos para permitir a
+                tu esencia florecer.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="py-24 bg-gradient-to-r from-[#2E1065] via-[#4C1D95] to-[#5B21B6] text-white relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1444464666117-439d74e20f19?q=80&amp;w=2074&amp;auto=format&amp;fit=crop')] opacity-10 bg-cover bg-fixed"
+      ></div>
+      <svg
+        class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none"
+        preserveAspectRatio="none"
+        viewBox="0 0 1440 320"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+          fill="#ffffff"
+          fill-opacity="1"
+        ></path>
+      </svg>
+      <div class="container mx-auto px-6 text-center relative z-10">
+        <h2
+          class="font-display text-3xl md:text-5xl font-bold mb-4 drop-shadow-md"
+        >
+          La Voz como Herramienta de <br />
+          <span class="text-purple-300 italic">Liberación y Activación</span>
+        </h2>
+        <p class="max-w-2xl mx-auto mb-16 text-purple-100 font-light text-lg">
+          El sonido es la llave que abre las puertas del alma.
+        </p>
+        <div class="relative max-w-6xl mx-auto">
+          <div
+            class="hidden md:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full z-0"
+          ></div>
+          <div
+            class="hidden md:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-white/10 rounded-full z-0"
+          ></div>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative z-10">
+            <div
+              class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:bg-white/20 transition duration-300 hover:-translate-y-2"
+            >
+              <div
+                class="text-4xl font-display font-bold text-purple-300 mb-4 opacity-80"
+              >
+                01
+              </div>
+              <h3 class="text-xl font-bold mb-3 font-display">
+                Canto Armónico
+              </h3>
+              <p class="text-sm opacity-90 font-light leading-relaxed">
+                Frecuencias sonoras específicas que resuenan con los chakras,
+                liberando bloqueos energéticos.
+              </p>
+            </div>
+            <div
+              class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:bg-white/20 transition duration-300 hover:-translate-y-2 md:translate-y-12"
+            >
+              <div
+                class="text-4xl font-display font-bold text-purple-300 mb-4 opacity-80"
+              >
+                02
+              </div>
+              <h3 class="text-xl font-bold mb-3 font-display">
+                Mantras Sanadores
+              </h3>
+              <p class="text-sm opacity-90 font-light leading-relaxed">
+                Sonidos sagrados antiguos que restablecen la armonía en nuestro
+                campo electromagnético.
+              </p>
+            </div>
+            <div
+              class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:bg-white/20 transition duration-300 hover:-translate-y-2 md:translate-y-12"
+            >
+              <div
+                class="text-4xl font-display font-bold text-purple-300 mb-4 opacity-80"
+              >
+                03
+              </div>
+              <h3 class="text-xl font-bold mb-3 font-display">
+                Expresión Vocal
+              </h3>
+              <p class="text-sm opacity-90 font-light leading-relaxed">
+                Técnicas para liberar tu voz auténtica, permitiendo que las
+                emociones contenidas fluyan.
+              </p>
+            </div>
+            <div
+              class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:bg-white/20 transition duration-300 hover:-translate-y-2"
+            >
+              <div
+                class="text-4xl font-display font-bold text-purple-300 mb-4 opacity-80"
+              >
+                04
+              </div>
+              <h3 class="text-xl font-bold mb-3 font-display">Voz del Alma</h3>
+              <p class="text-sm opacity-90 font-light leading-relaxed">
+                Reconexión con la frecuencia única de tu alma, manifestando su
+                vibración en la tierra.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="py-24 bg-background-light dark:bg-background-dark overflow-hidden relative"
+    >
+      <div
+        class="absolute top-0 right-0 w-1/3 h-full bg-[url('https://www.transparenttextures.com/patterns/floral-linen.png')] opacity-20 pointer-events-none"
+      ></div>
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col lg:flex-row gap-16 items-center">
+          <div class="w-full lg:w-5/12 relative">
+            <div
+              class="absolute -top-10 -left-10 w-full h-full border-2 border-primary/20 rounded-t-[10rem] rounded-b-xl hidden lg:block"
+            ></div>
+            <div
+              class="rounded-t-[10rem] rounded-b-xl overflow-hidden h-[600px] shadow-2xl relative z-10"
+            >
+              <img
+                alt="Arte Terapéutico"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover filter contrast-110"
+                src="public/arte.jpeg"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-mystic-purple/80 via-transparent to-transparent opacity-90"
+              ></div>
+              <div class="absolute bottom-10 left-10 right-10 text-white">
+                <span
+                  class="block text-sm uppercase tracking-widest mb-2 opacity-80"
+                  >El arte sana</span
+                >
+                <p class="font-display text-2xl italic">
+                  "Crear es traer lo divino a la tierra"
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="w-full lg:w-7/12">
+            <h2
+              class="font-display text-4xl md:text-5xl font-bold mb-4 text-mystic-purple dark:text-purple-300"
+            >
+              Arte Terapéutico
+            </h2>
+            <h3
+              class="text-xl md:text-2xl text-gray-500 dark:text-gray-400 font-light mb-10 italic"
+            >
+              Un Viaje de Autodescubrimiento Interior
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div
+                class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow group relative overflow-hidden"
+              >
+                <div
+                  class="absolute right-0 bottom-0 opacity-5 transform translate-x-1/4 translate-y-1/4"
+                >
+                  <span class="material-icons text-9xl text-primary"
+                    >palette</span
+                  >
+                </div>
+                <div
+                  class="w-10 h-10 bg-purple-100 dark:bg-purple-900/50 rounded-lg flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform"
+                >
+                  <span class="material-icons">palette</span>
+                </div>
+                <h3
+                  class="font-display font-bold text-xl mb-3 text-gray-800 dark:text-gray-100"
+                >
+                  Pintura Intuitiva
+                </h3>
+                <p
+                  class="text-gray-600 dark:text-gray-400 text-sm font-light leading-relaxed"
+                >
+                  Expresión artística que surge del inconsciente, revelando
+                  mensajes profundos y facilitando la sanación a través del
+                  color.
+                </p>
+              </div>
+              <div
+                class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow group relative overflow-hidden"
+              >
+                <div
+                  class="absolute right-0 bottom-0 opacity-5 transform translate-x-1/4 translate-y-1/4"
+                >
+                  <span class="material-icons text-9xl text-primary"
+                    >edit_note</span
+                  >
+                </div>
+                <div
+                  class="w-10 h-10 bg-purple-100 dark:bg-purple-900/50 rounded-lg flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform"
+                >
+                  <span class="material-icons">edit_note</span>
+                </div>
+                <h3
+                  class="font-display font-bold text-xl mb-3 text-gray-800 dark:text-gray-100"
+                >
+                  Escritura Automática
+                </h3>
+                <p
+                  class="text-gray-600 dark:text-gray-400 text-sm font-light leading-relaxed"
+                >
+                  Conexión con la sabiduría interior a través de la palabra
+                  escrita, permitiendo que fluyan mensajes canalizados del alma.
+                </p>
+              </div>
+              <div
+                class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow group relative overflow-hidden"
+              >
+                <div
+                  class="absolute right-0 bottom-0 opacity-5 transform translate-x-1/4 translate-y-1/4"
+                >
+                  <span class="material-icons text-9xl text-primary"
+                    >data_usage</span
+                  >
+                </div>
+                <div
+                  class="w-10 h-10 bg-purple-100 dark:bg-purple-900/50 rounded-lg flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform"
+                >
+                  <span class="material-icons">data_usage</span>
+                </div>
+                <h3
+                  class="font-display font-bold text-xl mb-3 text-gray-800 dark:text-gray-100"
+                >
+                  Mandalas Sanativos
+                </h3>
+                <p
+                  class="text-gray-600 dark:text-gray-400 text-sm font-light leading-relaxed"
+                >
+                  Creación de geometrías sagradas que ordenan el caos interno y
+                  conectan con la armonía universal y perfecta.
+                </p>
+              </div>
+              <div
+                class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow group relative overflow-hidden"
+              >
+                <div
+                  class="absolute right-0 bottom-0 opacity-5 transform translate-x-1/4 translate-y-1/4"
+                >
+                  <span class="material-icons text-9xl text-primary"
+                    >auto_awesome_mosaic</span
+                  >
+                </div>
+                <div
+                  class="w-10 h-10 bg-purple-100 dark:bg-purple-900/50 rounded-lg flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform"
+                >
+                  <span class="material-icons">auto_awesome_mosaic</span>
+                </div>
+                <h3
+                  class="font-display font-bold text-xl mb-3 text-gray-800 dark:text-gray-100"
+                >
+                  Collage Alquímico
+                </h3>
+                <p
+                  class="text-gray-600 dark:text-gray-400 text-sm font-light leading-relaxed"
+                >
+                  Integración de materiales diversos que representan aspectos
+                  fragmentados del ser, unificándolos en una nueva totalidad.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-24 bg-[#1e0b36] text-white relative overflow-hidden">
+      <div
+        class="absolute inset-0 bg-cover bg-center"
+        style="background-image: url('public/8.png'); z-index: 0"
+      ></div>
+      <div class="container mx-auto px-6 text-center relative z-10">
+        <span
+          class="block text-primary font-bold tracking-widest text-sm uppercase mb-4"
+          style="color: #1e0b36"
+          >Servicio al Gran Plan</span
+        >
+        <h2
+          class="font-display text-4xl md:text-5xl font-bold mb-16 drop-shadow-lg"
+          style="color: #1e0b36"
+        >
+          Activando Tu Propósito
+        </h2>
+        <div class="flex justify-center mb-12">
+          <div class="relative w-full max-w-4xl">
+            <div
+              class="flex flex-col md:flex-row items-stretch justify-center gap-4"
+            >
+              <div
+                class="flex-1 bg-white/70 backdrop-blur-sm border border-gray-300 p-6 rounded-xl hover:bg-white/90 transition-colors cursor-pointer group"
+              >
+                <div
+                  class="text-3xl font-display font-bold text-purple-700 mb-2 group-hover:scale-110 transition-transform inline-block"
+                >
+                  01
+                </div>
+                <h4 class="font-bold text-lg mb-2 text-gray-900">
+                  Reconocimiento
+                </h4>
+                <p class="text-sm opacity-90 font-light text-gray-800">
+                  Identificar tu misión única
+                </p>
+              </div>
+              <div
+                class="flex-1 bg-white/70 backdrop-blur-sm border border-gray-300 p-6 rounded-xl hover:bg-white/90 transition-colors cursor-pointer group mt-4 md:mt-0 md:translate-y-4"
+              >
+                <div
+                  class="text-3xl font-display font-bold text-purple-700 mb-2 group-hover:scale-110 transition-transform inline-block"
+                >
+                  02
+                </div>
+                <h4 class="font-bold text-lg mb-2 text-gray-900">Desarrollo</h4>
+                <p class="text-sm opacity-90 font-light text-gray-800">
+                  Nutrir tus dones divinos
+                </p>
+              </div>
+              <div
+                class="flex-1 bg-white/70 backdrop-blur-sm border border-gray-300 p-6 rounded-xl hover:bg-white/90 transition-colors cursor-pointer group mt-4 md:mt-0"
+              >
+                <div
+                  class="text-3xl font-display font-bold text-purple-700 mb-2 group-hover:scale-110 transition-transform inline-block"
+                >
+                  03
+                </div>
+                <h4 class="font-bold text-lg mb-2 text-gray-900">Servicio</h4>
+                <p class="text-sm opacity-90 font-light text-gray-800">
+                  Aplicar tus dones al mundo
+                </p>
+              </div>
+              <div
+                class="flex-1 bg-white/70 backdrop-blur-sm border border-gray-300 p-6 rounded-xl hover:bg-white/90 transition-colors cursor-pointer group mt-4 md:mt-0 md:translate-y-4"
+              >
+                <div
+                  class="text-3xl font-display font-bold text-purple-700 mb-2 group-hover:scale-110 transition-transform inline-block"
+                >
+                  04
+                </div>
+                <h4 class="font-bold text-lg mb-2 text-gray-900">
+                  Colaboración
+                </h4>
+                <p class="text-sm opacity-90 font-light text-gray-800">
+                  Unirte a la misión planetaria
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p
+          class="max-w-3xl mx-auto text-base md:text-lg opacity-90 leading-relaxed font-bold text-gray-900"
+        >
+          En Rosas Alquímicas comprendemos que cada ser humano tiene un papel
+          único. Te acompañamos a descubrir cómo tus dones específicos
+          contribuyen a la evolución colectiva.
+        </p>
+      </div>
+    </section>
+    <section class="py-24 bg-white dark:bg-gray-900 relative">
+      <div
+        class="absolute inset-0 bg-cover bg-center"
+        style="background-image: url('public/9.png'); opacity: 0.7; z-index: 0"
+      ></div>
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col lg:flex-row gap-16">
+          <div class="w-full lg:w-5/12">
+            <div
+              class="sticky top-10 rounded-2xl overflow-hidden shadow-2xl h-[600px] border-8 border-white dark:border-gray-800"
+            >
+              <img
+                alt="Unión de la comunidad"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover"
+                src="public/union.jpeg"
+              />
+              <div
+                class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent"
+              >
+                <p class="text-white text-center font-display italic text-lg">
+                  "Juntas somos más fuertes"
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="w-full lg:w-7/12 pt-10">
+            <h2
+              class="font-display text-4xl md:text-5xl font-bold mb-6 text-mystic-purple dark:text-purple-300"
+            >
+              Comunidad de Alquimistas
+            </h2>
+            <!-- Cambia los <p> de la sección Comunidad de Alquimistas así: -->
+
+            <!-- Título y descripción principal -->
+            <p class="text-lg text-gray-900 mb-12 font-bold drop-shadow">
+              Un espacio seguro para crecer, compartir y expandir tu luz.
+            </p>
+
+            <!-- Cards de la comunidad -->
+            <div class="space-y-10">
+              <div class="flex gap-6 group items-start">
+                <div
+                  class="flex-shrink-0 w-14 h-14 bg-white dark:bg-gray-800 border border-purple-200 dark:border-purple-800 rounded-full flex items-center justify-center text-primary shadow-md group-hover:bg-primary group-hover:text-white transition-colors duration-300"
+                >
+                  <span class="material-icons">groups</span>
+                </div>
+                <div>
+                  <h3
+                    class="text-xl font-bold text-gray-900 dark:text-white mb-2 font-display"
+                  >
+                    Encuentros Mensuales
+                  </h3>
+                  <p
+                    class="text-base text-gray-900 font-bold leading-relaxed drop-shadow-lg"
+                  >
+                    Espacios de reunión periódica para compartir experiencias,
+                    prácticas y sostén grupal en el camino alquímico.
+                  </p>
+                </div>
+              </div>
+              <div class="flex gap-6 group items-start">
+                <div
+                  class="flex-shrink-0 w-14 h-14 bg-white dark:bg-gray-800 border border-purple-200 dark:border-purple-800 rounded-full flex items-center justify-center text-primary shadow-md group-hover:bg-primary group-hover:text-white transition-colors duration-300"
+                >
+                  <span class="material-icons">school</span>
+                </div>
+                <div>
+                  <h3
+                    class="text-xl font-bold text-gray-900 dark:text-white mb-2 font-display"
+                  >
+                    Talleres Especializados
+                  </h3>
+                  <p
+                    class="text-base text-gray-900 font-bold leading-relaxed drop-shadow-lg"
+                  >
+                    Formaciones en diversas técnicas alquímicas adaptadas a
+                    diferentes niveles de experiencia y necesidades específicas.
+                  </p>
+                </div>
+              </div>
+              <div class="flex gap-6 group items-start">
+                <div
+                  class="flex-shrink-0 w-14 h-14 bg-white dark:bg-gray-800 border border-purple-200 dark:border-purple-800 rounded-full flex items-center justify-center text-primary shadow-md group-hover:bg-primary group-hover:text-white transition-colors duration-300"
+                >
+                  <span class="material-icons">nature_people</span>
+                </div>
+                <div>
+                  <h3
+                    class="text-xl font-bold text-gray-900 dark:text-white mb-2 font-display"
+                  >
+                    Retiros Transformacionales
+                  </h3>
+                  <p
+                    class="text-base text-gray-900 font-bold leading-relaxed drop-shadow-lg"
+                  >
+                    Experiencias inmersivas en entornos naturales donde
+                    profundizamos en el trabajo alquímico lejos de las
+                    distracciones.
+                  </p>
+                </div>
+              </div>
+              <div class="flex gap-6 group items-start">
+                <div
+                  class="flex-shrink-0 w-14 h-14 bg-white dark:bg-gray-800 border border-purple-200 dark:border-purple-800 rounded-full flex items-center justify-center text-primary shadow-md group-hover:bg-primary group-hover:text-white transition-colors duration-300"
+                >
+                  <span class="material-icons">spa</span>
+                </div>
+                <div>
+                  <h3
+                    class="text-xl font-bold text-gray-900 dark:text-white mb-2 font-display"
+                  >
+                    Acompañamiento Individual
+                  </h3>
+                  <p
+                    class="text-base text-gray-900 font-bold leading-relaxed drop-shadow-lg"
+                  >
+                    Sesiones personalizadas para abordar tu proceso único, con
+                    atención específica a tus necesidades y ritmo.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Sección de Contacto -->
+    <section
+      id="contacto"
+      class="relative py-24 flex items-center justify-center min-h-[600px] overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-[url('public/1.png')] bg-cover bg-center bg-fixed opacity-60"
+      ></div>
+      <div class="container mx-auto px-6 relative z-10">
+        <div
+          class="max-w-2xl mx-auto bg-white/80 dark:bg-mystic-purple/80 rounded-3xl shadow-2xl p-10 backdrop-blur-md border border-primary/30"
+        >
+          <h2
+            class="font-display text-3xl md:text-5xl font-bold mb-8 text-mystic-purple drop-shadow-md text-center"
+          >
+            Contacto
+          </h2>
+          <!--
+          <form id="form-contacto" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label for="nombre" class="block text-sm font-semibold text-mystic-purple mb-2">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required class="w-full rounded-lg border border-primary/30 px-4 py-3 focus:ring-primary focus:border-primary bg-white/90 dark:bg-mystic-purple/40 text-mystic-purple dark:text-white placeholder:text-mystic-purple/60" placeholder="Tu nombre" />
+              </div>
+              <div>
+                <label for="apellido" class="block text-sm font-semibold text-mystic-purple mb-2">Apellido</label>
+                <input type="text" id="apellido" name="apellido" required class="w-full rounded-lg border border-primary/30 px-4 py-3 focus:ring-primary focus:border-primary bg-white/90 dark:bg-mystic-purple/40 text-mystic-purple dark:text-white placeholder:text-mystic-purple/60" placeholder="Tu apellido" />
+              </div>
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-semibold text-mystic-purple mb-2">Email</label>
+              <input type="email" id="email" name="email" required class="w-full rounded-lg border border-primary/30 px-4 py-3 focus:ring-primary focus:border-primary bg-white/90 dark:bg-mystic-purple/40 text-mystic-purple dark:text-white placeholder:text-mystic-purple/60" placeholder="tucorreo@email.com" />
+            </div>
+            <div>
+              <label for="mensaje" class="block text-sm font-semibold text-mystic-purple mb-2">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" rows="4" required class="w-full rounded-lg border border-primary/30 px-4 py-3 focus:ring-primary focus:border-primary bg-white/90 dark:bg-mystic-purple/40 text-mystic-purple dark:text-white placeholder:text-mystic-purple/60" placeholder="Escribe tu mensaje..."></textarea>
+            </div>
+            <input type="text" name="_gotcha" style="display: none" />
+            <div class="flex justify-center">
+              <button type="submit" class="bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-full shadow-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">Enviar</button>
+            </div>
+          </form>
+          -->
+          <div class="flex flex-col items-center gap-4">
+            <p class="text-mystic-purple text-lg font-medium text-center">
+              ¿Tienes dudas, consultas o simplemente quieres conectar?
+              <br />Ponte en contacto conmigo, ¡te responderé pronto!
+            </p>
+            <a
+              href="mailto:soycarlacalcaterra@gmail.com"
+              target="_blank"
+              rel="noopener"
+              class="bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-full shadow-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 flex items-center justify-center"
+            >
+              <span class="material-icons mr-2">email</span>Enviar correo
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer
+      class="bg-[#110e1b] border-t border-purple-900/30 pt-20 pb-10 text-gray-300 relative overflow-hidden"
+      id="contacto"
+    >
+      <div
+        class="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')]"
+      ></div>
+      <div class="container mx-auto px-6 relative z-10">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16"
+        >
+          <div>
+            <h2 class="font-display text-2xl font-bold mb-8 text-white">
+              Rosas Alquímicas
+            </h2>
+            <p class="text-sm font-light leading-relaxed mb-6 opacity-80">
+              Un santuario digital dedicado al despertar de la conciencia y la
+              sanación del alma a través de las artes sagradas.
+            </p>
+            <div class="flex gap-4">
+              <a
+                class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors text-white"
+                href="#"
+              >
+                <span class="material-icons text-sm">facebook</span>
+              </a>
+              <a
+                class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors text-white"
+                href="#"
+              >
+                <span class="material-icons text-sm">camera_alt</span>
+              </a>
+              <a
+                class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors text-white"
+                href="#"
+              >
+                <span class="material-icons text-sm">email</span>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-display text-xl font-bold mb-6 text-purple-200">
+              Labor Planetaria
+            </h3>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <span class="material-icons text-primary text-sm mt-1"
+                  >auto_awesome</span
+                >
+                <span class="text-sm font-light"
+                  >Misión Reconexión Tierra en cada uno de nosotros</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-icons text-primary text-sm mt-1"
+                  >auto_awesome</span
+                >
+                <span class="text-sm font-light">Misión Códigos Estelares</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-icons text-primary text-sm mt-1"
+                  >auto_awesome</span
+                >
+                <span class="text-sm font-light"
+                  >Misión Nuevas Generaciones</span
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-display text-xl font-bold mb-6 text-purple-200">
+              Actividades
+            </h3>
+            <div class="text-sm space-y-3 font-light opacity-80">
+              <p class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Retiros a lugares de poder
+              </p>
+              <p class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Niños
+                crísticos
+              </p>
+              <p class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Discos
+                Solar en nuestros cuerpos
+              </p>
+              <p class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Misión
+                Puente Arco Iris (Europa - América)
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs font-light text-gray-500"
+        >
+          <p class="mb-4 md:mb-0">
+            © 2023 Rosas Alquímicas. Todos los derechos reservados.
+          </p>
+          <div class="flex gap-6">
+            <a class="hover:text-primary transition-colors" href="#"
+              >Privacidad</a
+            >
+            <a class="hover:text-primary transition-colors" href="#"
+              >Términos</a
+            >
+            <a class="hover:text-primary transition-colors" href="#"
+              >Contacto</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+  <!-- EmailJS script -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("TU_USER_ID"); // Reemplaza TU_USER_ID por tu user_id de EmailJS
+    })();
+
+    document
+      .getElementById("form-contacto")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
+        emailjs.sendForm("TU_SERVICE_ID", "TU_TEMPLATE_ID", this).then(
+          function () {
+            alert("¡Mensaje enviado correctamente!");
+            e.target.reset();
+          },
+          function (error) {
+            alert("Error al enviar el mensaje.");
+          }
+        );
+      });
+  </script>
+</html>

@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>La Rosa del Desierto</title>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link rel="icon" type="image/png" href="public/icon1.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#c0392b", // Red Rose accent
+              gold: "#b89b2c", // Gold accent for text/borders (oscurecido)
+              "background-light": "#f4f7f6",
+              "background-dark": "#0B212D", // Deep Mystical Teal
+              "surface-light": "#ffffff",
+              "surface-dark": "#133545",
+              "teal-accent": "#1abc9c",
+            },
+            fontFamily: {
+              serif: ["Playfair Display", "Cinzel", "serif"],
+              sans: ["Montserrat", "Lato", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+            },
+            backgroundImage: {
+              "mystical-gradient":
+                "linear-gradient(to bottom, #0B212D, #06151d)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Mejora de visibilidad para todos los <p>, <li> y <blockquote> */
+      .text-gold,
+      .border-gold,
+      .marker\:text-gold {
+        color: #b89b2c !important;
+        border-color: #b89b2c !important;
+      }
+      p,
+      blockquote {
+        color: #222 !important;
+        font-weight: 600 !important;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.12);
+        letter-spacing: 0.01em;
+        font-family: "Playfair Display", "Montserrat", serif !important;
+        font-size: 1.18em !important;
+      }
+      li {
+        color: #181818 !important;
+        font-weight: 700 !important;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
+        letter-spacing: 0.01em;
+        font-family: "Montserrat", "Playfair Display", sans-serif !important;
+        font-size: 1.13em !important;
+      }
+      .fecha-lugar-oscuro {
+        color: #181818 !important;
+        font-weight: 800 !important;
+        font-family: "Montserrat", "Playfair Display", sans-serif !important;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      @media (max-width: 768px) {
+        body.body-bg-fixed {
+          background-attachment: scroll !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0b212d;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #133545;
+        border-radius: 4px;
+      }
+      @keyframes subtle-pulse {
+        p,
+        li,
+        blockquote {
+          color: #222 !important;
+          font-weight: 600 !important;
+          text-shadow: 0 1px 2px rgba(255, 255, 255, 0.12);
+          letter-spacing: 0.01em;
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+        }
+      }
+      .animate-glow {
+        animation: subtle-pulse 3s infinite;
+      }
+      .spin-slow {
+        animation: spin 15s linear infinite;
+      }
+      .spin-slower-reverse {
+        animation: spin 20s linear infinite reverse;
+      }
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body
+    id="top"
+    class="body-bg-fixed bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-sans antialiased transition-colors duration-300 pt-0"
+    style="
+      background-image: url('public/10.png');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+    "
+  >
+    <nav
+      class="w-full z-50 bg-gradient-to-r from-pink-100 via-yellow-50 to-red-100/80 backdrop-blur-md border-b border-gold/30 shadow-lg lg:fixed lg:top-0"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row sm:h-16 items-start sm:items-center justify-between py-4 sm:py-0"
+      >
+        <a
+          href="#top"
+          class="flex items-center space-x-3 w-full sm:w-auto justify-center sm:justify-start mb-3 sm:mb-0 focus:outline-none"
+        >
+          <span class="material-symbols-outlined text-primary text-3xl"
+            >local_florist</span
+          >
+          <span
+            class="font-serif font-bold text-lg tracking-widest text-primary uppercase drop-shadow"
+            >La Rosa Del Desierto</span
+          >
+        </a>
+        <div
+          class="flex flex-col sm:flex-row w-full sm:w-auto gap-2 sm:gap-4 items-center justify-center sm:justify-end"
+        >
+          <a
+            href="#membresia-contacto"
+            class="flex items-center gap-1 px-4 py-2 rounded-full bg-gradient-to-r from-yellow-200 to-pink-100 text-primary font-bold shadow border border-gold/40 transition-all text-sm hover:bg-yellow-300/80 hover:text-white hover:shadow-lg w-full sm:w-auto justify-center"
+          >
+            <span class="material-symbols-outlined text-base">mail</span>
+            Contacto
+          </a>
+          <a
+            href="index.html"
+            class="flex items-center gap-1 px-4 py-2 rounded-full bg-gradient-to-r from-pink-200 to-yellow-100 text-primary font-bold shadow border border-gold/40 transition-all text-sm hover:bg-pink-300/80 hover:text-white hover:shadow-lg w-full sm:w-auto justify-center"
+          >
+            <span class="material-symbols-outlined text-base">arrow_back</span>
+            Volver a Rosas Alquímicas
+          </a>
+        </div>
+      </div>
+    </nav>
+    <section
+      class="pt-20 lg:pt-32 pb-20 relative overflow-hidden"
+      style="
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(0.5px);
+      "
+    >
+      <!-- Fondo eliminado para evitar doble fondo -->
+      <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+        <p
+          class="italic font-serif text-lg mb-4"
+          style="
+            font-family: 'Playfair Display', serif;
+            color: #7a651a;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+          "
+        >
+          Membresía Anual de Rosas Alquímicas • El Camino del Cuerpo Canal
+        </p>
+        <h1
+          class="text-4xl md:text-6xl font-serif font-bold text-gray-900 dark:text-white mb-6 leading-tight"
+          style="font-family: 'Playfair Display', serif"
+        >
+          <span
+            style="
+              background: linear-gradient(
+                90deg,
+                #c0392b 10%,
+                #d4af37 40%,
+                #1abc9c 80%,
+                #e75480 100%
+              );
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+              text-fill-color: transparent;
+              text-shadow: 0 2px 12px #d4af37, 0 1px 2px #c0392b;
+              letter-spacing: 0.04em;
+              font-family: 'Playfair Display', serif;
+              font-weight: bold;
+              font-size: inherit;
+              display: inline-block;
+            "
+            >El Despertar de la Rosa:</span
+          ><br />
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-teal-accent to-gold"
+            style="font-family: 'Montserrat', sans-serif"
+            >Un Viaje desde Venus al Corazón de la Tierra</span
+          >
+        </h1>
+        <p
+          class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed"
+          style="font-family: 'Montserrat', sans-serif"
+        >
+          ¿Sientes el llamado a encarnar tu divinidad en el presente sagrado del
+          Planeta? Te doy la bienvenida a un círculo de devoción y alquimia.
+        </p>
+        <a
+          href="#obtener-membresia"
+          class="inline-block animate-glow bg-gradient-to-r from-pink-500 via-yellow-400 via-green-400 to-purple-500 text-white font-extrabold text-xl px-8 py-4 rounded-full shadow-xl hover:scale-105 hover:from-yellow-400 hover:to-pink-500 transition-all duration-300 uppercase tracking-wider border-4 border-white"
+          style="
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.1em;
+            text-shadow: 0 2px 8px #222, 0 1px 2px #fff;
+            background: linear-gradient(
+              90deg,
+              #ff5eae 0%,
+              #ffe156 40%,
+              #42e695 70%,
+              #a685e2 100%
+            );
+            border-color: #fff;
+          "
+        >
+          ¡Obtén tu membresía!
+        </a>
+      </div>
+    </section>
+    <section
+      class="py-16 relative"
+      style="
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(0.5px);
+      "
+    >
+      <div class="max-w-5xl mx-auto px-6 space-y-16">
+        <div>
+          <h2
+            class="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-6"
+          >
+            La Alquimia de la Membresía
+          </h2>
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+            En este contenedor sagrado, no solo recibimos información;
+            <strong>activamos nuestra biología quántica</strong>. A través de la
+            integración de todos nuestros cuerpos (físico, emocional, mental y
+            espiritual), nos preparamos para sostener las nuevas frecuencias de
+            luz.
+          </p>
+          <h3
+            class="text-xl font-serif font-semibold text-gold mb-4 flex items-center"
+          >
+            <span class="material-symbols-outlined mr-2">looks_one</span> El
+            Manto de Luz Arcoiris
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+            Esta labor planetaria que la divinidad nos marca hoy es una práctica
+            activa que acompañaremos está disponible para todos, mas requiere su
+            práctica amorosa. El Manto no es una vestidura externa; es una
+            tecnología que se enciende desde adentro.
+          </p>
+          <ul
+            class="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-300 marker:text-gold"
+          >
+            <li>
+              <strong>Encendido del ADN:</strong> Activamos las 12 hebras que
+              abrazan nuestra luz de amor.
+            </li>
+            <li>
+              <strong>El Toroide Sagrado:</strong> Aprenderás a mantener
+              encendido el flujo de tu toroide, protegiendo y expandiendo tu
+              campo áurico.
+            </li>
+            <li>
+              <strong>Cristales Quántum:</strong> Despertamos los nuevos
+              cristales del Corazón de Rosa Arcoiris.
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2
+            class="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-6"
+          >
+            Nuestras Prácticas Devocionales
+          </h2>
+          <p class="text-gray-600 dark:text-gray-300 mb-6">
+            Cada semana nos reunimos en el espacio de encuentro donde las artes
+            se fusionan para la exploración del Ser:
+          </p>
+          <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+            <li class="flex items-start">
+              <span
+                class="material-symbols-outlined text-teal-accent mr-3 text-sm mt-1"
+                >diamond</span
+              ><span
+                ><strong>Danzas Espirales:</strong> Movimiento fluido para
+                activar el Toroide y liberar la energía estancada.</span
+              >
+            </li>
+            <li class="flex items-start">
+              <span
+                class="material-symbols-outlined text-teal-accent mr-3 text-sm mt-1"
+                >diamond</span
+              ><span
+                ><strong>Rosario Danzado de Rosas:</strong> Una ofrenda física;
+                el cuerpo en oración que eleva la frecuencia de la Tierra.</span
+              >
+            </li>
+            <li class="flex items-start">
+              <span
+                class="material-symbols-outlined text-teal-accent mr-3 text-sm mt-1"
+                >diamond</span
+              ><span
+                ><strong>Voz y Mantras Sagrados:</strong> El uso del sonido como
+                medicina para la activación de los Códigos de Luz.</span
+              >
+            </li>
+            <li class="flex items-start">
+              <span
+                class="material-symbols-outlined text-teal-accent mr-3 text-sm mt-1"
+                >diamond</span
+              ><span
+                ><strong>Canalización e Integración:</strong> Apertura de los
+                Registros Akáshicos a través de la presencia plena.</span
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12">
+          <div>
+            <h2
+              class="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-4"
+            >
+              El Gozo de la Divina Presencia
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+              Este camino es una invitación a la <strong>Fe Madura</strong>. Nos
+              despojamos de la solemnidad rígida para permitir que nuestros
+              <strong>niños vuelvan a jugar</strong>. A través de la alegría y
+              la bendición de estar vivos, permitimos que la Divina Presencia se
+              encienda en cada sonrisa.
+            </p>
+          </div>
+          <div>
+            <h2
+              class="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-4"
+            >
+              Detalles de la Membresía Anual
+            </h2>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+              <li class="flex items-center">
+                <span class="w-1.5 h-1.5 bg-gold rounded-full mr-2"></span>
+                Encuentros Semanales en Vivo
+              </li>
+              <li class="flex items-center">
+                <span class="w-1.5 h-1.5 bg-gold rounded-full mr-2"></span>
+                Comunidad Privada: Círculo de sostén
+              </li>
+              <li class="flex items-center">
+                <span class="w-1.5 h-1.5 bg-gold rounded-full mr-2"></span>
+                Biblioteca de Activaciones
+              </li>
+              <li class="flex items-center">
+                <span class="w-1.5 h-1.5 bg-gold rounded-full mr-2"></span>
+                Material de Apoyo: Códigos de luz
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden group shadow-2xl"
+        >
+          <img
+            alt="Rose Banner"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUCwEU0yAiPhK-KfP0p_R-21F49YtDxt5FlKa85p8cyZZC4BPnK3kJs2xXJ38ikahk5tBTwiaz4IX8X_bB3CBp_TwxdnZisVxbnvqqgrhsj0IySX7-ZsNKykAqPqHXiIvrf2c1L2Cv6A03SH5A7dyuyIM-dXG7RtqwaZP7Fg8wA9QY4QMKea_8THwiB8XeM3qwGX-rCk4yKv6bLenilWthikkxDpMK3DHaDPG47j1O8YHvcCS5J47ga55bFxO1x9hNyWbLUqrnNJU"
+          />
+          <div class="absolute inset-0 bg-red-900/40 mix-blend-multiply"></div>
+          <div
+            class="absolute inset-0 flex flex-col items-center justify-center text-center p-4"
+          >
+            <span
+              class="font-serif italic text-white text-xl md:text-2xl mb-2 drop-shadow-lg"
+              >On line &amp; Rosas Alquímicas</span
+            >
+            <h2
+              class="font-serif font-bold text-4xl md:text-6xl text-white drop-shadow-lg"
+              style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)"
+            >
+              Prácticas<br />Las artes del templo
+            </h2>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="py-20 relative"
+      style="background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(2px)"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center"
+      >
+        <div>
+          <h2
+            class="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-6"
+          >
+            El Llamado de Foco y Sosten
+          </h2>
+          <div
+            class="prose dark:prose-invert text-sm text-gray-600 dark:text-gray-300 leading-relaxed space-y-4"
+          >
+            <p>
+              Este año 2024 es un año especial... el llamado a la co-creación
+              con la divinidad de un espacio sagrado de contención con la
+              REsponsabilidad de tomar tu lugar, recuperar tu propio poder al
+              recordarte y nutrir tu campo electromagnético.
+            </p>
+            <p>
+              Hacerlo de manera consciente cada uno desde su lugar y a la vez
+              experimentar la cámara cuántica en unidad y en la propuesta de la
+              nueva Era de Acuario.
+            </p>
+            <p>
+              Llevar a tu día a día con los encuentros de arte la posibilidad de
+              tu propia experiencia. Escritura, Dibujo de códigos, Voz y canto
+              devocional. Lenguaje de Luz Cuerpo canal. Registro y labor
+              planetaria en conciencia con la Activación de la Rosa de los
+              vientos.
+            </p>
+          </div>
+        </div>
+        <div class="relative">
+          <div
+            class="absolute inset-0 bg-gold blur-3xl opacity-20 rounded-full"
+          ></div>
+          <img
+            alt="Sacred Geometry Sun"
+            loading="lazy"
+            decoding="async"
+            class="relative w-full rounded-lg shadow-2xl border border-white/10"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzWY0myojjrXWPRAwjheXu0yYXGpOUQ7SsaNX3t7NPvQN8MHZ-K7R2KxWrUNrnlKe5-_F9BN8qhtYJjuCv4FwleDzDNPeAIex4zhSWBbELAnUyWFrpVeQPaPemPt1V5208G-qRzoqycEbKM4C8tPJcsLVTBgl7me0MPcBlXxfWcnkcM1Gldwwx8JYzqrxv0WkSxluFsywcEPotv66gsWhyIp8lnmoBsXctt9t5FNS8najnSYSnEEJYOeaSct7XdysHjcu0LBtk-eI"
+          />
+        </div>
+      </div>
+    </section>
+    <section
+      class="py-20 relative"
+      style="background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(2px)"
+    >
+      <div class="max-w-6xl mx-auto px-6">
+        <h2
+          class="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-12 border-b border-gray-200 dark:border-white/10 pb-4"
+        >
+          Experiencias Sagradas
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-gray-50 dark:bg-surface-dark p-8 rounded-xl border border-gray-200 dark:border-white/5 hover:border-teal-accent/50 transition duration-300"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-teal-accent/20 flex items-center justify-center text-teal-accent mb-6"
+            >
+              <span class="material-symbols-outlined">self_improvement</span>
+            </div>
+            <h3
+              class="text-xl font-serif font-bold text-gray-900 dark:text-white mb-3"
+            >
+              Meditación Profunda
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              Conectaremos con los discos solares y activación de los cuerpos
+              para hoy poder responder al llamado de el espíritu, permitiendo
+              que su energía active la información dormida en cada célula de tu
+              ser.
+            </p>
+          </div>
+          <div
+            class="bg-gray-50 dark:bg-surface-dark p-8 rounded-xl border border-gray-200 dark:border-white/5 hover:border-teal-accent/50 transition duration-300"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-teal-accent/20 flex items-center justify-center text-teal-accent mb-6"
+            >
+              <span class="material-symbols-outlined">water_drop</span>
+            </div>
+            <h3
+              class="text-xl font-serif font-bold text-gray-900 dark:text-white mb-3"
+            >
+              Aguas Termales
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              Ceremonias de canto y sonido en las aguas curativas que fluyen
+              desde el corazón de la Tierra, limpiando y renovando tu campo
+              energético.
+            </p>
+          </div>
+          <div
+            class="bg-gray-50 dark:bg-surface-dark p-8 rounded-xl border border-gray-200 dark:border-white/5 hover:border-teal-accent/50 transition duration-300"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-teal-accent/20 flex items-center justify-center text-teal-accent mb-6"
+            >
+              <span class="material-symbols-outlined">palette</span>
+            </div>
+            <h3
+              class="text-xl font-serif font-bold text-gray-900 dark:text-white mb-3"
+            >
+              Arte Consciente
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              Expresión creativa guiada que permite que tu alma hable a través
+              del color, la forma y el movimiento espontáneo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="py-20 relative"
+      style="background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(2px)"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12"
+      >
+        <div class="lg:col-span-4 h-full min-h-[400px]">
+          <img
+            alt="Lugar de poder principal"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover rounded-xl shadow-2xl"
+            src="public/lugarpoder.jpeg"
+          />
+        </div>
+        <div class="lg:col-span-8 flex flex-col justify-center">
+          <h2
+            class="text-4xl font-serif font-bold text-gray-900 dark:text-white mb-6"
+          >
+            Lugares de Poder
+          </h2>
+          <p class="text-gold italic mb-6">Labores planetarias</p>
+          <div
+            class="text-gray-600 dark:text-gray-300 space-y-4 mb-8 text-sm leading-relaxed"
+          >
+            <p>
+              Dentro de este espacio tendremos una RED en conciencia activando
+              la Red Rosas Cristal para que si puedas sumarte y unire al camino
+              que como peregrino o activador planetario vienes realizando.
+            </p>
+            <p>
+              Aquí abrimos la unidad de la red de rosas donde todo lo caminado
+              por mi y por los alumnos amigos y almas que encendieron la rosa
+              hoy damos forma para ser foco de que elegimos iluminar los puntos
+              de la tierra los lugares de poder que nos ayudan a recordar el
+              poder de encender nuestro propio maestro.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <img
+              alt="Selfie 1"
+              loading="lazy"
+              decoding="async"
+              class="rounded-lg shadow-md h-40 w-full object-cover hover:opacity-90 transition"
+              src="public/selfie1.jpeg"
+            />
+            <img
+              alt="Selfie 2"
+              loading="lazy"
+              decoding="async"
+              class="rounded-lg shadow-md h-40 w-full object-cover hover:opacity-90 transition"
+              src="public/selfie2.jpeg"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="py-16 relative border-t border-b border-gray-200 dark:border-white/5"
+      style="
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(0.5px);
+      "
+    >
+      <div class="max-w-6xl mx-auto px-6">
+        <h2
+          class="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-12 text-center"
+        >
+          El Camino del Recuerdo
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8 relative">
+          <div
+            class="hidden md:block absolute top-6 left-1/6 right-1/6 h-0.5 bg-gray-200 dark:bg-white/10 z-0"
+          ></div>
+          <div class="relative z-10 text-center">
+            <div
+              class="w-12 h-12 mx-auto bg-surface-dark text-gold rounded-full flex items-center justify-center mb-4 border-2 border-gold shadow-lg"
+            >
+              <span class="material-symbols-outlined">sunny</span>
+            </div>
+            <h3 class="font-serif font-bold text-lg dark:text-white mb-2">
+              Despertar Interior
+            </h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400">
+              Cada movimiento consciente en la naturaleza abre puertas hacia tu
+              verdadera esencia.
+            </p>
+          </div>
+          <div class="relative z-10 text-center">
+            <div
+              class="w-12 h-12 mx-auto bg-surface-dark text-gold rounded-full flex items-center justify-center mb-4 border-2 border-gold shadow-lg"
+            >
+              <span class="material-symbols-outlined">music_note</span>
+            </div>
+            <h3 class="font-serif font-bold text-lg dark:text-white mb-2">
+              Cantos Sagrados
+            </h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400">
+              Los sonidos ancestrales resuenan en tu campo energético, activando
+              códigos de luz.
+            </p>
+          </div>
+          <div class="relative z-10 text-center">
+            <div
+              class="w-12 h-12 mx-auto bg-surface-dark text-gold rounded-full flex items-center justify-center mb-4 border-2 border-gold shadow-lg"
+            >
+              <span class="material-symbols-outlined">all_inclusive</span>
+            </div>
+            <h3 class="font-serif font-bold text-lg dark:text-white mb-2">
+              Conexión Profunda
+            </h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400">
+              En el espacio cuántico de Aurea, accedes a tu propia información
+              sagrada.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="py-20 relative"
+      style="
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(0.5px);
+      "
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center"
+      >
+        <div class="order-2 md:order-1">
+          <h2
+            class="text-4xl font-serif font-bold text-gray-900 dark:text-white mb-6"
+          >
+            Aguas de Transformación
+          </h2>
+          <h3 class="text-xl font-serif text-teal-accent mb-4">
+            Este es un llamado a Ser Crístico desde el divino femenino
+          </h3>
+          <div
+            class="text-gray-600 dark:text-gray-300 space-y-4 text-sm leading-relaxed"
+          >
+            <p>
+              Las aguas están acompañando cada labor y cada conexión a la
+              elevación de vibración de nuestras aguas sagradas. La rosa nos
+              acompaña a alquimizar esas aguas internas y esas emociones que
+              impiden ser la luz del son aquí. Activar el Ser Solar, siendo
+              ladinos Solar del sur nos llevara a un camino de unidad.
+            </p>
+            <p>
+              Ir tierra para poder también activar el manto de luz y sus códigos
+              en la conexión con la Nueva energía Kristo Sophia Códigos del
+              nuevo tiempo.
+            </p>
+          </div>
+        </div>
+        <div class="order-1 md:order-2 grid grid-rows-2 gap-4 h-full">
+          <img
+            alt="Aguas 1"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-48 object-cover rounded-xl shadow-lg"
+            src="public/aguas1.jpeg"
+          />
+          <img
+            alt="Aguas 2"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-64 object-cover rounded-xl shadow-lg"
+            src="public/aguas2.jpeg"
+          />
+        </div>
+      </div>
+    </section>
+    <section
+      class="py-16 relative"
+      style="background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(2px)"
+    >
+      <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-6">
+        <div
+          class="bg-white dark:bg-surface-dark p-6 rounded-lg shadow border-l-4 border-gold"
+        >
+          <span
+            class="text-3xl font-serif text-gray-200 dark:text-white/10 absolute font-bold -mt-4 ml-64"
+            >1</span
+          >
+          <h3 class="font-serif text-lg text-gray-900 dark:text-white mb-2">
+            Haces tu conexion te unes a la comunidad
+          </h3>
+        </div>
+        <div
+          class="bg-white dark:bg-surface-dark p-6 rounded-lg shadow border-l-4 border-gold"
+        >
+          <span
+            class="text-3xl font-serif text-gray-200 dark:text-white/10 absolute font-bold -mt-4 ml-64"
+            >2</span
+          >
+          <h3 class="font-serif text-lg text-gray-900 dark:text-white mb-2">
+            tomas conciencia del llamado Este es un llamado a Ser Cristico desde
+            el divino femenino
+          </h3>
+        </div>
+        <div
+          class="bg-white dark:bg-surface-dark p-6 rounded-lg shadow border-l-4 border-gold"
+        >
+          <span
+            class="text-3xl font-serif text-gray-200 dark:text-white/10 absolute font-bold -mt-4 ml-64"
+            >3</span
+          >
+          <h3 class="font-serif text-lg text-gray-900 dark:text-white mb-2">
+            TE sumas a las practicas y canalizaciones y te recuerdas y preparas
+            para compartir tus dones con cada petalo y color cada melodia que te
+            acompañaa tu propia inicialcon
+          </h3>
+        </div>
+        <div
+          class="bg-white dark:bg-surface-dark p-6 rounded-lg shadow border-l-4 border-gold"
+        >
+          <span
+            class="text-3xl font-serif text-gray-200 dark:text-white/10 absolute font-bold -mt-4 ml-64"
+            >4</span
+          >
+          <h3 class="font-serif text-lg text-gray-900 dark:text-white mb-2">
+            TE compartes con todo tu ser y eres parte de un aporte de ser tu
+            misma en esta comunidad para la conexion con el todo
+          </h3>
+        </div>
+      </div>
+    </section>
+    <section
+      class="py-32 relative overflow-hidden"
+      style="background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(2px)"
+    >
+      <div
+        class="absolute inset-0 bg-[url('https://lh3.googleusercontent.com/aida-public/AB6AXuBIC12oN1IgmQsqyoRKECSLtA7f5w_XOyS9hUZwRfKvFqSc-GlDTuISfP8dWEJ5OOWLoqr6nGPXUUDuZBrxil2lQg1WMZOksl1CojXGtDPpJxB8mX8tiuL98oaYZEcucWw4V80ePdOz24wxwTa6LWhRIiKT6muAzmwpr-Hf5gGCpzdMTmmcWZ9Sh5Ibst6X7ZvWWIwO4cWo1KeSZMbGJ-O_1MxizzEYyyq4L17gv2SxqqDLGap69OjZg0foxCfB5-9xMiYLbSWpLBY')] opacity-10 bg-cover bg-center pointer-events-none mix-blend-overlay"
+      ></div>
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-teal-900/30 rounded-full blur-[100px] pointer-events-none"
+      ></div>
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center mb-20">
+          <span
+            class="text-gold font-serif italic tracking-wider mb-2 block animate-pulse"
+            >La Tecnología del Espíritu</span
+          >
+          <h2
+            class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-8 tracking-wide drop-shadow-md"
+          >
+            Un Espacio Cuántico de Sanación
+          </h2>
+          <div
+            class="w-32 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto"
+          ></div>
+        </div>
+        <div class="grid lg:grid-cols-3 gap-12 items-center">
+          <div
+            class="space-y-12 flex flex-col justify-center order-2 lg:order-1"
+          >
+            <div
+              class="group relative p-8 rounded-xl border border-white/5 bg-surface-dark/30 hover:bg-surface-dark/50 hover:border-gold/40 transition-all duration-500 backdrop-blur-sm lg:translate-x-4 lg:hover:translate-x-0"
+            >
+              <h3
+                class="font-serif text-xl text-gold mb-3 flex items-center lg:justify-end gap-3"
+              >
+                Disco Solar
+                <span
+                  class="material-symbols-outlined text-teal-accent group-hover:rotate-180 transition-transform duration-700"
+                  >sunny</span
+                >
+              </h3>
+              <p
+                class="text-sm text-gray-300 font-light leading-relaxed lg:text-right"
+              >
+                Activador de información cósmica que despierta la memoria
+                celular dormida y reconecta con el origen.
+              </p>
+            </div>
+            <div
+              class="group relative p-8 rounded-xl border border-white/5 bg-surface-dark/30 hover:bg-surface-dark/50 hover:border-gold/40 transition-all duration-500 backdrop-blur-sm lg:-translate-x-4 lg:hover:translate-x-0"
+            >
+              <h3
+                class="font-serif text-xl text-gold mb-3 flex items-center lg:justify-end gap-3"
+              >
+                Abrazo Materno
+                <span
+                  class="material-symbols-outlined text-teal-accent group-hover:scale-110 transition-transform"
+                  >volunteer_activism</span
+                >
+              </h3>
+              <p
+                class="text-sm text-gray-300 font-light leading-relaxed lg:text-right"
+              >
+                Reconexión con la divina femenina para sanar la herida de
+                separación y volver al útero cósmico.
+              </p>
+            </div>
+          </div>
+          <div
+            class="relative flex justify-center py-8 lg:py-0 order-1 lg:order-2"
+          >
+            <div class="relative w-80 h-80 md:w-[450px] md:h-[450px]">
+              <div
+                class="absolute inset-0 border border-gold/20 rounded-full spin-slow"
+              ></div>
+              <div
+                class="absolute inset-4 border border-gold/10 rounded-full spin-slower-reverse"
+              ></div>
+              <div
+                class="absolute -inset-8 border border-teal-accent/5 rounded-full animate-pulse"
+              ></div>
+              <div
+                class="absolute inset-0 rounded-full overflow-hidden border-2 border-gold/30 shadow-[0_0_80px_rgba(212,175,55,0.2)] group cursor-pointer"
+              >
+                <div
+                  class="absolute inset-0 bg-gradient-to-tr from-gold/20 to-transparent mix-blend-overlay z-10 transition-opacity duration-500 group-hover:opacity-50"
+                ></div>
+                <img
+                  alt="Sacred Geometry Portal"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover transition-transform duration-[3s] group-hover:scale-110 opacity-90 hover:opacity-100"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzWY0myojjrXWPRAwjheXu0yYXGpOUQ7SsaNX3t7NPvQN8MHZ-K7R2KxWrUNrnlKe5-_F9BN8qhtYJjuCv4FwleDzDNPeAIex4zhSWBbELAnUyWFrpVeQPaPemPt1V5208G-qRzoqycEbKM4C8tPJcsLVTBgl7me0MPcBlXxfWcnkcM1Gldwwx8JYzqrxv0WkSxluFsywcEPotv66gsWhyIp8lnmoBsXctt9t5FNS8najnSYSnEEJYOeaSct7XdysHjcu0LBtk-eI"
+                />
+              </div>
+              <div
+                class="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-surface-dark border border-gold text-gold px-8 py-2 rounded-full text-xs font-serif tracking-[0.2em] uppercase shadow-2xl z-20 whitespace-nowrap"
+              >
+                Frecuencia 528Hz
+              </div>
+            </div>
+          </div>
+          <div
+            class="space-y-12 flex flex-col justify-center order-3 lg:order-3"
+          >
+            <div
+              class="group relative p-8 rounded-xl border border-white/5 bg-surface-dark/30 hover:bg-surface-dark/50 hover:border-gold/40 transition-all duration-500 backdrop-blur-sm lg:-translate-x-4 lg:hover:translate-x-0"
+            >
+              <h3
+                class="font-serif text-xl text-gold mb-3 flex items-center justify-start gap-3"
+              >
+                <span
+                  class="material-symbols-outlined text-teal-accent group-hover:animate-bounce"
+                  >landscape</span
+                >
+                Lugares Sagrados
+              </h3>
+              <p
+                class="text-sm text-gray-300 font-light leading-relaxed text-left"
+              >
+                Espacios de elevación vibracional donde el velo entre mundos es
+                más delgado.
+              </p>
+            </div>
+            <div
+              class="group relative p-8 rounded-xl border border-white/5 bg-surface-dark/30 hover:bg-surface-dark/50 hover:border-gold/40 transition-all duration-500 backdrop-blur-sm lg:translate-x-4 lg:hover:translate-x-0"
+            >
+              <h3
+                class="font-serif text-xl text-gold mb-3 flex items-center justify-start gap-3"
+              >
+                <span
+                  class="material-symbols-outlined text-teal-accent group-hover:spin-slow"
+                  >cyclone</span
+                >
+                Vórtices Energéticos
+              </h3>
+              <p
+                class="text-sm text-gray-300 font-light leading-relaxed text-left"
+              >
+                Puntos de poder donde la Tierra respira y regenera tu campo
+                vital electromagnético.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-16 text-center max-w-2xl mx-auto relative z-10">
+          <div
+            class="group relative p-8 rounded-xl border border-white/5 bg-surface-dark/40 hover:bg-surface-dark/60 hover:border-gold/50 transition-all duration-500 backdrop-blur-sm shadow-xl"
+          >
+            <h3
+              class="font-serif text-xl text-gold mb-3 flex items-center justify-center gap-3"
+            >
+              <span class="material-symbols-outlined text-teal-accent"
+                >spa</span
+              >
+              Sanación Profunda
+            </h3>
+            <p class="text-sm text-gray-300 font-light">
+              Cura y redención del alma a través de la alquimia interior en
+              comunidad.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="py-20 relative"
+      style="
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(0.5px);
+      "
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center"
+      >
+        <div class="relative rounded-xl overflow-hidden shadow-2xl">
+          <img
+            alt="Sacred Moment"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover"
+            src="public/momento.jpeg"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+          ></div>
+        </div>
+        <div>
+          <h2
+            class="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-6"
+          >
+            Cada Momento es Sagrado
+          </h2>
+          <blockquote class="italic text-gold mb-6 border-l-2 border-gold pl-4">
+            "Cada movimiento, cada contemplación en la naturaleza, cada conexión
+            con los vórtices de energía y cada canto sagrado es un puente hacia
+            tu verdad más profunda."
+          </blockquote>
+          <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+            Este espacio no es solo un evento, es un espacio cuántico donde el
+            tiempo se pliega y tu alma recuerda. Donde la naturaleza conspira
+            para devolverte a ti mismo, donde el disco solares y su información,
+            la nueva energía en nuestros cuerpo templos, iluminaran las brasas
+            dormidas de tu esencia.
+          </p>
+          <p class="text-gray-600 dark:text-gray-300 text-sm">
+            Tu luz interior espera. Es momento de reunirlas en un abrazo que
+            transformará todo lo que creías saber sobre quién eres.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section
+      id="obtener-membresia"
+      class="pt-8 pb-16 bg-gradient-to-r from-yellow-50 via-pink-50 to-red-100/40 relative scroll-mt-32"
+    >
+      <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+        <h2
+          class="text-4xl md:text-5xl font-serif font-bold text-primary mb-6 leading-tight drop-shadow"
+        >
+          Obtener Membresía
+        </h2>
+        <p
+          class="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed"
+        >
+          Da el siguiente paso para transformar tu vida. Al solicitar tu
+          membresía, agendaremos una llamada personal donde podrás conversar
+          directamente conmigo, resolver tus dudas y recibir orientación sobre
+          el proceso. Este espacio es para conocerte, entender tus necesidades y
+          asegurarnos de que la membresía sea el camino ideal para ti. ¡Tu viaje
+          comienza con una conversación auténtica y cercana!
+        </p>
+        <a
+          href="https://calendly.com/rosasalquimicas/sesion-de-diagnostico-gratuita-con-carla-calcaterra?month=2026-01"
+          target="_blank"
+          rel="noopener"
+          class="inline-block animate-glow bg-gradient-to-r from-pink-500 via-yellow-400 via-green-400 to-purple-500 text-white font-extrabold text-xl px-8 py-4 rounded-full shadow-xl hover:scale-105 hover:from-yellow-400 hover:to-pink-500 transition-all duration-300 uppercase tracking-wider border-4 border-white"
+        >
+          ¡Solicita tu llamada!
+        </a>
+      </div>
+    </section>
+    <footer
+      id="membresia-contacto"
+      class="relative text-primary pt-24 pb-12 overflow-hidden w-full"
+      style="background: none"
+    >
+      <div class="absolute inset-0 z-0 w-full h-full">
+        <img
+          alt="Fondo Membresía"
+          src="public/10.png"
+          loading="lazy"
+          decoding="async"
+          class="w-full h-full object-cover opacity-20"
+          style="min-width: 100vw; min-height: 100%"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-white/10 via-yellow-50/10 to-pink-100/10"
+        ></div>
+      </div>
+      <div
+        class="max-w-6xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16"
+      >
+        <div>
+          <h2
+            class="text-4xl font-serif font-bold mb-4 text-primary drop-shadow"
+          >
+            Contáctame para más información
+          </h2>
+          <p class="text-gray-700 mb-8 text-sm font-semibold">
+            Acompañamientos al aroma de conciencia. Experiencia Cuerpo Canal.
+            Alíñate para el despertar sagrado
+          </p>
+          <div
+            class="rounded-xl overflow-hidden shadow-2xl border-4 border-gold/10 w-full max-w-md"
+          >
+            <img
+              alt="Woman in Nature"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-64 object-cover"
+              src="public/selfie5.jpeg"
+            />
+          </div>
+          <div class="mt-8 text-sm text-primary">
+            <p class="font-bold mb-2">Reserva Tu Espacio Sagrado</p>
+            <p class="mb-2">
+              Los lugares son limitados para mantener la intimidad y profundidad
+              de la experiencia. Deja tus datos y recibirás toda la información
+              detallada sobre inversión, alojamiento, qué traer y cómo
+              prepararte para este viaje transformador.
+            </p>
+            <p class="fecha-lugar-oscuro">
+              <span class="text-gold font-bold">Lugar:</span> online
+            </p>
+          </div>
+        </div>
+        <div
+          class="bg-white/90 backdrop-blur-md p-8 rounded-xl border border-gold/20 h-fit self-end lg:self-center shadow-lg"
+        >
+          <div class="flex items-center mb-6">
+            <span class="material-symbols-outlined text-teal-accent mr-2"
+              >mail</span
+            >
+            <h3 class="text-xl font-bold text-primary">Contacto</h3>
+          </div>
+          <!--
+          <form id="form-contacto-membresia" class="space-y-6">
+            ...existing code...
+          </form>
+          -->
+          <div class="flex flex-col items-center gap-4">
+            <p class="text-primary text-lg font-medium text-center">
+              ¿Te gustaría recibir más información o tienes alguna consulta
+              sobre la membresía? Escríbeme y te responderé a la brevedad.
+            </p>
+            <a
+              href="mailto:soycarlacalcaterra@gmail.com"
+              target="_blank"
+              rel="noopener"
+              class="bg-gold hover:bg-yellow-400 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 flex items-center justify-center"
+            >
+              <span class="material-symbols-outlined mr-2">mail</span>Escribir
+              correo
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
