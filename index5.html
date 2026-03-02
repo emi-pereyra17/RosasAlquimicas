@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="public/1.png" as="image" />
+    <link rel="icon" type="image/png" href="public/icon1.png" />
+    <title>El viaje de una Guardiana | Libros y Canalizaciones | Rosas Alquímicas</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Quicksand:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8B5CF6",
+              secondary: "#6D28D9",
+              accent: "#C4B5FD",
+              "background-light": "#F9FAFB",
+              "background-dark": "#0B0915",
+              "mystic-purple": "#2E1065",
+              "deep-violet": "#1e0b36",
+              "soft-lilac": "#E9D5FF",
+            },
+            fontFamily: {
+              display: ["Playfair Display", "serif"],
+              sans: ["Montserrat", "sans-serif"],
+              title: ["Quicksand", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .hero-bg {
+        background-image: url("public/1.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+      }
+      @media (max-width: 768px) {
+        .hero-bg {
+          background-attachment: scroll;
+        }
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .phrase-box {
+        border-left: 3px solid #8B5CF6;
+        padding-left: 1rem;
+        margin: 1rem 0;
+        font-style: italic;
+        color: #4c1d95;
+      }
+      .book-quote {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        color: #5b21b6;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-sans text-gray-800 dark:text-gray-100 antialiased selection:bg-primary selection:text-white"
+  >
+    <!-- Botón volver a menú principal -->
+    <div class="fixed top-4 left-4 z-50">
+      <a
+        href="index.html"
+        class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/90 dark:bg-mystic-purple/90 text-primary font-semibold shadow-lg border border-primary/30 text-sm hover:bg-primary hover:text-white transition-all duration-300 backdrop-blur-sm"
+      >
+        <span class="material-icons text-lg">arrow_back</span>
+        Volver a menú principal
+      </a>
+    </div>
+
+    <!-- Header con mismo fondo que la web -->
+    <header
+      class="hero-bg min-h-[420px] flex items-center justify-center relative overflow-hidden"
+    >
+      <div class="container mx-auto px-6 py-20 text-center relative z-10 pt-24">
+        <span
+          class="block font-display text-xl md:text-2xl italic mb-4 text-pink-700 tracking-wider drop-shadow-[0_2px_2px_rgba(255,255,255,0.7)]"
+          >Libros y Canalizaciones</span
+        >
+        <h1
+          class="font-title text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-fuchsia-700 drop-shadow-xl leading-tight"
+        >
+          El viaje de una Guardiana
+        </h1>
+        <p class="text-lg md:text-xl text-fuchsia-800/95 font-light max-w-2xl mx-auto drop-shadow-md">
+          El Retorno al Poder del Amor y la Frecuencia Crística
+        </p>
+        <a
+          href="#contacto-libro"
+          class="inline-flex items-center gap-2 mt-8 px-8 py-3.5 rounded-full bg-primary hover:bg-secondary text-white font-semibold shadow-xl border-2 border-white/40 hover:scale-105 transition-all duration-300"
+        >
+          <span class="material-icons">menu_book</span>
+          Adquirir el libro
+        </a>
+    </header>
+
+    <!-- Contenido del libro: mismo fondo y overlay -->
+    <section class="hero-bg relative py-16 md:py-24 px-6">
+      <div
+        class="absolute inset-0 w-full h-full z-0"
+        style="
+          background: rgba(255, 255, 255, 0.35);
+          backdrop-filter: blur(2px);
+        "
+        aria-hidden="true"
+      ></div>
+
+      <div class="container mx-auto max-w-4xl relative z-10">
+        <!-- Portada del libro -->
+        <div class="flex justify-center mb-12">
+          <img
+            src="public/portada.jpg"
+            alt="Portada: El viaje de una Guardiana"
+            class="rounded-2xl shadow-2xl border-4 border-white/80 max-w-xl md:max-w-2xl w-full object-cover"
+            loading="eager"
+          />
+        </div>
+
+        <!-- Audio: fragmento del libro -->
+        <div class="mb-14 flex flex-col items-center">
+          <p class="text-mystic-purple font-semibold mb-3 text-center">
+            Escucha un fragmento del libro
+          </p>
+          <div class="w-full max-w-md bg-white/90 dark:bg-mystic-purple/40 rounded-2xl shadow-xl p-6 border border-primary/20 backdrop-blur-sm">
+            <audio
+              controls
+              class="w-full h-12 accent-primary"
+              preload="metadata"
+            >
+              <source src="public/parte.m4a" type="audio/mp4" />
+              <source src="public/parte.m4a" type="audio/m4a" />
+              Tu navegador no soporta la reproducción de audio.
+            </audio>
+          </div>
+        </div>
+
+        <!-- Texto del libro -->
+        <div
+          class="prose prose-lg max-w-none font-sans text-gray-800 dark:text-gray-200 space-y-6"
+          style="color: #1e0b36"
+        >
+          <p class="text-xl md:text-2xl font-display font-semibold text-center text-fuchsia-800 leading-relaxed">
+            Este no es solo un libro.<br />
+            Es un portal.
+          </p>
+
+          <p class="text-lg leading-relaxed font-medium">
+            Una obra de fantasía nacida del propio camino de Carla Ion As, donde la energía guía cada paso y la naturaleza vuelve a susurrarnos sus secretos olvidados. En el camino del año pasado, el noveno año peregrinando en retiros por las tierras del sur de Francia y Avalon, llegó la inspiración de compartir este escrito para acompañar a almas que se sumaron a este retiro online —¡y eso me movió a escribir!
+          </p>
+
+          <p class="text-lg leading-relaxed font-medium">
+            Entre mundos sutiles y realidades invisibles, el lector se convierte en viajero. Cada página es un espejo, cada palabra una llave, cada capítulo un activador.
+          </p>
+
+          <p class="text-lg leading-relaxed font-medium space-y-2">
+            Aquí regresamos a la magia.<br />
+            Aquí recordamos que somos parte de esta Tierra bendita.<br />
+            Aquí despiertan los Guardianes Sensibles.
+          </p>
+
+          <p class="text-lg leading-relaxed font-medium">
+            El color de la escritura ha traído momentos profundamente hermosos, y esa vibración vive en cada línea. Al escribir, se siente la música de las esferas; algo superior acompaña el trazo, algo más grande que la mente.
+          </p>
+
+          <p class="text-lg leading-relaxed font-medium">
+            Este libro está siendo canalizado en el propio camino de Carla Ion As. Y ahora, ha llegado el momento de compartirlo contigo.
+          </p>
+
+          <p class="text-lg leading-relaxed font-medium">
+            Te invitamos a colaborar para que esta obra vea la luz en formato físico y digital, y pueda llegar a todas las almas que la estén esperando.
+          </p>
+
+          <p class="text-lg leading-relaxed font-medium space-y-1">
+            Tu aporte es expansión.<br />
+            Tu lectura es activación.<br />
+            Tu presencia es parte del propósito.
+          </p>
+
+          <!-- Frases del libro -->
+          <div class="mt-14 space-y-6">
+            <p class="text-mystic-purple font-semibold text-center">
+              Algunas frases del libro
+            </p>
+            <blockquote class="phrase-box book-quote text-lg leading-relaxed bg-white/60 dark:bg-mystic-purple/20 rounded-xl p-6 border border-primary/20">
+              «Ámbar llevó sus manos al vientre. Allí, en la oscuridad de su cuenco pélvico, el agua de su vida susurraba.»
+            </blockquote>
+            <blockquote class="phrase-box book-quote text-lg leading-relaxed bg-white/60 dark:bg-mystic-purple/20 rounded-xl p-6 border border-primary/20">
+              «Entendió que, antes de recibir la Llave del Corazón, debía honrar su base, su sustento: sus pies, los pilares de su templo.»
+            </blockquote>
+          </div>
+
+          <!-- Nota de preparación -->
+          <div id="contacto-libro" class="mt-14 text-center scroll-mt-24">
+            <p class="text-base text-fuchsia-800/90 font-medium italic max-w-2xl mx-auto">
+              Esta obra se está preparando con amor. Es una decisión sutil y nueva, hecha por amor a este camino. Mostramos la energía que la habita para que quien la esté esperando pueda sentirla y sumarse cuando llegue el momento.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pie con enlace a inicio -->
+    <footer class="hero-bg relative py-12 border-t border-white/20">
+      <div
+        class="absolute inset-0 z-0"
+        style="background: rgba(255,255,255,0.2);"
+      ></div>
+      <div class="container mx-auto px-6 text-center relative z-10">
+        <a
+          href="index.html"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/90 hover:bg-secondary text-white font-semibold shadow-lg transition-colors duration-300"
+        >
+          <span class="material-icons">home</span>
+          Volver al inicio
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>
