@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" href="public/1.png" as="image" />
     <link rel="icon" type="image/png" href="public/icon1.png" />
-    <title>El viaje de una Guardiana | Libros y Canalizaciones | Rosas Alquímicas</title>
+    <title>El viaje de una Guardiana | Libro | Rosas Alquímicas</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Quicksand:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
@@ -55,6 +55,16 @@
           background-attachment: scroll;
         }
       }
+      .libro-banner-bg {
+        background-position: center bottom;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      @media (min-width: 768px) {
+        .libro-banner-bg {
+          background-position: center;
+        }
+      }
       html {
         scroll-behavior: smooth;
       }
@@ -69,6 +79,53 @@
         font-family: "Playfair Display", serif;
         font-style: italic;
         color: #5b21b6;
+      }
+      /* Reproductor de audio personalizado */
+      .audio-player-card {
+        background: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.98) 100%);
+        border: 1px solid rgba(139, 92, 246, 0.25);
+        box-shadow: 0 4px 24px rgba(139, 92, 246, 0.12), 0 2px 8px rgba(0,0,0,0.06);
+      }
+      .audio-player-card audio {
+        width: 100%;
+        height: 36px;
+      }
+      .audio-player-card audio::-webkit-media-controls-panel {
+        background: transparent;
+      }
+      .audio-player-card audio::-webkit-media-controls-current-time-display,
+      .audio-player-card audio::-webkit-media-controls-time-remaining-display {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.8rem;
+        color: #5b21b6;
+      }
+      .audio-player-card audio::-webkit-media-controls-play-button {
+        filter: none;
+      }
+      .progress-audio {
+        -webkit-appearance: none;
+        appearance: none;
+        height: 6px;
+        border-radius: 3px;
+        background: rgba(139, 92, 246, 0.2);
+      }
+      .progress-audio::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+      }
+      .progress-audio::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
+        cursor: pointer;
+        border: none;
+        box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
       }
     </style>
   </head>
@@ -86,30 +143,44 @@
       </a>
     </div>
 
-    <!-- Header con mismo fondo que la web -->
+    <!-- Header: hero-bg de base + bloque con banner4 y difuminado (como index.html) -->
     <header
       class="hero-bg min-h-[420px] flex items-center justify-center relative overflow-hidden"
     >
       <div class="container mx-auto px-6 py-20 text-center relative z-10 pt-24">
-        <span
-          class="block font-display text-xl md:text-2xl italic mb-4 text-pink-700 tracking-wider drop-shadow-[0_2px_2px_rgba(255,255,255,0.7)]"
-          >Libros y Canalizaciones</span
+        <!-- Bloque banner: ancho completo, difuminado en bordes, título encima -->
+        <div
+          class="w-screen relative left-1/2 -translate-x-1/2 rounded-none pt-12 pb-10 px-6 md:pt-14 md:pb-12 md:px-10 min-h-[420px] md:min-h-[500px] overflow-hidden flex flex-col justify-center items-center"
         >
-        <h1
-          class="font-title text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-fuchsia-700 drop-shadow-xl leading-tight"
-        >
-          El viaje de una Guardiana
-        </h1>
-        <p class="text-lg md:text-xl text-fuchsia-800/95 font-light max-w-2xl mx-auto drop-shadow-md">
-          El Retorno al Poder del Amor y la Frecuencia Crística
-        </p>
-        <a
-          href="#contacto-libro"
-          class="inline-flex items-center gap-2 mt-8 px-8 py-3.5 rounded-full bg-primary hover:bg-secondary text-white font-semibold shadow-xl border-2 border-white/40 hover:scale-105 transition-all duration-300"
-        >
-          <span class="material-icons">menu_book</span>
-          Adquirir el libro
-        </a>
+          <div
+            class="absolute inset-0 z-0 libro-banner-bg"
+            style="background-image: url('public/banners/banner6.jpg'); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%); -webkit-mask-size: 100% 100%; mask-size: 100% 100%;"
+            aria-hidden="true"
+          ></div>
+          <span
+            class="relative z-10 block font-display text-xl md:text-2xl italic mb-4 tracking-wider"
+            style="color: #ffffff; text-shadow: 0 2px 8px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.8);"
+            >Libro</span
+          >
+          <h1
+            class="relative z-10 font-title text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight"
+            style="color: #ffffff; text-shadow: 0 2px 8px rgba(0,0,0,0.5), 0 0 24px rgba(255,255,255,0.8);"
+          >
+            El viaje de una Guardiana
+          </h1>
+          <p class="relative z-10 text-lg md:text-xl font-light max-w-2xl mx-auto" style="color: #ffffff; text-shadow: 0 2px 8px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.8);">
+            El Retorno al Poder del Amor y la Frecuencia Crística
+          </p>
+          <a
+            href="#contacto-libro"
+            class="relative z-10 inline-flex items-center gap-2 mt-6 px-8 py-3.5 rounded-full font-semibold shadow-xl border-2 border-pink-200 hover:scale-105 transition-all duration-300"
+            style="color: #1e0b36; background: #ffffff; box-shadow: 0 4px 24px rgba(255,255,255,0.8), 0 2px 12px rgba(0,0,0,0.25);"
+          >
+            <span class="material-icons">menu_book</span>
+            Adquirir el libro
+          </a>
+        </div>
+      </div>
     </header>
 
     <!-- Contenido del libro: mismo fondo y overlay -->
@@ -134,21 +205,81 @@
           />
         </div>
 
-        <!-- Audio: fragmento del libro -->
+        <!-- Explicación / introducción del libro -->
+        <div class="max-w-3xl mx-auto mb-14 px-4">
+          <div class="prose prose-lg max-w-none text-center space-y-6" style="color: #1e0b36">
+            <p class="text-base md:text-lg leading-relaxed font-medium">
+              Me gustaría compartirte que este es mi primer libro. Amo el arte; más escribir era un sueño que no sabía hasta que comenzó la magia… y sigo jugando con total conciencia de que estaré inspirando a muchos seres para que puedan recibir esta frecuencia hermosa que todos estamos recibiendo en estos tiempos.
+            </p>
+            <p class="text-base md:text-lg leading-relaxed font-medium font-display italic" style="color: #4c1d95">
+              Este no es un libro, es una aventura vivida y compartida que pulsamos transmitirte para que puedas también recibirla y crear tu propia aventura.
+            </p>
+            <p class="text-base md:text-lg leading-relaxed font-medium">
+              Te invitamos a… respirar y abrir un pequeño recorrido por el interior de esta obra, un puente y una historia. <strong>El viaje de una Guardiana</strong> es un llamado, es una invitación a sentir tus propias memorias en ti.
+            </p>
+            <p class="text-base md:text-lg leading-relaxed font-medium">
+              Ámbar es la protagonista y siente que algo la llama: un sueño, una señal en la naturaleza, un recuerdo que despierta. Se siembra la semilla del viaje.
+            </p>
+          </div>
+
+          <!-- Índice de capítulos -->
+          <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="rounded-xl bg-white/60 backdrop-blur-sm p-6 border border-primary/20" style="color: #1e0b36">
+              <p class="font-display font-semibold text-lg mb-4 text-primary" style="color: #6D28D9">Primera parte: El despertar</p>
+              <ul class="space-y-2 text-sm md:text-base font-medium leading-relaxed">
+                <li>🔹 Capítulo 1: Las Sombras del Olvido</li>
+                <li>Capítulo 2: El Camino Comienza</li>
+                <li>🔹 Capítulo 3: Susurros de la Tierra Antigua</li>
+                <li>🔹 Capítulo 4: Agua, Memoria y Pureza</li>
+              </ul>
+            </div>
+            <div class="rounded-xl bg-white/60 backdrop-blur-sm p-6 border border-primary/20" style="color: #1e0b36">
+              <p class="font-display font-semibold text-lg mb-4 text-primary" style="color: #6D28D9">Parte 2: La Iniciación</p>
+              <ul class="space-y-2 text-sm md:text-base font-medium leading-relaxed">
+                <li>🔹 Capítulo 5: El Encuentro con la Presencia Viva</li>
+                <li>🔹 Capítulo 6: La Prueba del Corazón</li>
+                <li>🔹 Capítulo 7: La Voz que Danza el Alma</li>
+                <li>🔹 Capítulo 9: La Última Prueba</li>
+                <li>🔹 Capítulo 10: El Regreso como Guardiana</li>
+                <li>✨ Epílogo: Parte final, La Tierra Habla a Través de Ti</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- PERLAS: título y fragmentos del libro -->
         <div class="mb-14 flex flex-col items-center">
-          <p class="text-mystic-purple font-semibold mb-3 text-center">
-            Escucha un fragmento del libro
-          </p>
-          <div class="w-full max-w-md bg-white/90 dark:bg-mystic-purple/40 rounded-2xl shadow-xl p-6 border border-primary/20 backdrop-blur-sm">
-            <audio
-              controls
-              class="w-full h-12 accent-primary"
-              preload="metadata"
-            >
-              <source src="public/parte.m4a" type="audio/mp4" />
-              <source src="public/parte.m4a" type="audio/m4a" />
-              Tu navegador no soporta la reproducción de audio.
-            </audio>
+          <!-- Título de la sección -->
+          <h2 class="text-xl md:text-2xl font-display font-semibold text-center mb-10 max-w-2xl leading-relaxed" style="color: #1e0b36">
+            Para que puedas sentir esta historia te dejo estas <span class="italic text-primary" style="color: #6D28D9;">PERLAS</span> que son pequeños fragmentos de este libro
+          </h2>
+
+          <!-- Perlas (fragmentos): audios del cap. 4 -->
+          <div class="w-full max-w-2xl space-y-6">
+            <div class="audio-player-card rounded-2xl px-4 py-3 border border-primary/20 backdrop-blur-sm">
+              <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-2 text-center" style="color: #6D28D9">Perla · Capítulo 4</p>
+              <div class="space-y-1 flex flex-col">
+                <audio src="public/perla1.mp4" controls class="w-full block" preload="metadata">
+                  <source src="public/perla1.mp4" type="audio/mp4" />
+                  Tu navegador no soporta la reproducción de audio.
+                </audio>
+                <audio src="public/perla2.mp4" controls class="w-full block" preload="metadata">
+                  <source src="public/perla2.mp4" type="audio/mp4" />
+                  Tu navegador no soporta la reproducción de audio.
+                </audio>
+              </div>
+            </div>
+
+            <!-- Perla: texto del cap. 5 -->
+            <div class="rounded-2xl px-5 py-4 bg-white/50 backdrop-blur-sm border border-primary/20" style="color: #1e0b36">
+              <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-3 text-center" style="color: #6D28D9">Perla · Capítulo 5</p>
+              <p class="text-base md:text-lg leading-relaxed font-medium mb-4">
+                ¿Sabías que cada paso al escribir un libro te vas dejando llevar por la inspiración o lo que vives en cada momento? Aquí te dejo una perla del capítulo 5...
+              </p>
+              <p class="text-base md:text-lg leading-relaxed font-medium italic border-l-2 pl-4" style="border-color: #8B5CF6;">
+                Ella pudo sentir y comprender que los niños que estaban naciendo—esos pequeños seres de ojos cristalinos y sistemas nerviosos eléctricos—traían una frecuencia que la Tierra no había conocido antes. Una frecuencia de unidad que no entiende de separación, y que solo disfruta de vivir.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -212,6 +343,19 @@
             <p class="text-base text-fuchsia-800/90 font-medium italic max-w-2xl mx-auto">
               Esta obra se está preparando con amor. Es una decisión sutil y nueva, hecha por amor a este camino. Mostramos la energía que la habita para que quien la esté esperando pueda sentirla y sumarse cuando llegue el momento.
             </p>
+          </div>
+        </div>
+
+        <!-- Canción del libro: al final de la sección -->
+        <div class="flex justify-center mt-14 mb-8">
+          <div class="audio-player-card w-full max-w-lg rounded-2xl p-3 md:p-4">
+            <p class="font-display text-lg md:text-xl text-center font-medium leading-relaxed mb-3" style="color: #1e0b36">
+              Y de repente, sin pedirlo, nos regala esta canción del libro.<br />
+              <span class="italic text-primary" style="color: #6D28D9;">¿Quieres escucharla?</span>
+            </p>
+            <video id="video-music" src="public/videomusic.mp4" autoplay loop playsinline controls class="w-full rounded-lg">
+              Tu navegador no soporta la reproducción de video.
+            </video>
           </div>
         </div>
       </div>

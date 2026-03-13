@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="public/1.png" as="image" />
+    <link rel="icon" type="image/png" href="public/icon1.png" />
+    <title>Canalizaciones | Rosas Alquímicas</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Quicksand:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8B5CF6",
+              secondary: "#6D28D9",
+              accent: "#C4B5FD",
+              "background-light": "#F9FAFB",
+              "background-dark": "#0B0915",
+              "mystic-purple": "#2E1065",
+              "deep-violet": "#1e0b36",
+              "soft-lilac": "#E9D5FF",
+            },
+            fontFamily: {
+              display: ["Playfair Display", "serif"],
+              sans: ["Montserrat", "sans-serif"],
+              title: ["Quicksand", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .hero-bg {
+        background-image: url("public/1.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+      }
+      @media (max-width: 768px) {
+        .hero-bg {
+          background-attachment: scroll;
+        }
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .canalizaciones-text {
+        font-size: 1.0625rem;
+        line-height: 1.85;
+        letter-spacing: 0.01em;
+      }
+      @media (min-width: 768px) {
+        .canalizaciones-text {
+          font-size: 1.125rem;
+          line-height: 1.9;
+        }
+      }
+      .canalizaciones-text p + p {
+        margin-top: 1.5rem;
+      }
+      .phrase-box {
+        border-left: 4px solid #8b5cf6;
+        padding: 1.25rem 1.5rem;
+        margin: 2rem 0;
+        font-style: italic;
+        color: #4c1d95;
+        background: linear-gradient(
+          90deg,
+          rgba(139, 92, 246, 0.06) 0%,
+          transparent 100%
+        );
+        border-radius: 0 0.5rem 0.5rem 0;
+        line-height: 1.85;
+      }
+      .card-canalizaciones {
+        background: linear-gradient(
+          160deg,
+          rgba(255, 255, 255, 0.97) 0%,
+          rgba(253, 250, 255, 0.95) 50%,
+          rgba(250, 245, 255, 0.97) 100%
+        );
+        border: 1px solid rgba(139, 92, 246, 0.2);
+        box-shadow:
+          0 8px 32px rgba(139, 92, 246, 0.08),
+          0 4px 16px rgba(0, 0, 0, 0.04),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        border-radius: 1.5rem;
+      }
+      .welcome-femenino {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        line-height: 1.7;
+        max-width: 44rem;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 1.25rem 2rem;
+        background: linear-gradient(
+          135deg,
+          rgba(253, 242, 248, 0.85) 0%,
+          rgba(250, 240, 252, 0.75) 100%
+        );
+        border: 1px solid rgba(219, 39, 119, 0.2);
+        border-radius: 2rem;
+        box-shadow:
+          0 4px 20px rgba(219, 39, 119, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      }
+      .welcome-femenino::before {
+        content: "✦";
+        display: block;
+        font-size: 1.5rem;
+        letter-spacing: 0.5em;
+        color: rgba(219, 39, 119, 0.6);
+        margin-bottom: 0.75rem;
+      }
+      .seccion-canalizacion h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.875rem;
+        font-weight: 600;
+        color: #831843;
+        letter-spacing: 0.02em;
+      }
+      .cta-cursos {
+        font-family: "Playfair Display", serif;
+        background: linear-gradient(
+          135deg,
+          rgba(253, 242, 248, 0.9) 0%,
+          rgba(250, 240, 252, 0.85) 100%
+        );
+        border: 1px solid rgba(219, 39, 119, 0.25);
+        border-radius: 1.25rem;
+      }
+      .btn-cursos {
+        background: linear-gradient(135deg, #db2777 0%, #be185d 100%);
+        color: white;
+        box-shadow: 0 4px 16px rgba(219, 39, 119, 0.35);
+      }
+      .card-cantos {
+        background: linear-gradient(
+          160deg,
+          rgba(253, 242, 248, 0.95) 0%,
+          rgba(252, 231, 243, 0.9) 50%,
+          rgba(250, 240, 252, 0.95) 100%
+        );
+        border: 1px solid rgba(219, 39, 119, 0.2);
+        box-shadow:
+          0 8px 32px rgba(219, 39, 119, 0.1),
+          0 4px 16px rgba(0, 0, 0, 0.03),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        border-radius: 1.5rem;
+      }
+      .card-cantos h2::before {
+        content: "♫";
+        display: inline-block;
+        margin-right: 0.5rem;
+        font-size: 1.5rem;
+        opacity: 0.8;
+      }
+      .card-danzas {
+        background: linear-gradient(160deg, rgba(253, 242, 248, 0.95) 0%, rgba(252, 231, 243, 0.9) 50%, rgba(250, 240, 252, 0.95) 100%);
+        border: 1px solid rgba(219, 39, 119, 0.2);
+        box-shadow: 0 8px 32px rgba(219, 39, 119, 0.1), 0 4px 16px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255,255,255,0.9);
+        border-radius: 1.5rem;
+      }
+      .card-danzas h2::before {
+        content: "✿";
+        display: inline-block;
+        margin-right: 0.5rem;
+        font-size: 1.5rem;
+        opacity: 0.8;
+      }
+      .cierre-femenino {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        background: linear-gradient(160deg, rgba(253, 242, 248, 0.95) 0%, rgba(252, 231, 243, 0.9) 50%, rgba(250, 240, 252, 0.95) 100%);
+        border: 1px solid rgba(219, 39, 119, 0.2);
+        border-radius: 1.5rem;
+        box-shadow: 0 8px 32px rgba(219, 39, 119, 0.08), inset 0 1px 0 rgba(255,255,255,0.9);
+      }
+      .cierre-femenino::before {
+        content: "❀";
+        display: block;
+        font-size: 1.25rem;
+        text-align: center;
+        color: rgba(219, 39, 119, 0.6);
+        margin-bottom: 0.75rem;
+      }
+      .video-player-card {
+        background: linear-gradient(160deg, rgba(255,255,255,0.98) 0%, rgba(253, 250, 255, 0.98) 100%);
+        border: 1px solid rgba(219, 39, 119, 0.15);
+        border-radius: 1rem;
+        box-shadow: 0 4px 24px rgba(219, 39, 119, 0.08), 0 2px 12px rgba(0,0,0,0.04);
+        overflow: hidden;
+      }
+      .video-player-card video {
+        width: 100%;
+        display: block;
+        background: #0f0f0f;
+      }
+      .video-player-card video::-webkit-media-controls-panel {
+        background: linear-gradient(90deg, transparent, rgba(219, 39, 119, 0.15));
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-sans text-gray-800 dark:text-gray-100 antialiased selection:bg-primary selection:text-white"
+  >
+    <!-- Botón volver a menú principal -->
+    <div class="fixed top-4 left-4 z-50">
+      <a
+        href="index.html"
+        class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/90 dark:bg-mystic-purple/90 text-primary font-semibold shadow-lg border border-primary/30 text-sm hover:bg-primary hover:text-white transition-all duration-300 backdrop-blur-sm hover:scale-105"
+      >
+        <span class="material-icons text-lg">arrow_back</span>
+        Volver a menú principal
+      </a>
+    </div>
+
+    <!-- Header: hero-bg sin banner -->
+    <header
+      class="hero-bg min-h-[550px] md:min-h-[650px] flex items-center justify-center relative overflow-hidden"
+    >
+      <div class="container mx-auto px-6 py-20 md:py-28 text-center relative z-10 pt-24 md:pt-32">
+        <span
+          class="inline-block text-sm uppercase tracking-[0.3em] text-primary/90 font-medium mb-4"
+          >Espacio de Canalización</span
+        >
+        <h1
+          class="font-title text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+          style="
+            color: #831843;
+            text-shadow:
+              0 2px 20px rgba(255, 255, 255, 0.9),
+              0 0 40px rgba(219, 39, 119, 0.15),
+              0 1px 4px rgba(0, 0, 0, 0.1);
+          "
+        >
+          Canalizaciones
+        </h1>
+        <p
+          class="welcome-femenino text-base md:text-lg"
+          style="
+            color: #831843;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+          "
+        >
+          Bienvenidos a este espacio. Aquí encontrarás algo de mis
+          canalizaciones disponibles para que puedas recibir tú también los
+          mensajes que se transmiten.
+        </p>
+      </div>
+    </header>
+
+    <!-- Contenido -->
+    <section class="hero-bg relative py-16 md:py-24 px-6">
+      <div
+        class="absolute inset-0 w-full h-full z-0"
+        style="
+          background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.4) 0%,
+            rgba(248, 250, 252, 0.6) 50%,
+            rgba(255, 255, 255, 0.4) 100%
+          );
+          backdrop-filter: blur(3px);
+        "
+        aria-hidden="true"
+      ></div>
+
+      <div class="container mx-auto max-w-5xl px-4 sm:px-6 relative z-10">
+        <div class="card-canalizaciones p-8 md:p-14 rounded-2xl">
+          <div class="canalizaciones-text text-left" style="color: #1e0b36">
+            <p>
+              Como verás aquí abrimos al mundo de la canalización que
+              <strong class="text-primary">TODOS</strong> los seres que decidan
+              abrir el camino de la Conciencia pueden hacerlo. Solo requiere
+              decisión y disfrutar del Arte, para dejar que sus seres y guías
+              espirituales se expresen y puedas comenzar a vivir un camino
+              nuevo.
+            </p>
+            <p>
+              Te invito a que puedas recibir algo de mis canalizaciones a lo
+              largo de estos años. Te contaré cómo lo hice y cómo sigo
+              descubriendo.
+            </p>
+            <blockquote class="phrase-box font-display text-base md:text-lg">
+              Estoy aquí para compartir la Sabiduría de mi alma. Te acompaño a
+              que puedas ver aquello que no ves de ti mismo, y dar paso a tu
+              Verdad. Estoy en este momento planetario guiando a quienes deciden
+              ser guiados para recordarse y poder disfrutar del arte, la
+              naturaleza y las estrellas como conectores de la nueva conciencia.
+            </blockquote>
+            <p>
+              La comunicación de los seres estelares e intraterrenos se une a
+              través de un cuerpo que se convierte en árbol para conectar con un
+              nuevo tiempo.
+            </p>
+            <div class="cta-cursos mt-12 pt-10 pb-10 px-6 md:px-10 text-center">
+              <p
+                class="font-display italic text-lg md:text-xl mb-6"
+                style="color: #831843"
+              >
+                Si quieres aprender a canalizar y descubrir cómo el arte te
+                ayuda, te invito a profundizar aquí
+              </p>
+              <a
+                href="#"
+                class="btn-cursos inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base"
+              >
+                <span class="material-icons">school</span>
+                Cursos
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección: Cantos Sagrados -->
+        <section
+          id="cantos-sagrados"
+          class="seccion-canalizacion mt-16 md:mt-24"
+        >
+          <div class="card-cantos p-8 md:p-14 rounded-2xl">
+            <h2
+              class="text-center mb-4 pb-5 border-b-2 font-display italic"
+              style="border-color: rgba(219, 39, 119, 0.3); color: #831843"
+            >
+              Cantos Sagrados
+            </h2>
+            <p class="text-center text-sm md:text-base mb-8 max-w-2xl mx-auto font-display italic" style="color: #9d174d; line-height: 1.7;">
+              Los cantos sagrados pueden ser sabiduría ancestral o sabiduría de los nodos y la tierra; todo se emite en códigos de luz que permiten conectar con los armónicos estelares.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+              <div class="video-player-card">
+                <video src="public/cantos%20sagrados/danza1.mp4" controls playsinline preload="metadata" class="rounded-t-xl">
+                  Tu navegador no soporta la reproducción de video.
+                </video>
+                <div class="px-4 py-3">
+                  <p class="text-center text-sm font-semibold mb-1" style="color: #831843;">Canto 1</p>
+                  <p class="text-center text-sm font-display italic" style="color: #9d174d; line-height: 1.5;">Cantos sagrados de apertura a la cueva de Neptuno, Ave María en arameo</p>
+                </div>
+              </div>
+              <div class="video-player-card">
+                <video src="public/cantos%20sagrados/danza2.mp4" controls playsinline preload="metadata" class="rounded-t-xl">
+                  Tu navegador no soporta la reproducción de video.
+                </video>
+                <div class="px-4 py-3">
+                  <p class="text-center text-sm font-semibold mb-1" style="color: #831843;">Canto 2</p>
+                  <p class="text-center text-sm font-display italic" style="color: #9d174d; line-height: 1.5;">Cantos sagrados de apertura a la cueva de Neptuno, Ave María en arameo</p>
+                </div>
+              </div>
+              <div class="video-player-card">
+                <video src="public/cantos%20sagrados/danza3.mp4" controls playsinline preload="metadata" class="rounded-t-xl">
+                  Tu navegador no soporta la reproducción de video.
+                </video>
+                <div class="px-4 py-3">
+                  <p class="text-center text-sm font-semibold mb-1" style="color: #831843;">Canto 3</p>
+                  <p class="text-center text-sm font-display italic" style="color: #9d174d; line-height: 1.5;">Canto sagrado para aperturar el canal con el portal a la llegada de las nuevas almas</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sección: Danzas Sagradas -->
+        <section id="danzas-sagradas" class="seccion-canalizacion mt-16 md:mt-24">
+          <div class="card-danzas p-8 md:p-14 rounded-2xl">
+            <h2 class="text-center mb-4 pb-5 border-b-2 font-display italic" style="border-color: rgba(219, 39, 119, 0.3); color: #831843">
+              Danzas Sagradas
+            </h2>
+            <div class="space-y-8 mt-8">
+              <div>
+                <p class="text-center text-sm md:text-base mb-6 max-w-2xl mx-auto font-display italic" style="color: #9d174d; line-height: 1.7;">
+                  Esta danza fue canalizada con los seres del mar, cerrando la salida de la cueva de Neptuno conjuntamente con el coro de las participantes del retiro. Un canto sagrado y una danza sellaron el portal al retirarnos de la cueva.
+                </p>
+                <div class="video-player-card max-w-2xl mx-auto">
+                  <video src="public/danzas%20sagradas/canto1.mp4" controls playsinline preload="metadata" class="rounded-t-xl">
+                    Tu navegador no soporta la reproducción de video.
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Cierre / Reflexión final -->
+        <div class="cierre-femenino p-8 md:p-12 rounded-2xl mt-16 md:mt-24">
+          <p class="text-center text-base md:text-lg leading-relaxed" style="color: #831843; line-height: 1.9;">
+            Cada Canto sagrado nace del sentir a la naturaleza susurrarlo, cada palabra de mi voz sale cuando los guías hablan y se comunican. Cada portal de códigos de luz se presenta en mi propia alquimia y luego se comparte. Todo aquí tiene un sentido guiado y responde al plan mayor; por eso aquí los Retiros son realizados a lugares a los que somos llamados. Todo es un canal que nos permite volver a la esencia y dejar ese amor en la tierra.
+          </p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
