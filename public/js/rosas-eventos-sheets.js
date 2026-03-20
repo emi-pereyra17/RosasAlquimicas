@@ -203,7 +203,7 @@
         const imagenSrc = safeHttpUrl(ev.imagen);
 
         const imagenHtml = imagenSrc
-          ? '<div class="-mx-2 md:-mx-2 mb-4 rounded-xl overflow-hidden border-2 border-fuchsia-200/60 shadow-md bg-violet-100/80 aspect-[16/10] max-h-64">' +
+          ? '<div class="w-full overflow-hidden bg-gradient-to-br from-violet-100 to-fuchsia-100 aspect-[16/9] max-h-72 border-b border-fuchsia-200/50">' +
             '<img src="' +
             escapeHtml(imagenSrc) +
             '" alt="' +
@@ -213,28 +213,28 @@
           : "";
 
         const horaHtml = hora
-          ? '<p class="text-sm font-semibold text-violet-700 mt-0.5 flex items-center gap-1 justify-start flex-wrap">' +
+          ? '<p class="text-sm font-semibold text-violet-700 flex items-center justify-center gap-1.5 flex-wrap">' +
             '<span class="material-icons text-base text-fuchsia-600">schedule</span><span>' +
             hora +
             "</span></p>"
           : "";
 
         const categoriaHtml = categoria
-          ? '<span class="inline-block mt-2 px-3 py-0.5 rounded-full text-xs font-bold uppercase tracking-wide bg-violet-200/80 text-violet-900 border border-violet-300/60">' +
+          ? '<span class="inline-block px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-violet-100 to-fuchsia-100 text-violet-900 border border-violet-200/70 shadow-sm">' +
             categoria +
             "</span>"
           : "";
 
         const metaHtml =
           modalidad || precio
-            ? '<div class="flex flex-wrap gap-2 mt-2 text-xs md:text-sm">' +
+            ? '<div class="flex flex-wrap gap-2 justify-center items-center text-xs md:text-sm w-full">' +
               (modalidad
-                ? '<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-fuchsia-100 text-fuchsia-900 border border-fuchsia-200/80 font-medium"><span class="material-icons text-sm">podcasts</span>' +
+                ? '<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-fuchsia-50 text-fuchsia-900 border border-fuchsia-200/90 font-semibold shadow-sm"><span class="material-icons text-base text-fuchsia-600">podcasts</span>' +
                   modalidad +
                   "</span>"
                 : "") +
               (precio
-                ? '<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-100 text-amber-950 border border-amber-200/80 font-semibold"><span class="material-icons text-sm">payments</span>' +
+                ? '<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 text-amber-950 border border-amber-200/90 font-bold shadow-sm"><span class="material-icons text-base text-amber-600">payments</span>' +
                   precio +
                   "</span>"
                 : "") +
@@ -242,44 +242,48 @@
             : "";
 
         const descHtml = desc
-          ? '<p class="text-violet-950/90 text-sm md:text-base leading-relaxed mt-3 whitespace-pre-line">' +
+          ? '<p class="text-violet-900/90 text-sm md:text-base leading-relaxed whitespace-pre-line max-w-lg mx-auto text-center">' +
             desc +
             "</p>"
           : "";
         const lugarHtml = lugar
-          ? '<p class="flex items-start gap-2 text-fuchsia-800 text-sm mt-2 font-medium"><span class="material-icons text-base text-fuchsia-600 shrink-0">place</span><span>' +
+          ? '<p class="flex items-center justify-center gap-2 text-fuchsia-800 text-sm font-medium text-center max-w-md mx-auto">' +
+            '<span class="material-icons text-lg text-fuchsia-600 shrink-0">place</span><span class="leading-snug">' +
             lugar +
             "</span></p>"
           : "";
         const btnHtml = enlaceSafe
-          ? '<a href="' +
+          ? '<div class="w-full flex justify-center pt-1">' +
+            '<a href="' +
             escapeHtml(enlaceSafe) +
-            '" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 mt-4 px-5 py-2.5 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-sm font-semibold shadow-md shadow-fuchsia-500/25 hover:from-violet-700 hover:to-fuchsia-700 transition-all">' +
-            '<span class="material-icons text-lg">open_in_new</span>Más información</a>'
+            '" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-600 to-pink-600 text-white text-sm font-bold shadow-lg shadow-fuchsia-500/30 border border-white/20 hover:brightness-110 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">' +
+            '<span class="material-icons text-lg">open_in_new</span>Más información</a></div>'
           : "";
         return (
-          '<article class="rounded-2xl border-2 border-fuchsia-200/70 bg-gradient-to-br from-white via-fuchsia-50/50 to-violet-50/60 shadow-lg shadow-purple-500/5 p-6 md:p-8 transition-all hover:shadow-xl hover:border-fuchsia-300/80 hover:shadow-fuchsia-500/10">' +
+          '<article class="group rounded-3xl overflow-hidden border-2 border-fuchsia-200/80 bg-gradient-to-b from-white via-fuchsia-50/40 to-violet-50/70 shadow-xl shadow-purple-500/10 transition-all duration-300 hover:shadow-2xl hover:shadow-fuchsia-500/15 hover:border-fuchsia-300/90 hover:-translate-y-0.5 ring-1 ring-amber-200/20">' +
           imagenHtml +
+          '<div class="flex flex-col items-center text-center px-6 py-8 md:px-10 md:py-9 gap-3 md:gap-4">' +
+          '<div class="h-1 w-12 rounded-full bg-gradient-to-r from-fuchsia-400 via-amber-400 to-violet-500 opacity-90 mb-1" aria-hidden="true"></div>' +
           (fecha
-            ? '<p class="text-sm font-bold uppercase tracking-wider text-transparent bg-gradient-to-r from-amber-700 to-orange-600 bg-clip-text font-display" style="-webkit-background-clip:text;background-clip:text">' +
+            ? '<p class="text-sm font-bold uppercase tracking-[0.2em] text-transparent bg-gradient-to-r from-amber-700 to-orange-600 bg-clip-text font-display" style="-webkit-background-clip:text;background-clip:text">' +
               fecha +
               "</p>"
             : "") +
           horaHtml +
           categoriaHtml +
-          '<h3 class="font-title text-xl md:text-2xl bg-gradient-to-r from-fuchsia-800 to-violet-800 bg-clip-text text-transparent mt-2">' +
+          '<h3 class="font-title text-xl md:text-2xl md:leading-snug max-w-xl mx-auto bg-gradient-to-r from-fuchsia-800 via-violet-800 to-fuchsia-800 bg-clip-text text-transparent">' +
           titulo +
           "</h3>" +
           metaHtml +
           lugarHtml +
           descHtml +
           btnHtml +
-          "</article>"
+          "</div></article>"
         );
       })
       .join("");
     container.innerHTML =
-      '<div class="grid grid-cols-1 gap-6 md:gap-8 max-w-3xl mx-auto">' + cards + "</div>";
+      '<div class="grid grid-cols-1 gap-8 md:gap-10 max-w-xl md:max-w-2xl mx-auto">' + cards + "</div>";
   }
 
   function run() {
