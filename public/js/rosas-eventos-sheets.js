@@ -1,7 +1,27 @@
 (function () {
   "use strict";
 
-  function parseCSV(text) {
+  /**
+   * Convierte URL de edición de Google Sheets en URL de exportación CSV.
+   * Ej. .../d/ID/edit?gid=0 → .../d/ID/export?format=csv&gid=0
+   */
+  function normalizeGoogleSheetCsvUrl(raw) {
+    const u = String(raw || "").trim();
+    if (!u) return "";
+    if (/docs\.google\.com\/spreadsheets\/d\//i.test(u) && /\/export\?[^#]*format=csv/i.test(u)) {
+      return u.split("#")[0].trim();
+    }
+    const m = u.match(/docs\.google\.com\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/i);
+    if (!m) return u;
+    const id = m[1];
+    let gid = "0";
+    const gidQ = u.match(/[#&?]gid=(\d+)/i);
+    if (gidQ) gid = gidQ[1];
+    return "https://docs.google.com/spreadsheets/d/" + id + "/export?format=csv&gid=" + gid;
+  }
+
+  function parseCSV(text, delim) {
+    const D = delim === ";" ? ";" : ",";
     const rows = [];
     let row = [];
     let cell = "";
@@ -22,7 +42,7 @@
       } else {
         if (c === '"') {
           inQuotes = true;
-        } else if (c === ",") {
+        } else if (c === D) {
           row.push(cell.trim());
           cell = "";
         } else if (c === "\n" || c === "\r") {
@@ -118,10 +138,46 @@
       }
       if (!rowVisible(o.mostrar)) continue;
       const tieneImagen = safeHttpUrl(o.imagen);
-      if (!o.titulo && !o.fecha && !o.descripcion && !tieneImagen) continue;
+      const tieneLugar = String(o.lugar || "").trim() !== "";
+      const tieneEnlace = String(o.enlace || "").trim().match(/^https?:\/\//i);
+      const tieneModalidad = String(o.modalidad || "").trim() !== "";
+      const tieneHora = String(o.hora || "").trim() !== "";
+      if (
+        !o.titulo &&
+        !o.fecha &&
+        !o.descripcion &&
+        !tieneImagen &&
+        !tieneLugar &&
+        !tieneEnlace &&
+        !tieneModalidad &&
+        !tieneHora
+      ) {
+        continue;
+      }
       out.push(o);
     }
     return out;
+  }
+
+  /** CSV con coma o punto y coma (Sheets según región) */
+  function parseCsvAutoDelimiter(text) {
+    const clean = text.replace(/^\uFEFF/, "");
+    let rows = parseCSV(clean, ",");
+    if (
+      rows.length > 0 &&
+      rows[0].length === 1 &&
+      String(rows[0][0]).indexOf(";") !== -1 &&
+      String(rows[0][0]).split(";").length >= 3
+    ) {
+      return parseCSV(clean, ";");
+    }
+    const firstLine = (clean.match(/^[^\r\n]*/) || [""])[0];
+    const nSemi = (firstLine.match(/;/g) || []).length;
+    const nComma = (firstLine.match(/,/g) || []).length;
+    if (nSemi > nComma && nSemi >= 2) {
+      rows = parseCSV(clean, ";");
+    }
+    return rows;
   }
 
   function renderEventos(container, eventos) {
@@ -231,8 +287,9 @@
     const status = document.getElementById("eventos-estado");
     if (!container) return;
 
-    const url =
+    let url =
       typeof window.ROSAS_EVENTOS_CSV_URL === "string" ? window.ROSAS_EVENTOS_CSV_URL.trim() : "";
+    url = normalizeGoogleSheetCsvUrl(url);
 
     if (!url) {
       if (status) {
@@ -256,9 +313,15 @@
         return res.text();
       })
       .then((text) => {
-        const rows = parseCSV(text.replace(/^\uFEFF/, ""));
+        const rows = parseCsvAutoDelimiter(text);
         const eventos = rowsToObjects(rows);
         if (status) status.classList.add("hidden");
+        if (!eventos.length && rows.length > 1) {
+          console.warn(
+            "[eventos] CSV recibido pero ninguna fila válida. Revisá los títulos de la fila 1 (Fecha, Titulo, Lugar…). Filas parseadas:",
+            rows.length
+          );
+        }
         renderEventos(container, eventos);
       })
       .catch((err) => {
