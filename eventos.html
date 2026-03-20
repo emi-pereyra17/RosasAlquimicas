@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="public/1.png" as="image" />
+    <link rel="icon" type="image/png" href="public/icon1.png" />
+    <title>Eventos | Rosas Alquímicas</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Quicksand:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8B5CF6",
+              secondary: "#6D28D9",
+              accent: "#C4B5FD",
+              "background-light": "#F9FAFB",
+              "background-dark": "#0B0915",
+              "mystic-purple": "#2E1065",
+              "deep-violet": "#1e0b36",
+              "soft-lilac": "#E9D5FF",
+            },
+            fontFamily: {
+              display: ["Playfair Display", "serif"],
+              sans: ["Montserrat", "sans-serif"],
+              title: ["Quicksand", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .hero-bg {
+        background-image: url("public/1.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+      }
+      @media (max-width: 768px) {
+        .hero-bg {
+          background-attachment: scroll;
+        }
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .reloj-ar-card {
+        background: linear-gradient(
+          155deg,
+          rgba(255, 250, 252, 0.98) 0%,
+          rgba(250, 232, 255, 0.95) 35%,
+          rgba(253, 242, 248, 0.96) 65%,
+          rgba(237, 233, 254, 0.94) 100%
+        );
+        box-shadow:
+          0 8px 32px rgba(147, 51, 234, 0.12),
+          0 4px 20px rgba(219, 39, 119, 0.1),
+          0 0 0 1px rgba(192, 38, 211, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.98);
+      }
+      .reloj-ar-hora {
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.12em;
+        background: linear-gradient(105deg, #86198f 0%, #7c3aed 40%, #db2777 85%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.6));
+      }
+      .eventos-page-bg {
+        background: linear-gradient(
+          165deg,
+          #fdf4ff 0%,
+          #fae8ff 25%,
+          #ede9fe 55%,
+          #fff7ed 100%
+        );
+      }
+    </style>
+    <script src="public/js/rosas-eventos-config.js"></script>
+  </head>
+  <body
+    class="eventos-page-bg min-h-screen font-sans text-gray-800 antialiased selection:bg-fuchsia-500 selection:text-white"
+  >
+    <div class="fixed top-4 left-4 z-50">
+      <a
+        href="index.html"
+        class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/95 text-fuchsia-800 font-semibold shadow-lg border-2 border-fuchsia-300/80 text-sm hover:bg-gradient-to-r hover:from-violet-600 hover:to-fuchsia-600 hover:text-white hover:border-transparent transition-all duration-300 backdrop-blur-sm hover:scale-105"
+      >
+        <span class="material-icons text-lg">arrow_back</span>
+        Volver a menú principal
+      </a>
+    </div>
+
+    <header class="hero-bg min-h-[320px] md:min-h-[400px] flex items-center justify-center relative overflow-hidden">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-pink-200/55 via-violet-200/35 to-fuchsia-100/90 pointer-events-none"
+      ></div>
+      <div
+        class="absolute inset-0 opacity-40 pointer-events-none"
+        style="
+          background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(192, 38, 211, 0.25), transparent),
+            radial-gradient(ellipse 60% 50% at 80% 70%, rgba(124, 58, 237, 0.2), transparent),
+            radial-gradient(ellipse 50% 40% at 15% 80%, rgba(244, 114, 182, 0.22), transparent);
+        "
+        aria-hidden="true"
+      ></div>
+      <div class="container mx-auto px-6 py-20 text-center relative z-10 pt-24">
+        <span
+          class="inline-block text-xs sm:text-sm uppercase tracking-[0.28em] font-semibold mb-4 px-4 py-1.5 rounded-full bg-gradient-to-r from-fuchsia-600/90 via-purple-600/90 to-violet-600/90 text-white shadow-md shadow-purple-500/25 border border-white/30"
+          >Agenda</span
+        >
+        <h1
+          class="font-title text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-fuchsia-800 via-purple-700 to-pink-600 bg-clip-text text-transparent drop-shadow-sm"
+        >
+          Eventos
+        </h1>
+        <p class="font-display italic text-fuchsia-900 max-w-2xl mx-auto text-base md:text-lg leading-relaxed drop-shadow-sm px-2">
+          Aquí encontrarás los próximos encuentros, talleres y fechas que iremos sumando para acompañarte en este camino de transformación.
+        </p>
+        <div
+          class="reloj-ar-card mt-10 mx-auto w-full max-w-lg rounded-3xl px-6 py-7 md:px-10 md:py-8 backdrop-blur-sm text-center"
+          aria-label="Fecha y hora actual en Argentina"
+        >
+          <div class="flex flex-col items-center justify-center">
+            <span
+              class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-fuchsia-500/25 via-violet-500/30 to-pink-400/35 text-fuchsia-800 mb-4 ring-2 ring-fuchsia-200/80 shadow-md shadow-fuchsia-500/15"
+              aria-hidden="true"
+            >
+              <span class="material-icons text-3xl text-fuchsia-700 drop-shadow-sm">schedule</span>
+            </span>
+            <p class="text-[0.65rem] uppercase tracking-[0.35em] font-bold mb-2 font-sans not-italic text-amber-800">
+              Ahora en Argentina
+            </p>
+            <p
+              id="eventos-fecha-ar"
+              class="font-display italic text-base md:text-lg text-violet-950 leading-relaxed max-w-md mx-auto px-2"
+            ></p>
+            <p
+              id="eventos-hora-ar"
+              class="reloj-ar-hora font-mono text-3xl md:text-4xl font-semibold text-fuchsia-950 mt-4 mb-1"
+            ></p>
+            <div
+              class="h-1 w-24 mx-auto my-4 rounded-full bg-gradient-to-r from-fuchsia-400 via-amber-400 to-violet-500 opacity-90 shadow-sm"
+              aria-hidden="true"
+            ></div>
+            <p class="text-xs md:text-sm text-fuchsia-800 font-medium font-sans not-italic leading-snug max-w-xs mx-auto">
+              Horario Argentina · Buenos Aires (UTC−3)
+            </p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container mx-auto max-w-5xl px-4 sm:px-6 pb-20 md:pb-28 -mt-8 relative z-10">
+      <div
+        class="rounded-3xl border-2 border-fuchsia-200/80 bg-gradient-to-br from-white via-fuchsia-50/70 to-violet-100/60 shadow-2xl shadow-fuchsia-500/10 ring-1 ring-amber-200/40 p-6 md:p-10 lg:p-12"
+      >
+        <p
+          id="eventos-estado"
+          class="hidden text-center text-sm text-rose-950 bg-gradient-to-r from-amber-100 to-orange-100 border-2 border-amber-300/60 rounded-xl px-4 py-3 mb-6 font-medium"
+          role="status"
+        ></p>
+        <div id="eventos-desde-sheets" aria-live="polite"></div>
+
+        <div class="mt-12 pt-8 border-t-2 border-transparent border-t-fuchsia-200/80 text-center bg-gradient-to-t from-violet-50/50 to-transparent rounded-b-2xl -mx-2 px-2 pb-1">
+          <p class="text-sm text-violet-900 font-display italic mb-4 font-medium">Taller en profundidad</p>
+          <a
+            href="index6.html"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-semibold text-sm shadow-lg shadow-purple-500/30 border border-white/20 hover:from-violet-700 hover:to-fuchsia-700 hover:scale-[1.02] transition-all duration-300"
+          >
+            <span class="material-icons text-lg">auto_stories</span>
+            El Velo Sagrado
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      (function () {
+        var TZ = "America/Argentina/Buenos_Aires";
+        var elFecha = document.getElementById("eventos-fecha-ar");
+        var elHora = document.getElementById("eventos-hora-ar");
+        if (!elFecha || !elHora) return;
+
+        function tick() {
+          var now = new Date();
+          elFecha.textContent = new Intl.DateTimeFormat("es-AR", {
+            timeZone: TZ,
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          }).format(now);
+          elHora.textContent = new Intl.DateTimeFormat("es-AR", {
+            timeZone: TZ,
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: false,
+          }).format(now);
+        }
+        tick();
+        setInterval(tick, 1000);
+      })();
+    </script>
+    <script src="public/js/rosas-eventos-sheets.js"></script>
+  </body>
+</html>
