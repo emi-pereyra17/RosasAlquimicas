@@ -125,6 +125,20 @@
     }
   }
 
+  /**
+   * Acepta URL suelta o HTML de ImgBB/embed: extrae el primer src="https://..." de un <img>.
+   */
+  function extractImageUrlFromCell(raw) {
+    let s = String(raw || "").trim();
+    if (!s) return "";
+    s = s.replace(/&quot;/gi, '"').replace(/&#0*39;|&apos;/gi, "'");
+    const mQuoted = s.match(/\bsrc\s*=\s*["'](https?:\/\/[^"']+)/i);
+    if (mQuoted) return mQuoted[1].trim();
+    const mBare = s.match(/\bsrc\s*=\s*(https?:\/\/[^\s>'"]+)/i);
+    if (mBare) return mBare[1].trim();
+    return s.trim();
+  }
+
   function rowsToObjects(rows) {
     if (!rows.length) return [];
     const headers = rows[0].map(mapHeaderToKey);
@@ -137,7 +151,7 @@
         if (key) o[key] = cells[c] != null ? cells[c] : "";
       }
       if (!rowVisible(o.mostrar)) continue;
-      const tieneImagen = safeHttpUrl(o.imagen);
+      const tieneImagen = safeHttpUrl(extractImageUrlFromCell(o.imagen));
       const tieneLugar = String(o.lugar || "").trim() !== "";
       const tieneEnlace = String(o.enlace || "").trim().match(/^https?:\/\//i);
       const tieneModalidad = String(o.modalidad || "").trim() !== "";
@@ -200,15 +214,15 @@
         const desc = escapeHtml(ev.descripcion || "");
         const enlace = String(ev.enlace || "").trim();
         const enlaceSafe = enlace.match(/^https?:\/\//i) ? enlace : "";
-        const imagenSrc = safeHttpUrl(ev.imagen);
+        const imagenSrc = safeHttpUrl(extractImageUrlFromCell(ev.imagen));
 
         const imagenHtml = imagenSrc
-          ? '<div class="w-full overflow-hidden bg-gradient-to-br from-violet-100 to-fuchsia-100 aspect-[16/9] max-h-72 border-b border-fuchsia-200/50">' +
+          ? '<div class="w-full overflow-hidden bg-gradient-to-br from-violet-100 to-fuchsia-100 border-b border-fuchsia-200/50 flex items-center justify-center min-h-[12rem] max-h-[28rem] py-3 px-2">' +
             '<img src="' +
             escapeHtml(imagenSrc) +
             '" alt="' +
             escapeHtml(tituloPlain) +
-            '" class="w-full h-full object-cover" loading="lazy" decoding="async" referrerpolicy="no-referrer" />' +
+            '" class="w-full max-h-[26rem] h-auto object-contain" loading="lazy" decoding="async" referrerpolicy="no-referrer" />' +
             "</div>"
           : "";
 
