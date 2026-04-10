@@ -442,24 +442,20 @@
         '<span class="material-icons text-7xl mb-3 opacity-60">image</span>' +
         '<span class="text-sm font-semibold text-violet-600/80">Sin imagen</span></div>';
 
-    const btnHtml = enlaceSafe
-      ? '<a href="' +
+    const ctaBelowImageHtml = enlaceSafe
+      ? '<div class="mt-5 lg:mt-6 w-full">' +
+        '<a href="' +
         escapeHtml(enlaceSafe) +
-        '" target="_blank" rel="noopener noreferrer" class="inline-flex w-full sm:w-auto min-w-[220px] items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-600 to-pink-600 px-10 py-4 text-white font-bold text-base shadow-xl shadow-fuchsia-500/30 border border-white/20 hover:brightness-110 hover:scale-[1.02] active:scale-[0.99] transition-all">' +
-        '<span class="material-icons text-2xl">open_in_new</span>Abrir enlace del evento</a>'
-      : '<p class="text-gray-500 text-sm max-w-md">Podés sumarte cuando haya un enlace (inscripción, Zoom, WhatsApp, etc.) en la hoja de cálculo.</p>';
-
-    const ctaBlock =
-      '<footer class="mt-10 lg:mt-12 pt-8 border-t-2 border-fuchsia-100 bg-gradient-to-r from-fuchsia-50/40 via-white to-violet-50/40 -mx-6 sm:-mx-8 lg:-mx-10 xl:-mx-12 px-6 sm:px-8 lg:px-10 xl:px-12 pb-2 rounded-b-3xl">' +
-      '<p class="text-gray-700 font-display italic text-lg mb-5 text-center sm:text-left">¿Te gustaría participar o saber más?</p>' +
-      '<div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4 sm:gap-6">' +
-      btnHtml +
-      "</div></footer>";
+        '" target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-600 to-pink-600 px-6 py-3.5 text-white font-bold text-sm sm:text-base shadow-xl shadow-fuchsia-500/30 border border-white/20 hover:brightness-110 hover:scale-[1.01] active:scale-[0.99] transition-all">' +
+        '<span class="material-icons text-xl sm:text-2xl">open_in_new</span>Ir al evento</a></div>'
+      : '<div class="mt-5 lg:mt-6 w-full text-center lg:text-left">' +
+        '<p class="text-gray-500 text-sm leading-snug">No hay enlace en la hoja. Agregá inscripción, Zoom, WhatsApp, etc. en la columna Enlace.</p></div>';
 
     body.innerHTML =
       '<div class="lg:grid lg:grid-cols-12 lg:gap-10 xl:gap-12 items-start">' +
-      '<div class="lg:col-span-5 mb-8 lg:mb-0">' +
+      '<div class="lg:col-span-5 mb-8 lg:mb-0 flex flex-col items-stretch">' +
       imgCol +
+      ctaBelowImageHtml +
       "</div>" +
       '<div class="lg:col-span-7 min-w-0">' +
       badgesWrap +
@@ -468,7 +464,6 @@
       "</h2>" +
       detailsBlock +
       descBlock +
-      ctaBlock +
       "</div></div>";
 
     const panel = modal.querySelector("[data-modal-panel]");
