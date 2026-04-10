@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="public/1.png" as="image" />
+    <link rel="icon" type="image/png" href="public/icon1.png" />
+    <title>Apertura de la Rosa del Corazón | Rosas Alquímicas</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Quicksand:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8B5CF6",
+              secondary: "#6D28D9",
+              "mystic-purple": "#2E1065",
+            },
+            fontFamily: {
+              display: ["Playfair Display", "serif"],
+              sans: ["Montserrat", "sans-serif"],
+              title: ["Quicksand", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .hero-bg {
+        background-image: url("public/1.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+      }
+      @media (max-width: 768px) {
+        .hero-bg {
+          background-attachment: scroll;
+        }
+      }
+      .cursos-page-bg {
+        background: linear-gradient(165deg, #fdf4ff 0%, #fae8ff 25%, #ede9fe 55%, #fff7ed 100%);
+      }
+      .taller-body {
+        text-wrap: pretty;
+      }
+    </style>
+  </head>
+  <body class="cursos-page-bg min-h-screen font-sans text-gray-800 antialiased">
+    <div class="fixed top-4 left-4 z-50 flex flex-wrap gap-2">
+      <a
+        href="index8.html"
+        class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/95 text-fuchsia-800 font-semibold shadow-lg border-2 border-fuchsia-300/80 text-sm hover:bg-gradient-to-r hover:from-violet-600 hover:to-fuchsia-600 hover:text-white hover:border-transparent transition-all"
+      >
+        <span class="material-icons text-lg">arrow_back</span>
+        Cursos y talleres
+      </a>
+    </div>
+
+    <header class="hero-bg relative pb-10 md:pb-14">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-pink-200/55 via-violet-200/35 to-fuchsia-100/90 pointer-events-none"
+      ></div>
+      <div
+        class="w-full max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-24 pb-8 relative z-10 text-center"
+      >
+        <div
+          class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border-2 border-rose-200/60 bg-gradient-to-br from-rose-100 to-fuchsia-100 shadow-md"
+          aria-hidden="true"
+        >
+          <span class="material-icons text-4xl text-rose-600">filter_vintage</span>
+        </div>
+        <h1 class="font-title text-2xl sm:text-3xl md:text-4xl font-bold text-violet-950 leading-tight">
+          Apertura de la Rosa del Corazón
+        </h1>
+      </div>
+    </header>
+
+    <main class="w-full max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pb-20 md:pb-28 -mt-2 relative z-10">
+      <article
+        class="taller-body max-w-4xl mx-auto pt-2 md:pt-6 space-y-9 md:space-y-11 text-violet-900 leading-[1.65] text-base sm:text-[1.0625rem]"
+      >
+        <p
+          class="text-xl sm:text-2xl font-title font-semibold text-violet-950 leading-snug tracking-tight [text-wrap:balance]"
+        >
+          Un encuentro de activación y expansión del corazón como centro de tu conciencia, tu amor y tu creación.
+        </p>
+
+        <div
+          class="py-6 md:py-8 text-center bg-gradient-to-r from-amber-50/90 via-fuchsia-50/70 to-violet-50/80 rounded-xl border border-amber-200/50 px-4 sm:px-6 mb-6 md:mb-8"
+        >
+          <button
+            type="button"
+            data-inscripcion-modal
+            data-producto="Apertura de la Rosa del Corazón"
+            data-precio-badge="55 € · 55 USD · $55.000 ARS · Pago único"
+            aria-haspopup="dialog"
+            class="inline-flex flex-col items-center justify-center gap-1 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-6 sm:px-10 py-3.5 sm:py-4 text-white font-bold text-sm shadow-lg hover:brightness-110 transition-all max-w-full"
+          >
+            <span class="leading-tight">Obtener taller</span>
+            <span class="text-xs font-semibold text-white/90 leading-tight text-center px-1"
+              >55 € · 55 USD · $55.000 ARS</span
+            >
+          </button>
+        </div>
+
+        <div class="space-y-4 text-violet-900/95">
+          <p>
+            Este taller es una invitación a abrir la frecuencia del corazón y recordar su arquitectura sagrada: una
+            geometría de luz viva que te conecta con tu esencia.
+          </p>
+        </div>
+
+        <p
+          class="flex gap-3 items-start rounded-xl border border-fuchsia-200/70 bg-white/50 px-4 py-3.5 shadow-sm shadow-fuchsia-900/[0.04]"
+        >
+          <span
+            class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-fuchsia-200/60 bg-gradient-to-br from-fuchsia-50 to-violet-50 text-violet-600"
+            aria-hidden="true"
+          >
+            <span class="material-icons text-lg leading-none">device_hub</span>
+          </span>
+          <span class="font-semibold text-violet-950">El corazón como puente entre el cielo y la tierra.</span>
+        </p>
+
+        <section class="space-y-4">
+          <h2 class="font-title text-lg sm:text-xl font-bold text-violet-950 flex items-center gap-3 pb-2 border-b border-fuchsia-200/60">
+            <span
+              class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-fuchsia-200/70 bg-gradient-to-br from-fuchsia-100/80 to-violet-100/80 text-violet-700 shadow-sm"
+              aria-hidden="true"
+            >
+              <span class="material-icons text-[22px] leading-none">track_changes</span>
+            </span>
+            Propósito
+          </h2>
+          <p class="text-violet-900/95">Unificar tu corazón con:</p>
+          <ul class="space-y-3 list-none">
+            <li class="flex gap-3 items-start">
+              <span
+                class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-emerald-200/70 bg-emerald-50/80 text-emerald-700"
+                aria-hidden="true"
+              >
+                <span class="material-icons text-lg leading-none">public</span>
+              </span>
+              <span>El corazón de la Tierra</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span
+                class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-amber-200/70 bg-amber-50/80 text-amber-600"
+                aria-hidden="true"
+              >
+                <span class="material-icons text-lg leading-none">wb_sunny</span>
+              </span>
+              <span>El corazón del Sol</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span
+                class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-rose-200/70 bg-rose-50/80 text-rose-600"
+                aria-hidden="true"
+              >
+                <span class="material-icons text-lg leading-none">favorite</span>
+              </span>
+              <span>Tu propio centro interno</span>
+            </li>
+          </ul>
+          <p class="text-violet-900/95 pt-1">Activando así un campo de coherencia, amor y presencia.</p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="font-title text-lg sm:text-xl font-bold text-violet-950 flex items-center gap-3 pb-2 border-b border-fuchsia-200/60">
+            <span
+              class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-fuchsia-200/70 bg-gradient-to-br from-fuchsia-100/80 to-violet-100/80 text-violet-700 shadow-sm"
+              aria-hidden="true"
+            >
+              <span class="material-icons text-[22px] leading-none">spa</span>
+            </span>
+            ¿Qué vas a experimentar?
+          </h2>
+          <ul class="space-y-3 list-none">
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span>Apertura y expansión del corazón</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span>Reconexión con la frecuencia del amor</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span>Sensibilidad para percibir los cambios energéticos</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span>Mayor conexión con tu cuerpo y tus emociones</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span>Estados profundos de calma, presencia y unidad</span>
+            </li>
+          </ul>
+          <p class="text-violet-900/95 border-l-2 border-fuchsia-200/70 pl-4 py-1">
+            Es un primer paso en el camino de la Rosa: la conexión con la Madre Tierra y con tu cuerpo, y el amor hacia
+            vos misma.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="font-title text-lg sm:text-xl font-bold text-violet-950 flex items-center gap-3 pb-2 border-b border-fuchsia-200/60">
+            <span
+              class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-fuchsia-200/70 bg-gradient-to-br from-fuchsia-100/80 to-violet-100/80 text-violet-700 shadow-sm"
+              aria-hidden="true"
+            >
+              <span class="material-icons text-[22px] leading-none">self_improvement</span>
+            </span>
+            ¿Cómo es la práctica?
+          </h2>
+          <p class="text-violet-900/95">A través de una experiencia vivencial donde exploramos:</p>
+          <ul class="space-y-3 list-none">
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span>Meditación guiada desde el corazón</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span>Activación de geometría sagrada (rosa del corazón)</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span>Respiración consciente</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span>Movimiento suave y presencia corporal</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span>Canto y código de luz</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span>Conexión energética con Tierra y Sol</span>
+            </li>
+          </ul>
+        </section>
+
+        <p
+          class="flex gap-3 items-start rounded-xl border border-violet-200/70 bg-white/50 px-4 py-3.5 shadow-sm shadow-violet-900/[0.04]"
+        >
+          <span
+            class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-violet-200/60 bg-gradient-to-br from-violet-50 to-fuchsia-50 text-violet-600"
+            aria-hidden="true"
+          >
+            <span class="material-icons text-lg leading-none">psychology</span>
+          </span>
+          <span class="font-semibold text-violet-950">Aprendés a habitar tu corazón como espacio de guía.</span>
+        </p>
+
+        <section class="space-y-4">
+          <h2 class="font-title text-lg sm:text-xl font-bold text-violet-950 flex items-center gap-3 pb-2 border-b border-fuchsia-200/60">
+            <span
+              class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-fuchsia-200/70 bg-gradient-to-br from-fuchsia-100/80 to-violet-100/80 text-violet-700 shadow-sm"
+              aria-hidden="true"
+            >
+              <span class="material-icons text-[22px] leading-none">nights_stay</span>
+            </span>
+            ¿Para quién es este taller?
+          </h2>
+          <p class="text-violet-900/95">Para vos si sentís:</p>
+          <ul class="space-y-3 list-none">
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span>Necesidad de abrirte más al amor</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span>Deseo de conectar con tu sensibilidad</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span>Búsqueda de calma y coherencia interna</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span>Llamado a profundizar en tu camino espiritual</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span>Ganas de meditar desde el sentir, no solo desde la mente</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="py-6 md:py-7 border-t border-b border-violet-200/60 space-y-4">
+          <h2 class="font-title text-lg sm:text-xl font-bold text-violet-950 flex items-center gap-3">
+            <span
+              class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-violet-200/70 bg-violet-50/90 text-violet-700 shadow-sm"
+              aria-hidden="true"
+            >
+              <span class="material-icons text-[22px] leading-none">laptop</span>
+            </span>
+            Modalidad
+          </h2>
+          <ul class="space-y-3 list-none text-violet-900">
+            <li class="flex gap-3 items-start">
+              <span
+                class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-amber-200/70 bg-amber-50/90 text-amber-700 mt-0.5"
+                aria-hidden="true"
+              >
+                <span class="material-icons text-[20px] leading-none">attach_money</span>
+              </span>
+              <span
+                ><strong class="font-semibold text-violet-950">Inversión:</strong> 55 € (euros) · 55 USD · $55.000
+                ARS</span
+              >
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" aria-hidden="true"></span>
+              <span><strong class="font-semibold text-violet-950">Online</strong></span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" aria-hidden="true"></span>
+              <span>Duración: <strong class="font-semibold text-violet-950">4 horas</strong></span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" aria-hidden="true"></span>
+              <span>Disponible en vivo o en grabación</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" aria-hidden="true"></span>
+              <span>Podés realizarlo desde tu hogar</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="space-y-3 pt-2 border-t border-fuchsia-200/50">
+          <h2 class="font-title text-lg sm:text-xl font-bold text-violet-950 flex items-center gap-3">
+            <span
+              class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-amber-200/70 bg-amber-50/80 text-amber-700 shadow-sm"
+              aria-hidden="true"
+            >
+              <span class="material-icons text-[22px] leading-none">volunteer_activism</span>
+            </span>
+            Cierre
+          </h2>
+          <p class="text-lg font-semibold text-violet-950 leading-snug">Tu corazón ya sabe.</p>
+          <p class="text-violet-900/95">Solo necesita que lo escuches.</p>
+        </section>
+      </article>
+    </main>
+    <script src="public/js/inscripcion-modal.js" defer></script>
+  </body>
+</html>

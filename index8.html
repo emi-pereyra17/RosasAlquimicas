@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="public/1.png" as="image" />
+    <link rel="icon" type="image/png" href="public/icon1.png" />
+    <title>Cursos y Talleres | Rosas Alquímicas</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Quicksand:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8B5CF6",
+              secondary: "#6D28D9",
+              accent: "#C4B5FD",
+              "background-light": "#F9FAFB",
+              "background-dark": "#0B0915",
+              "mystic-purple": "#2E1065",
+              "deep-violet": "#1e0b36",
+              "soft-lilac": "#E9D5FF",
+            },
+            fontFamily: {
+              display: ["Playfair Display", "serif"],
+              sans: ["Montserrat", "sans-serif"],
+              title: ["Quicksand", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .hero-bg {
+        background-image: url("public/1.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+      }
+      @media (max-width: 768px) {
+        .hero-bg {
+          background-attachment: scroll;
+        }
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .cursos-page-bg {
+        background: linear-gradient(
+          165deg,
+          #fdf4ff 0%,
+          #fae8ff 25%,
+          #ede9fe 55%,
+          #fff7ed 100%
+        );
+      }
+      .cursos-prose-shadow {
+        text-shadow:
+          0 1px 2px rgba(255, 255, 255, 0.95),
+          0 2px 16px rgba(255, 250, 252, 0.9),
+          0 0 1px rgba(255, 255, 255, 0.8);
+      }
+      .cursos-h1-gradient {
+        line-height: 1.22;
+        padding-bottom: 0.18em;
+        padding-top: 0.06em;
+        overflow: visible;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+      }
+      /* 9 cards: 3×3 en lg+; en sm 2 columnas */
+      .cursos-card {
+        border: 2px solid rgba(217, 70, 239, 0.5);
+        background: linear-gradient(165deg, #ffffff 0%, #fffafd 40%, #faf5ff 100%);
+        box-shadow:
+          0 0 0 1px rgba(167, 139, 250, 0.35),
+          0 6px 20px -4px rgba(124, 58, 237, 0.22),
+          0 2px 10px -2px rgba(192, 38, 211, 0.14);
+      }
+      .cursos-card:hover {
+        border-color: rgba(192, 38, 211, 0.9);
+        box-shadow:
+          0 0 0 1px rgba(192, 38, 211, 0.45),
+          0 10px 28px -6px rgba(124, 58, 237, 0.38),
+          0 24px 56px -14px rgba(192, 38, 211, 0.28),
+          0 0 40px -8px rgba(236, 72, 153, 0.2);
+      }
+      .cursos-card-media {
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+      }
+      .cursos-card-badge {
+        color: rgb(91, 33, 182);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(250, 232, 255, 0.94));
+        border: 1px solid rgba(192, 38, 211, 0.5);
+        box-shadow: 0 2px 14px rgba(124, 58, 237, 0.22);
+      }
+      .cursos-card-price {
+        border-color: rgba(245, 158, 11, 0.55) !important;
+        background: linear-gradient(135deg, rgba(255, 251, 235, 0.98), rgba(250, 232, 255, 0.55)) !important;
+        box-shadow: 0 1px 6px rgba(124, 58, 237, 0.1);
+      }
+    </style>
+  </head>
+  <body
+    class="cursos-page-bg min-h-screen font-sans text-gray-800 antialiased selection:bg-fuchsia-500 selection:text-white"
+  >
+    <div class="fixed top-4 left-4 z-50">
+      <a
+        href="index.html"
+        class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/95 text-fuchsia-800 font-semibold shadow-lg border-2 border-fuchsia-300/80 text-sm hover:bg-gradient-to-r hover:from-violet-600 hover:to-fuchsia-600 hover:text-white hover:border-transparent transition-all duration-300 backdrop-blur-sm hover:scale-105"
+      >
+        <span class="material-icons text-lg">arrow_back</span>
+        Volver a menú principal
+      </a>
+    </div>
+
+    <header class="hero-bg relative pb-14 md:pb-20 min-h-screen">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-pink-200/55 via-violet-200/35 to-fuchsia-100/90 pointer-events-none"
+      ></div>
+      <div
+        class="absolute inset-0 opacity-40 pointer-events-none"
+        style="
+          background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(192, 38, 211, 0.25), transparent),
+            radial-gradient(ellipse 60% 50% at 80% 70%, rgba(124, 58, 237, 0.2), transparent),
+            radial-gradient(ellipse 50% 40% at 15% 80%, rgba(244, 114, 182, 0.22), transparent);
+        "
+        aria-hidden="true"
+      ></div>
+      <div
+        class="w-full max-w-5xl xl:max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 text-center relative z-10 pt-24 md:pt-28 overflow-visible"
+      >
+        <span
+          class="inline-flex items-center gap-2 text-xs sm:text-sm uppercase tracking-[0.22em] font-semibold mb-5 px-4 py-1.5 rounded-full bg-gradient-to-r from-fuchsia-600/90 via-purple-600/90 to-violet-600/90 text-white shadow-md shadow-purple-500/25 border border-white/30"
+        >
+          <span class="material-icons text-base" aria-hidden="true">school</span>
+          Rosas Alquímicas
+        </span>
+        <h1
+          class="cursos-h1-gradient font-title text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold mb-4 md:mb-5 bg-gradient-to-r from-fuchsia-800 via-purple-700 to-pink-600 bg-clip-text text-transparent [text-shadow:none] block w-full"
+        >
+          Cursos y Talleres
+        </h1>
+        <div
+          class="mx-auto w-24 h-1 rounded-full bg-gradient-to-r from-fuchsia-400 via-amber-400 to-violet-500 opacity-90 shadow-sm mb-5 md:mb-6"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="cursos-prose-shadow space-y-4 md:space-y-5 text-violet-950 text-sm sm:text-base md:text-[1.05rem] leading-snug sm:leading-relaxed md:leading-relaxed font-sans font-normal text-center max-w-3xl mx-auto"
+        >
+          <section>
+            <p class="font-medium">
+              Los talleres son espacios <strong class="font-semibold">vivenciales</strong> y de
+              <strong class="font-semibold">exploración interna</strong>.
+            </p>
+            <p class="mt-2.5">
+              Esto significa que cada encuentro está diseñado para que puedas experimentar en tu propio cuerpo, abrir tu
+              percepción y recibir la guía de las energías disponibles en este momento.
+            </p>
+            <p class="mt-2.5">
+              Actualmente, los talleres son <strong class="font-semibold">online</strong>, y nacen para acompañar los
+              procesos energéticos que se están desplegando en este tiempo.
+            </p>
+          </section>
+
+          <section
+            class="rounded-2xl bg-white/50 backdrop-blur-sm border border-fuchsia-200/70 px-4 sm:px-5 py-4 sm:py-5 shadow-sm text-left"
+          >
+            <div class="flex items-start gap-2.5 mb-3">
+              <span class="material-icons text-xl text-violet-600 shrink-0 mt-0.5">computer</span>
+              <h3 class="font-display text-base sm:text-lg md:text-xl font-bold text-violet-950">
+                Modalidad de los talleres
+              </h3>
+            </div>
+            <ul class="space-y-2 pl-3 list-none text-sm sm:text-base">
+              <li class="flex items-start gap-2">
+                <span class="text-fuchsia-600 shrink-0 mt-1" aria-hidden="true">•</span>
+                <span>Todos los talleres son <strong class="font-semibold">online</strong></span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-fuchsia-600 shrink-0 mt-1" aria-hidden="true">•</span>
+                <span>Duración aproximada: <strong class="font-semibold">4 horas</strong> (algunos pueden extenderse a jornada completa)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-fuchsia-600 shrink-0 mt-1" aria-hidden="true">•</span>
+                <span>Podés realizarlos <strong class="font-semibold">en vivo</strong> o acceder a la <strong class="font-semibold">grabación</strong></span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-fuchsia-600 shrink-0 mt-1" aria-hidden="true">•</span>
+                <span>Podés tomarlos desde la comodidad de tu hogar</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-fuchsia-600 shrink-0 mt-1" aria-hidden="true">•</span>
+                <span>Cada experiencia te acompaña a activar tu propia <strong class="font-semibold">maestría</strong></span>
+              </li>
+            </ul>
+          </section>
+
+          <div class="flex items-center justify-center gap-3 py-1.5 flex-wrap">
+            <span
+              class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-fuchsia-200/70 bg-gradient-to-br from-fuchsia-100/90 to-violet-100/80 text-amber-600 shadow-sm"
+              aria-hidden="true"
+            >
+              <span class="material-icons text-xl leading-none">auto_awesome</span>
+            </span>
+            <p class="font-display text-base sm:text-lg md:text-xl font-semibold text-fuchsia-900 px-1 text-center">
+              Sentí cuál es el indicado para vos en este momento.
+            </p>
+            <span
+              class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-fuchsia-200/70 bg-gradient-to-br from-fuchsia-100/90 to-violet-100/80 text-amber-600 shadow-sm"
+              aria-hidden="true"
+            >
+              <span class="material-icons text-xl leading-none">auto_awesome</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main
+      class="relative z-10 max-w-6xl xl:max-w-[88rem] 2xl:max-w-[96rem] mx-auto px-4 sm:px-6 lg:px-8 pb-20 md:pb-28 -mt-6 md:-mt-10"
+    >
+      <section
+        class="rounded-3xl border-2 border-fuchsia-200/80 bg-gradient-to-br from-white via-fuchsia-50/60 to-violet-50/50 shadow-xl shadow-fuchsia-500/10 p-6 sm:p-8 md:p-10"
+      >
+        <h2 class="font-title text-2xl md:text-3xl font-bold text-violet-900 mb-6 text-center">
+          Seleccioná tu curso, taller, proceso o ciclo
+        </h2>
+        <div class="cursos-cards-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
+          <a
+            href="curso-recordarte-sentir-tu-esencia.html"
+            class="cursos-card group flex h-full flex-col rounded-2xl overflow-hidden ring-2 ring-amber-400/45 transition-all duration-300 hover:-translate-y-1.5 hover:ring-amber-500/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-fuchsia-50/80"
+          >
+            <div class="cursos-card-media relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-amber-100 via-fuchsia-100 to-violet-200">
+              <img
+                src="public/1.png"
+                alt=""
+                class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105 opacity-95"
+                loading="lazy"
+                decoding="async"
+              />
+              <span
+                class="cursos-card-badge absolute top-3 left-3 z-10 inline-flex items-center rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-wide bg-gradient-to-r from-amber-50 to-fuchsia-50 border-amber-400/60"
+                >Curso especial</span
+              >
+            </div>
+            <div class="flex flex-1 flex-col px-4 py-3 sm:px-4 sm:py-3.5 text-left">
+              <h3
+                class="font-title text-lg sm:text-xl font-bold text-violet-950 leading-snug group-hover:text-fuchsia-900 transition-colors flex items-start gap-2.5"
+              >
+                <span
+                  class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-amber-200/80 bg-gradient-to-br from-amber-50 to-fuchsia-50 text-amber-700 mt-0.5"
+                  aria-hidden="true"
+                >
+                  <span class="material-icons text-[22px] leading-none">self_improvement</span>
+                </span>
+                <span>RECORDARTE · Sentir tu esencia</span>
+              </h3>
+              <p class="mt-2 text-xs font-semibold text-amber-900/90 uppercase tracking-wide">Escuela Infinito · 8 semanas</p>
+              <p class="mt-2 text-sm text-violet-800/90 leading-snug line-clamp-2">
+                Desprogramación natural con los reinos y la naturaleza, Artes del templo y prácticas para la canalización.
+                Autonomía y gestión emocional.
+              </p>
+              <p
+                class="cursos-card-price mt-2 inline-flex flex-wrap items-center gap-2 rounded-lg border-2 px-2.5 py-1.5 text-xs font-semibold text-violet-900"
+              >
+                <span class="material-icons text-amber-700 text-base shrink-0" aria-hidden="true">attach_money</span>
+                <span>369 € · 369 USD · $369.000 ARS</span>
+              </p>
+              <span
+                class="mt-auto pt-2.5 inline-flex items-center gap-1 text-sm font-bold text-fuchsia-700 group-hover:gap-2 transition-all"
+              >
+                Ver curso
+                <span class="material-icons text-lg">arrow_forward</span>
+              </span>
+            </div>
+          </a>
+          <a
+            href="taller-reconexion-marias-magdalena.html"
+            class="cursos-card group flex h-full flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 focus-visible:ring-offset-fuchsia-50/80"
+          >
+            <div class="cursos-card-media relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-violet-100 to-fuchsia-100">
+              <img
+                src="public/cantos2.jpg"
+                alt=""
+                class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+              <span
+                class="cursos-card-badge absolute top-3 left-3 z-10 inline-flex items-center rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-wide"
+                >Taller</span
+              >
+            </div>
+            <div class="flex flex-1 flex-col px-4 py-3 sm:px-4 sm:py-3.5 text-left">
+              <h3
+                class="font-title text-lg sm:text-xl font-bold text-violet-950 leading-snug group-hover:text-fuchsia-900 transition-colors flex items-start gap-2.5"
+              >
+                <span
+                  class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-fuchsia-200/70 bg-gradient-to-br from-fuchsia-50 to-violet-50 text-fuchsia-700 mt-0.5"
+                  aria-hidden="true"
+                >
+                  <span class="material-icons text-[22px] leading-none">local_florist</span>
+                </span>
+                <span>Reconexión a la frecuencia de las Marías y las Magdalenas</span>
+              </h3>
+              <p class="mt-2 text-sm text-violet-800/90 leading-snug line-clamp-2">
+                Conexión con la energía del amor, la compasión y la transformación. Escuchar el cuerpo, sentir las
+                emociones y elegir tu camino.
+              </p>
+              <p
+                class="cursos-card-price mt-2 inline-flex flex-wrap items-center gap-2 rounded-lg border-2 px-2.5 py-1.5 text-xs font-semibold text-violet-900"
+              >
+                <span class="material-icons text-amber-700 text-base shrink-0" aria-hidden="true">attach_money</span>
+                <span>55 € · 55 USD · $55.000 ARS</span>
+              </p>
+              <span
+                class="mt-auto pt-2.5 inline-flex items-center gap-1 text-sm font-bold text-fuchsia-700 group-hover:gap-2 transition-all"
+              >
+                Ver taller
+                <span class="material-icons text-lg">arrow_forward</span>
+              </span>
+            </div>
+          </a>
+          <a
+            href="taller-desmagnetizacion-cuantica.html"
+            class="cursos-card group flex h-full flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 focus-visible:ring-offset-fuchsia-50/80"
+          >
+            <div class="cursos-card-media relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-violet-100 to-fuchsia-100">
+              <img
+                src="public/Codigos%20de%20luz/3.jpg"
+                alt=""
+                class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+              <span
+                class="cursos-card-badge absolute top-3 left-3 z-10 inline-flex items-center rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-wide"
+                >Taller</span
+              >
+            </div>
+            <div class="flex flex-1 flex-col px-4 py-3 sm:px-4 sm:py-3.5 text-left">
+              <h3
+                class="font-title text-lg sm:text-xl font-bold text-violet-950 leading-snug group-hover:text-fuchsia-900 transition-colors flex items-start gap-2.5"
+              >
+                <span
+                  class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-violet-200/70 bg-gradient-to-br from-violet-50 to-fuchsia-50 text-violet-600 mt-0.5"
+                  aria-hidden="true"
+                >
+                  <span class="material-icons text-[22px] leading-none">offline_bolt</span>
+                </span>
+                <span>Desmagnetización cuántica</span>
+              </h3>
+              <p class="mt-2 text-sm text-violet-800/90 leading-snug line-clamp-2">
+                Liberación profunda: soltamos cargas, memorias y patrones que ya no están en coherencia con tu presente.
+                Invitación a desprogramar y reordenar tu energía.
+              </p>
+              <p
+                class="cursos-card-price mt-2 inline-flex flex-wrap items-center gap-2 rounded-lg border-2 px-2.5 py-1.5 text-xs font-semibold text-violet-900"
+              >
+                <span class="material-icons text-amber-700 text-base shrink-0" aria-hidden="true">attach_money</span>
+                <span>55 € · 55 USD · $55.000 ARS</span>
+              </p>
+              <span
+                class="mt-auto pt-2.5 inline-flex items-center gap-1 text-sm font-bold text-fuchsia-700 group-hover:gap-2 transition-all"
+              >
+                Ver taller
+                <span class="material-icons text-lg">arrow_forward</span>
+              </span>
+            </div>
+          </a>
+          <a
+            href="taller-apertura-rosa-corazon.html"
+            class="cursos-card group flex h-full flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 focus-visible:ring-offset-fuchsia-50/80"
+          >
+            <div class="cursos-card-media relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-rose-100 to-fuchsia-100">
+              <img
+                src="public/portada.jpg"
+                alt=""
+                class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+              <span
+                class="cursos-card-badge absolute top-3 left-3 z-10 inline-flex items-center rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-wide"
+                >Taller</span
+              >
+            </div>
+            <div class="flex flex-1 flex-col px-4 py-3 sm:px-4 sm:py-3.5 text-left">
+              <h3
+                class="font-title text-lg sm:text-xl font-bold text-violet-950 leading-snug group-hover:text-fuchsia-900 transition-colors flex items-start gap-2.5"
+              >
+                <span
+                  class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-rose-200/70 bg-gradient-to-br from-rose-50 to-fuchsia-50 text-rose-600 mt-0.5"
+                  aria-hidden="true"
+                >
+                  <span class="material-icons text-[22px] leading-none">filter_vintage</span>
+                </span>
+                <span>Apertura de la Rosa del Corazón</span>
+              </h3>
+              <p class="mt-2 text-sm text-violet-800/90 leading-snug line-clamp-2">
+                Activación y expansión del corazón como centro de conciencia, amor y creación. Puente entre cielo y tierra,
+                con la Tierra, el Sol y tu centro interno.
+              </p>
+              <p
+                class="cursos-card-price mt-2 inline-flex flex-wrap items-center gap-2 rounded-lg border-2 px-2.5 py-1.5 text-xs font-semibold text-violet-900"
+              >
+                <span class="material-icons text-amber-700 text-base shrink-0" aria-hidden="true">attach_money</span>
+                <span>55 € · 55 USD · $55.000 ARS</span>
+              </p>
+              <span
+                class="mt-auto pt-2.5 inline-flex items-center gap-1 text-sm font-bold text-fuchsia-700 group-hover:gap-2 transition-all"
+              >
+                Ver taller
+                <span class="material-icons text-lg">arrow_forward</span>
+              </span>
+            </div>
+          </a>
+          <a
+            href="taller-reconocimiento-placenta-original.html"
+            class="cursos-card group flex h-full flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 focus-visible:ring-offset-fuchsia-50/80"
+          >
+            <div class="cursos-card-media relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-amber-50 to-violet-100">
+              <img
+                src="public/Codigos%20de%20luz/4.jpg"
+                alt=""
+                class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+              <span
+                class="cursos-card-badge absolute top-3 left-3 z-10 inline-flex items-center rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-wide"
+                >Taller</span
+              >
+            </div>
+            <div class="flex flex-1 flex-col px-4 py-3 sm:px-4 sm:py-3.5 text-left">
+              <h3
+                class="font-title text-lg sm:text-xl font-bold text-violet-950 leading-snug group-hover:text-fuchsia-900 transition-colors flex items-start gap-2.5"
+              >
+                <span
+                  class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-amber-200/70 bg-gradient-to-br from-amber-50 to-violet-50 text-amber-700 mt-0.5"
+                  aria-hidden="true"
+                >
+                  <span class="material-icons text-[22px] leading-none">brightness_3</span>
+                </span>
+                <span>Reconocimiento e integración de la placenta original</span>
+              </h3>
+              <p class="mt-2 text-sm text-violet-800/90 leading-snug line-clamp-2">
+                Reconectar con tu origen y recrear tu fuente de nutrición energética. Campo de sostén, nutrición interna y
+                hogar que construís dentro tuyo.
+              </p>
+              <p
+                class="cursos-card-price mt-2 inline-flex flex-wrap items-center gap-2 rounded-lg border-2 px-2.5 py-1.5 text-xs font-semibold text-violet-900"
+              >
+                <span class="material-icons text-amber-700 text-base shrink-0" aria-hidden="true">attach_money</span>
+                <span>55 € · 55 USD · $55.000 ARS</span>
+              </p>
+              <span
+                class="mt-auto pt-2.5 inline-flex items-center gap-1 text-sm font-bold text-fuchsia-700 group-hover:gap-2 transition-all"
+              >
+                Ver taller
+                <span class="material-icons text-lg">arrow_forward</span>
+              </span>
+            </div>
+          </a>
+          <a
+            href="taller-alineacion-reinos-madre-cosmica.html"
+            class="cursos-card group flex h-full flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 focus-visible:ring-offset-fuchsia-50/80"
+          >
+            <div class="cursos-card-media relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-indigo-100 to-violet-200">
+              <img
+                src="public/Codigos%20de%20luz/5.jpg"
+                alt=""
+                class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+              <span
+                class="cursos-card-badge absolute top-3 left-3 z-10 inline-flex items-center rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-wide"
+                >Taller</span
+              >
+            </div>
+            <div class="flex flex-1 flex-col px-4 py-3 sm:px-4 sm:py-3.5 text-left">
+              <h3
+                class="font-title text-lg sm:text-xl font-bold text-violet-950 leading-snug group-hover:text-fuchsia-900 transition-colors flex items-start gap-2.5"
+              >
+                <span
+                  class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-violet-200/70 bg-gradient-to-br from-indigo-50 to-violet-50 text-violet-700 mt-0.5"
+                  aria-hidden="true"
+                >
+                  <span class="material-icons text-[22px] leading-none">blur_on</span>
+                </span>
+                <span>Alineación con los reinos de la Madre Cósmica</span>
+              </h3>
+              <p class="mt-2 text-sm text-violet-800/90 leading-snug line-clamp-2">
+                Recordar tu vínculo con los reinos visibles e invisibles, el cuerpo como templo, danza y canto como oración
+                viva, en comunidad.
+              </p>
+              <p
+                class="cursos-card-price mt-2 inline-flex flex-wrap items-center gap-2 rounded-lg border-2 px-2.5 py-1.5 text-xs font-semibold text-violet-900"
+              >
+                <span class="material-icons text-amber-700 text-base shrink-0" aria-hidden="true">attach_money</span>
+                <span>55 € · 55 USD · $55.000 ARS</span>
+              </p>
+              <span
+                class="mt-auto pt-2.5 inline-flex items-center gap-1 text-sm font-bold text-fuchsia-700 group-hover:gap-2 transition-all"
+              >
+                Ver taller
+                <span class="material-icons text-lg">arrow_forward</span>
+              </span>
+            </div>
+          </a>
+          <a
+            href="proceso-rosas-alquimicas-1-1.html"
+            class="cursos-card group flex h-full flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 focus-visible:ring-offset-fuchsia-50/80"
+          >
+            <div class="cursos-card-media relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-rose-100 via-fuchsia-100 to-violet-100">
+              <img
+                src="public/me2.jpg"
+                alt=""
+                class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+              <span
+                class="cursos-card-badge absolute top-3 left-3 z-10 inline-flex items-center rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-wide"
+                >Proceso 1:1</span
+              >
+            </div>
+            <div class="flex flex-1 flex-col px-4 py-3 sm:px-4 sm:py-3.5 text-left">
+              <h3
+                class="font-title text-lg sm:text-xl font-bold text-violet-950 leading-snug group-hover:text-fuchsia-900 transition-colors flex items-start gap-2.5"
+              >
+                <span
+                  class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-rose-200/70 bg-gradient-to-br from-rose-50 to-fuchsia-50 text-rose-600 mt-0.5"
+                  aria-hidden="true"
+                >
+                  <span class="material-icons text-[22px] leading-none">local_florist</span>
+                </span>
+                <span>Rosas Alquímicas® — Reconfiguración energética</span>
+              </h3>
+              <p class="mt-2 text-sm text-violet-800/90 leading-snug line-clamp-2">
+                Proceso personalizado 1:1: desmagnetizá patrones, reordená tu campo y abrí una nueva percepción. Cinco
+                encuentros, frecuencia semanal. No es una sesión: es un camino.
+              </p>
+              <p
+                class="cursos-card-price mt-2 inline-flex flex-wrap items-center gap-2 rounded-lg border-2 px-2.5 py-1.5 text-xs font-semibold text-violet-900"
+              >
+                <span class="material-icons text-amber-700 text-base shrink-0" aria-hidden="true">attach_money</span>
+                <span>222 € · 222 USD · $222.000 ARS</span>
+              </p>
+              <span
+                class="mt-auto pt-2.5 inline-flex items-center gap-1 text-sm font-bold text-fuchsia-700 group-hover:gap-2 transition-all"
+              >
+                Ver proceso
+                <span class="material-icons text-lg">arrow_forward</span>
+              </span>
+            </div>
+          </a>
+          <a
+            href="ciclo-21-dias-maria-magdalena.html"
+            class="cursos-card group flex h-full flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 focus-visible:ring-offset-fuchsia-50/80"
+          >
+            <div class="cursos-card-media relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-rose-100 to-violet-100">
+              <img
+                src="public/cantos2.jpg"
+                alt=""
+                class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+              <span
+                class="cursos-card-badge absolute top-3 left-3 z-10 inline-flex items-center rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-wide"
+                >Ciclo 21 días</span
+              >
+            </div>
+            <div class="flex flex-1 flex-col px-4 py-3 sm:px-4 sm:py-3.5 text-left">
+              <h3
+                class="font-title text-lg sm:text-xl font-bold text-violet-950 leading-snug group-hover:text-fuchsia-900 transition-colors flex items-start gap-2.5"
+              >
+                <span
+                  class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-rose-200/70 bg-gradient-to-br from-rose-50 to-fuchsia-50 text-rose-600 mt-0.5"
+                  aria-hidden="true"
+                >
+                  <span class="material-icons text-[22px] leading-none">local_florist</span>
+                </span>
+                <span>Ciclo 21 días con María Magdalena</span>
+              </h3>
+              <p class="mt-2 text-sm text-violet-800/90 leading-snug line-clamp-2">
+                Activaciones diarias para volver al cuerpo y a la esencia, con la frecuencia de María Magdalena. Energía
+                femenina, corazón y campo grupal.
+              </p>
+              <p
+                class="cursos-card-price mt-2 inline-flex flex-wrap items-center gap-2 rounded-lg border-2 px-2.5 py-1.5 text-xs font-semibold text-violet-900"
+              >
+                <span class="material-icons text-amber-700 text-base shrink-0" aria-hidden="true">attach_money</span>
+                <span>22 € · 22 USD · $22.000 ARS</span>
+              </p>
+              <span
+                class="mt-auto pt-2.5 inline-flex items-center gap-1 text-sm font-bold text-fuchsia-700 group-hover:gap-2 transition-all"
+              >
+                Ver ciclo
+                <span class="material-icons text-lg">arrow_forward</span>
+              </span>
+            </div>
+          </a>
+          <a
+            href="taller-velo-sagrado.html"
+            class="cursos-card group flex h-full flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 focus-visible:ring-offset-fuchsia-50/80"
+          >
+            <div class="cursos-card-media relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-violet-100 to-fuchsia-100">
+              <img
+                src="public/danzacir.jpg"
+                alt=""
+                class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+              <span
+                class="cursos-card-badge absolute top-3 left-3 z-10 inline-flex items-center rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-wide"
+                >Taller</span
+              >
+            </div>
+            <div class="flex flex-1 flex-col px-4 py-3 sm:px-4 sm:py-3.5 text-left">
+              <h3
+                class="font-title text-lg sm:text-xl font-bold text-violet-950 leading-snug group-hover:text-fuchsia-900 transition-colors flex items-start gap-2.5"
+              >
+                <span
+                  class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-violet-200/70 bg-gradient-to-br from-violet-50 to-fuchsia-50 text-violet-600 mt-0.5"
+                  aria-hidden="true"
+                >
+                  <span class="material-icons text-[22px] leading-none">dehaze</span>
+                </span>
+                <span>El velo sagrado</span>
+              </h3>
+              <p class="mt-2 text-xs font-semibold text-fuchsia-800/90 leading-snug">
+                Intuición · Esencia femenina · Recordarte
+              </p>
+              <p class="mt-2 text-sm text-violet-800/90 leading-snug line-clamp-2">
+                Portal en el cuerpo: velo como regreso, no ocultamiento. Isis, Inanna, Rumi. Danza ritual, intuición y
+                escritura del alma. Cupos limitados — inscripción por WhatsApp.
+              </p>
+              <p
+                class="cursos-card-price mt-2 inline-flex flex-wrap items-center gap-2 rounded-lg border-2 px-2.5 py-1.5 text-xs font-semibold text-violet-900"
+              >
+                <span class="material-icons text-amber-700 text-base shrink-0" aria-hidden="true">attach_money</span>
+                <span>55 € · 55 USD · $55.000 ARS</span>
+              </p>
+              <span
+                class="mt-auto pt-2.5 inline-flex items-center gap-1 text-sm font-bold text-fuchsia-700 group-hover:gap-2 transition-all"
+              >
+                Ver taller
+                <span class="material-icons text-lg">arrow_forward</span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

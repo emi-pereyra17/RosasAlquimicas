@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="public/1.png" as="image" />
+    <link rel="icon" type="image/png" href="public/icon1.png" />
+    <title>RECORDARTE · Sentir tu esencia | Curso especial | Rosas Alquímicas</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Quicksand:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8B5CF6",
+              secondary: "#6D28D9",
+              "mystic-purple": "#2E1065",
+            },
+            fontFamily: {
+              display: ["Playfair Display", "serif"],
+              sans: ["Montserrat", "sans-serif"],
+              title: ["Quicksand", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .hero-bg {
+        background-image: url("public/1.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+      }
+      @media (max-width: 768px) {
+        .hero-bg {
+          background-attachment: scroll;
+        }
+      }
+      .cursos-page-bg {
+        background: linear-gradient(165deg, #fdf4ff 0%, #fae8ff 25%, #ede9fe 55%, #fff7ed 100%);
+      }
+      .taller-body {
+        text-wrap: pretty;
+      }
+    </style>
+  </head>
+  <body class="cursos-page-bg min-h-screen font-sans text-gray-800 antialiased">
+    <div class="fixed top-4 left-4 z-50 flex flex-wrap gap-2">
+      <a
+        href="index8.html"
+        class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/95 text-fuchsia-800 font-semibold shadow-lg border-2 border-fuchsia-300/80 text-sm hover:bg-gradient-to-r hover:from-violet-600 hover:to-fuchsia-600 hover:text-white hover:border-transparent transition-all"
+      >
+        <span class="material-icons text-lg">arrow_back</span>
+        Cursos y talleres
+      </a>
+    </div>
+
+    <header class="hero-bg relative pb-10 md:pb-14">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-amber-200/40 via-violet-200/35 to-fuchsia-100/90 pointer-events-none"
+      ></div>
+      <div
+        class="w-full max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-24 pb-8 relative z-10 text-center"
+      >
+        <p class="font-title text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-amber-800 mb-2">
+          Curso especial · Escuela Infinito
+        </p>
+        <div
+          class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border-2 border-amber-200/70 bg-gradient-to-br from-amber-100 to-fuchsia-100 shadow-md"
+          aria-hidden="true"
+        >
+          <span class="material-icons text-4xl text-amber-700">self_improvement</span>
+        </div>
+        <h1 class="font-title text-2xl sm:text-3xl md:text-4xl font-bold text-violet-950 leading-tight [text-wrap:balance]">
+          RECORDARTE · Sentir tu esencia
+        </h1>
+        <p class="mt-3 text-sm sm:text-base font-medium text-violet-800/95 max-w-xl mx-auto">
+          8 semanas · Naturaleza · Artes del templo · Canalización
+        </p>
+      </div>
+    </header>
+
+    <main class="w-full max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pb-20 md:pb-28 -mt-2 relative z-10">
+      <article
+        class="taller-body max-w-4xl mx-auto pt-2 md:pt-6 space-y-8 md:space-y-10 text-violet-900 leading-[1.65] text-base sm:text-[1.0625rem]"
+      >
+        <p
+          class="text-xl sm:text-2xl font-title font-semibold text-violet-950 leading-snug tracking-tight [text-wrap:balance]"
+        >
+          Un espacio dentro de la escuela especial donde, durante <strong class="font-bold text-violet-950">8 semanas</strong>,
+          te invito a una <strong class="font-bold text-violet-950">desprogramación natural</strong> en conexión con los
+          reinos, la naturaleza y prácticas concretas que te ayudarán en el desarrollo de la canalización.
+        </p>
+
+        <div
+          class="py-6 md:py-8 text-center bg-gradient-to-r from-amber-50/95 via-fuchsia-50/70 to-violet-50/80 rounded-xl border border-amber-200/60 px-4 sm:px-6 mb-2 md:mb-4"
+        >
+          <button
+            type="button"
+            data-inscripcion-modal
+            data-producto="RECORDARTE — Sentir tu esencia (Escuela Infinito)"
+            data-precio-badge="369 € · 369 USD · $369.000 ARS · Pago único del programa"
+            aria-haspopup="dialog"
+            class="inline-flex flex-col items-center justify-center gap-1 rounded-full bg-gradient-to-r from-amber-600 to-fuchsia-600 px-6 sm:px-10 py-3.5 sm:py-4 text-white font-bold text-sm shadow-lg hover:brightness-110 transition-all max-w-full"
+          >
+            <span class="leading-tight">Obtener curso</span>
+            <span class="text-xs font-semibold text-white/90 leading-tight text-center px-1"
+              >369 € · 369 USD · $369.000 ARS</span
+            >
+          </button>
+        </div>
+
+        <p class="text-violet-900/95">
+          Aquí tendremos como prácticas las <strong class="text-violet-950">Artes del templo</strong>: naturalmente te
+          acompaño a la escucha de tu cuerpo como <strong class="text-violet-950">casa</strong>, como
+          <strong class="text-violet-950">nueva forma</strong> de habitarlo.
+        </p>
+        <p class="text-violet-900/95">
+          Como <strong class="text-violet-950">aporte</strong> para revisar nuestra vida acelerada y ayudarnos a
+          centrarnos en bases sólidas que permitan reconocer y retornar a nuestra naturaleza divina.
+        </p>
+
+        <section class="rounded-xl border border-fuchsia-200/70 bg-white/50 px-4 py-4 sm:px-5 sm:py-5 space-y-2">
+          <h2 class="font-title text-base sm:text-lg font-bold text-violet-950 flex items-center gap-2">
+            <span class="material-icons text-amber-600 shrink-0" aria-hidden="true">flag</span>
+            Objetivo de la Escuela Infinito
+          </h2>
+          <p class="text-violet-900 text-sm sm:text-base leading-relaxed">
+            Generar una transformación acelerada en 8 semanas para manifestar <strong class="text-violet-950">autonomía</strong>
+            y <strong class="text-violet-950">gestión emocional</strong>.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="font-title text-lg sm:text-xl font-bold text-violet-950 flex items-center gap-3 pb-2 border-b border-fuchsia-200/60">
+            <span
+              class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-fuchsia-200/70 bg-gradient-to-br from-fuchsia-100/80 to-violet-100/80 text-violet-700 shadow-sm"
+              aria-hidden="true"
+            >
+              <span class="material-icons text-[22px] leading-none">auto_awesome</span>
+            </span>
+            Tu experiencia
+          </h2>
+          <p class="font-display italic text-fuchsia-900 font-medium">¿Qué incluye esta experiencia?</p>
+          <ul class="space-y-3 list-none">
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span><strong class="text-violet-950">8 clases</strong> de aproximadamente 2 horas cada una, en vivo por Zoom.</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span>Ser parte de la comunidad de alumnos por <strong class="text-violet-950">Telegram</strong>.</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span><strong class="text-violet-950">Acompañamiento consciente</strong> para tu práctica.</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span
+                ><strong class="text-violet-950">8 sintonizaciones</strong> de conexión: vivencia de tu cuerpo, la frecuencia
+                de las rosas, el cristal y los reinos. Haremos un escaneo de tu cuerpo — conexión con órganos y
+                articulaciones, movimiento consciente, danzas y respiraciones — para preparar el cuerpo para esa
+                transformación y alquimia.</span
+              >
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500" aria-hidden="true"></span>
+              <span
+                >Acceso a material para tus prácticas y sugerencia de recibir actualizaciones.
+                <strong class="text-violet-950">Aclaración:</strong> debido a que la frecuencia está cambiando, recibís el
+                material y <strong class="text-violet-950">te responsabilizás</strong> contigo para evolucionar y
+                actualizar.</span
+              >
+            </li>
+          </ul>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="font-title text-lg sm:text-xl font-bold text-violet-950 flex items-center gap-3 pb-2 border-b border-fuchsia-200/60">
+            <span
+              class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-amber-200/70 bg-amber-50/80 text-amber-700 shadow-sm"
+              aria-hidden="true"
+            >
+              <span class="material-icons text-[22px] leading-none">volunteer_activism</span>
+            </span>
+            ¿Qué vas a lograr?
+          </h2>
+          <p class="text-violet-900/95">
+            Es un <strong class="text-violet-950">curso programa</strong> donde se te invita a una
+            <strong class="text-violet-950">conexión diaria</strong> para ayudarte a desprogramarte y volver a vos: a la
+            naturaleza; al arte como conexión; la naturaleza como apoyo en la desmagnetización; la respiración como pulso
+            de vida; y sentir la frecuencia de tu corazón con la frecuencia Madre. Las rosas que ayudarán a la activación
+            del cristal nuevo en los <strong class="text-violet-950">cuánticos del corazón crístico</strong>.
+          </p>
+        </section>
+
+        <section
+          class="rounded-xl border border-amber-200/70 bg-gradient-to-br from-amber-50/90 to-fuchsia-50/50 px-4 py-4 sm:px-5 sm:py-5 space-y-2"
+        >
+          <h2 class="font-title text-base sm:text-lg font-bold text-violet-950 flex items-center gap-2">
+            <span class="material-icons text-amber-600 shrink-0" aria-hidden="true">attach_money</span>
+            Inversión
+          </h2>
+          <p class="text-violet-900 text-sm sm:text-base leading-relaxed">
+            <strong class="font-semibold text-violet-950">369 €</strong> (euros) ·
+            <strong class="font-semibold text-violet-950">369 USD</strong> ·
+            <strong class="font-semibold text-violet-950">$369.000</strong> ARS — pago único del programa completo (8
+            semanas; elegís una moneda).
+          </p>
+          <p class="text-sm text-violet-800/95">
+            Coordinamos el abono según la moneda que elijas en el proceso de inscripción.
+          </p>
+        </section>
+      </article>
+    </main>
+    <script src="public/js/inscripcion-modal.js" defer></script>
+  </body>
+</html>

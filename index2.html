@@ -80,6 +80,86 @@
       html {
         scroll-behavior: smooth;
       }
+      /* Detalle Camino de la Rosa: evita el tamaño global de <p> del sitio */
+      .camino-rosa-detalle p {
+        font-size: 1rem !important;
+        font-family: "Montserrat", "Lato", sans-serif !important;
+        line-height: 1.65 !important;
+        color: #374151 !important;
+      }
+      .dark .camino-rosa-detalle p {
+        color: #e5e7eb !important;
+      }
+      /* Card Camino de la Rosa — marco aurora + interior claro */
+      .camino-rosa-card {
+        position: relative;
+        border-radius: 1.5rem;
+        padding: 3px;
+        background: linear-gradient(
+          135deg,
+          #d4af37 0%,
+          #c0392b 38%,
+          #1abc9c 72%,
+          #b89b2c 100%
+        );
+        box-shadow:
+          0 20px 40px -12px rgba(180, 140, 100, 0.28),
+          0 0 0 1px rgba(255, 255, 255, 0.6),
+          inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      }
+      .camino-rosa-card::before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        border-radius: inherit;
+        background: radial-gradient(
+          ellipse 80% 60% at 50% -20%,
+          rgba(255, 200, 120, 0.35),
+          transparent 55%
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+      .camino-rosa-card-inner {
+        position: relative;
+        z-index: 1;
+        border-radius: calc(1.5rem - 3px);
+        overflow: hidden;
+        background: linear-gradient(165deg, #fffefb 0%, #fff8f2 38%, #faf5ff 100%);
+      }
+      .dark .camino-rosa-card-inner {
+        background: linear-gradient(165deg, #f5f0eb 0%, #faf6f0 45%, #f3f0fa 100%);
+      }
+      .camino-rosa-card-hero {
+        position: relative;
+        padding: 2rem 1.5rem 2.25rem;
+      }
+      @media (min-width: 640px) {
+        .camino-rosa-card-hero {
+          padding: 2.5rem 2rem 2.75rem;
+        }
+      }
+      .camino-rosa-card-hero::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(212, 175, 55, 0.35),
+          rgba(26, 188, 156, 0.3),
+          transparent
+        );
+      }
+      .camino-rosa-card-body {
+        background: linear-gradient(180deg, #faf6f0 0%, #f3ece4 100%);
+      }
+      .dark .camino-rosa-card-body {
+        background: linear-gradient(180deg, #133545 0%, #0f2832 100%);
+      }
       @media (max-width: 768px) {
         body.body-bg-fixed {
           background-attachment: scroll !important;
@@ -263,7 +343,126 @@
       "
     >
       <div class="max-w-5xl mx-auto px-6 space-y-16">
-        <div>
+        <div class="camino-rosa-card">
+          <div class="camino-rosa-card-inner">
+            <div class="camino-rosa-card-hero text-center max-w-3xl mx-auto">
+              <span
+                class="inline-flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-amber-200/90 bg-gradient-to-br from-rose-50 to-amber-50 text-primary shadow-md shadow-amber-900/10 mb-5"
+                aria-hidden="true"
+              >
+                <span class="material-symbols-outlined text-4xl text-primary">local_florist</span>
+              </span>
+              <p
+                class="text-xs sm:text-sm uppercase tracking-[0.2em] font-bold text-teal-accent mb-3"
+                style="font-family: 'Montserrat', sans-serif"
+              >
+                Escuela · Membresía anual
+              </p>
+              <h2
+                class="text-xl sm:text-2xl md:text-[1.4rem] lg:text-2xl font-serif font-bold leading-snug [text-wrap:balance] text-gray-900 dark:text-stone-900"
+                style="font-family: 'Playfair Display', serif"
+              >
+                El Camino de la Rosa, Escuela Academia para acompañar el recuerdo y la toma de conciencia amorosamente
+              </h2>
+              <button
+                type="button"
+                data-inscripcion-modal
+                data-producto="El Camino de la Rosa — Escuela Academia (membresía anual)"
+                data-precio-badge="33 € · 33 USD · $33.000 ARS · Pago único anual"
+                aria-haspopup="dialog"
+                class="mt-8 inline-flex flex-col items-center justify-center gap-1 rounded-full bg-gradient-to-br from-violet-600 via-fuchsia-600 to-purple-700 px-8 py-4 text-white font-extrabold shadow-lg shadow-violet-900/25 hover:scale-[1.03] transition-transform border-2 border-white/90 min-w-[16rem]"
+                style="font-family: 'Montserrat', sans-serif"
+              >
+                <span class="inline-flex items-center gap-2 text-sm uppercase tracking-wider">
+                  <span class="material-symbols-outlined text-xl" aria-hidden="true">shopping_bag</span>
+                  Obtener membresía
+                </span>
+                <span class="text-xs font-bold text-white/95 tracking-wide normal-case"
+                  >33 € · 33 USD · $33.000 ARS</span
+                >
+              </button>
+            </div>
+            <div class="camino-rosa-card-body">
+              <div
+                class="camino-rosa-detalle px-5 py-8 sm:px-8 sm:py-10 space-y-5 text-gray-800 dark:text-gray-200 border-t border-amber-900/10 dark:border-white/10"
+                style="font-family: 'Montserrat', sans-serif"
+              >
+            <h3
+              class="text-xl sm:text-2xl font-serif font-bold text-stone-900 dark:text-white leading-snug"
+              style="font-family: 'Playfair Display', serif"
+            >
+              ¿Para qué este año comenzamos con El Camino de la Rosa como escuela?
+            </h3>
+            <p class="leading-relaxed font-semibold text-[0.95rem] sm:text-base">
+              Se ha pedido un <strong class="text-stone-900 dark:text-amber-100">foco</strong> y un
+              <strong class="text-stone-900 dark:text-amber-100">sostén</strong> este año para ordenar la información y
+              <strong class="text-stone-900 dark:text-amber-100">recordarnos</strong>: tener un espacio nutrido que permita
+              <strong class="text-stone-900 dark:text-amber-100">transformar tu realidad</strong> de forma real y significativa,
+              con prácticas aplicables en lo cotidiano.
+            </p>
+            <p class="leading-relaxed font-semibold text-[0.95rem] sm:text-base">
+              Recordar tu esencia y vivir desde ella, alquimizando las creencias y vivenciando en grupo —como es más
+              fácil—: <strong class="text-stone-900 dark:text-amber-100">co-creamos un campo cuántico consciente de rosas</strong>.
+            </p>
+            <p class="leading-relaxed font-semibold text-[0.95rem] sm:text-base">
+              Conectar con tus <strong class="text-stone-900 dark:text-amber-100">memorias del alma</strong>: reconocerlas,
+              sanarlas y potenciarlas; vivenciando el arte como vínculo y explorando que es más fácil en comunidad.
+            </p>
+            <p class="leading-relaxed font-semibold text-[0.95rem] sm:text-base">
+              Aprender sobre tu mente, creencias y emociones y liberarte de patrones repetitivos.
+            </p>
+            <p class="leading-relaxed font-semibold text-[0.95rem] sm:text-base">
+              Explorar la <strong class="text-stone-900 dark:text-amber-100">Consciencia</strong>, los diferentes
+              <strong class="text-stone-900 dark:text-amber-100">guías</strong>, la
+              <strong class="text-stone-900 dark:text-amber-100">conexión con el llamado</strong>, la
+              <strong class="text-stone-900 dark:text-amber-100">Misión crística</strong>, la guía de la
+              <strong class="text-stone-900 dark:text-amber-100">convergencia armónica</strong>, Kryon, los pleyadianos y las
+              <strong class="text-stone-900 dark:text-amber-100">razas cósmicas</strong>; la conexión con las
+              <strong class="text-stone-900 dark:text-amber-100">ciudades de luz</strong> y la labor de las
+              <strong class="text-stone-900 dark:text-amber-100">guardianas de las frecuencias</strong> para desmagnetizar y
+              volver al <strong class="text-stone-900 dark:text-amber-100">neutro</strong>, trayéndolo a tu experiencia
+              presente.
+            </p>
+            <p class="leading-relaxed font-semibold text-[0.95rem] sm:text-base">
+              Integrarte en cuerpo, mente, alma, contexto, Tierra y Universo, viviendo la
+              <strong class="text-stone-900 dark:text-amber-100">Consciencia de Unidad</strong>. Explorar y familiarizarte con
+              el uso de la <strong class="text-stone-900 dark:text-amber-100">energía</strong> para armonizarnos en los
+              ambientes y en los lugares de la Tierra; armonizarnos con el uso diario del
+              <strong class="text-stone-900 dark:text-amber-100">canto</strong> y el
+              <strong class="text-stone-900 dark:text-amber-100">movimiento</strong>, haciéndolo simple y muy efectivo.
+            </p>
+            <p class="leading-relaxed font-semibold text-[0.95rem] sm:text-base">
+              Acceder a una nueva forma de educación, donde aprender es
+              <strong class="text-stone-900 dark:text-amber-100">darte</strong> este espacio compartido nutrido que te
+              <strong class="text-stone-900 dark:text-amber-100">permita</strong> recordar lo que ya sos.
+            </p>
+            <div
+              class="rounded-xl border-2 border-gold/50 bg-gradient-to-br from-amber-50/90 to-fuchsia-50/40 dark:from-surface-dark dark:to-surface-dark p-5 sm:p-6 mt-6"
+            >
+              <p
+                class="font-serif font-bold text-stone-900 dark:text-white mb-3 text-lg"
+                style="font-family: 'Playfair Display', serif"
+              >
+                Modalidad del Camino y de la escuela
+              </p>
+              <ul class="space-y-2 list-none pl-0 text-[0.95rem] sm:text-base font-semibold leading-relaxed">
+                <li class="flex gap-2 items-start">
+                  <span class="text-gold shrink-0 mt-1" aria-hidden="true">✦</span>
+                  <span><strong>Membresía abierta</strong> y <strong>comunidad gratuita</strong>.</span>
+                </li>
+                <li class="flex gap-2 items-start">
+                  <span class="text-gold shrink-0 mt-1" aria-hidden="true">✦</span>
+                  <span
+                    ><strong>Membresía anual:</strong> 33 USD · 33 € · $33.000 ARS (elegís una moneda).</span
+                  >
+                </li>
+              </ul>
+            </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pt-10 md:pt-14 border-t border-gold/25">
           <h2
             class="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-6"
           >
@@ -1103,5 +1302,6 @@
         </div>
       </div>
     </footer>
+    <script src="public/js/inscripcion-modal.js" defer></script>
   </body>
 </html>
