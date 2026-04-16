@@ -76,9 +76,10 @@
       '<div class="rosas-imodal-step">' +
       '<span class="rosas-imodal-num" aria-hidden="true">1</span>' +
       '<div class="rosas-imodal-step-body">' +
-      '<p class="rosas-imodal-step-p" style="margin-bottom:0.65rem">Con Mercado Pago podés usar diferentes medios de pago.</p>' +
-      '<a id="rosas-imodal-mp" class="rosas-imodal-btn-mp" href="#" target="_blank" rel="noopener noreferrer">👉 Pagar con Mercado Pago</a>' +
-      '<p class="rosas-imodal-link-transfer">¿Preferís transferencia? <a id="rosas-imodal-transfer" href="#">Hacé clic acá</a></p>' +
+      '<h3 class="rosas-imodal-step-title">Elegí tu forma de pago</h3>' +
+      '<p class="rosas-imodal-step-p" style="margin-bottom:0.65rem"><strong>Pesos argentinos (ARS):</strong> Mercado Pago te permite usar diferentes medios de pago.</p>' +
+      '<a id="rosas-imodal-mp" class="rosas-imodal-btn-mp" href="#" target="_blank" rel="noopener noreferrer">👉 Pagar con Mercado Pago (ARS)</a>' +
+      '<p class="rosas-imodal-step-p" style="margin-top:1rem;margin-bottom:0rem"><strong>Euros (€) o dólares (USD):</strong> Escribile a Carla por WhatsApp para coordinar el pago.</p>' +
       "</div></div>" +
       '<div class="rosas-imodal-step">' +
       '<span class="rosas-imodal-num" aria-hidden="true">2</span>' +
@@ -166,7 +167,6 @@
     var mpA = document.getElementById("rosas-imodal-mp");
     mpA.href = mpUrl || mpFallbackWa(producto);
 
-    document.getElementById("rosas-imodal-transfer").href = transferMailto(producto);
     document.getElementById("rosas-imodal-wa").href = waUrl(producto);
 
     overlay.removeAttribute("hidden");
