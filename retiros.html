@@ -1,0 +1,2208 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="public/1.png" as="image" />
+    <link rel="icon" type="image/png" href="public/icon1.png" />
+    <link rel="stylesheet" href="public/css/site-perf.css" />
+    <title>Retiros | Rosas Alquímicas</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Quicksand:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8B5CF6",
+              secondary: "#6D28D9",
+              accent: "#C4B5FD",
+              "background-light": "#F9FAFB",
+              "background-dark": "#0B0915",
+              "mystic-purple": "#2E1065",
+              "deep-violet": "#1e0b36",
+              "soft-lilac": "#E9D5FF",
+            },
+            fontFamily: {
+              display: ["Playfair Display", "serif"],
+              sans: ["Montserrat", "sans-serif"],
+              title: ["Quicksand", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .hero-bg {
+        background-image: url("public/1.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+      }
+      @media (max-width: 768px) {
+        .hero-bg {
+          background-attachment: scroll;
+        }
+      }
+      .rose-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        opacity: 0.1;
+        mix-blend-mode: soft-light;
+        pointer-events: none;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      section img {
+        cursor: zoom-in;
+      }
+      .img-lightbox-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(15, 5, 35, 0.92);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.25s ease, visibility 0.25s;
+        cursor: zoom-out;
+      }
+      .img-lightbox-backdrop.is-open {
+        opacity: 1;
+        visibility: visible;
+      }
+      .img-lightbox-backdrop img {
+        max-width: min(96vw, 1200px);
+        max-height: 90vh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        border-radius: 0.75rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+        cursor: default;
+      }
+      .img-lightbox-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 10000;
+        width: 44px;
+        height: 44px;
+        border: none;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.95);
+        color: #5b21b6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      }
+      .img-lightbox-close:hover {
+        background: #fff;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-sans text-gray-800 dark:text-gray-100 antialiased selection:bg-primary selection:text-white"
+  >
+    <!-- Botón volver a menú principal y enlace Sobre mí -->
+    <div class="fixed top-4 left-4 z-50 flex flex-wrap items-center gap-2">
+      <a
+        href="rosas-alquimicas.html"
+        class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/90 dark:bg-mystic-purple/90 text-primary font-semibold shadow-lg border border-primary/30 text-sm hover:bg-primary hover:text-white transition-all duration-300 backdrop-blur-sm"
+      >
+        <span class="material-icons text-lg">arrow_back</span>
+        Volver a menú principal
+      </a>
+    </div>
+
+    <!-- Primera sección: mismo fondo y estilo que rosas-alquimicas.html -->
+    <header
+      class="hero-bg min-h-[600px] flex items-center justify-center relative overflow-hidden"
+    >
+      <div class="container mx-auto px-6 py-20 text-center relative z-10 pt-24">
+        <span
+          class="block font-display text-xl md:text-2xl italic mb-4 text-y pink-700 tracking-wider drop-shadow-[0_2px_2px_rgba(255,255,255,0.7)]"
+          >Retiros vivenciales</span
+        >
+        <h1
+          class="font-title text-5xl md:text-7xl lg:text-8xl font-bold mb-8 text-fuchsia-700 drop-shadow-xl leading-tight"
+        >
+          Próximos retiros <br />
+          <span
+            class="text-3xl md:text-5xl font-light text-pink-500 block mt-4 font-sans tracking-widest uppercase border-t border-pink-300 inline-block pt-4 drop-shadow-md"
+            >(2026)</span
+          >
+        </h1>
+        <p
+          class="text-lg md:text-xl max-w-3xl mx-auto text-fuchsia-800 font-light leading-relaxed drop-shadow-md bg-white/70 backdrop-blur-sm p-4 rounded-xl border border-pink-200"
+        >
+          Lugares de poder para reconectar con la Tierra, el alma y la labor
+          planetaria desde el Amor y la Unidad.
+        </p>
+        <p class="mt-4 text-sm text-fuchsia-700/90 font-medium tracking-wide">
+          Avalon · Sur de Francia
+        </p>
+
+        <!-- Texto introductorio: Retiros en Lugares de Poder -->
+        <div
+          class="mt-12 md:mt-16 max-w-3xl mx-auto text-left md:text-center bg-white/75 dark:bg-mystic-purple/40 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-pink-200/80 dark:border-primary/30 shadow-xl"
+        >
+          <h2
+            class="font-display text-2xl md:text-3xl font-semibold text-fuchsia-800 dark:text-soft-lilac mb-5 tracking-wide"
+          >
+            Retiros en Lugares de Poder
+          </h2>
+          <div
+            class="space-y-4 text-fuchsia-800/95 dark:text-gray-200 text-base md:text-lg leading-relaxed font-light"
+          >
+            <p>
+              Nuestros retiros se realizan en distintos lugares de poder
+              energético del planeta, espacios que nos invitan a recalibrar el
+              cuerpo físico, emocional y espiritual. Son encuentros donde
+              recordamos quiénes somos en esencia y activamos nuestros dones
+              desde el amor, trayéndolos al presente para poder Ser y caminar la
+              vida que sentimos desplegar.
+            </p>
+            <p>
+              Cada retiro es una iniciación en unidad. No buscamos regresar al
+              pasado, sino integrar su sabiduría para vivir plenamente el ahora.
+              Sabemos que al transformar nuestra energía, transformamos nuestra
+              vida y la de quienes nos rodean.
+            </p>
+            <p>
+              En cada lugar cantamos, danzamos y elevamos un rezo en alegría,
+              permitiendo que el corazón se abra en espiral hacia el corazón de
+              la Tierra y en resonancia con las estrellas. Así activamos la
+              unidad del cuerpo como templo, vehículo de amor.
+            </p>
+            <p class="pt-2">
+              El camino del Ser Crístico forma parte de esta travesía, un
+              sendero de conciencia y apertura dentro del Camino de la Rosa. 🌹
+            </p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Retiro: Avalon (Inglaterra) - mismo fondo que la primera sección -->
+    <section class="hero-bg relative py-20 px-6">
+      <div
+        class="absolute inset-0 w-full h-full z-0"
+        style="
+          background: rgba(255, 255, 255, 0.28);
+          backdrop-filter: blur(1px);
+        "
+        aria-hidden="true"
+      ></div>
+      <div class="container mx-auto max-w-4xl relative z-10">
+        <div class="text-center mb-14">
+          <span
+            class="text-primary font-bold tracking-widest text-sm uppercase mb-2 block"
+            style="color: #2e1065"
+          >
+            Inglaterra</span
+          >
+          <h2
+            class="font-display text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg"
+            style="color: #1e0b36"
+          >
+            Avalon – Isla de la Diosa
+          </h2>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent mx-auto"
+          ></div>
+        </div>
+
+        <div
+          class="prose prose-lg max-w-none font-sans text-gray-700 dark:text-gray-300"
+        >
+          <p
+            class="text-lg leading-relaxed mb-8 font-medium"
+            style="color: #1e0b36"
+          >
+            <strong>Reconexión de las Hermandades.</strong> La Ciudad de Luz en
+            quinta dimensión abre sus puertas en este nuevo momento. Se activa
+            el llamado para reunir a las almas que sienten en el corazón la
+            frecuencia de la Nueva Tierra. Un espacio donde los reinos
+            elementales vibran en amor, unidad y empatía; donde se abre el
+            sentir para integrar los registros que viven en nosotros y ser
+            íntegros en la labor de Amor, Conexión y Unidad interna. Estás
+            invitada/o a re-cor-dar-te con danzas y cantos que nos elevan en
+            esta bendita Tierra.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 my-10 max-w-md mx-auto">
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300 col-span-2 flex justify-center"
+            >
+              <div class="w-full max-w-sm">
+                <img
+                  src="public/avalon/av1.jpg"
+                  alt="Avalon – Retiro"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 my-10">
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/avalon/20250614_093154.jpg"
+                alt="Avalon – Retiro"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/avalon/20250614_093651.jpg"
+                alt="Avalon – Retiro"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="col-span-2 flex justify-center">
+              <div
+                class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300 w-full max-w-md"
+              >
+                <img
+                  src="public/avalon/20250614_122741.jpg"
+                  alt="Avalon – Retiro"
+                  class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <p
+            class="text-lg leading-relaxed mb-8 font-medium"
+            style="color: #1e0b36"
+          >
+            <strong>Reconfiguración de los Templos.</strong> Unidas al Corazón
+            de la Tierra y al Corazón Cósmico, exploraremos el lenguaje del Alma
+            Femenina, los Cuerpos-Templo y los Cuerpos-Grial. El corazón de la
+            Ciudad de Luz nos convoca a un nuevo pulso: caminar de manera
+            sagrada, conservando la gracia recibida en conciencia y retomando la
+            conexión con el Poder Divino. Camino Crístico de la Rosa, celebrando
+            la espiritualidad de la Gran Madre para restaurar la paz y la
+            armonía del territorio-alma.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 my-10">
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/avalon/av2.jpg"
+                alt="Avalon – Retiro"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/avalon/av3.jpg"
+                alt="Avalon – Retiro"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 my-10">
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/avalon/20250614_122745.jpg"
+                alt="Avalon – Retiro"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/avalon/photo_5069139717110477349_y.jpg"
+                alt="Avalon – Retiro"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="col-span-2 flex justify-center">
+              <div
+                class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300 w-full max-w-md"
+              >
+                <img
+                  src="public/avalon/photo_5066620735971241792_y.jpg"
+                  alt="Avalon – Retiro"
+                  class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <p
+            class="text-lg leading-relaxed mb-8 font-medium"
+            style="color: #1e0b36"
+          >
+            <strong>Puntos de pulso sagrados.</strong> Torre de Tor, Chalice
+            Well, La Abadía, Capilla de María Magdalena, Stonehenge, Avebury,
+            Crop Circles y excursión a Tintagel – Cueva de Merlín. Son lugares
+            de unión, resonancia y memoria que acompañan, asisten y amplifican
+            cada conexión y cada toma de conciencia.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 my-10 max-w-md mx-auto">
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300 col-span-2 flex justify-center"
+            >
+              <div class="w-full max-w-sm">
+                <img
+                  src="public/avalon/av4.jpg"
+                  alt="Avalon – Retiro"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 my-10">
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/avalon/photo_5066620735971241793_y.jpg"
+                alt="Avalon – Retiro"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/avalon/photo_5069139717110477330_y.jpg"
+                alt="Avalon – Retiro"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="col-span-2 flex justify-center">
+              <div
+                class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300 w-full max-w-md"
+              >
+                <img
+                  src="public/avalon/photo_5069139717110477333_y.jpg"
+                  alt="Avalon – Retiro"
+                  class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <p
+            class="text-lg leading-relaxed mb-8 font-medium"
+            style="color: #1e0b36"
+          >
+            <strong>El retiro vivencial</strong> incluye meditaciones, danzas
+            rituales, activaciones en conciencia, reconexión con los fractales
+            de nuestros cuerpos, integración con los cuerpos sutiles y con los
+            cuerpos de la Tierra, y el despertar de nuestra Diosa interna desde
+            el Servicio, la Devoción y la Unidad. Las Rosas Alquímicas nos
+            acompañarán en la transformación y alineación hacia la labor de la
+            Nueva Tierra desde la mágica Isla de Avalon.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 my-10">
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/avalon/av5.jpg"
+                alt="Avalon – Retiro"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/avalon/av6.jpg"
+                alt="Avalon – Retiro"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 my-10">
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/avalon/photo_5069139717110477335_y.jpg"
+                alt="Avalon – Retiro"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/avalon/photo_5069139717110477340_y.jpg"
+                alt="Avalon – Retiro"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="col-span-2 flex justify-center">
+              <div
+                class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300 w-full max-w-md"
+              >
+                <img
+                  src="public/avalon/photo_5069139717110477341_y.jpg"
+                  alt="Avalon – Retiro"
+                  class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <p
+            class="text-lg leading-relaxed mb-8 font-medium"
+            style="color: #1e0b36"
+          >
+            Quienes decidan asistir han sido llamadas: sienten la resonancia, el
+            compromiso y la entrega amorosa de reconocer Avalon dentro. Serán
+            días intensivos de retiro como conectoras de las redes invisibles
+            que resuenan en los corazones, en conexión con los reinos sutiles,
+            para retomar el guardianaje de la Nueva Tierra. La preparación
+            energética individual es parte de la labor grupal; en cada encuentro
+            tu transformación queda disponible en el campo para que otros
+            hermanos puedan acceder a ella. En esta labor planetaria
+            contribuimos con Lady Gaia desde el amor, el gozo y la vida.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 my-10 max-w-md mx-auto">
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300 col-span-2 flex justify-center"
+            >
+              <div class="w-full max-w-sm">
+                <img
+                  src="public/avalon/av7.jpg"
+                  alt="Avalon – Retiro"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 my-10 max-w-2xl mx-auto">
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/avalon/photo_5069139717110477348_y.jpg"
+                alt="Avalon – Retiro"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/avalon/photo_5069139717110477352_y.jpg"
+                alt="Avalon – Retiro"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Peregrinaje al Sur de Francia -->
+    <section class="hero-bg relative py-20 px-6">
+      <div
+        class="absolute inset-0 w-full h-full z-0"
+        style="
+          background: rgba(255, 255, 255, 0.28);
+          backdrop-filter: blur(1px);
+        "
+        aria-hidden="true"
+      ></div>
+      <div class="container mx-auto max-w-4xl relative z-10">
+        <div class="text-center mb-14">
+          <span
+            class="text-primary font-bold tracking-widest text-sm uppercase mb-2 block"
+            style="color: #2e1065"
+          >
+            Francia</span
+          >
+          <h2
+            class="font-display text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg"
+            style="color: #1e0b36"
+          >
+            Peregrinaje al Sur de Francia
+          </h2>
+          <p
+            class="text-lg md:text-xl font-medium italic max-w-2xl mx-auto mb-4"
+            style="color: #4c1d95"
+          >
+            Frecuencia de Magdalenas y Marías. Un Camino de Iniciación, Memoria
+            y Amor Valiente
+          </p>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent mx-auto"
+          ></div>
+        </div>
+
+        <div
+          class="prose prose-lg max-w-none font-sans text-gray-700 dark:text-gray-300"
+        >
+          <p
+            class="text-lg leading-relaxed mb-8 font-medium"
+            style="color: #1e0b36"
+          >
+            Hay viajes que no se eligen con la mente.<br />
+            Hay viajes que recuerdan quién eres.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 my-10">
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_4996771150260450108_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-contain hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_4996771150260450109_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="col-span-2 flex justify-center">
+              <div
+                class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300 w-full max-w-md"
+              >
+                <img
+                  src="public/francia/photo_4996771150260450114_y.jpg"
+                  alt="Peregrinaje Sur de Francia"
+                  class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <p
+            class="text-lg leading-relaxed mb-8 font-medium"
+            style="color: #1e0b36"
+          >
+            Te invitamos a un peregrinaje consciente por el Sur de Francia, por
+            las tierras donde la Frecuencia Crística permanece viva como memoria
+            del corazón, y donde las energías de María Magdalena y las Marías
+            siguen encendiendo el recuerdo del Amor encarnado.
+          </p>
+
+          <p
+            class="text-lg leading-relaxed mb-8 font-medium"
+            style="color: #1e0b36"
+          >
+            Este no es un retiro para aislarse del mundo.<br />
+            Es un Camino para recordarte, para volver a tu poder amoroso y
+            habitar tu cuerpo como canal vivo de conciencia.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 my-10">
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_4996771150260450117_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_4997169852074537104_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="col-span-2 flex justify-center">
+              <div
+                class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300 w-full max-w-md"
+              >
+                <img
+                  src="public/francia/photo_4997169852074537105_y.jpg"
+                  alt="Peregrinaje Sur de Francia"
+                  class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <p
+            class="text-lg leading-relaxed mb-8 font-medium"
+            style="color: #1e0b36"
+          >
+            Aquí no recibirás una iniciación externa.<br />
+            La iniciación la realizarás tú misma, al sintonizar con una
+            Frecuencia Mayor, sostenida por: la cuántica del grupo, la vibración
+            de los lugares sagrados, y la coherencia del corazón en presencia.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 my-10">
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_5001346407122185817_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_5003801741141061220_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="col-span-2 flex justify-center">
+              <div
+                class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300 w-full max-w-md"
+              >
+                <img
+                  src="public/francia/photo_5003801741141061222_y.jpg"
+                  alt="Peregrinaje Sur de Francia"
+                  class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <h3
+            class="font-display text-2xl font-bold mt-12 mb-4"
+            style="color: #2e1065"
+          >
+            Un viaje que se crea en comunión
+          </h3>
+          <p
+            class="text-lg leading-relaxed mb-8 font-medium"
+            style="color: #1e0b36"
+          >
+            Caminaremos por territorios que emiten códigos vivos. Códigos que
+            cada una de las Mujeres de Amor está siendo llamada a recordar.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 my-10">
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_5014954804841131454_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_5014954804841131455_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="col-span-2 flex justify-center">
+              <div
+                class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300 w-full max-w-md"
+              >
+                <img
+                  src="public/francia/photo_5014954804841131456_y.jpg"
+                  alt="Peregrinaje Sur de Francia"
+                  class="w-full h-40 md:h-60 object-contain hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <p
+            class="text-lg leading-relaxed mb-8 font-medium"
+            style="color: #1e0b36"
+          >
+            No es un viaje de llanto ni de victimización.<br />
+            Es un viaje de valentía, verdad y Amor consciente.<br />
+            Un viaje para ver tu verdad, abrazarla y emitirla al mundo.
+          </p>
+          <p
+            class="text-lg leading-relaxed mb-8 font-medium"
+            style="color: #1e0b36"
+          >
+            Quizás ya has estado aquí, en otro tiempo. Quizás esta sea una nueva
+            oportunidad de compartirlo desde otro lugar. O tal vez no sabes de
+            qué hablamos… y aun así, algo en tu alma reconoce el llamado.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 my-10">
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_5014954804841131458_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-contain hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_5014954804841131462_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="col-span-2 flex justify-center">
+              <div
+                class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300 w-full max-w-md"
+              >
+                <img
+                  src="public/francia/photo_5014954804841131466_y.jpg"
+                  alt="Peregrinaje Sur de Francia"
+                  class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <h3
+            class="font-display text-2xl font-bold mt-12 mb-4"
+            style="color: #2e1065"
+          >
+            Para mujeres que sienten el llamado del alma
+          </h3>
+          <p
+            class="text-lg leading-relaxed mb-8 font-medium"
+            style="color: #1e0b36"
+          >
+            Tal vez meditas. Tal vez acompañas círculos, rezas, sostienes
+            espacios de oración. Y aun así, sientes que faltaba algo: integrar
+            el cuerpo, caminar juntas, respirar la Tierra, amar en comunión con
+            otras hermanas y con la naturaleza viva.
+          </p>
+          <p
+            class="text-lg leading-relaxed mb-8 font-medium"
+            style="color: #1e0b36"
+          >
+            Tal vez este año tu alma te pide dar un paso más. Resignificar el
+            Amor. Encarnarlo. Vivirlo.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 my-10">
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_5866377898850633732_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover object-[center_20%] hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_5866377898850633733_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover object-[center_20%] hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="col-span-2 flex justify-center">
+              <div
+                class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300 w-full max-w-md"
+              >
+                <img
+                  src="public/francia/photo_5866377898850633736_y.jpg"
+                  alt="Peregrinaje Sur de Francia"
+                  class="w-full h-40 md:h-60 object-cover object-[center_20%] hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <h3
+            class="font-display text-2xl font-bold mt-12 mb-4"
+            style="color: #2e1065"
+          >
+            La invitación
+          </h3>
+          <p
+            class="text-lg leading-relaxed mb-8 font-medium italic"
+            style="color: #1e0b36"
+          >
+            Ella nos dice:
+          </p>
+          <p
+            class="text-lg leading-relaxed mb-8 font-medium"
+            style="color: #1e0b36"
+          >
+            Respira, alma hermana. Respira… y siente tu presencia en cada paso.
+            Intégrala. Dale el valor de quien eres.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 my-10">
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_5866377898850633742_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover object-[center_20%] hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_5866377898850633745_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover object-[center_20%] hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="col-span-2 flex justify-center">
+              <div
+                class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300 w-full max-w-md"
+              >
+                <img
+                  src="public/francia/photo_5868629698664319261_y.jpg"
+                  alt="Peregrinaje Sur de Francia"
+                  class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <p
+            class="text-lg leading-relaxed mb-8 font-medium"
+            style="color: #1e0b36"
+          >
+            Esa será la vibración que co-crearemos juntas: un
+            reza-danzado-cantado, una cuántica amorosa sostenida por la
+            presencia, para anclarnos en la Nueva Tierra que ya está naciendo en
+            nosotras.
+          </p>
+          <p
+            class="text-lg leading-relaxed mb-8 font-medium"
+            style="color: #1e0b36"
+          >
+            Si este llamado resuena, no lo pienses demasiado. Escúchalo.<br />
+            El Camino ya te reconoce 💗
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 my-10 max-w-3xl mx-auto">
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_5868629698664319262_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_5868629698664319264_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover object-[center_20%] hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_5868629698664319266_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_5868629698664319268_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_5868629698664319269_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src="public/francia/photo_5868629698664319272_y.jpg"
+                alt="Peregrinaje Sur de Francia"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="col-span-2 flex justify-center">
+              <div
+                class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-shadow duration-300 w-full max-w-md"
+              >
+                <img
+                  src="public/francia/photo_5868629698664319274_y.jpg"
+                  alt="Peregrinaje Sur de Francia"
+                  class="w-full h-40 md:h-60 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Retiros que ya se hicieron (recopilación) -->
+    <section class="hero-bg relative py-20 px-6" id="retiros-realizados">
+      <div
+        class="absolute inset-0 w-full h-full z-0"
+        style="
+          background: rgba(255, 255, 255, 0.28);
+          backdrop-filter: blur(1px);
+        "
+        aria-hidden="true"
+      ></div>
+      <div class="container mx-auto max-w-6xl relative z-10">
+        <div class="text-center mb-16">
+          <span
+            class="text-primary font-bold tracking-widest text-sm uppercase mb-2 block"
+            style="color: #2e1065"
+          >
+            Recopilación</span
+          >
+          <h2
+            class="font-display text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg"
+            style="color: #1e0b36"
+          >
+            Retiros que ya se hicieron
+          </h2>
+          <p
+            class="text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed"
+            style="color: #4c1d95"
+          >
+            Cada retiro vivido deja una semilla. Aquí recopilamos momentos de
+            encuentros ya realizados en lugares de poder: donde el cuerpo se
+            honra como templo y la memoria antigua se despierta como pozo de
+            agua viva.
+          </p>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent mx-auto mt-6"
+          ></div>
+        </div>
+
+        <!-- Cerdeña, Italia -->
+        <div class="mb-4">
+          <h3
+            class="font-display text-2xl md:text-3xl font-bold text-center mb-2"
+            style="color: #2e1065"
+          >
+            Cerdeña, Italia
+          </h3>
+          <p
+            class="text-center text-base md:text-lg font-medium max-w-2xl mx-auto mb-10"
+            style="color: #5b21b6"
+          >
+            Cuerpos templos · Pozos de Agua atlante · Preparación cuerpo de
+            Diosa Argentum
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4"
+        >
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/cerdeña/c1.jpg"
+              alt="Retiro Cerdeña — Cuerpos templos"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/cerdeña/c2.jpg"
+              alt="Retiro Cerdeña — Pozos de Agua atlante"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/cerdeña/c3.jpg"
+              alt="Retiro Cerdeña — Preparación cuerpo de Diosa"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/cerdeña/c4.jpg"
+              alt="Retiro Cerdeña"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/cerdeña/c5.jpg"
+              alt="Retiro Cerdeña"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/cerdeña/c6.jpg"
+              alt="Retiro Cerdeña"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/cerdeña/c7.jpg"
+              alt="Retiro Cerdeña"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/cerdeña/c8.jpg"
+              alt="Retiro Cerdeña"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/cerdeña/c9.jpg"
+              alt="Retiro Cerdeña"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] sm:col-start-2 lg:col-start-auto"
+          >
+            <img
+              src="public/cerdeña/c10.jpg"
+              alt="Retiro Cerdeña"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        </div>
+
+        <!-- Montserrat, España -->
+        <div class="mt-20 mb-4">
+          <h3
+            class="font-display text-2xl md:text-3xl font-bold text-center mb-2"
+            style="color: #2e1065"
+          >
+            Montserrat, España
+          </h3>
+          <p
+            class="text-center text-base md:text-lg font-medium max-w-2xl mx-auto mb-10"
+            style="color: #5b21b6"
+          >
+            Camino del nuevo Dragón · Recodificación Sara · Familia Crística
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto"
+        >
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 bg-black/5 flex items-center justify-center"
+          >
+            <video
+              src="public/monserrat/m1.mp4"
+              class="w-full h-auto max-h-[400px] object-contain"
+              controls
+              preload="metadata"
+              playsinline
+              aria-label="Retiro Montserrat — Camino del nuevo Dragón"
+            >
+              Tu navegador no soporta la reproducción de video.
+            </video>
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/monserrat/m2.jpg"
+              alt="Montserrat, España — Retiro Camino del nuevo Dragón"
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              class="w-full h-auto min-h-[200px] object-contain hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        </div>
+
+        <!-- Pirineos catalanes -->
+        <div class="mt-20 mb-4">
+          <h3
+            class="font-display text-2xl md:text-3xl font-bold text-center mb-2"
+            style="color: #2e1065"
+          >
+            Pirineos catalanes
+          </h3>
+          <p
+            class="text-center text-base md:text-lg font-medium max-w-2xl mx-auto mb-10"
+            style="color: #5b21b6"
+          >
+            Retiro de un día
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4"
+        >
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/pirineos/p1.jpg"
+              alt="Retiro Pirineos catalanes"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/pirineos/p2.jpg"
+              alt="Retiro Pirineos catalanes"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/pirineos/p3.jpg"
+              alt="Retiro Pirineos catalanes"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/pirineos/p4.jpg"
+              alt="Retiro Pirineos catalanes"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/pirineos/p5.jpg"
+              alt="Retiro Pirineos catalanes"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/pirineos/p6.jpg"
+              alt="Retiro Pirineos catalanes"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/pirineos/p7.jpg"
+              alt="Retiro Pirineos catalanes"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/pirineos/p8.jpg"
+              alt="Retiro Pirineos catalanes"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/pirineos/p9.jpg"
+              alt="Retiro Pirineos catalanes"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] sm:col-start-2 lg:col-start-auto"
+          >
+            <img
+              src="public/pirineos/p10.jpg"
+              alt="Retiro Pirineos catalanes"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        </div>
+
+        <!-- Merlo, San Luis (Argentina) -->
+        <div class="mt-20 mb-4">
+          <h3
+            class="font-display text-2xl md:text-3xl font-bold text-center mb-2"
+            style="color: #2e1065"
+          >
+            Merlo, San Luis · Argentina
+          </h3>
+          <p
+            class="text-center text-base md:text-lg font-medium max-w-2xl mx-auto mb-10"
+            style="color: #5b21b6"
+          >
+            Retiro Merlo
+          </p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/sanluis/sl1.jpg"
+              alt="Retiro Merlo, San Luis Argentina"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/sanluis/sl2.jpg"
+              alt="Retiro Merlo, San Luis Argentina"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/sanluis/sl3.jpg"
+              alt="Retiro Merlo, San Luis Argentina"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/sanluis/sl4.jpg"
+              alt="Retiro Merlo, San Luis Argentina"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/sanluis/sl5.jpg"
+              alt="Retiro Merlo, San Luis Argentina"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/sanluis/sl7.jpg"
+              alt="Retiro Merlo, San Luis Argentina"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        </div>
+
+        <!-- Aurora, Uruguay (Salto) -->
+        <div class="mt-20 mb-4">
+          <h3
+            class="font-display text-2xl md:text-3xl font-bold text-center mb-2"
+            style="color: #2e1065"
+          >
+            Aurora, Salto · Uruguay
+          </h3>
+          <p
+            class="text-center text-base md:text-lg font-medium max-w-2xl mx-auto mb-10"
+            style="color: #5b21b6"
+          >
+            Retiro Aurora
+          </p>
+        </div>
+        <div
+          class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"
+        >
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/aurora/a1.jpg"
+              alt="Retiro Aurora, Salto Uruguay"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/aurora/a2.jpg"
+              alt="Retiro Aurora, Salto Uruguay"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/aurora/a3.jpg"
+              alt="Retiro Aurora, Salto Uruguay"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/aurora/a4.jpg"
+              alt="Retiro Aurora, Salto Uruguay"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/aurora/a5.jpg"
+              alt="Retiro Aurora, Salto Uruguay"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/aurora/a6.jpg"
+              alt="Retiro Aurora, Salto Uruguay"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/aurora/a7.jpg"
+              alt="Retiro Aurora, Salto Uruguay"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/aurora/a8.jpg"
+              alt="Retiro Aurora, Salto Uruguay"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        </div>
+
+        <!-- Comodoro Rivadavia -->
+        <div class="mt-20 mb-4">
+          <h3
+            class="font-display text-2xl md:text-3xl font-bold text-center mb-2"
+            style="color: #2e1065"
+          >
+            Comodoro Rivadavia
+          </h3>
+          <p
+            class="text-center text-base md:text-lg font-medium max-w-2xl mx-auto mb-10"
+            style="color: #5b21b6"
+          >
+            Retiro Comodoro Rivadavia
+          </p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/comodororivadavia/cr1.jpg"
+              alt="Retiro Comodoro Rivadavia"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/comodororivadavia/cr2.jpg"
+              alt="Retiro Comodoro Rivadavia"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover object-[center_100%] hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] col-start-2 sm:col-start-auto"
+          >
+            <img
+              src="public/comodororivadavia/cr3.jpg"
+              alt="Retiro Comodoro Rivadavia"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        </div>
+
+        <!-- Tigre, Buenos Aires -->
+        <div class="mt-20 mb-4">
+          <h3
+            class="font-display text-2xl md:text-3xl font-bold text-center mb-2"
+            style="color: #2e1065"
+          >
+            Tigre · Buenos Aires
+          </h3>
+          <p
+            class="text-center text-base md:text-lg font-medium max-w-2xl mx-auto mb-10"
+            style="color: #5b21b6"
+          >
+            Retiro Tigre
+          </p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/tigre/t1.jpg"
+              alt="Retiro Tigre, Buenos Aires"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/tigre/t2.jpg"
+              alt="Retiro Tigre, Buenos Aires"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/tigre/t3.jpg"
+              alt="Retiro Tigre, Buenos Aires"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="col-span-2 sm:col-span-3 flex flex-wrap justify-center gap-3 md:gap-4"
+          >
+            <div
+              class="w-full sm:w-[calc(33.333%-0.5rem)] max-w-[280px] rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+            >
+              <img
+                src="public/tigre/t4.jpg"
+                alt="Retiro Tigre, Buenos Aires"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div
+              class="w-full sm:w-[calc(33.333%-0.5rem)] max-w-[280px] rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+            >
+              <img
+                src="public/tigre/t5.jpg"
+                alt="Retiro Tigre, Buenos Aires"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Milán -->
+        <div class="mt-20 mb-4">
+          <h3
+            class="font-display text-2xl md:text-3xl font-bold text-center mb-2"
+            style="color: #2e1065"
+          >
+            Milán
+          </h3>
+          <p
+            class="text-center text-base md:text-lg font-medium max-w-2xl mx-auto mb-10"
+            style="color: #5b21b6"
+          >
+            Retiro Milán
+          </p>
+        </div>
+        <div class="grid grid-cols-2 gap-3 md:gap-4 max-w-2xl mx-auto">
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/milan/milan1.jpg"
+              alt="Retiro Milán"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/milan/milan2.jpg"
+              alt="Retiro Milán"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        </div>
+
+        <!-- Mont Saint Michel, Francia -->
+        <div class="mt-20 mb-4">
+          <h3
+            class="font-display text-2xl md:text-3xl font-bold text-center mb-2"
+            style="color: #2e1065"
+          >
+            Mont Saint Michel · Francia
+          </h3>
+          <p
+            class="text-center text-base md:text-lg font-medium max-w-2xl mx-auto mb-10"
+            style="color: #5b21b6"
+          >
+            Retiro Mont Saint Michel
+          </p>
+        </div>
+        <div class="flex justify-center max-w-2xl mx-auto">
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] w-full"
+          >
+            <img
+              src="public/MontSaint/ms1.jpg"
+              alt="Retiro Mont Saint Michel, Francia"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-64 md:h-80 object-contain hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        </div>
+
+        <!-- Provincia de Buenos Aires -->
+        <div class="mt-20 mb-4">
+          <h3
+            class="font-display text-2xl md:text-3xl font-bold text-center mb-2"
+            style="color: #2e1065"
+          >
+            Provincia de Buenos Aires
+          </h3>
+          <p
+            class="text-center text-base md:text-lg font-medium max-w-2xl mx-auto mb-10"
+            style="color: #5b21b6"
+          >
+            Retiro Provincia de Buenos Aires
+          </p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/bsas/bs1.jpg"
+              alt="Retiro Provincia de Buenos Aires"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/bsas/bs2.jpg"
+              alt="Retiro Provincia de Buenos Aires"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/bsas/bs3.jpg"
+              alt="Retiro Provincia de Buenos Aires"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/bsas/bs4.jpg"
+              alt="Retiro Provincia de Buenos Aires"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/bsas/bs5.jpg"
+              alt="Retiro Provincia de Buenos Aires"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/bsas/bs6.jpg"
+              alt="Retiro Provincia de Buenos Aires"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        </div>
+
+        <!-- Madrid -->
+        <div class="mt-20 mb-4">
+          <h3
+            class="font-display text-2xl md:text-3xl font-bold text-center mb-2"
+            style="color: #2e1065"
+          >
+            Madrid
+          </h3>
+          <p
+            class="text-center text-base md:text-lg font-medium max-w-2xl mx-auto mb-10"
+            style="color: #5b21b6"
+          >
+            Retiro Madrid
+          </p>
+        </div>
+        <div
+          class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"
+        >
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/madrid/mad1.jpg"
+              alt="Retiro Madrid"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/madrid/mad2.jpg"
+              alt="Retiro Madrid"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/madrid/mad3.jpg"
+              alt="Retiro Madrid"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/madrid/mad4.jpg"
+              alt="Retiro Madrid"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/madrid/mad5.jpg"
+              alt="Retiro Madrid"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/madrid/mad6.jpg"
+              alt="Retiro Madrid"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/madrid/mad7.jpg"
+              alt="Retiro Madrid"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/madrid/mad8.jpg"
+              alt="Retiro Madrid"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        </div>
+
+        <!-- México -->
+        <div class="mt-20 mb-4">
+          <h3
+            class="font-display text-2xl md:text-3xl font-bold text-center mb-2"
+            style="color: #2e1065"
+          >
+            México
+          </h3>
+          <p
+            class="text-center text-base md:text-lg font-medium max-w-2xl mx-auto mb-10"
+            style="color: #5b21b6"
+          >
+            Retiro México
+          </p>
+        </div>
+        <div
+          class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"
+        >
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/mex/mex1.jpg"
+              alt="Retiro México"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/mex/mex2.jpg"
+              alt="Retiro México"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/mex/mex3.jpg"
+              alt="Retiro México"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/mex/mex4.jpg"
+              alt="Retiro México"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/mex/mex5.jpg"
+              alt="Retiro México"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/mex/mex6.jpg"
+              alt="Retiro México"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/mex/mex7.jpg"
+              alt="Retiro México"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/mex/mex8.jpg"
+              alt="Retiro México"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] lg:col-start-2"
+          >
+            <img
+              src="public/mex/mex9.jpg"
+              alt="Retiro México"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow-lg border border-white/60 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="public/mex/mex10.jpg"
+              alt="Retiro México"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-44 md:h-52 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <div
+      id="img-lightbox"
+      class="img-lightbox-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Imagen ampliada"
+      aria-hidden="true"
+    >
+      <button
+        type="button"
+        class="img-lightbox-close"
+        aria-label="Cerrar vista ampliada"
+      >
+        <span class="material-icons" aria-hidden="true">close</span>
+      </button>
+      <img alt="" decoding="async" />
+    </div>
+    <script>
+      (function () {
+        var backdrop = document.getElementById("img-lightbox");
+        if (!backdrop) return;
+        var bigImg = backdrop.querySelector("img");
+        var btnClose = backdrop.querySelector(".img-lightbox-close");
+
+        function openLightbox(src, alt) {
+          if (!src) return;
+          bigImg.src = src;
+          bigImg.alt = alt || "";
+          backdrop.classList.add("is-open");
+          backdrop.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+          btnClose.focus();
+        }
+
+        function closeLightbox() {
+          backdrop.classList.remove("is-open");
+          backdrop.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+          bigImg.removeAttribute("src");
+          bigImg.alt = "";
+        }
+
+        btnClose.addEventListener("click", function (e) {
+          e.stopPropagation();
+          closeLightbox();
+        });
+        backdrop.addEventListener("click", function (e) {
+          if (e.target === backdrop) closeLightbox();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && backdrop.classList.contains("is-open"))
+            closeLightbox();
+        });
+
+        var root = document.querySelector("main") || document.body;
+        root.addEventListener("click", function (e) {
+          var t = e.target;
+          if (t.tagName !== "IMG") return;
+          if (t.closest("#img-lightbox")) return;
+          if (t.closest("a")) return;
+          if (t.getAttribute("data-no-lightbox") === "true") return;
+          e.preventDefault();
+          openLightbox(t.currentSrc || t.src, t.alt);
+        });
+      })();
+    </script>
+  </body>
+</html>

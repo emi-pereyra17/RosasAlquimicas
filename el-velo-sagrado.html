@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="public/1.png" as="image" />
+    <link rel="icon" type="image/png" href="public/icon1.png" />
+    <link rel="stylesheet" href="public/css/site-perf.css" />
+    <title>Taller: El Velo Sagrado | Eventos | Rosas Alquímicas</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Quicksand:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8B5CF6",
+              secondary: "#6D28D9",
+              accent: "#C4B5FD",
+              "background-light": "#F9FAFB",
+              "background-dark": "#0B0915",
+              "mystic-purple": "#2E1065",
+              "deep-violet": "#1e0b36",
+              "soft-lilac": "#E9D5FF",
+            },
+            fontFamily: {
+              display: ["Playfair Display", "serif"],
+              sans: ["Montserrat", "sans-serif"],
+              title: ["Quicksand", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .hero-bg {
+        background-image: url("public/1.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+      }
+      @media (max-width: 768px) {
+        .hero-bg {
+          background-attachment: scroll;
+        }
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .phrase-box {
+        border-left: 3px solid #8B5CF6;
+        padding-left: 1rem;
+        margin: 1rem 0;
+        font-style: italic;
+        color: #4c1d95;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-sans text-gray-800 dark:text-gray-100 antialiased selection:bg-primary selection:text-white"
+  >
+    <!-- Botón volver a menú principal -->
+    <div class="fixed top-4 left-4 z-50">
+      <a
+        href="rosas-alquimicas.html"
+        class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/90 dark:bg-mystic-purple/90 text-primary font-semibold shadow-lg border border-primary/30 text-sm hover:bg-primary hover:text-white transition-all duration-300 backdrop-blur-sm"
+      >
+        <span class="material-icons text-lg">arrow_back</span>
+        Volver a menú principal
+      </a>
+    </div>
+
+    <!-- Header con mismo fondo que la web -->
+    <header
+      class="hero-bg min-h-[420px] flex items-center justify-center relative overflow-hidden"
+    >
+      <div class="container mx-auto px-6 py-20 text-center relative z-10 pt-24">
+        <span
+          class="block font-display text-xl md:text-2xl italic mb-4 text-pink-700 tracking-wider drop-shadow-[0_2px_2px_rgba(255,255,255,0.7)]"
+          >Eventos</span
+        >
+        <h1
+          class="font-title text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-fuchsia-700 drop-shadow-xl leading-tight"
+        >
+          ✨ Taller: El Velo Sagrado ✨
+        </h1>
+        <p class="text-lg md:text-xl text-fuchsia-800/95 font-light max-w-2xl mx-auto drop-shadow-md">
+          El Manto de luz
+        </p>
+        <a
+          href="#info-evento"
+          class="inline-flex items-center gap-2 mt-8 px-8 py-3.5 rounded-full bg-primary hover:bg-secondary text-white font-semibold shadow-xl border-2 border-white/40 hover:scale-105 transition-all duration-300"
+        >
+          <span class="material-icons">event_available</span>
+          Más información e inscripción
+        </a>
+      </div>
+    </header>
+
+    <!-- Contenido del evento: mismo fondo y overlay -->
+    <section class="hero-bg relative py-16 md:py-24 px-6">
+      <div
+        class="absolute inset-0 w-full h-full z-0"
+        style="
+          background: rgba(255, 255, 255, 0.35);
+          backdrop-filter: blur(2px);
+        "
+        aria-hidden="true"
+      ></div>
+
+      <div class="container mx-auto max-w-4xl relative z-10">
+        <!-- Imagen de portada del evento -->
+        <div class="flex justify-center mb-12">
+          <img
+            src="public/portadaevent.jpg"
+            alt="Taller: El Velo Sagrado - El Manto de luz"
+            class="rounded-2xl shadow-2xl border-4 border-white/80 max-w-2xl md:max-w-3xl w-full object-cover"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </div>
+
+        <!-- Texto del taller -->
+        <div
+          class="prose prose-lg max-w-none font-sans text-gray-800 dark:text-gray-200 space-y-6"
+          style="color: #1e0b36"
+        >
+          <p class="text-center text-mystic-purple font-semibold">
+            Intuición • Esencia Femenina • Recordarte
+          </p>
+
+          <p class="text-xl md:text-2xl font-display font-semibold text-center text-fuchsia-800 leading-relaxed">
+            No es un taller de danza.<br />
+            Es un portal.
+          </p>
+
+          <p class="text-lg leading-relaxed font-medium">
+            Un espacio donde el velo deja de ser ocultamiento y se convierte en regreso.
+          </p>
+
+          <p class="text-lg leading-relaxed font-medium space-y-2">
+            Regreso al cuerpo.<br />
+            Regreso a la intuición. Regreso a recibir códigos de luz para volver a ti.<br />
+            Regreso a la mujer que recuerda quién es.
+          </p>
+
+          <p class="text-lg leading-relaxed font-medium">
+            Exploraremos el simbolismo ancestral del velo presente en tradiciones antiguas, en los misterios de Isis y Inanna, en la mística del corazón como enseñaba Rumi.
+          </p>
+          <p class="text-lg leading-relaxed font-medium">
+            Pero, sobre todo, lo viviremos en el cuerpo.
+          </p>
+
+          <ul class="space-y-3 text-lg font-medium">
+            <li class="flex items-center gap-2">🌿 Movimiento consciente</li>
+            <li class="flex items-center gap-2">🌿 Activación de la intuición</li>
+            <li class="flex items-center gap-2">🌿 Danza ritual con velo</li>
+            <li class="flex items-center gap-2">🌿 Integración y escritura del alma</li>
+          </ul>
+
+          <div class="phrase-box space-y-2 text-lg leading-relaxed font-medium">
+            <p>El velo no para cubrirte.<br />Sino para escucharte.</p>
+            <p>No para esconderte.<br />Sino para recordarte.</p>
+          </div>
+
+          <p class="text-lg leading-relaxed font-medium text-center italic">
+            Si sientes el llamado, este espacio es para ti.
+          </p>
+
+          <!-- Fecha, hora y contacto -->
+          <div id="info-evento" class="mt-14 scroll-mt-24 rounded-2xl bg-white/70 dark:bg-mystic-purple/30 border border-primary/20 p-8 text-center">
+            <p class="text-xl font-bold text-mystic-purple mb-4">
+              Sábado 7 y domingo 8 de marzo · 11:00 AM Argentina
+            </p>
+            <p class="flex flex-wrap justify-center items-center gap-4 text-lg font-medium text-gray-800 dark:text-gray-200">
+              <span class="flex items-center gap-2">🕊 Cupos limitados</span>
+              <span class="flex items-center gap-2">📩 Envíame mensaje directo para información</span>
+            </p>
+            <a
+              href="https://wa.me/34641091383?text=Hola,%20me%20interesa%20el%20Taller%20El%20Velo%20Sagrado%20-%20información%20e%20inscripción"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 mt-6 px-8 py-3.5 rounded-full bg-primary hover:bg-secondary text-white font-semibold shadow-xl transition-all duration-300"
+            >
+              <span class="material-icons">chat</span>
+              Contactar para información e inscripción
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pie con enlace a inicio -->
+    <footer class="hero-bg relative py-12 border-t border-white/20">
+      <div
+        class="absolute inset-0 z-0"
+        style="background: rgba(255,255,255,0.2);"
+      ></div>
+      <div class="container mx-auto px-6 text-center relative z-10">
+        <a
+          href="rosas-alquimicas.html"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/90 hover:bg-secondary text-white font-semibold shadow-lg transition-colors duration-300"
+        >
+          <span class="material-icons">home</span>
+          Volver al inicio
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -8,13 +8,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" href="public/1.png" as="image" />
     <link rel="icon" type="image/png" href="public/icon1.png" />
+    <link rel="stylesheet" href="public/css/site-perf.css" />
     <title>Eventos | Rosas Alquímicas</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Quicksand:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet" />
     <script>
       tailwind.config = {
         darkMode: "class",
@@ -40,18 +41,6 @@
       };
     </script>
     <style>
-      .hero-bg {
-        background-image: url("public/1.png");
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        position: relative;
-      }
-      @media (max-width: 768px) {
-        .hero-bg {
-          background-attachment: scroll;
-        }
-      }
       html {
         scroll-behavior: smooth;
       }
@@ -78,24 +67,14 @@
         color: transparent;
         filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.6));
       }
-      .eventos-page-bg {
-        background: linear-gradient(
-          165deg,
-          #fdf4ff 0%,
-          #fae8ff 25%,
-          #ede9fe 55%,
-          #fff7ed 100%
-        );
-      }
     </style>
-    <script src="public/js/rosas-eventos-config.js"></script>
   </head>
   <body
-    class="eventos-page-bg min-h-screen font-sans text-gray-800 antialiased selection:bg-fuchsia-500 selection:text-white"
+    class="eventos-regalos-hero-fullpage min-h-screen font-sans text-gray-800 antialiased selection:bg-fuchsia-500 selection:text-white"
   >
     <div class="fixed top-4 left-4 z-50">
       <a
-        href="index.html"
+        href="rosas-alquimicas.html"
         class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/95 text-fuchsia-800 font-semibold shadow-lg border-2 border-fuchsia-300/80 text-sm hover:bg-gradient-to-r hover:from-violet-600 hover:to-fuchsia-600 hover:text-white hover:border-transparent transition-all duration-300 backdrop-blur-sm hover:scale-105"
       >
         <span class="material-icons text-lg">arrow_back</span>
@@ -103,19 +82,7 @@
       </a>
     </div>
 
-    <header class="hero-bg min-h-[320px] md:min-h-[400px] flex items-center justify-center relative overflow-hidden">
-      <div
-        class="absolute inset-0 bg-gradient-to-b from-pink-200/55 via-violet-200/35 to-fuchsia-100/90 pointer-events-none"
-      ></div>
-      <div
-        class="absolute inset-0 opacity-40 pointer-events-none"
-        style="
-          background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(192, 38, 211, 0.25), transparent),
-            radial-gradient(ellipse 60% 50% at 80% 70%, rgba(124, 58, 237, 0.2), transparent),
-            radial-gradient(ellipse 50% 40% at 15% 80%, rgba(244, 114, 182, 0.22), transparent);
-        "
-        aria-hidden="true"
-      ></div>
+    <header class="min-h-[320px] md:min-h-[400px] flex items-center justify-center relative overflow-hidden">
       <div class="container mx-auto px-6 py-20 text-center relative z-10 pt-24">
         <span
           class="inline-block text-xs sm:text-sm uppercase tracking-[0.28em] font-semibold mb-4 px-4 py-1.5 rounded-full bg-gradient-to-r from-fuchsia-600/90 via-purple-600/90 to-violet-600/90 text-white shadow-md shadow-purple-500/25 border border-white/30"
@@ -177,7 +144,7 @@
         <div class="mt-12 pt-8 border-t-2 border-transparent border-t-fuchsia-200/80 text-center bg-gradient-to-t from-violet-50/50 to-transparent rounded-b-2xl -mx-2 px-2 pb-1">
           <p class="text-sm text-violet-900 font-display italic mb-4 font-medium">Taller en profundidad</p>
           <a
-            href="index6.html"
+            href="el-velo-sagrado.html"
             class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-semibold text-sm shadow-lg shadow-purple-500/30 border border-white/20 hover:from-violet-700 hover:to-fuchsia-700 hover:scale-[1.02] transition-all duration-300"
           >
             <span class="material-icons text-lg">auto_stories</span>
@@ -215,6 +182,7 @@
         setInterval(tick, 1000);
       })();
     </script>
-    <script src="public/js/rosas-eventos-sheets.js"></script>
+    <script defer src="public/js/rosas-eventos-config.js"></script>
+    <script defer src="public/js/rosas-eventos-sheets.js"></script>
   </body>
 </html>

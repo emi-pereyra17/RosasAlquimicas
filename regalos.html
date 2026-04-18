@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="public/1.png" as="image" />
+    <link rel="icon" type="image/png" href="public/icon1.png" />
+    <link rel="stylesheet" href="public/css/site-perf.css" />
+    <title>Regalos | Rosas Alquímicas</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Quicksand:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8B5CF6",
+              secondary: "#6D28D9",
+              accent: "#C4B5FD",
+              "background-light": "#F9FAFB",
+              "background-dark": "#0B0915",
+              "mystic-purple": "#2E1065",
+              "deep-violet": "#1e0b36",
+              "soft-lilac": "#E9D5FF",
+            },
+            fontFamily: {
+              display: ["Playfair Display", "serif"],
+              sans: ["Montserrat", "sans-serif"],
+              title: ["Quicksand", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .regalos-prose-shadow {
+        text-shadow:
+          0 1px 2px rgba(255, 255, 255, 0.95),
+          0 2px 16px rgba(255, 250, 252, 0.9),
+          0 0 1px rgba(255, 255, 255, 0.8);
+      }
+      /* bg-clip-text suele recortar descendentes (g, o, ¡); damos aire al glifo */
+      .regalos-h1-gradient {
+        line-height: 1.22;
+        padding-bottom: 0.18em;
+        padding-top: 0.06em;
+        overflow: visible;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+      }
+    </style>
+  </head>
+  <body
+    class="eventos-regalos-hero-fullpage min-h-screen font-sans text-gray-800 antialiased selection:bg-fuchsia-500 selection:text-white"
+  >
+    <div class="fixed top-4 left-4 z-50">
+      <a
+        href="rosas-alquimicas.html"
+        class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/95 text-fuchsia-800 font-semibold shadow-lg border-2 border-fuchsia-300/80 text-sm hover:bg-gradient-to-r hover:from-violet-600 hover:to-fuchsia-600 hover:text-white hover:border-transparent transition-all duration-300 backdrop-blur-sm hover:scale-105"
+      >
+        <span class="material-icons text-lg">arrow_back</span>
+        Volver a menú principal
+      </a>
+    </div>
+
+    <header class="relative pb-20 md:pb-28 min-h-screen">
+      <div
+        class="w-full max-w-5xl xl:max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 text-center relative z-10 pt-24 md:pt-28 overflow-visible"
+      >
+        <span
+          class="inline-flex items-center gap-2 text-xs sm:text-sm uppercase tracking-[0.22em] font-semibold mb-5 px-4 py-1.5 rounded-full bg-gradient-to-r from-fuchsia-600/90 via-purple-600/90 to-violet-600/90 text-white shadow-md shadow-purple-500/25 border border-white/30"
+        >
+          <span class="material-icons text-base" aria-hidden="true"
+            >card_giftcard</span
+          >
+          Rosas Alquímicas
+        </span>
+        <h1
+          class="regalos-h1-gradient font-title text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold mb-6 md:mb-8 bg-gradient-to-r from-fuchsia-800 via-purple-700 to-pink-600 bg-clip-text text-transparent [text-shadow:none] block w-full"
+        >
+          ¡Regalos!
+        </h1>
+        <div
+          class="mx-auto w-24 h-1 rounded-full bg-gradient-to-r from-fuchsia-400 via-amber-400 to-violet-500 opacity-90 shadow-sm mb-8 md:mb-10"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="regalos-prose-shadow space-y-6 md:space-y-7 text-fuchsia-950 text-base sm:text-lg md:text-xl leading-[1.65] md:leading-8 font-sans font-medium text-center max-w-none"
+        >
+          <p
+            class="text-xl sm:text-2xl md:text-3xl font-display italic text-violet-950 font-semibold leading-snug md:leading-tight"
+          >
+            ¡Que disfrutes de todo este contenido que hacemos con tanto amor!
+          </p>
+          <p class="text-violet-950/95">
+            Aquí encontrarás
+            <strong class="text-violet-900 font-semibold">talleres</strong>,
+            <strong class="text-violet-900 font-semibold">meditaciones</strong>,
+            <strong class="text-violet-900 font-semibold">activaciones</strong>,
+            <strong class="text-violet-900 font-semibold">master class</strong>
+            de temas específicos y toda una
+            <strong class="text-violet-900 font-semibold">videoteca</strong>
+            para que puedas ejercitar y frecuentarte con este santuario de
+            Rosas.
+          </p>
+          <p class="text-violet-950/95">
+            <strong class="text-violet-900 font-semibold"
+              >Regalos para todos</strong
+            >
+            y complementos de la
+            <strong class="text-violet-900 font-semibold">escuela</strong> y la
+            membresía
+            <strong class="text-violet-900 font-semibold"
+              >Camino de la Rosa</strong
+            >.
+          </p>
+          <div
+            class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 pt-2 md:pt-4"
+            role="list"
+          >
+            <span
+              role="listitem"
+              class="inline-flex items-center gap-1.5 rounded-full bg-white/55 backdrop-blur-sm px-3.5 py-2 text-[0.7rem] sm:text-xs font-bold uppercase tracking-wider text-violet-900 ring-1 ring-fuchsia-200/60 shadow-sm"
+            >
+              <span class="material-icons text-base text-fuchsia-600"
+                >auto_awesome</span
+              >
+              Meditaciones
+            </span>
+            <span
+              role="listitem"
+              class="inline-flex items-center gap-1.5 rounded-full bg-white/55 backdrop-blur-sm px-3.5 py-2 text-[0.7rem] sm:text-xs font-bold uppercase tracking-wider text-violet-900 ring-1 ring-fuchsia-200/60 shadow-sm"
+            >
+              <span class="material-icons text-base text-fuchsia-600"
+                >school</span
+              >
+              Talleres
+            </span>
+            <span
+              role="listitem"
+              class="inline-flex items-center gap-1.5 rounded-full bg-white/55 backdrop-blur-sm px-3.5 py-2 text-[0.7rem] sm:text-xs font-bold uppercase tracking-wider text-violet-900 ring-1 ring-fuchsia-200/60 shadow-sm"
+            >
+              <span class="material-icons text-base text-fuchsia-600"
+                >play_circle</span
+              >
+              Videoteca
+            </span>
+            <span
+              role="listitem"
+              class="inline-flex items-center gap-1.5 rounded-full bg-white/55 backdrop-blur-sm px-3.5 py-2 text-[0.7rem] sm:text-xs font-bold uppercase tracking-wider text-violet-900 ring-1 ring-fuchsia-200/60 shadow-sm"
+            >
+              <span class="material-icons text-base text-fuchsia-600"
+                >local_florist</span
+              >
+              Camino de la Rosa
+            </span>
+          </div>
+          <p
+            class="font-display italic text-lg sm:text-xl md:text-2xl text-fuchsia-900 font-medium pt-2 md:pt-4"
+          >
+            ¡Gracias! Que lo disfrutes.
+          </p>
+        </div>
+
+        <p
+          class="text-center text-sm md:text-base text-violet-900/85 font-display italic mt-12 md:mt-16 px-2"
+        >
+          Rosas Alquímicas · Un espacio de transformación
+        </p>
+      </div>
+    </header>
+
+    <main
+      class="relative z-10 max-w-4xl xl:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 md:pb-28 -mt-6 md:-mt-10"
+    >
+      <section
+        class="rounded-3xl border-2 border-fuchsia-200/80 bg-gradient-to-br from-white via-fuchsia-50/60 to-violet-50/50 shadow-xl shadow-fuchsia-500/10 p-6 sm:p-8 md:p-10"
+        aria-labelledby="regalos-youtube-heading"
+      >
+        <div class="flex items-center gap-3 mb-6 md:mb-8">
+          <span
+            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-red-600 text-white shadow-lg shadow-red-600/25"
+            aria-hidden="true"
+          >
+            <svg
+              class="w-7 h-7"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+              />
+            </svg>
+          </span>
+          <div>
+            <h2
+              id="regalos-youtube-heading"
+              class="font-title text-2xl md:text-3xl font-bold text-violet-900"
+            >
+              Videoteca en YouTube
+            </h2>
+            <p class="text-sm text-violet-700/90 mt-0.5">
+              Listas, cursos y videos gratuitos!. Se abren en una pestaña nueva.
+            </p>
+          </div>
+        </div>
+        <ul class="space-y-3 list-none p-0 m-0">
+          <li>
+            <a
+              href="https://www.youtube.com/playlist?list=PLwfH6nfCiKFqZp3oiT6Zksssk7mfdPLIV"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-start gap-3 rounded-2xl border border-fuchsia-100 bg-white/80 px-4 py-3.5 shadow-sm transition-all hover:border-fuchsia-300 hover:bg-white hover:shadow-md"
+            >
+              <span
+                class="material-icons text-fuchsia-600 shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+                >play_circle</span
+              >
+              <span
+                class="font-semibold text-violet-950 text-left leading-snug group-hover:text-fuchsia-900"
+                >Podcast</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/watch?v=UxDlgxhV9pI&list=PLwfH6nfCiKFoxBiB6pXDZTPTL2ZPYG-9R"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-start gap-3 rounded-2xl border border-fuchsia-100 bg-white/80 px-4 py-3.5 shadow-sm transition-all hover:border-fuchsia-300 hover:bg-white hover:shadow-md"
+            >
+              <span
+                class="material-icons text-fuchsia-600 shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+                >play_circle</span
+              >
+              <span
+                class="font-semibold text-violet-950 text-left leading-snug group-hover:text-fuchsia-900"
+                >Cantos sagrados para activar tu ADN</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/playlist?list=PLwfH6nfCiKFoshVZNrlze0TZy9-UhWEnj"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-start gap-3 rounded-2xl border border-fuchsia-100 bg-white/80 px-4 py-3.5 shadow-sm transition-all hover:border-fuchsia-300 hover:bg-white hover:shadow-md"
+            >
+              <span
+                class="material-icons text-fuchsia-600 shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+                >play_circle</span
+              >
+              <span
+                class="font-semibold text-violet-950 text-left leading-snug group-hover:text-fuchsia-900"
+                >Meditaciones en español</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/watch?v=l_QcaQlQB4o&list=PLwfH6nfCiKFr9LWBI_N_rIiZaWzCzgWXM"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-start gap-3 rounded-2xl border border-fuchsia-100 bg-white/80 px-4 py-3.5 shadow-sm transition-all hover:border-fuchsia-300 hover:bg-white hover:shadow-md"
+            >
+              <span
+                class="material-icons text-fuchsia-600 shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+                >play_circle</span
+              >
+              <span
+                class="font-semibold text-violet-950 text-left leading-snug group-hover:text-fuchsia-900"
+                >Cantos sagrados</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/watch?v=V0NZvNxUq0k&list=PLwfH6nfCiKFrg-9uMD5LQIQzm4J8mz4Mo"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-start gap-3 rounded-2xl border border-fuchsia-100 bg-white/80 px-4 py-3.5 shadow-sm transition-all hover:border-fuchsia-300 hover:bg-white hover:shadow-md"
+            >
+              <span
+                class="material-icons text-fuchsia-600 shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+                >play_circle</span
+              >
+              <span
+                class="font-semibold text-violet-950 text-left leading-snug group-hover:text-fuchsia-900"
+                >Danzas canalizadas para meditar</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/watch?v=SsAiLlniE_s&list=PLwfH6nfCiKFoYFflct_RY1ukwMyLNmihK"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-start gap-3 rounded-2xl border border-fuchsia-100 bg-white/80 px-4 py-3.5 shadow-sm transition-all hover:border-fuchsia-300 hover:bg-white hover:shadow-md"
+            >
+              <span
+                class="material-icons text-fuchsia-600 shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+                >play_circle</span
+              >
+              <span
+                class="font-semibold text-violet-950 text-left leading-snug group-hover:text-fuchsia-900"
+                >Meditación para la activación del ser crístico (Un curso de
+                milagros)</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/playlist?list=PLwfH6nfCiKFqAjSSL3BqvOY2zGWn0c7ck"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-start gap-3 rounded-2xl border border-fuchsia-100 bg-white/80 px-4 py-3.5 shadow-sm transition-all hover:border-fuchsia-300 hover:bg-white hover:shadow-md"
+            >
+              <span
+                class="material-icons text-fuchsia-600 shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+                >play_circle</span
+              >
+              <span
+                class="font-semibold text-violet-950 text-left leading-snug group-hover:text-fuchsia-900"
+                >Activaciones con otros hermanos del Camino de la Rosa</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/playlist?list=PLwfH6nfCiKFp2SO-lpfhhFIceOCY7Q_lA"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-start gap-3 rounded-2xl border border-fuchsia-100 bg-white/80 px-4 py-3.5 shadow-sm transition-all hover:border-fuchsia-300 hover:bg-white hover:shadow-md"
+            >
+              <span
+                class="material-icons text-fuchsia-600 shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+                >play_circle</span
+              >
+              <span
+                class="font-semibold text-violet-950 text-left leading-snug group-hover:text-fuchsia-900"
+                >Meditaciones en italiano</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/playlist?list=PLwfH6nfCiKFpLd_ITyrf--qaGdDFghw2o"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-start gap-3 rounded-2xl border border-fuchsia-100 bg-white/80 px-4 py-3.5 shadow-sm transition-all hover:border-fuchsia-300 hover:bg-white hover:shadow-md"
+            >
+              <span
+                class="material-icons text-fuchsia-600 shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+                >play_circle</span
+              >
+              <span
+                class="font-semibold text-violet-950 text-left leading-snug group-hover:text-fuchsia-900"
+                >Meditaciones y relajación del sistema nervioso</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/playlist?list=PLwfH6nfCiKFpestJsvNRXpLTRw4jJrsxy"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-start gap-3 rounded-2xl border border-fuchsia-100 bg-white/80 px-4 py-3.5 shadow-sm transition-all hover:border-fuchsia-300 hover:bg-white hover:shadow-md"
+            >
+              <span
+                class="material-icons text-fuchsia-600 shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+                >play_circle</span
+              >
+              <span
+                class="font-semibold text-violet-950 text-left leading-snug group-hover:text-fuchsia-900"
+                >Ciclo de ejercicios diarios para la prosperidad</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/playlist?list=PLwfH6nfCiKFoKke4wga_shTAPB6-ipmLl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-start gap-3 rounded-2xl border border-fuchsia-100 bg-white/80 px-4 py-3.5 shadow-sm transition-all hover:border-fuchsia-300 hover:bg-white hover:shadow-md"
+            >
+              <span
+                class="material-icons text-fuchsia-600 shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+                >play_circle</span
+              >
+              <span
+                class="font-semibold text-violet-950 text-left leading-snug group-hover:text-fuchsia-900"
+                >Meditación en movimiento: llaves energéticas del cuerpo</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/playlist?list=PLwfH6nfCiKFqPbLhrrC5qbXzXSNhSv8E2"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-start gap-3 rounded-2xl border border-fuchsia-100 bg-white/80 px-4 py-3.5 shadow-sm transition-all hover:border-fuchsia-300 hover:bg-white hover:shadow-md"
+            >
+              <span
+                class="material-icons text-fuchsia-600 shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+                >play_circle</span
+              >
+              <span
+                class="font-semibold text-violet-950 text-left leading-snug group-hover:text-fuchsia-900"
+                >Canalizaciones: danza y voz</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/playlist?list=PLwfH6nfCiKFqEULqhTPPOcq91ID2qljo0"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-start gap-3 rounded-2xl border border-fuchsia-100 bg-white/80 px-4 py-3.5 shadow-sm transition-all hover:border-fuchsia-300 hover:bg-white hover:shadow-md"
+            >
+              <span
+                class="material-icons text-fuchsia-600 shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+                >play_circle</span
+              >
+              <span
+                class="font-semibold text-violet-950 text-left leading-snug group-hover:text-fuchsia-900"
+                >Canalizaciones en vivo: Luna, rosas, cristal, diamante</span
+              >
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

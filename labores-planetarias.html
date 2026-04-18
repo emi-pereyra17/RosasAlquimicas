@@ -8,13 +8,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" href="public/1.png" as="image" />
     <link rel="icon" type="image/png" href="public/icon1.png" />
+    <link rel="stylesheet" href="public/css/site-perf.css" />
     <title>Labores Planetarias | Rosas Alquímicas</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Quicksand:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+    <link rel="dns-prefetch" href="https://unpkg.com" />
     <link rel="preconnect" href="https://server.arcgisonline.com" />
     <link rel="dns-prefetch" href="https://server.arcgisonline.com" />
     <link
@@ -46,20 +49,51 @@
       };
     </script>
     <style>
-      .hero-bg {
-        background-image: url("public/1.png");
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        position: relative;
-      }
-      @media (max-width: 768px) {
-        .hero-bg { background-attachment: scroll; }
-      }
       html { scroll-behavior: smooth; }
 
-      .labores-page-bg {
-        background: linear-gradient(175deg, #f5f0ff 0%, #fdf4ff 30%, #f0ebff 60%, #fdf9f0 100%);
+      /* Misma foto y velos del hero en toda la página (evita que abajo solo se vea el gradiente plano) */
+      .labores-hero-fullpage {
+        position: relative;
+        background-color: #f5f0ff;
+      }
+      .labores-hero-fullpage::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background-image:
+          radial-gradient(
+            ellipse 80% 60% at 50% 20%,
+            rgba(124, 58, 237, 0.25),
+            transparent
+          ),
+          radial-gradient(
+            ellipse 60% 50% at 80% 70%,
+            rgba(192, 38, 211, 0.2),
+            transparent
+          ),
+          radial-gradient(
+            ellipse 50% 40% at 15% 80%,
+            rgba(109, 40, 217, 0.22),
+            transparent
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(221, 214, 254, 0.55) 0%,
+            rgba(245, 208, 254, 0.35) 50%,
+            rgba(243, 232, 255, 0.9) 100%
+          ),
+          url("public/1.png");
+        background-size: auto, auto, auto, auto, cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: scroll, scroll, scroll, scroll, fixed;
+      }
+      @media (max-width: 768px) {
+        .labores-hero-fullpage::before {
+          background-attachment: scroll, scroll, scroll, scroll, scroll;
+        }
       }
 
       /* Pergamino cósmico — diferenciador principal */
@@ -140,6 +174,116 @@
         opacity: 0.6;
       }
 
+      /* Indicador “contenido abajo” (pergamino → galería) */
+      .scroll-hint-arrow {
+        animation: scroll-hint-bob 2.2s ease-in-out infinite;
+      }
+      @keyframes scroll-hint-bob {
+        0%, 100% { transform: translateY(0); opacity: 0.72; }
+        50% { transform: translateY(7px); opacity: 1; }
+      }
+
+      /* ─── Galería de labores ─── */
+      .labor-bloque + .labor-bloque {
+        margin-top: 3rem;
+      }
+      .labor-titulo {
+        position: relative;
+        display: inline-block;
+        max-width: min(68ch, 100%);
+      }
+      .labor-titulo::before,
+      .labor-titulo::after {
+        content: "✧";
+        color: #d4af37;
+        opacity: 0.7;
+        margin: 0 0.6rem;
+        font-size: 0.85em;
+        vertical-align: middle;
+      }
+      .labor-media-frame {
+        position: relative;
+        aspect-ratio: 4 / 3;
+        background:
+          radial-gradient(ellipse at center, rgba(124,58,237,0.10) 0%, rgba(30,11,54,0.92) 70%, #1a0530 100%);
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow:
+          0 10px 30px rgba(46,16,101,0.18),
+          0 0 0 1px rgba(212,175,55,0.18),
+          inset 0 1px 0 rgba(255,255,255,0.06);
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+      }
+      .labor-media-frame:hover {
+        transform: translateY(-3px);
+        box-shadow:
+          0 16px 40px rgba(46,16,101,0.28),
+          0 0 0 1px rgba(212,175,55,0.32);
+      }
+      .labor-media-frame > img,
+      .labor-media-frame > video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: transparent;
+        display: block;
+      }
+      .labor-media-frame.is-solo {
+        aspect-ratio: 16 / 10;
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Galería con flex centrado: si quedan 1, 2 o N huérfanos en la última fila, se centran */
+      .labor-galeria {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.25rem;
+        max-width: 64rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .labor-galeria > .labor-media-frame {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+      @media (min-width: 640px) {
+        .labor-galeria > .labor-media-frame {
+          flex: 0 0 calc((100% - 1.25rem) / 2);
+          max-width: calc((100% - 1.25rem) / 2);
+        }
+      }
+      @media (min-width: 1024px) {
+        .labor-galeria > .labor-media-frame {
+          flex: 0 0 calc((100% - 2 * 1.25rem) / 3);
+          max-width: calc((100% - 2 * 1.25rem) / 3);
+        }
+      }
+
+      /* Cuatro ítems: siempre 2 columnas × 2 filas (en móvil, una columna) */
+      .labor-galeria--cuatro {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        max-width: 44rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @media (min-width: 640px) {
+        .labor-galeria--cuatro {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      .labor-galeria--cuatro > .labor-media-frame {
+        flex: none !important;
+        max-width: none !important;
+        width: 100%;
+      }
+
       /* Drop cap para párrafo inicial */
       .drop-cap::first-letter {
         float: left;
@@ -201,14 +345,65 @@
         background: #ede9fe;
         color: #5b21b6;
       }
+      .labor-media-frame > img {
+        cursor: zoom-in;
+      }
+      .img-lightbox-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(15, 5, 35, 0.92);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.25s ease, visibility 0.25s;
+        cursor: zoom-out;
+      }
+      .img-lightbox-backdrop.is-open {
+        opacity: 1;
+        visibility: visible;
+      }
+      .img-lightbox-backdrop img {
+        max-width: min(96vw, 1200px);
+        max-height: 90vh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        border-radius: 0.75rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+        cursor: default;
+      }
+      .img-lightbox-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 10000;
+        width: 44px;
+        height: 44px;
+        border: none;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.95);
+        color: #5b21b6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      }
+      .img-lightbox-close:hover {
+        background: #fff;
+      }
     </style>
   </head>
   <body
-    class="labores-page-bg min-h-screen font-sans text-gray-800 antialiased selection:bg-fuchsia-500 selection:text-white"
+    class="labores-hero-fullpage min-h-screen font-sans text-gray-800 antialiased selection:bg-fuchsia-500 selection:text-white"
   >
     <div class="fixed top-4 left-4 z-50">
       <a
-        href="index.html"
+        href="rosas-alquimicas.html"
         class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/95 text-fuchsia-800 font-semibold shadow-lg border-2 border-fuchsia-300/80 text-sm hover:bg-gradient-to-r hover:from-violet-600 hover:to-fuchsia-600 hover:text-white hover:border-transparent transition-all duration-300 backdrop-blur-sm hover:scale-105"
       >
         <span class="material-icons text-lg">arrow_back</span>
@@ -216,19 +411,7 @@
       </a>
     </div>
 
-    <header class="hero-bg min-h-[320px] md:min-h-[400px] flex items-center justify-center relative overflow-hidden">
-      <div
-        class="absolute inset-0 bg-gradient-to-b from-violet-200/55 via-fuchsia-200/35 to-purple-100/90 pointer-events-none"
-      ></div>
-      <div
-        class="absolute inset-0 opacity-40 pointer-events-none"
-        style="
-          background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(124, 58, 237, 0.25), transparent),
-            radial-gradient(ellipse 60% 50% at 80% 70%, rgba(192, 38, 211, 0.2), transparent),
-            radial-gradient(ellipse 50% 40% at 15% 80%, rgba(109, 40, 217, 0.22), transparent);
-        "
-        aria-hidden="true"
-      ></div>
+    <header class="min-h-[320px] md:min-h-[400px] flex items-center justify-center relative overflow-hidden">
       <div class="container mx-auto px-6 py-20 text-center relative z-10 pt-24">
         <span
           class="inline-block text-xs sm:text-sm uppercase tracking-[0.28em] font-semibold mb-4 px-4 py-1.5 rounded-full bg-gradient-to-r from-violet-600/90 via-purple-600/90 to-fuchsia-600/90 text-white shadow-md shadow-purple-500/25 border border-white/30"
@@ -365,6 +548,72 @@
           </ul>
         </div>
 
+        <aside
+          class="rounded-2xl px-7 py-8 md:px-9 md:py-9 mb-10 relative overflow-hidden border border-amber-400/45 shadow-xl shadow-violet-900/25"
+          style="background: linear-gradient(145deg, rgba(46, 16, 101, 0.97) 0%, rgba(55, 20, 90, 0.96) 45%, rgba(76, 29, 120, 0.94) 100%);"
+          aria-label="Mensaje sobre ascensión y conciencia"
+        >
+          <div
+            class="absolute inset-0 opacity-[0.07] pointer-events-none"
+            style="background-image: radial-gradient(#fde68a 1px, transparent 1px); background-size: 28px 28px;"
+            aria-hidden="true"
+          ></div>
+          <div
+            class="absolute -top-16 -right-10 w-48 h-48 rounded-full bg-amber-400/20 blur-3xl pointer-events-none"
+            aria-hidden="true"
+          ></div>
+          <div
+            class="absolute -bottom-20 -left-12 w-56 h-56 rounded-full bg-fuchsia-500/15 blur-3xl pointer-events-none"
+            aria-hidden="true"
+          ></div>
+
+          <div class="relative z-10">
+            <p
+              class="text-[0.65rem] md:text-xs uppercase tracking-[0.28em] text-amber-300/95 font-semibold mb-3 flex flex-wrap items-center gap-x-2 gap-y-1"
+            >
+              <span class="text-amber-400" aria-hidden="true">✦</span>
+              Lo esencial en el camino
+              <span class="text-amber-400" aria-hidden="true">✦</span>
+            </p>
+            <h3
+              class="font-title text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-white to-fuchsia-200 tracking-[0.12em] uppercase mb-6 drop-shadow-sm"
+            >
+              Ascensión
+            </h3>
+            <div class="space-y-4 text-purple-50/95 text-sm md:text-base leading-[1.85] font-sans">
+              <p>
+                Intentar alcanzar un estado espiritual superior de conciencia puede parecer un proceso largo y lento. Sin embargo, recuerda que <strong class="text-amber-100 font-semibold">una parte de ti existe siempre en un estado espiritual superior</strong>. La conciencia superior es un conocimiento y una sabiduría mucho más allá de las palabras o explicaciones.
+              </p>
+              <p>
+                Es tu verdadera naturaleza, la luz eterna de tu alma. No tiene sentido intentar enseñarlo, así como no tiene sentido intentar escapar de tu realidad física. <strong class="text-amber-100 font-semibold">Ascender espiritualmente es aceptar y amar tu realidad física.</strong>
+              </p>
+              <p class="text-purple-100/90 md:text-[1.05rem] border-l-2 border-amber-400/60 pl-4 md:pl-5 italic font-display">
+                Una conciencia superior significa estar plenamente presente en cada momento. Deja de intentar alcanzarlo y quizás te des cuenta de que <span class="not-italic font-sans font-semibold text-amber-100">ya estás allí</span>.
+              </p>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+
+      <!-- Antes de la grilla de fotos: voz, rayo, Sara, peregrinaje -->
+      <div class="pergamino rounded-3xl p-7 md:p-10 mb-10">
+        <div class="text-center mb-6">
+          <span class="text-2xl text-amber-500/80" aria-hidden="true">✧</span>
+          <div class="star-divider text-xs my-4">✦ ✦ ✦</div>
+        </div>
+        <p class="font-display italic text-violet-900 text-base md:text-lg leading-relaxed text-center max-w-3xl mx-auto mb-5">
+          Reconexión con la recodificación de la Voz de la Gran Mujer.
+        </p>
+        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85] text-center max-w-3xl mx-auto mb-4">
+          Reconexión de la frecuencia del Rayo. Esencia de Sara: nueva conexión crística.
+        </p>
+        <p class="font-sans text-sm md:text-base text-violet-800/95 font-medium leading-relaxed text-center max-w-2xl mx-auto">
+          Aquí, varios años en peregrinaje en Salta y en algunos lugares del camino.
+        </p>
+        <div class="mt-8 pt-6 border-t border-amber-500/20 flex justify-center">
+          <span class="material-icons text-3xl md:text-4xl text-amber-600/90 scroll-hint-arrow select-none" aria-hidden="true">keyboard_double_arrow_down</span>
+        </div>
       </div>
 
       <!-- ─── Sección: Lugares y fotos ─── -->
@@ -375,63 +624,89 @@
         <h2 class="font-title text-2xl md:text-3xl font-bold bg-gradient-to-r from-violet-800 via-amber-700 to-fuchsia-700 bg-clip-text text-transparent mb-2">
           Lugares Sagrados del Camino
         </h2>
-        <p class="font-display italic text-violet-700/80 text-sm md:text-base max-w-xl mx-auto">
-          Cada lugar visitado es un nodo vivo en la red de luz planetaria.
+        <p class="font-display italic text-violet-700/80 text-sm md:text-base max-w-2xl mx-auto">
+          Fotos y videos de cada labor, agrupados según el lugar o el momento en el camino.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      <div id="labores-galeria-root" class="max-w-6xl mx-auto mb-12" aria-live="polite"></div>
 
-        <!-- Lugar 1: Tucumán -->
-        <div class="lugar-card rounded-2xl overflow-hidden">
-          <div class="lugar-foto">
-            <div class="lugar-foto-placeholder">
-              <span class="material-icons text-4xl">terrain</span>
-              <span class="text-xs font-semibold tracking-widest uppercase">Foto próximamente</span>
-            </div>
-          </div>
-          <div class="p-5">
-            <h3 class="font-title font-bold text-violet-800 text-base mb-1">Tucumán, Argentina</h3>
-            <p class="text-xs text-gray-500 italic font-display">Apertura del corazón · Anclaje de la Rosa de Unidad en América</p>
-          </div>
-        </div>
+      <script type="application/json" id="labores-galeria-json">
+[{"t":"Amanecer en Iztaccíhuatl, foto del Popocatépetl, labor que camine en el camino de las vírgenes negras","f":"amanecer en Ittazigual foto del Popocatepek Labor que camine en el camino de las virgenes negras","a":["photo_5122859252497189817_x.jpg"]},{"t":"Anclaje de nuevas frecuencias de los niños: Fátima, amor, Sara del nuevo tiempo, aquí y ahora","f":"anclaje nueva frecuenicas de los niños Fatima Amor SAra del nuevo tiempo aqui y ahora","a":["photo_5122859252497189813_y.jpg"]},{"t":"Así comenzábamos a codificarlo","f":"asi comenzazabamos a codificarlo","a":["photo_5123044382767516649_w.jpg","photo_5123044382767516650_w.jpg","photo_5123044382767516651_w.jpg","photo_5123044382767516652_w.jpg","photo_5123044382767516653_w.jpg"]},{"t":"Barcelona y su magia","f":"barcelona  y su magia","a":["photo_5123044382767516645_w.jpg","photo_5123044382767516646_w.jpg","photo_5123044382767516647_w.jpg","photo_5123044382767516648_w.jpg"]},{"t":"Canto a las aguas","f":"canto a las Aguas","a":["photo_5122859252497189852_w.jpg","photo_5122859252497189853_w.jpg"]},{"t":"Cantos al amanecer Retiro Islas","f":"cantos al amanecer REtiro ISlas","a":["VID-20221124-WA0071.mp4"]},{"t":"Cerdeña tumbas del amor","f":"sardegna tumbas del amor","a":["photo_5122859252497189842_y.jpg"]},{"t":"Cerdeña y recodificación de los Pozos de Agua. Esta isla, en nuestra labor, nos ayuda a reconfigurar la Sabiduría ancestral y la reconexión con los reinos y con los pozos de agua REcodificadores","f":"Sardegna y recodificaciond e los Pozos de Agua Esta isla en nuestra labor nos ayuda a reconfigurar la Sabiduria ancestral y la reconexion con los reinos y los pozo de agua REcodificadores para l","m":"sardegna-pozos-agua","a":["photo_5122859252497189828_x.jpg"]},{"t":"Ceremonia de un matrimonio con nosotras mismas RENACER al amor","f":"ceremonia de un matrimonio con nostras mismas RENACER al amor","a":["photo_5122859252497189847_w.jpg","photo_5122859252497189848_w.jpg","photo_5122859252497189849_w.jpg","photo_5122859252497189850_w.jpg"]},{"t":"Ceremonia de yerba mate, Delta y Tigre","f":"ceremona yerba mate Delta  tigre","a":["photo_5122859252497189811_x.jpg","photo_5122859252497189815_x.jpg"]},{"t":"Cima del volcán Llullaillaco, Salta: reconocimiento de los niños arcoíris para hoy anclar esa esencia","f":"cima volvan Yuiaiyaco salta reconodcimiento de los niños arco iris para hoy anclar esa esencia","a":["photo_5122859252497189807_y.jpg","photo_5122859252497189808_y.jpg"]},{"t":"Cuando Resignificamos el camino","f":"cuando Resignificacmos el camino","a":["photo_5122859252497189843_w.jpg"]},{"t":"Danzas del Principito, lugar foco de Cerdeña que nos llevó la Gran Diosa Danza del REnacer","f":"danzas del Principito , lugar foco de Sargena que nos llevo la Grran Diosa Danza del REnacer","a":["photo_5122859252497189851_y.jpg"]},{"t":"Danzas en sierras de Tandil","f":"danzas en sierras de tandilia","a":["photo_5122859252497189814_x.jpg"]},{"t":"Delta y Buenos Aires: armonización al nuevo Nilo, unión de la sabiduría guaraní para anclar la nueva frecuencia Río Paraná desde Amazonas hasta Rosario, Río de la Plata y delta del Paraná, conservación","f":"delta buenos Aires Armonizacion al nuevo nilo union de la sabiduria guarani para anclar la nueva frecuencia Rio parana desde Amazonas hasta  Rosario rio de l aplata delta del parana coservacion","m":"delta-parana-nilo","a":["photo_5122859252497189816_x.jpg"]},{"t":"Despedida de panza en Cerdeña ceremonia de llegada a los nuevos niños","f":"despedida de panza en Sardegna ceremonia de llegada a los nuevo niños","a":["20250607_164335.mp4","20250610_115414.mp4","20250610_115512.mp4","document_5122859252037191536.mp4","document_5122859252037191537.mp4","photo_5122859252497189854_y.jpg","photo_5122859252497189855_y.jpg","photo_5122859252497189856_w (1).jpg","photo_5122859252497189856_w.jpg","photo_5122859252497189859_w.jpg","photo_5122859252497189861_y.jpg","photo_5122859252497189862_y.jpg","photo_5122859252497189863_y.jpg","photo_5122859252497189864_y.jpg","photo_5122859252497189865_y.jpg","photo_5122859252497189866_y.jpg","photo_5122859252497189867_y.jpg","photo_5122859252497189868_y.jpg","photo_5122859252497189869_w.jpg","photo_5122859252497189870_y.jpg","photo_5122859252497189871_y.jpg","photo_5122859252497189872_w.jpg","photo_5122859252497189873_w.jpg","photo_5122859252497189874_w.jpg","photo_5122859252497189875_w.jpg","photo_5123044382767516644_w.jpg"]},{"t":"Egipto","f":"egypto","a":["VID_20241218_131659_465.web.mp4"]},{"t":"Egipto y el llamado a reconectar con el camino crístico","f":"Egypto y el llamado a reconectra con el camino cristico","a":["photo_5122859252497189837_y.jpg"]},{"t":"Génova resignificación de los ancestros","f":"genova resignificacion de  los ancestros","a":["photo_5122859252497189823_x.jpg"]},{"t":"Glastonbury, Inglaterra. Fuente del Masculino sagrado, corazón de la Tierra, Avalon. Muchas familias en el camino para poder seguir sembrando la Rosa del Amor","f":"GLtombery Inglaterra Fuente del Masculino sagrado corazon de la Tierra AValon Muchos  familia en el camino para poder seguir sembrando la Rosa del Amor","a":["photo_5122859252497189826_x.jpg","photo_5122859252497189827_x.jpg"]},{"t":"Isla de la Magdalena","f":"isla de la Magdalena","a":["photo_5122859252497189829_x.jpg"]},{"t":"Italia","f":"Italia","a":["photo_5122859252497189821_x.jpg"]},{"t":"La Guadalupe en Italia: único lugar, pulso de la tierra, sosteniendo la labor sutil de la frecuencia niña original de las sacerdotisas negras del origen","f":"la Guadalupe en Italia unico lugar pulso de la tierra sosteniendo la labor sutil de la frecuenica niña original de las sacerdotisas negras del origen","a":["photo_5122859252497189824_x.jpg"]},{"t":"La Rioja y el valle de la Luna","f":"La rioja y el valle de la luna","a":["photo_5122859252497189838_x.jpg","photo_5122859252497189839_x.jpg","photo_5122859252497189840_x.jpg","photo_5122859252497189841_x.jpg"]},{"t":"Labor cumplida norte de Cerdeña","f":"labor cumplida norte de sardegna","a":["photo_5122859252497189831_x.jpg"]},{"t":"Labor en Roma Italia reconfiguración de las Rosas y el Femenino en Roma y apertura del camino de Magdalena en unión con las islas del Mediterráneo","f":"Labor en Roma Italia reconfiguracion de la s Rosas y el Femeniono en Roma y apertura del camino de magdalena en union con las islas del mediterraneo","a":["photo_5122859252497189819_x.jpg","photo_5122859252497189822_x.jpg"]},{"t":"Más de Cerdeña los niños siempre son nuestra guía","f":"MAs de Sardegna los niños siempre son nuestra guia","a":["photo_5122859252497189832_w.jpg","photo_5122859252497189833_w.jpg","photo_5122859252497189834_w.jpg","photo_5122859252497189835_w.jpg","photo_5122859252497189836_w.jpg"]},{"t":"México Activación en unión del ser masculino y femenino","f":"Mexico Activacio en unon del ser masculino y femenino","a":["photo_5122859252497189810_x.jpg"]},{"t":"Mont Saint-Michel, Francia: uno de los puntos de cobertura de la línea de Arcángel Miguel como custodio del camino crístico. Cada uno de los templos sostuvo, a través de la Voz, la frecuencia para ho","f":"mont sain michel Frnacia uno de los puntos de cobertura de la line de Arcangel miguel como custodio del camino ciristico, CAda uno de los templos sostubo a traves de la Voz la frecuencia para ho","m":"mont-saint-michel-francia","a":["photo_5122859252497189825_x.jpg"]},{"t":"Nuestra labor el próximo año: cantos con nuestra Esencia de niños, elevar la voz de la Rosa arcoíris","f":"nestra labor este proximo año cantos con nuestra Esencia de niños  elevar la voz de la Rosa arco iris","a":["VID_20241212_140043_434.web.mp4"]},{"t":"Ostia canto sagrados montañas de la Diosa","f":"Ostia canto sagrados montañas de la Diosa","a":["photo_5122859252497189830_x.jpg"]},{"t":"Portugal","f":"portugal","a":["photo_5123044382767516654_w.jpg","photo_5123044382767516655_w.jpg","photo_5123044382767516656_w.jpg"]},{"t":"Pozo Santa Cristina canto sagrados","f":"pozo Santa Cristina canto sagrados","a":["VID-20221124-WA0142.mp4"]},{"t":"Próxima siembra será con Cantos entre Todos","f":"Proxima siembra sera con CAntos entre Todos","a":["VID_20241123_040410_877.web.mp4"]},{"t":"Retiro Cerdeña","f":"retiro SArdegna","a":["VID-20221203-WA0012.mp4"]},{"t":"Retiro Tigre: REtrato de Magdalena que apareció para que comience el camino que se completaron 9 años del sur de Francia para REcordarnos","f":"retiro Tigre  REtrato de Magdalnea que aparecio para que comience el camino que se completarion 9 años de l sur de Frnacia para REcordarnos","a":["photo_5122859252497189820_x.jpg"]},{"t":"Salar de Uyuni","f":"salar de Uyumi","a":["photo_5122859252497189806_y.jpg"]},{"t":"Salta","f":"Salta","a":["photo_5122859252497189803_y.jpg","photo_5122859252497189804_y.jpg","photo_5122859252497189805_w.jpg"]},{"t":"Tandil: recodificación de la Gran Mujer, purificación y registros de las nuevas frecuencias madre en el útero cósmico, sostenido por los antiguos","f":"tandil recoficiacion gran mujer purificacion y registros de las nuevas frecuenica madre , en el utero cosmico sostenido por los antiguos","a":["photo_5122859252497189812_x.jpg"]},{"t":"Tenemos muchos guías","f":"tenemos muchos guias","a":["VID_20241126_123513_698.web.mp4"]},{"t":"Unidas sostenemos el amor","f":"unidas sosstenemos el amor","a":["photo_5122859252497189844_w.jpg","photo_5122859252497189845_w.jpg","photo_5122859252497189846_w.jpg"]}]
+      </script>
+      <script>
+        (function () {
+          var root = document.getElementById("labores-galeria-root");
+          var jsonEl = document.getElementById("labores-galeria-json");
+          if (!root || !jsonEl) return;
 
-        <!-- Lugar 2: México -->
-        <div class="lugar-card rounded-2xl overflow-hidden">
-          <div class="lugar-foto">
-            <div class="lugar-foto-placeholder">
-              <span class="material-icons text-4xl">terrain</span>
-              <span class="text-xs font-semibold tracking-widest uppercase">Foto próximamente</span>
-            </div>
-          </div>
-          <div class="p-5">
-            <h3 class="font-title font-bold text-violet-800 text-base mb-1">México</h3>
-            <p class="text-xs text-gray-500 italic font-display">Conexión México – Argentina · Red de Almas del continente</p>
-          </div>
-        </div>
+          var base = "public/Labores/";
+          var data;
+          try {
+            data = JSON.parse(jsonEl.textContent);
+          } catch (e) {
+            return;
+          }
 
-        <!-- Lugar 3: Europa -->
-        <div class="lugar-card rounded-2xl overflow-hidden">
-          <div class="lugar-foto">
-            <div class="lugar-foto-placeholder">
-              <span class="material-icons text-4xl">terrain</span>
-              <span class="text-xs font-semibold tracking-widest uppercase">Foto próximamente</span>
-            </div>
-          </div>
-          <div class="p-5">
-            <h3 class="font-title font-bold text-violet-800 text-base mb-1">Europa</h3>
-            <p class="text-xs text-gray-500 italic font-display">Frecuencia de las Vírgenes Negras · Puente Arco Iris Europa – América</p>
-          </div>
-        </div>
+          function mediaUrl(row, file) {
+            var folder = row.m || row.f;
+            return base + encodeURIComponent(folder) + "/" + encodeURIComponent(file);
+          }
 
-        <!-- Tarjeta "próximo nodo" -->
-        <div class="lugar-card rounded-2xl overflow-hidden border-2 border-dashed border-violet-200/70 bg-violet-50/40 sm:col-span-2 lg:col-span-3 flex flex-col items-center justify-center py-10 gap-3">
-          <span class="text-3xl text-amber-400/70">✧</span>
-          <p class="font-title font-semibold text-violet-500/80 text-sm tracking-widest uppercase">Próximos nodos por revelar</p>
-          <p class="font-display italic text-violet-400/70 text-xs">El mapa de luz sigue expandiéndose...</p>
-        </div>
+          function isVideo(name) {
+            return /\.(mp4|webm|mov)$/i.test(name);
+          }
 
-      </div>
+          data.forEach(function (row) {
+            var art = document.createElement("article");
+            art.className = "labor-bloque scroll-mt-28 text-center";
+
+            var h = document.createElement("h3");
+            h.className =
+              "font-title font-bold text-violet-800 text-lg md:text-xl mb-6 leading-snug mx-auto labor-titulo";
+            h.textContent = row.t;
+            art.appendChild(h);
+
+            var n = row.a.length;
+            var solo = n === 1;
+            var grid = document.createElement("div");
+            if (solo) {
+              grid.className = "flex justify-center";
+            } else if (n === 4) {
+              grid.className = "labor-galeria labor-galeria--cuatro";
+            } else {
+              grid.className = "labor-galeria";
+            }
+
+            row.a.forEach(function (file) {
+              var cell = document.createElement("div");
+              cell.className = "labor-media-frame" + (solo ? " is-solo w-full" : "");
+
+              var u = mediaUrl(row, file);
+              if (isVideo(file)) {
+                var v = document.createElement("video");
+                v.setAttribute("controls", "");
+                v.setAttribute("playsinline", "");
+                v.setAttribute("preload", "metadata");
+                v.setAttribute("controlsList", "nodownload");
+                v.src = u;
+                cell.appendChild(v);
+              } else {
+                var img = document.createElement("img");
+                img.src = u;
+                img.alt = row.t;
+                img.loading = "lazy";
+                img.decoding = "async";
+                cell.appendChild(img);
+              }
+              grid.appendChild(cell);
+            });
+
+            art.appendChild(grid);
+            root.appendChild(art);
+          });
+        })();
+      </script>
 
       <!-- ─── Nuevas activaciones, anclajes y tejido planetario ─── -->
       <div class="pergamino rounded-3xl p-7 md:p-12 mb-12 space-y-10">
@@ -516,17 +791,6 @@
           </div>
         </div>
 
-      </div>
-
-      <!-- CTA final -->
-      <div class="text-center">
-        <a
-          href="index.html#contacto"
-          class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-600 to-amber-500 text-white font-semibold text-sm shadow-xl shadow-purple-500/30 border border-white/20 hover:from-violet-700 hover:via-fuchsia-700 hover:to-amber-600 hover:scale-[1.03] transition-all duration-300"
-        >
-          <span class="material-icons text-lg">favorite</span>
-          Sumarme a la Red
-        </a>
       </div>
 
     </main>
@@ -687,6 +951,110 @@
             { nombre: "México", coords: [19.43, -99.13], desc: "" },
           ];
 
+          /* Lugares inferidos desde los títulos de la galería (se omiten si ya hay un punto muy cerca). */
+          function distGrados(a, b) {
+            var dx = a[0] - b[0];
+            var dy = a[1] - b[1];
+            return Math.sqrt(dx * dx + dy * dy);
+          }
+
+          var yaPuestos = proximos
+            .map(function (x) {
+              return x.coords;
+            })
+            .concat(
+              realizados.map(function (x) {
+                return x.coords;
+              })
+            );
+
+          var candidatosLabores = [
+            {
+              nombre: "Iztaccíhuatl · Popocatépetl",
+              coords: [19.075, -98.627],
+              desc: "Labores en la galería",
+            },
+            {
+              nombre: "Fátima · Portugal",
+              coords: [39.6318, -8.6725],
+              desc: "Labores en la galería",
+            },
+            {
+              nombre: "Barcelona · España",
+              coords: [41.3874, 2.1686],
+              desc: "Labores en la galería",
+            },
+            {
+              nombre: "La Rioja · Argentina",
+              coords: [-29.4131, -66.8558],
+              desc: "Labores en la galería",
+            },
+            {
+              nombre: "Tandil · Argentina",
+              coords: [-37.3217, -59.1332],
+              desc: "Labores en la galería",
+            },
+            {
+              nombre: "Génova · Italia",
+              coords: [44.4056, 8.9463],
+              desc: "Labores en la galería",
+            },
+            {
+              nombre: "Roma · Ostia · Italia",
+              coords: [41.88, 12.42],
+              desc: "Labores en la galería",
+            },
+            {
+              nombre: "Lisboa · Portugal",
+              coords: [38.7223, -9.1393],
+              desc: "Labores en la galería",
+            },
+            {
+              nombre: "Isla de la Magdalena · Cerdeña",
+              coords: [39.22, 9.62],
+              desc: "Labores en la galería",
+            },
+            {
+              nombre: "Pozo Santa Cristina · Cerdeña",
+              coords: [40.255, 8.728],
+              desc: "Labores en la galería",
+            },
+            {
+              nombre: "Salar de Uyuni · Bolivia",
+              coords: [-20.133, -67.489],
+              desc: "Labores en la galería",
+            },
+            {
+              nombre: "Salta · Argentina",
+              coords: [-24.7854, -65.4106],
+              desc: "Labores en la galería",
+            },
+            {
+              nombre: "Volcán Llullaillaco · Argentina",
+              coords: [-24.7197, -68.5369],
+              desc: "Labores en la galería",
+            },
+            {
+              nombre: "El Cairo · Egipto",
+              coords: [30.0444, 31.2357],
+              desc: "Labores en la galería",
+            },
+          ];
+
+          candidatosLabores.forEach(function (c) {
+            var muyCerca = yaPuestos.some(function (p) {
+              return distGrados(c.coords, p) < 0.22;
+            });
+            if (!muyCerca) {
+              realizados.push({
+                nombre: c.nombre,
+                coords: c.coords,
+                desc: c.desc,
+              });
+              yaPuestos.push(c.coords);
+            }
+          });
+
           proximos.forEach(function (l) {
             L.circleMarker(l.coords, estiloProximo)
               .addTo(mapa)
@@ -699,6 +1067,72 @@
               .bindPopup(popup(l.nombre, l.desc, "realizado"));
           });
         }
+      })();
+    </script>
+    <div
+      id="img-lightbox"
+      class="img-lightbox-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Imagen ampliada"
+      aria-hidden="true"
+    >
+      <button
+        type="button"
+        class="img-lightbox-close"
+        aria-label="Cerrar vista ampliada"
+      >
+        <span class="material-icons" aria-hidden="true">close</span>
+      </button>
+      <img alt="" decoding="async" />
+    </div>
+    <script>
+      (function () {
+        var backdrop = document.getElementById("img-lightbox");
+        if (!backdrop) return;
+        var bigImg = backdrop.querySelector("img");
+        var btnClose = backdrop.querySelector(".img-lightbox-close");
+
+        function openLightbox(src, alt) {
+          if (!src) return;
+          bigImg.src = src;
+          bigImg.alt = alt || "";
+          backdrop.classList.add("is-open");
+          backdrop.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+          btnClose.focus();
+        }
+
+        function closeLightbox() {
+          backdrop.classList.remove("is-open");
+          backdrop.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+          bigImg.removeAttribute("src");
+          bigImg.alt = "";
+        }
+
+        btnClose.addEventListener("click", function (e) {
+          e.stopPropagation();
+          closeLightbox();
+        });
+        backdrop.addEventListener("click", function (e) {
+          if (e.target === backdrop) closeLightbox();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && backdrop.classList.contains("is-open"))
+            closeLightbox();
+        });
+
+        var root = document.querySelector("main") || document.body;
+        root.addEventListener("click", function (e) {
+          var t = e.target;
+          if (t.tagName !== "IMG") return;
+          if (t.closest("#img-lightbox")) return;
+          if (t.closest("a")) return;
+          if (t.getAttribute("data-no-lightbox") === "true") return;
+          e.preventDefault();
+          openLightbox(t.currentSrc || t.src, t.alt);
+        });
       })();
     </script>
   </body>

@@ -1,0 +1,71 @@
+/**
+ * Rendimiento / comodidad: no altera el aspecto habitual del sitio.
+ * Ayuda sobre todo cuando el SO pide “reducir movimiento” (fondos fixed suelen causar tirones al hacer scroll).
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .hero-bg,
+  .about-section-bg {
+    background-attachment: scroll !important;
+  }
+  body.body-bg-fixed {
+    background-attachment: scroll !important;
+  }
+  section[style*="background-attachment: fixed"] {
+    background-attachment: scroll !important;
+  }
+  .labores-hero-fullpage::before,
+  .eventos-regalos-hero-fullpage::before {
+    background-attachment: scroll, scroll, scroll, scroll, scroll !important;
+  }
+}
+
+/**
+ * Misma foto y velos del hero en toda la página (eventos + regalos).
+ * Rutas relativas a la raíz del sitio, como en el resto de HTML.
+ */
+.eventos-regalos-hero-fullpage {
+  position: relative;
+  background-color: #fdf4ff;
+}
+.eventos-regalos-hero-fullpage::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(
+      ellipse 80% 60% at 50% 20%,
+      rgba(192, 38, 211, 0.25),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 80% 70%,
+      rgba(124, 58, 237, 0.2),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 15% 80%,
+      rgba(244, 114, 182, 0.22),
+      transparent
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(251, 207, 232, 0.55) 0%,
+      rgba(221, 214, 254, 0.35) 50%,
+      rgba(250, 232, 255, 0.9) 100%
+    ),
+    url("../1.png");
+  background-size: auto, auto, auto, auto, cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll, scroll, scroll, scroll, fixed;
+}
+@media (max-width: 768px) {
+  .eventos-regalos-hero-fullpage::before {
+    background-attachment: scroll, scroll, scroll, scroll, scroll;
+  }
+}
