@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="public/1.png" as="image" />
+    <link rel="icon" type="image/png" href="public/icon1.png" />
+    <title>Labores Planetarias | Rosas Alquímicas</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Quicksand:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="preconnect" href="https://server.arcgisonline.com" />
+    <link rel="dns-prefetch" href="https://server.arcgisonline.com" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8B5CF6",
+              secondary: "#6D28D9",
+              accent: "#C4B5FD",
+              "background-light": "#F9FAFB",
+              "background-dark": "#0B0915",
+              "mystic-purple": "#2E1065",
+              "deep-violet": "#1e0b36",
+              "soft-lilac": "#E9D5FF",
+            },
+            fontFamily: {
+              display: ["Playfair Display", "serif"],
+              sans: ["Montserrat", "sans-serif"],
+              title: ["Quicksand", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .hero-bg {
+        background-image: url("public/1.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+      }
+      @media (max-width: 768px) {
+        .hero-bg { background-attachment: scroll; }
+      }
+      html { scroll-behavior: smooth; }
+
+      .labores-page-bg {
+        background: linear-gradient(175deg, #f5f0ff 0%, #fdf4ff 30%, #f0ebff 60%, #fdf9f0 100%);
+      }
+
+      /* Pergamino cósmico — diferenciador principal */
+      .pergamino {
+        background:
+          radial-gradient(ellipse 120% 80% at 50% 0%, rgba(254,252,232,0.55) 0%, transparent 60%),
+          linear-gradient(160deg,
+            rgba(255,253,247,0.97) 0%,
+            rgba(253,244,255,0.96) 30%,
+            rgba(245,240,255,0.97) 60%,
+            rgba(255,252,240,0.96) 100%
+          );
+        border: 1px solid rgba(212,175,55,0.25);
+        box-shadow:
+          0 12px 48px rgba(109,40,217,0.10),
+          0 2px 0 rgba(212,175,55,0.15) inset,
+          0 -2px 0 rgba(212,175,55,0.10) inset;
+      }
+
+      /* Cita destacada */
+      .cita-cosmica {
+        background: linear-gradient(135deg, rgba(109,40,217,0.07) 0%, rgba(192,38,211,0.07) 50%, rgba(212,175,55,0.08) 100%);
+        border-left: 3px solid;
+        border-image: linear-gradient(to bottom, #7c3aed, #d97706) 1;
+        border-radius: 0 1rem 1rem 0;
+      }
+
+      /* Divisor estrella */
+      .star-divider {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: #a78bfa;
+        font-size: 1.1rem;
+        letter-spacing: 0.4em;
+        opacity: 0.7;
+      }
+      .star-divider::before,
+      .star-divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(167,139,250,0.5), transparent);
+      }
+
+      /* Tarjeta de lugar */
+      .lugar-card {
+        background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(245,240,255,0.90));
+        box-shadow:
+          0 6px 24px rgba(109,40,217,0.10),
+          0 0 0 1px rgba(167,139,250,0.20),
+          inset 0 1px 0 rgba(255,255,255,0.9);
+        transition: transform 0.35s cubic-bezier(0.175,0.885,0.32,1.275), box-shadow 0.35s ease;
+      }
+      .lugar-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 40px rgba(109,40,217,0.18), 0 0 0 1px rgba(167,139,250,0.35);
+      }
+      .lugar-foto {
+        background: linear-gradient(135deg, #ede9fe, #fdf4ff);
+        aspect-ratio: 4/3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+      }
+      .lugar-foto img {
+        width: 100%; height: 100%; object-fit: cover;
+      }
+      .lugar-foto-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        color: #a78bfa;
+        opacity: 0.6;
+      }
+
+      /* Drop cap para párrafo inicial */
+      .drop-cap::first-letter {
+        float: left;
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5em;
+        line-height: 0.8;
+        padding-right: 0.12em;
+        padding-top: 0.05em;
+        color: #7c3aed;
+        font-weight: 700;
+      }
+
+      /* Panel oscuro cósmico */
+      .panel-cosmico {
+        background: linear-gradient(135deg, #1e0b36 0%, #2e1065 50%, #1a0530 100%);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+      }
+
+      #mapa-activaciones {
+        height: min(70vh, 520px);
+        border-radius: 1.25rem;
+        box-shadow:
+          0 12px 48px rgba(109, 40, 217, 0.2),
+          0 0 0 1px rgba(212, 175, 55, 0.35),
+          inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        border: 2px solid rgba(255, 255, 255, 0.65);
+        z-index: 0;
+      }
+      .leaflet-popup-content-wrapper {
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 16px rgba(139, 92, 246, 0.2);
+        border: 1px solid #e9d5ff;
+        font-family: 'Quicksand', sans-serif;
+      }
+      .leaflet-popup-tip {
+        background: white;
+      }
+      .popup-proximo {
+        color: #6d28d9;
+      }
+      .popup-realizado {
+        color: #4c1d95;
+      }
+      .popup-badge {
+        display: inline-block;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 2px 8px;
+        border-radius: 99px;
+        margin-bottom: 4px;
+      }
+      .badge-proximo {
+        background: #fde68a;
+        color: #92400e;
+      }
+      .badge-realizado {
+        background: #ede9fe;
+        color: #5b21b6;
+      }
+    </style>
+  </head>
+  <body
+    class="labores-page-bg min-h-screen font-sans text-gray-800 antialiased selection:bg-fuchsia-500 selection:text-white"
+  >
+    <div class="fixed top-4 left-4 z-50">
+      <a
+        href="index.html"
+        class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/95 text-fuchsia-800 font-semibold shadow-lg border-2 border-fuchsia-300/80 text-sm hover:bg-gradient-to-r hover:from-violet-600 hover:to-fuchsia-600 hover:text-white hover:border-transparent transition-all duration-300 backdrop-blur-sm hover:scale-105"
+      >
+        <span class="material-icons text-lg">arrow_back</span>
+        Volver a menú principal
+      </a>
+    </div>
+
+    <header class="hero-bg min-h-[320px] md:min-h-[400px] flex items-center justify-center relative overflow-hidden">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-violet-200/55 via-fuchsia-200/35 to-purple-100/90 pointer-events-none"
+      ></div>
+      <div
+        class="absolute inset-0 opacity-40 pointer-events-none"
+        style="
+          background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(124, 58, 237, 0.25), transparent),
+            radial-gradient(ellipse 60% 50% at 80% 70%, rgba(192, 38, 211, 0.2), transparent),
+            radial-gradient(ellipse 50% 40% at 15% 80%, rgba(109, 40, 217, 0.22), transparent);
+        "
+        aria-hidden="true"
+      ></div>
+      <div class="container mx-auto px-6 py-20 text-center relative z-10 pt-24">
+        <span
+          class="inline-block text-xs sm:text-sm uppercase tracking-[0.28em] font-semibold mb-4 px-4 py-1.5 rounded-full bg-gradient-to-r from-violet-600/90 via-purple-600/90 to-fuchsia-600/90 text-white shadow-md shadow-purple-500/25 border border-white/30"
+          >Misión Planetaria</span
+        >
+        <h1
+          class="font-title text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-violet-800 via-purple-700 to-fuchsia-600 bg-clip-text text-transparent drop-shadow-sm"
+        >
+          Labores Planetarias
+        </h1>
+        <p class="font-display italic text-violet-900 max-w-2xl mx-auto text-base md:text-lg leading-relaxed drop-shadow-sm px-2">
+          Cada ser humano tiene un rol sagrado en la evolución de la Tierra. Aquí encontrarás las misiones que nos unen en esta labor colectiva de luz.
+        </p>
+      </div>
+    </header>
+
+    <main class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-24 md:pb-32 -mt-8 relative z-10">
+
+      <!-- Mapa: nodos donde se sembraron las rosas -->
+      <section class="pergamino rounded-3xl p-6 md:p-10 mb-10" aria-labelledby="titulo-mapa-rosas">
+        <div class="text-center mb-6">
+          <p class="font-display text-lg md:text-2xl font-semibold text-violet-900 mb-4 tracking-wide">
+            Bienvenido a nuestra <span class="italic text-fuchsia-700">Red Rosas Cristal</span>
+          </p>
+          <h2 id="titulo-mapa-rosas" class="font-title text-xl md:text-2xl font-bold text-violet-900 mb-2">
+            Mapa de lugares donde se sembraron las rosas, en estos años
+          </h2>
+          <p class="text-sm text-violet-700/85 font-light max-w-xl mx-auto">
+            Cada punto en el mapa es un nodo de memoria viva, un lugar donde la Tierra y el alma se reencontraron.
+          </p>
+          <div class="flex items-center justify-center gap-5 mt-4 flex-wrap">
+            <span class="flex items-center gap-1.5 text-sm text-amber-800 font-semibold">
+              <span class="inline-block w-3.5 h-3.5 rounded-full bg-amber-400 border-2 border-amber-600 shadow"></span>
+              Próximo 2026
+            </span>
+            <span class="flex items-center gap-1.5 text-sm text-violet-800 font-semibold">
+              <span class="inline-block w-3.5 h-3.5 rounded-full bg-fuchsia-500 border-2 border-violet-700 shadow"></span>
+              Retiro realizado
+            </span>
+          </div>
+        </div>
+        <div id="mapa-activaciones" aria-label="Mapa de lugares de activación de Rosas Alquímicas"></div>
+      </section>
+
+      <!-- Pergamino principal -->
+      <div class="pergamino rounded-3xl p-7 md:p-12 mb-10">
+
+        <!-- Encabezado con símbolo -->
+        <div class="text-center mb-10">
+          <span class="text-3xl md:text-4xl text-amber-500/80 drop-shadow-sm" aria-hidden="true">✧</span>
+          <div class="star-divider my-4 text-xs">✦ ✦ ✦</div>
+        </div>
+
+        <!-- Párrafo inicial con drop cap -->
+        <p class="drop-cap font-display text-base md:text-lg text-violet-900/90 leading-[1.9] mb-8">
+          Las labores planetarias son actos conscientes de servicio, presencia y conexión que nos invitan a recordar quiénes somos en esencia. En mi camino, apenas comencé, recibí el llamado de viajar a lugares de la Tierra. Sentí un llamado, participé de varios canalizadores y sus convocatorias hasta llegar a mi propio llamado: nuestra Rosa del corazón pedía recordar. Con el Altar de llamado al canto y la danza, mi cuerpo comenzó a recordar y, con el tiempo, comenzó la Academia y un llamado a compartir la importancia que se manifiesta cuando hacemos consciente la memoria de nuestro cuerpo. Gaia es una Diosa que nos ayuda a calmarnos, a transformarnos y a ser Faros.
+        </p>
+
+        <p class="font-display italic text-amber-800/80 text-sm md:text-base leading-relaxed mb-10 text-center font-semibold">
+          Te comparto nuestro pedido de la Gran Madre cósmica en la labor de unidad que seguimos hasta hoy, desde una nueva visión en este año 1.
+        </p>
+
+        <div class="star-divider text-xs mb-10">✧ ✧ ✧</div>
+
+        <!-- Bloque: Cuerpo como templo -->
+        <div class="cita-cosmica px-6 py-5 mb-8 rounded-r-2xl">
+          <p class="font-display italic text-violet-900 text-base md:text-lg leading-relaxed">
+            "A través de prácticas ancestrales y de la memoria viva del cuerpo, este camino propone volver a habitar el cuerpo como templo: un espacio sagrado donde la energía, la conciencia y la materia se encuentran."
+          </p>
+        </div>
+
+        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85] mb-7">
+          Estas enseñanzas, que emergen tanto de tradiciones antiguas como de la sabiduría interna que despierta en este tiempo, nos guían a refinar nuestra percepción, liberar memorias limitantes y expandir nuestra frecuencia.
+        </p>
+
+        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85] mb-7">
+          El cuerpo deja de ser solo biología para convertirse en un nodo de conexión: un puente entre la Tierra y el Cielo, entre lo visible y lo sutil.
+        </p>
+
+        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85] mb-7">
+          Cada práctica, cada respiración, cada movimiento y, sobre todo, cada canto consciente, forman parte de una red mayor: una red de almas que, al recordar, activan nuevas formas de habitar la realidad desde el amor, la coherencia y la presencia. Y de esta manera, cuando sientes ese Amor que eres, te integras, integras tu cuerpo y tu espíritu, y puedes elegir vivir en una espiral de tiempo diferente: los lugares pasan a ser tus acompañantes y nueva familia de Almas. Como así también, toma fuerza la Red en consciencia.
+        </p>
+
+        <!-- Frase destacada -->
+        <div class="bg-gradient-to-r from-violet-50 via-fuchsia-50 to-amber-50 rounded-2xl border border-amber-200/60 px-6 py-5 mb-8 text-center">
+          <p class="font-title font-bold text-violet-800 text-base md:text-xl leading-snug">
+            Aquí, las labores no son tareas: son rituales vivos.<br />
+            <span class="text-fuchsia-700 font-semibold text-sm md:text-base font-sans italic">Son el llamado a encarnar la conciencia y a sostener una nueva frecuencia en la Tierra.</span>
+          </p>
+        </div>
+
+        <div class="star-divider text-xs mb-10">✦ ✦ ✦</div>
+
+        <!-- Origen del llamado -->
+        <h3 class="font-title font-bold text-lg md:text-xl text-violet-800 mb-4 tracking-wide">
+          <span class="text-amber-500 mr-2">✧</span>El llamado y su origen
+        </h3>
+
+        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85] mb-7">
+          Dentro de este camino, el llamado comenzó en el territorio de Tucumán, a través de una apertura del corazón y un pedido de anclaje de la frecuencia de la Rosa de Unidad en América. Desde allí, se inicia la conexión entre México y Argentina y, posteriormente, a través de la frecuencia de las Vírgenes Negras, la unión entre Europa y América, restaurando la vibración de unidad trina.
+        </p>
+
+        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85] mb-10">
+          La labor se resume así: el llamado de la Tierra fue respondido y en cada lugar recibí información que luego integraba y comparto en nuestra Academia. Por eso, cada lugar es un nodo. El llamado concreto fue el Despertar de las Memorias de las Madres Pleyadianas —consciencia Kryon, Pléyades, Arcturus y Sirio— para manifestar las Sacerdotisas de la Rosa que hoy emergen en una esencia cristal, estando aquí para Ser Faros, Guardianas de la Frecuencia de los nuevos niños que llegan a la Tierra.
+        </p>
+
+        <!-- Panel cósmico: Labores anteriores -->
+        <div class="panel-cosmico rounded-2xl px-7 py-8 mb-10 relative overflow-hidden">
+          <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 30px 30px;"></div>
+          <h3 class="font-title font-bold text-base md:text-lg text-purple-200 mb-5 tracking-widest uppercase relative z-10">
+            <span class="text-amber-400 mr-2">✦</span> Labores realizadas
+          </h3>
+          <ul class="space-y-3 relative z-10">
+            <li class="flex items-start gap-3 text-purple-100/90 text-sm md:text-base leading-relaxed">
+              <span class="text-amber-400 mt-0.5 flex-shrink-0">✧</span>
+              Conexión y recuerdo de los Discos Solares y Discos Lunares
+            </li>
+            <li class="flex items-start gap-3 text-purple-100/90 text-sm md:text-base leading-relaxed">
+              <span class="text-amber-400 mt-0.5 flex-shrink-0">✧</span>
+              Actualización del cuerpo sutil y energético · Preparación para el nuevo cuerpo de luz
+            </li>
+            <li class="flex items-start gap-3 text-purple-100/90 text-sm md:text-base leading-relaxed">
+              <span class="text-amber-400 mt-0.5 flex-shrink-0">✧</span>
+              Misión Puente Arco Iris Europa – América (desde 2018 hasta hoy)
+            </li>
+            <li class="flex items-start gap-3 text-purple-100/90 text-sm md:text-base leading-relaxed">
+              <span class="text-amber-400 mt-0.5 flex-shrink-0">✧</span>
+              Despertar de las memorias de las Madres Pleyadianas en nodos de poder
+            </li>
+            <li class="flex items-start gap-3 text-purple-100/90 text-sm md:text-base leading-relaxed">
+              <span class="text-amber-400 mt-0.5 flex-shrink-0">✧</span>
+              Activación de Sacerdotisas de la Rosa en esencia cristal · Faros y Guardianas
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- ─── Sección: Lugares y fotos ─── -->
+      <div class="mb-6 text-center">
+        <span class="inline-block text-xs uppercase tracking-[0.3em] font-semibold px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/80 via-violet-600/80 to-fuchsia-600/80 text-white shadow-md border border-white/30 mb-4">
+          Nodos de Poder
+        </span>
+        <h2 class="font-title text-2xl md:text-3xl font-bold bg-gradient-to-r from-violet-800 via-amber-700 to-fuchsia-700 bg-clip-text text-transparent mb-2">
+          Lugares Sagrados del Camino
+        </h2>
+        <p class="font-display italic text-violet-700/80 text-sm md:text-base max-w-xl mx-auto">
+          Cada lugar visitado es un nodo vivo en la red de luz planetaria.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+
+        <!-- Lugar 1: Tucumán -->
+        <div class="lugar-card rounded-2xl overflow-hidden">
+          <div class="lugar-foto">
+            <div class="lugar-foto-placeholder">
+              <span class="material-icons text-4xl">terrain</span>
+              <span class="text-xs font-semibold tracking-widest uppercase">Foto próximamente</span>
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-title font-bold text-violet-800 text-base mb-1">Tucumán, Argentina</h3>
+            <p class="text-xs text-gray-500 italic font-display">Apertura del corazón · Anclaje de la Rosa de Unidad en América</p>
+          </div>
+        </div>
+
+        <!-- Lugar 2: México -->
+        <div class="lugar-card rounded-2xl overflow-hidden">
+          <div class="lugar-foto">
+            <div class="lugar-foto-placeholder">
+              <span class="material-icons text-4xl">terrain</span>
+              <span class="text-xs font-semibold tracking-widest uppercase">Foto próximamente</span>
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-title font-bold text-violet-800 text-base mb-1">México</h3>
+            <p class="text-xs text-gray-500 italic font-display">Conexión México – Argentina · Red de Almas del continente</p>
+          </div>
+        </div>
+
+        <!-- Lugar 3: Europa -->
+        <div class="lugar-card rounded-2xl overflow-hidden">
+          <div class="lugar-foto">
+            <div class="lugar-foto-placeholder">
+              <span class="material-icons text-4xl">terrain</span>
+              <span class="text-xs font-semibold tracking-widest uppercase">Foto próximamente</span>
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-title font-bold text-violet-800 text-base mb-1">Europa</h3>
+            <p class="text-xs text-gray-500 italic font-display">Frecuencia de las Vírgenes Negras · Puente Arco Iris Europa – América</p>
+          </div>
+        </div>
+
+        <!-- Tarjeta "próximo nodo" -->
+        <div class="lugar-card rounded-2xl overflow-hidden border-2 border-dashed border-violet-200/70 bg-violet-50/40 sm:col-span-2 lg:col-span-3 flex flex-col items-center justify-center py-10 gap-3">
+          <span class="text-3xl text-amber-400/70">✧</span>
+          <p class="font-title font-semibold text-violet-500/80 text-sm tracking-widest uppercase">Próximos nodos por revelar</p>
+          <p class="font-display italic text-violet-400/70 text-xs">El mapa de luz sigue expandiéndose...</p>
+        </div>
+
+      </div>
+
+      <!-- ─── Nuevas activaciones, anclajes y tejido planetario ─── -->
+      <div class="pergamino rounded-3xl p-7 md:p-12 mb-12 space-y-10">
+
+        <div class="text-center">
+          <span class="text-2xl text-amber-500/80" aria-hidden="true">✧</span>
+          <h2 class="font-title text-xl md:text-2xl font-bold text-violet-800 mt-3 mb-1 tracking-wide">
+            Nuevas activaciones y anclajes
+          </h2>
+          <div class="star-divider text-xs my-4">✧ ✧ ✧</div>
+        </div>
+
+        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
+          Activaciones en varios lugares de Argentina: reconfiguración de <em>Argentum</em>, la Diosa Solar; conexión con ciudades intraterrenas e intraoceánicas; pedido de recodificación de las frecuencias de México y Argentina en un puente de unión. Reconfiguración de la unión Europa y América. Reconexión a la frecuencia crística desde la frecuencia de los hijos y niños del nuevo tiempo. Cada lugar es convocado libremente en algunas labores y, en otras, se requiere un retiro donde, conscientemente, varias personas ahora nos reunimos con más conciencia para recordar que es posible compartir una nueva manera de caminar como ser aquí en Gaia.
+        </p>
+
+        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
+          Este proceso implica tomar el lugar como canales conscientes de esta frecuencia, respondiendo al llamado de los discos solares y de territorios ya recorridos, activando nodos energéticos de la Tierra. Cada encuentro se manifiesta a través de la danza, el canto y la presencia en unidad, generando una irradiación que impacta en el campo colectivo.
+        </p>
+
+        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
+          Estas prácticas permiten que cada ser fortalezca su conexión con el campo cuántico y realice su aporte vibracional, sosteniendo y expandiendo la frecuencia en el planeta.
+        </p>
+
+        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
+          En estos tiempos de mayor integración, esta labor de unificación —solicitada años atrás— nos invita a encarnar los atributos de la Madre Cósmica, anclando una nueva grilla de conciencia. A través de las Rosas Cristal Diamante y el canto en cada nodo, se armonizan las aguas internas y se activan memorias profundas ligadas a la recodificación del ADN, en resonancia con los nodos de la Tierra.
+        </p>
+
+        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
+          La espiral de la Rosa nos guía a cada territorio, donde la meditación, el sonido y la presencia siembran una frecuencia de amor verdadero, sostenida por códigos vivos que se expresan a través del arte, el cuerpo y la conciencia en neutralidad.
+        </p>
+
+        <div class="star-divider text-xs">✦ ✦ ✦</div>
+
+        <div class="cita-cosmica px-6 py-5 rounded-r-2xl">
+          <p class="font-display italic text-violet-900 text-sm md:text-base leading-relaxed">
+            En el año 2020 se revela una nueva etapa de esta labor, guiada por la conciencia de Magdalena y la energía crística, acompañada por linajes sagrados que sostienen el anclaje del nuevo cuerpo y la soberanía de los sacerdotes: aquellos seres que responden al llamado de su espíritu, más allá de toda estructura religiosa, guiados únicamente por el amor.
+          </p>
+        </div>
+
+        <div class="star-divider text-xs">✧ ✧ ✧</div>
+
+        <h3 class="font-title text-lg md:text-xl font-bold text-violet-800 flex items-center gap-2">
+          <span class="text-amber-500">✧</span> El tejido planetario
+        </h3>
+
+        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
+          En el último tiempo, se manifestó una labor especial: la creación de un tejido planetario como acto simbólico y energético.
+        </p>
+
+        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
+          Personas de distintas partes del mundo se unieron para tejer, con lanas de colores, un manto que representa un acto psicomágico colectivo: la declaración de que estamos creando un nuevo tejido para la humanidad.
+        </p>
+
+        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
+          Este manto —de luz arcoíris— fue sostenido por tejedoras y activadores que respondieron al llamado, comprendiendo que el cuerpo es el espacio donde esta nueva frecuencia debe anclarse para manifestarse.
+        </p>
+
+        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
+          Su materialización fue impulsada desde el corazón de antiguos territorios, y recorrió durante 2024 y 2025 distintos puntos de Europa: el sur de Francia, España (Montserrat, Tarragona, Valencia), Andorra, Italia, Inglaterra y Avalon. En cada lugar, el canto y la presencia establecieron una frecuencia de unidad, conectando el corazón de Avalon con el corazón de Argentina.
+        </p>
+
+        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
+          Finalmente, esta energía fue traída a Argentina, anclándose en puntos clave como ERKS, Capilla del Monte y otros territorios sagrados, completando así un circuito de conexión entre continentes.
+        </p>
+
+        <div class="panel-cosmico rounded-2xl px-7 py-8 relative overflow-hidden">
+          <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 30px 30px;"></div>
+          <h3 class="font-title font-bold text-base md:text-lg text-purple-200 mb-5 tracking-widest uppercase relative z-10">
+            Misión principal global
+          </h3>
+          <div class="space-y-4 text-purple-100/90 text-sm md:text-base leading-relaxed relative z-10">
+            <p>
+              Recordar la presencia de las Madres Pleyadianas como guía en la nueva Tierra, unir cielo y tierra y navegar en las infinitas posibilidades, recordando que somos seres multidimensionales. A la vez recordamos la conexión a una nueva práctica que nace de esta práctica en este tiempo, con los cantos y la conexión a la nueva Tierra Cristal arcoíris.
+            </p>
+            <p>
+              En este momento estamos siendo llamados a ser esa Rosa que emane su frecuencia en cada lugar, a sembrar amor y mantener el foco y el sostén, recordando que estamos aquí como caminantes crísticos en misión amorosa profunda, y que esto lo haces tú y es para todos.
+            </p>
+            <p>
+              Cada nodo está en conexión. El llamado de toda la labor es encender el corazón de la Tierra para acompañar a anclar la rejilla actual de la Tierra: con la imagen que te comparto —hexágonos en geometría de luz— y cantos sagrados para la recodificación de nuestro ADN, podemos vibrar en la unidad crística hoy. Es una labor diaria en la que aquí nos acompañamos con presencia constante y prácticas: las artes del templo, recreando nuestro templo interno.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA final -->
+      <div class="text-center">
+        <a
+          href="index.html#contacto"
+          class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-600 to-amber-500 text-white font-semibold text-sm shadow-xl shadow-purple-500/30 border border-white/20 hover:from-violet-700 hover:via-fuchsia-700 hover:to-amber-600 hover:scale-[1.03] transition-all duration-300"
+        >
+          <span class="material-icons text-lg">favorite</span>
+          Sumarme a la Red
+        </a>
+      </div>
+
+    </main>
+
+    <script>
+      (function () {
+        var mapaEl = document.getElementById("mapa-activaciones");
+        if (!mapaEl) return;
+        var mapaInicializado = false;
+
+        function iniciarMapa() {
+          if (mapaInicializado) return;
+          mapaInicializado = true;
+
+          var script = document.createElement("script");
+          script.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+          script.onload = function () {
+            construirMapa();
+          };
+          document.head.appendChild(script);
+        }
+
+        var observer = new IntersectionObserver(
+          function (entries) {
+            if (entries[0].isIntersecting) {
+              iniciarMapa();
+              observer.disconnect();
+            }
+          },
+          { rootMargin: "200px" }
+        );
+        observer.observe(mapaEl);
+
+        function construirMapa() {
+          var mapa = L.map("mapa-activaciones", {
+            scrollWheelZoom: false,
+            attributionControl: false,
+          }).setView([20, 0], 2);
+
+          L.tileLayer(
+            "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+            {
+              maxZoom: 19,
+              keepBuffer: 4,
+              updateWhenIdle: true,
+              updateWhenZooming: false,
+            }
+          ).addTo(mapa);
+
+          var estiloProximo = {
+            radius: 11,
+            fillColor: "#fbbf24",
+            color: "#92400e",
+            weight: 2,
+            opacity: 1,
+            fillOpacity: 0.92,
+          };
+
+          var estiloRealizado = {
+            radius: 9,
+            fillColor: "#d946ef",
+            color: "#5b21b6",
+            weight: 2,
+            opacity: 1,
+            fillOpacity: 0.85,
+          };
+
+          function popup(nombre, desc, tipo) {
+            var badge =
+              tipo === "proximo"
+                ? '<span class="popup-badge badge-proximo">Próximo 2026</span>'
+                : '<span class="popup-badge badge-realizado">Realizado</span>';
+            return (
+              '<div style="min-width:160px;padding:2px 0">' +
+              badge +
+              "<br>" +
+              '<strong style="font-size:0.95rem;color:#2e1065">' +
+              nombre +
+              "</strong>" +
+              (desc
+                ? '<br><span style="font-size:0.8rem;color:#5b21b6">' +
+                  desc +
+                  "</span>"
+                : "") +
+              "</div>"
+            );
+          }
+
+          var proximos = [
+            {
+              nombre: "Avalon · Glastonbury",
+              coords: [51.1449, -2.715],
+              desc: "Reconexión de las Hermandades",
+            },
+            {
+              nombre: "Sur de Francia",
+              coords: [43.5, 3.0],
+              desc: "Peregrinaje Magdalenas y Marías",
+            },
+          ];
+
+          var realizados = [
+            {
+              nombre: "Cerdeña, Italia",
+              coords: [40.1209, 9.0129],
+              desc: "Cuerpos templos · Pozos de Agua atlante",
+            },
+            {
+              nombre: "Montserrat, España",
+              coords: [41.593, 1.8366],
+              desc: "Camino del nuevo Dragón · Recodificación Sara",
+            },
+            {
+              nombre: "Pirineos catalanes",
+              coords: [42.55, 1.4],
+              desc: "Retiro de un día",
+            },
+            {
+              nombre: "Merlo, San Luis · Argentina",
+              coords: [-32.35, -65.01],
+              desc: "",
+            },
+            {
+              nombre: "Aurora, Salto · Uruguay",
+              coords: [-31.38, -57.96],
+              desc: "",
+            },
+            {
+              nombre: "Comodoro Rivadavia, Argentina",
+              coords: [-45.86, -67.49],
+              desc: "",
+            },
+            {
+              nombre: "Tigre · Buenos Aires",
+              coords: [-34.42, -58.57],
+              desc: "",
+            },
+            {
+              nombre: "Provincia de Buenos Aires",
+              coords: [-35.5, -59.5],
+              desc: "",
+            },
+            {
+              nombre: "Milán, Italia",
+              coords: [45.464, 9.19],
+              desc: "",
+            },
+            {
+              nombre: "Mont Saint Michel · Francia",
+              coords: [48.636, -1.511],
+              desc: "",
+            },
+            {
+              nombre: "Madrid, España",
+              coords: [40.416, -3.703],
+              desc: "",
+            },
+            { nombre: "México", coords: [19.43, -99.13], desc: "" },
+          ];
+
+          proximos.forEach(function (l) {
+            L.circleMarker(l.coords, estiloProximo)
+              .addTo(mapa)
+              .bindPopup(popup(l.nombre, l.desc, "proximo"));
+          });
+
+          realizados.forEach(function (l) {
+            L.circleMarker(l.coords, estiloRealizado)
+              .addTo(mapa)
+              .bindPopup(popup(l.nombre, l.desc, "realizado"));
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

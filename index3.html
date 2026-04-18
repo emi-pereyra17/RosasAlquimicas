@@ -18,54 +18,6 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link rel="preconnect" href="https://server.arcgisonline.com" />
-    <link rel="dns-prefetch" href="https://server.arcgisonline.com" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
-    <style>
-      #mapa-activaciones {
-        height: 480px;
-        border-radius: 1rem;
-        box-shadow: 0 8px 40px rgba(46, 16, 101, 0.35);
-        border: 2px solid rgba(255, 255, 255, 0.55);
-        z-index: 0;
-      }
-      .leaflet-popup-content-wrapper {
-        border-radius: 0.75rem;
-        box-shadow: 0 4px 16px rgba(139, 92, 246, 0.2);
-        border: 1px solid #e9d5ff;
-        font-family: 'Quicksand', sans-serif;
-      }
-      .leaflet-popup-tip {
-        background: white;
-      }
-      .popup-proximo {
-        color: #6d28d9;
-      }
-      .popup-realizado {
-        color: #4c1d95;
-      }
-      .popup-badge {
-        display: inline-block;
-        font-size: 0.65rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        padding: 2px 8px;
-        border-radius: 99px;
-        margin-bottom: 4px;
-      }
-      .badge-proximo {
-        background: #fde68a;
-        color: #92400e;
-      }
-      .badge-realizado {
-        background: #ede9fe;
-        color: #5b21b6;
-      }
-    </style>
     <script>
       tailwind.config = {
         darkMode: "class",
@@ -201,38 +153,6 @@
         </div>
       </div>
     </header>
-
-    <!-- Mapa de lugares de activación -->
-    <section class="hero-bg relative py-16 px-4">
-      <div
-        class="absolute inset-0 w-full h-full z-0"
-        style="background: rgba(255,255,255,0.12); backdrop-filter: blur(1px);"
-        aria-hidden="true"
-      ></div>
-      <div class="container mx-auto max-w-5xl relative z-10">
-        <div class="text-center mb-8">
-          <span class="block font-sans text-xs font-bold tracking-[0.2em] uppercase text-fuchsia-600 mb-2">Red de poder planetario</span>
-          <h2 class="font-display text-3xl md:text-4xl font-bold text-violet-950 mb-3">
-            Lugares de activación
-          </h2>
-          <p class="text-base text-violet-800/80 font-light max-w-xl mx-auto">
-            Cada punto en el mapa es un nodo de memoria viva, un lugar donde la Tierra y el alma se reencontraron.
-          </p>
-          <!-- Leyenda -->
-          <div class="flex items-center justify-center gap-5 mt-4 flex-wrap">
-            <span class="flex items-center gap-1.5 text-sm text-amber-800 font-semibold">
-              <span class="inline-block w-3.5 h-3.5 rounded-full bg-amber-400 border-2 border-amber-600 shadow"></span>
-              Próximo 2026
-            </span>
-            <span class="flex items-center gap-1.5 text-sm text-violet-800 font-semibold">
-              <span class="inline-block w-3.5 h-3.5 rounded-full bg-fuchsia-500 border-2 border-violet-700 shadow"></span>
-              Retiro realizado
-            </span>
-          </div>
-        </div>
-        <div id="mapa-activaciones" aria-label="Mapa de lugares de activación de Rosas Alquímicas"></div>
-      </div>
-    </section>
 
     <!-- Retiro: Avalon (Inglaterra) - mismo fondo que la primera sección -->
     <section class="hero-bg relative py-20 px-6">
@@ -2166,101 +2086,5 @@
         </div>
       </div>
     </section>
-    <script>
-      (function () {
-        var mapaEl = document.getElementById('mapa-activaciones');
-        var mapaInicializado = false;
-
-        function iniciarMapa() {
-          if (mapaInicializado) return;
-          mapaInicializado = true;
-
-          var script = document.createElement('script');
-          script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-          script.onload = function () { construirMapa(); };
-          document.head.appendChild(script);
-        }
-
-        var observer = new IntersectionObserver(function (entries) {
-          if (entries[0].isIntersecting) {
-            iniciarMapa();
-            observer.disconnect();
-          }
-        }, { rootMargin: '200px' });
-        observer.observe(mapaEl);
-
-        function construirMapa() {
-        var mapa = L.map('mapa-activaciones', { scrollWheelZoom: false, attributionControl: false }).setView([20, 0], 2);
-
-        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-          maxZoom: 19,
-          keepBuffer: 4,
-          updateWhenIdle: true,
-          updateWhenZooming: false
-        }).addTo(mapa);
-
-        var estiloProximo = {
-          radius: 11,
-          fillColor: '#fbbf24',
-          color: '#92400e',
-          weight: 2,
-          opacity: 1,
-          fillOpacity: 0.92
-        };
-
-        var estiloRealizado = {
-          radius: 9,
-          fillColor: '#d946ef',
-          color: '#5b21b6',
-          weight: 2,
-          opacity: 1,
-          fillOpacity: 0.85
-        };
-
-        function popup(nombre, desc, tipo) {
-          var badge = tipo === 'proximo'
-            ? '<span class="popup-badge badge-proximo">Próximo 2026</span>'
-            : '<span class="popup-badge badge-realizado">Realizado</span>';
-          return '<div style="min-width:160px;padding:2px 0">'
-            + badge + '<br>'
-            + '<strong style="font-size:0.95rem;color:#2e1065">' + nombre + '</strong>'
-            + (desc ? '<br><span style="font-size:0.8rem;color:#5b21b6">' + desc + '</span>' : '')
-            + '</div>';
-        }
-
-        var proximos = [
-          { nombre: 'Avalon · Glastonbury', coords: [51.1449, -2.7150], desc: 'Reconexión de las Hermandades' },
-          { nombre: 'Sur de Francia', coords: [43.5, 3.0], desc: 'Peregrinaje Magdalenas y Marías' }
-        ];
-
-        var realizados = [
-          { nombre: 'Cerdeña, Italia', coords: [40.1209, 9.0129], desc: 'Cuerpos templos · Pozos de Agua atlante' },
-          { nombre: 'Montserrat, España', coords: [41.5930, 1.8366], desc: 'Camino del nuevo Dragón · Recodificación Sara' },
-          { nombre: 'Pirineos catalanes', coords: [42.55, 1.4], desc: 'Retiro de un día' },
-          { nombre: 'Merlo, San Luis · Argentina', coords: [-32.35, -65.01], desc: '' },
-          { nombre: 'Aurora, Salto · Uruguay', coords: [-31.38, -57.96], desc: '' },
-          { nombre: 'Comodoro Rivadavia, Argentina', coords: [-45.86, -67.49], desc: '' },
-          { nombre: 'Tigre · Buenos Aires', coords: [-34.42, -58.57], desc: '' },
-          { nombre: 'Provincia de Buenos Aires', coords: [-35.5, -59.5], desc: '' },
-          { nombre: 'Milán, Italia', coords: [45.464, 9.19], desc: '' },
-          { nombre: 'Mont Saint Michel · Francia', coords: [48.636, -1.511], desc: '' },
-          { nombre: 'Madrid, España', coords: [40.416, -3.703], desc: '' },
-          { nombre: 'México', coords: [19.43, -99.13], desc: '' }
-        ];
-
-        proximos.forEach(function (l) {
-          L.circleMarker(l.coords, estiloProximo)
-            .addTo(mapa)
-            .bindPopup(popup(l.nombre, l.desc, 'proximo'));
-        });
-
-        realizados.forEach(function (l) {
-          L.circleMarker(l.coords, estiloRealizado)
-            .addTo(mapa)
-            .bindPopup(popup(l.nombre, l.desc, 'realizado'));
-        });
-        } // fin construirMapa
-      })();
-    </script>
   </body>
 </html>

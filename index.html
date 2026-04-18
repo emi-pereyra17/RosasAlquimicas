@@ -189,6 +189,202 @@
       html {
         scroll-behavior: smooth;
       }
+      /* Navegación hero: mismo cristal + hover que Labores planetarias */
+      .nav-crystal-pill {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.85) 0%,
+          rgba(237, 233, 254, 0.75) 40%,
+          rgba(255, 255, 255, 0.9) 70%,
+          rgba(250, 232, 255, 0.8) 100%
+        );
+        color: #5b21b6;
+        border: 1.5px solid rgba(196, 181, 253, 0.7);
+        box-shadow:
+          0 2px 12px rgba(139, 92, 246, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.95),
+          inset 0 -1px 0 rgba(167, 139, 250, 0.2);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease,
+          filter 0.3s ease;
+      }
+      .nav-crystal-pill:hover {
+        transform: scale(1.05);
+        box-shadow:
+          0 4px 20px rgba(139, 92, 246, 0.32),
+          inset 0 1px 0 rgba(255, 255, 255, 0.98),
+          inset 0 -1px 0 rgba(167, 139, 250, 0.28),
+          0 0 24px rgba(167, 139, 250, 0.22);
+        filter: brightness(1.02);
+      }
+      @keyframes frecuencia-levitar {
+        0%,
+        100% {
+          transform: translateY(0);
+          box-shadow:
+            0 2px 6px rgba(0, 0, 0, 0.12),
+            0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+            0 4px 22px rgba(124, 58, 237, 0.42),
+            0 0 36px rgba(217, 70, 239, 0.28);
+        }
+        50% {
+          transform: translateY(-7px);
+          box-shadow:
+            0 10px 24px rgba(0, 0, 0, 0.14),
+            0 0 0 1px rgba(255, 255, 255, 0.14) inset,
+            0 10px 34px rgba(124, 58, 237, 0.52),
+            0 0 52px rgba(217, 70, 239, 0.4),
+            0 0 28px rgba(250, 204, 21, 0.22);
+        }
+      }
+      /* CTA Frecuencia Arcoíris (hero): un solo bloque CSS para que local y deploy se vean igual */
+      .btn-frecuencia-banner {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 100%;
+        box-sizing: border-box;
+        font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+        font-weight: 600;
+        font-size: clamp(0.8rem, 2.4vw, 0.875rem);
+        line-height: 1.35;
+        letter-spacing: 0.04em;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        text-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.35),
+          0 0 18px rgba(255, 255, 255, 0.22);
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        background: linear-gradient(
+          118deg,
+          #c026d3 0%,
+          #7c3aed 28%,
+          #4f46e5 52%,
+          #db2777 78%,
+          #d97706 100%
+        );
+        box-shadow:
+          0 2px 6px rgba(0, 0, 0, 0.12),
+          0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+          0 4px 22px rgba(124, 58, 237, 0.42),
+          0 0 36px rgba(217, 70, 239, 0.28);
+        animation: frecuencia-levitar 3.2s ease-in-out infinite;
+        will-change: transform, box-shadow;
+        transition:
+          transform 0.22s ease,
+          box-shadow 0.22s ease,
+          filter 0.22s ease,
+          border-color 0.22s ease;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .btn-frecuencia-banner:hover {
+        animation: none;
+        transform: scale(1.06) translateY(0);
+        border-color: rgba(255, 255, 255, 0.72);
+        box-shadow:
+          0 4px 14px rgba(0, 0, 0, 0.16),
+          0 0 0 1px rgba(255, 255, 255, 0.18) inset,
+          0 8px 30px rgba(124, 58, 237, 0.48),
+          0 0 44px rgba(250, 204, 21, 0.32);
+        filter: brightness(1.07) saturate(1.06);
+      }
+      .btn-frecuencia-banner:focus-visible {
+        outline: 2px solid #fde68a;
+        outline-offset: 3px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .btn-frecuencia-banner {
+          animation: none;
+          will-change: auto;
+        }
+        .btn-frecuencia-banner,
+        .btn-frecuencia-banner:hover {
+          transition: border-color 0.2s ease, filter 0.2s ease;
+        }
+        .btn-frecuencia-banner:hover {
+          transform: none;
+          filter: brightness(1.05);
+        }
+      }
+      /* Redes sociales hero — se distinguen del nav cristal: degradado cálido + halo */
+      .social-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 9999px;
+        cursor: pointer;
+        text-decoration: none;
+        outline: none;
+        background: linear-gradient(
+          150deg,
+          #fff0f7 0%,
+          #fae8ff 28%,
+          #fef9c3 58%,
+          #fce7f3 100%
+        );
+        border: 2px solid #e879f9;
+        box-shadow:
+          0 0 0 1px rgba(250, 204, 21, 0.55),
+          0 4px 18px rgba(168, 85, 247, 0.28),
+          0 2px 8px rgba(219, 39, 119, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.95),
+          inset 0 -1px 0 rgba(233, 213, 255, 0.5);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        transition:
+          transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.28s ease,
+          border-color 0.28s ease,
+          background 0.28s ease;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .social-pill svg {
+        width: 1.2rem;
+        height: 1.2rem;
+        flex-shrink: 0;
+        transition: transform 0.28s ease, filter 0.28s ease;
+      }
+      /* Base: cada ícono con su color de marca */
+      .social-pill--ig { color: #e1306c; }
+      .social-pill--yt { color: #ff0000; }
+      .social-pill--wa { color: #25d366; }
+      /* Hover Instagram */
+      .social-pill--ig:hover {
+        background: linear-gradient(135deg, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%);
+        border-color: rgba(238, 42, 123, 0.55);
+        box-shadow: 0 6px 22px rgba(238, 42, 123, 0.4), 0 0 18px rgba(238, 42, 123, 0.22);
+        transform: scale(1.16) rotate(-5deg);
+        color: #fff;
+      }
+      .social-pill--ig:hover svg { filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3)); }
+      /* Hover YouTube */
+      .social-pill--yt:hover {
+        background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+        border-color: rgba(255, 0, 0, 0.5);
+        box-shadow: 0 6px 22px rgba(255, 0, 0, 0.4), 0 0 18px rgba(255, 0, 0, 0.2);
+        transform: scale(1.16) rotate(4deg);
+        color: #fff;
+      }
+      .social-pill--yt:hover svg { filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3)); }
+      /* Hover WhatsApp */
+      .social-pill--wa:hover {
+        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+        border-color: rgba(37, 211, 102, 0.55);
+        box-shadow: 0 6px 22px rgba(37, 211, 102, 0.4), 0 0 18px rgba(37, 211, 102, 0.22);
+        transform: scale(1.16) rotate(-4deg);
+        color: #fff;
+      }
+      .social-pill--wa:hover svg { filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3)); }
     </style>
   </head>
   <body
@@ -197,6 +393,24 @@
     <header
       class="hero-bg min-h-[750px] flex items-center justify-center relative overflow-hidden"
     >
+      <!-- Redes sociales — esquina superior izquierda (espejo de "By Carla Calcaterra") -->
+      <div
+        class="hidden lg:flex absolute items-center gap-2.5"
+        style="top: 8px; left: 24px; z-index: 50"
+        role="group"
+        aria-label="Redes sociales"
+      >
+        <button type="button" class="social-pill social-pill--ig" title="Instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </button>
+        <button type="button" class="social-pill social-pill--yt" title="YouTube" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </button>
+        <button type="button" class="social-pill social-pill--wa" title="WhatsApp" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.932 3.932 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </button>
+      </div>
+
       <!-- Desktop (lg+): una sola fila, más arriba, sin intermedios -->
       <div
         class="hidden lg:flex lg:flex-col lg:items-center lg:gap-2 lg:px-4"
@@ -210,56 +424,50 @@
       >
         <a
           href="index2.html"
-          class="px-2.5 py-1.5 text-sm bg-primary text-white font-semibold rounded-full border-2 border-primary hover:bg-secondary transition-colors duration-300 tracking-wide font-display animate-pulse hover:scale-110 hover:animate-none shadow-2xl shadow-primary/80 ring-2 ring-primary/30 ring-offset-2 ring-offset-white shrink-0"
-          style="
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 0.5px;
-            transition: transform 0.2s;
-            box-shadow: 0 0 16px 4px #d84feb, 0 2px 8px #fff;
-          "
+          class="btn-frecuencia-banner shrink-0"
         >
           ¡Ya disponible: haz clic para ir a Frecuencia Arcoíris!
         </a>
         <span class="flex items-center gap-1.5 flex-nowrap justify-center">
           <a
             href="index3.html"
-            class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors whitespace-nowrap"
+            class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
             >Retiros</a
           >
           <a
             href="index4.html"
-            class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors whitespace-nowrap"
+            class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
             >Quién Soy</a
           >
           <a
             href="index7.html"
-            class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors whitespace-nowrap"
+            class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
             >Canalizaciones</a
           >
           <a
             href="index5.html"
-            class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors whitespace-nowrap"
+            class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
             >Libro</a
           >
           <a
             href="eventos.html"
-            class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors whitespace-nowrap"
+            class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
             >Eventos</a
           >
           <a
             href="index8.html"
-            class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors whitespace-nowrap"
+            class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
             >Cursos y Talleres</a
           >
           <a
             href="index9.html"
-            class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors whitespace-nowrap"
+            class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
             >Regalos</a
           >
           <a
             href="labores-planetarias.html"
-            class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors whitespace-nowrap"
-            >Labores planetarias</a
+            class="nav-crystal-pill text-sm font-semibold whitespace-nowrap px-3 py-1.5 rounded-full"
+            >✦ Red Rosas Cristal Labores planetarias</a
           >
         </span>
       </div>
@@ -301,58 +509,70 @@
           By Carla Calcaterra
         </div>
 
+        <!-- Redes sociales móvil -->
+        <div
+          class="lg:hidden flex justify-center items-center gap-3 mb-3 w-full"
+          role="group"
+          aria-label="Redes sociales"
+        >
+          <button type="button" class="social-pill social-pill--ig" title="Instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </button>
+          <button type="button" class="social-pill social-pill--yt" title="YouTube" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </button>
+          <button type="button" class="social-pill social-pill--wa" title="WhatsApp" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.932 3.932 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </button>
+        </div>
+
         <div class="lg:hidden w-full flex flex-col items-center gap-2 mb-8">
           <a
             href="index2.html"
-            class="px-3 py-1.5 text-sm bg-primary text-white font-semibold rounded-full border border-primary hover:bg-secondary transition-colors duration-300 tracking-wide font-display animate-pulse hover:scale-110 hover:animate-none shadow-xl shadow-primary/60 shrink-0"
-            style="
-              font-family: 'Playfair Display', serif;
-              letter-spacing: 0.5px;
-              transition: transform 0.2s;
-            "
+            class="btn-frecuencia-banner shrink-0"
           >
             ¡Ya disponible: haz clic para ir a Frecuencia Arcoíris!
           </a>
           <span class="flex flex-wrap justify-center items-center gap-2">
             <a
               href="index3.html"
-              class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors"
+              class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full"
               >Retiros</a
             >
             <a
               href="index4.html"
-              class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors"
+              class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full"
               >Quién Soy</a
             >
             <a
               href="index7.html"
-              class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors"
+              class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full"
               >Canalizaciones</a
             >
             <a
               href="index5.html"
-              class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors"
+              class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full"
               >Libro</a
             >
             <a
               href="eventos.html"
-              class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors"
+              class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full"
               >Eventos</a
             >
             <a
               href="index8.html"
-              class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors"
+              class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full"
               >Cursos y Talleres</a
             >
             <a
               href="index9.html"
-              class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors"
+              class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full"
               >Regalos</a
             >
             <a
               href="labores-planetarias.html"
-              class="text-sm font-medium text-fuchsia-800 bg-white/70 px-2.5 py-1.5 rounded-full border border-pink-200 hover:bg-white/90 transition-colors"
-              >Labores planetarias</a
+              class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full"
+              >✦ Red Rosas Cristal Labores planetarias</a
             >
           </span>
         </div>
@@ -1394,8 +1614,16 @@
         <a
           href="labores-planetarias.html"
           class="inline-block font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#1e0b36] mb-16"
-          style="background-color: #1e0b36; color: #f5e6ff; border: 2px solid rgba(245, 230, 255, 0.5)"
-          >Labores planetarias</a
+          style="
+            background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(237,233,254,0.25) 40%, rgba(255,255,255,0.20) 70%, rgba(250,232,255,0.22) 100%);
+            color: #e9d5ff;
+            border: 2px solid rgba(196,181,253,0.55);
+            box-shadow: 0 4px 24px rgba(139,92,246,0.3), 0 1px 0 rgba(255,255,255,0.15) inset, 0 -1px 0 rgba(109,40,217,0.3) inset, 0 0 0 1px rgba(255,255,255,0.08) inset;
+            backdrop-filter: blur(12px);
+            text-shadow: 0 0 12px rgba(233,213,255,0.6), 0 1px 2px rgba(0,0,0,0.3);
+            letter-spacing: 0.02em;
+          "
+          >✦ Red Rosas Cristal Labores planetarias</a
         >
         <div class="flex justify-center mb-12">
           <div class="relative w-full max-w-4xl">
