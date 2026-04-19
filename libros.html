@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="public/1.png" as="image" />
+    <link rel="icon" type="image/png" href="public/icon1.png" />
+    <link rel="stylesheet" href="public/css/site-perf.css" />
+    <title>Libros | Rosas Alquímicas</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Quicksand:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8B5CF6",
+              secondary: "#6D28D9",
+              accent: "#C4B5FD",
+              "background-light": "#F9FAFB",
+              "background-dark": "#0B0915",
+              "mystic-purple": "#2E1065",
+              "deep-violet": "#1e0b36",
+              "soft-lilac": "#E9D5FF",
+            },
+            fontFamily: {
+              display: ["Playfair Display", "serif"],
+              sans: ["Montserrat", "sans-serif"],
+              title: ["Quicksand", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .libros-card {
+        background: linear-gradient(
+          155deg,
+          rgba(255, 253, 248, 0.98) 0%,
+          rgba(250, 245, 255, 0.96) 40%,
+          rgba(240, 253, 250, 0.94) 100%
+        );
+        box-shadow:
+          0 8px 32px rgba(20, 184, 166, 0.1),
+          0 4px 20px rgba(124, 58, 237, 0.08),
+          0 0 0 1px rgba(245, 158, 11, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      }
+    </style>
+  </head>
+  <body
+    class="libros-hero-fullpage min-h-screen font-sans text-gray-800 antialiased selection:bg-teal-500 selection:text-white"
+  >
+    <div class="fixed top-4 left-4 z-50">
+      <a
+        href="rosas-alquimicas.html"
+        class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/95 text-fuchsia-800 font-semibold shadow-lg border-2 border-teal-200/80 text-sm hover:bg-gradient-to-r hover:from-teal-600 hover:to-fuchsia-600 hover:text-white hover:border-transparent transition-all duration-300 backdrop-blur-sm hover:scale-105"
+      >
+        <span class="material-icons text-lg">arrow_back</span>
+        Volver a menú principal
+      </a>
+    </div>
+
+    <header class="min-h-[300px] md:min-h-[380px] flex items-center justify-center relative overflow-hidden">
+      <div class="container mx-auto px-6 py-20 text-center relative z-10 pt-24">
+        <span
+          class="inline-block text-xs sm:text-sm uppercase tracking-[0.28em] font-semibold mb-4 px-4 py-1.5 rounded-full bg-gradient-to-r from-teal-600/90 via-fuchsia-600/85 to-amber-600/90 text-white shadow-md shadow-teal-600/20 border border-white/30"
+          >Lectura</span
+        >
+        <h1
+          class="font-title text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-teal-800 via-fuchsia-700 to-amber-700 bg-clip-text text-transparent drop-shadow-sm"
+        >
+          Libros
+        </h1>
+        <p class="font-display italic text-violet-950 max-w-2xl mx-auto text-base md:text-lg leading-relaxed drop-shadow-sm px-2">
+          Elegí entre el libro impreso y el material en formato digital. Cada propuesta acompaña tu camino con la misma
+          frecuencia de Rosas Alquímicas.
+        </p>
+        <div
+          class="mt-8 inline-flex items-center gap-2 rounded-full border border-teal-200/70 bg-white/70 px-4 py-2 text-sm text-violet-900 shadow-sm backdrop-blur-sm"
+          aria-hidden="true"
+        >
+          <span class="material-icons text-teal-600 text-xl">auto_stories</span>
+          <span class="font-medium">Papel y ebook · un solo espacio</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-20 md:pb-28 -mt-4 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <a
+          href="libro-viaje-guardiana.html"
+          class="libros-card group rounded-3xl border-2 border-fuchsia-200/70 p-6 md:p-8 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:border-fuchsia-400/80 hover:shadow-xl hover:shadow-fuchsia-500/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+        >
+          <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-violet-100 mb-5 ring-1 ring-white/80 shadow-inner">
+            <img
+              src="public/portada.jpg"
+              alt="Portada: El viaje de una Guardiana"
+              class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <span class="text-xs font-bold uppercase tracking-widest text-teal-700 mb-1">Libro</span>
+          <h2 class="font-title text-xl md:text-2xl font-bold text-violet-950 group-hover:text-fuchsia-900 transition-colors">
+            El viaje de una Guardiana
+          </h2>
+          <p class="mt-2 text-sm text-violet-800/90 leading-relaxed flex-1">
+            El retorno al poder del amor y la frecuencia crística. Primer libro — arte y palabra en un mismo latido.
+          </p>
+          <span
+            class="mt-5 inline-flex items-center gap-1 text-sm font-bold text-fuchsia-700 group-hover:gap-2 transition-all"
+          >
+            Ver libro
+            <span class="material-icons text-lg">arrow_forward</span>
+          </span>
+        </a>
+
+        <a
+          href="ebook-danza-energia-y-armonia.html"
+          class="libros-card group rounded-3xl border-2 border-amber-200/80 p-6 md:p-8 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/90 hover:shadow-xl hover:shadow-amber-500/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2"
+        >
+          <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-amber-50 mb-5 ring-1 ring-white/80 shadow-inner">
+            <img
+              src="public/TalleresImages/eBook.jpg"
+              alt="Portada del ebook"
+              class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <span class="text-xs font-bold uppercase tracking-widest text-amber-800 mb-1">Ebook</span>
+          <h2
+            class="font-title text-lg sm:text-xl md:text-2xl font-bold text-violet-950 group-hover:text-amber-900 transition-colors leading-snug"
+          >
+            Danza, Energía y Armonía: un viaje a través del movimiento consciente
+          </h2>
+          <p class="mt-2 text-sm text-violet-800/90 leading-relaxed flex-1">
+            Movimiento, chakras y sonido: guía para bailarines, cantantes y búsqueda espiritual. Por Carla Calcaterra.
+          </p>
+          <span
+            class="mt-5 inline-flex items-center gap-1 text-sm font-bold text-fuchsia-700 group-hover:gap-2 transition-all"
+          >
+            Ver ebook
+            <span class="material-icons text-lg">arrow_forward</span>
+          </span>
+        </a>
+      </div>
+    </main>
+  </body>
+</html>

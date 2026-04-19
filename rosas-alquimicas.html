@@ -222,6 +222,175 @@
           0 0 24px rgba(167, 139, 250, 0.22);
         filter: brightness(1.02);
       }
+      /* Navegación hero: icono + estilo por sección */
+      .nav-pill-with-icon {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+      @media (min-width: 640px) {
+        .nav-pill-with-icon {
+          gap: 0.4rem;
+        }
+      }
+      .nav-pill-ic {
+        font-size: 17px;
+        line-height: 1;
+        opacity: 0.95;
+        flex-shrink: 0;
+      }
+      .nav-pill--retiros {
+        color: #065f46;
+        border-color: rgba(52, 211, 153, 0.65);
+        background: linear-gradient(
+          135deg,
+          rgba(236, 253, 245, 0.92) 0%,
+          rgba(255, 255, 255, 0.88) 55%,
+          rgba(209, 250, 229, 0.75) 100%
+        );
+      }
+      .nav-pill--retiros .nav-pill-ic {
+        color: #059669;
+      }
+      .nav-pill--retiros:hover {
+        box-shadow:
+          0 4px 20px rgba(16, 185, 129, 0.35),
+          inset 0 1px 0 rgba(255, 255, 255, 0.95),
+          0 0 22px rgba(52, 211, 153, 0.28);
+      }
+      .nav-pill--quien-soy {
+        color: #9d174d;
+        border-color: rgba(244, 114, 182, 0.55);
+        background: linear-gradient(
+          135deg,
+          rgba(253, 242, 248, 0.94) 0%,
+          rgba(255, 255, 255, 0.88) 50%,
+          rgba(252, 231, 243, 0.8) 100%
+        );
+      }
+      .nav-pill--quien-soy .nav-pill-ic {
+        color: #db2777;
+      }
+      .nav-pill--quien-soy:hover {
+        box-shadow:
+          0 4px 20px rgba(244, 114, 182, 0.32),
+          inset 0 1px 0 rgba(255, 255, 255, 0.95),
+          0 0 22px rgba(249, 168, 212, 0.28);
+      }
+      .nav-pill--canalizaciones {
+        color: #5b21b6;
+        border-color: rgba(167, 139, 250, 0.65);
+        background: linear-gradient(
+          135deg,
+          rgba(245, 243, 255, 0.95) 0%,
+          rgba(255, 255, 255, 0.88) 45%,
+          rgba(237, 233, 254, 0.82) 100%
+        );
+      }
+      .nav-pill--canalizaciones .nav-pill-ic {
+        color: #7c3aed;
+      }
+      .nav-pill--canalizaciones:hover {
+        box-shadow:
+          0 4px 20px rgba(124, 58, 237, 0.32),
+          inset 0 1px 0 rgba(255, 255, 255, 0.95),
+          0 0 22px rgba(167, 139, 250, 0.3);
+      }
+      .nav-pill--libros {
+        color: #92400e;
+        border-color: rgba(251, 191, 36, 0.55);
+        background: linear-gradient(
+          135deg,
+          rgba(255, 251, 235, 0.95) 0%,
+          rgba(255, 255, 255, 0.9) 50%,
+          rgba(254, 243, 199, 0.78) 100%
+        );
+      }
+      .nav-pill--libros .nav-pill-ic {
+        color: #d97706;
+      }
+      .nav-pill--libros:hover {
+        box-shadow:
+          0 4px 20px rgba(245, 158, 11, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.95),
+          0 0 22px rgba(252, 211, 77, 0.28);
+      }
+      .nav-pill--eventos {
+        color: #9a3412;
+        border-color: rgba(251, 146, 60, 0.55);
+        background: linear-gradient(
+          135deg,
+          rgba(255, 247, 237, 0.95) 0%,
+          rgba(255, 255, 255, 0.88) 50%,
+          rgba(254, 215, 170, 0.75) 100%
+        );
+      }
+      .nav-pill--eventos .nav-pill-ic {
+        color: #ea580c;
+      }
+      .nav-pill--eventos:hover {
+        box-shadow:
+          0 4px 20px rgba(249, 115, 22, 0.28),
+          inset 0 1px 0 rgba(255, 255, 255, 0.95),
+          0 0 22px rgba(253, 186, 116, 0.28);
+      }
+      .nav-pill--cursos {
+        color: #3730a3;
+        border-color: rgba(129, 140, 248, 0.6);
+        background: linear-gradient(
+          135deg,
+          rgba(238, 242, 255, 0.95) 0%,
+          rgba(255, 255, 255, 0.88) 50%,
+          rgba(224, 231, 255, 0.8) 100%
+        );
+      }
+      .nav-pill--cursos .nav-pill-ic {
+        color: #4f46e5;
+      }
+      .nav-pill--cursos:hover {
+        box-shadow:
+          0 4px 20px rgba(99, 102, 241, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.95),
+          0 0 22px rgba(165, 180, 252, 0.28);
+      }
+      .nav-pill--regalos {
+        color: #831843;
+        border-color: rgba(244, 114, 182, 0.55);
+        background: linear-gradient(
+          135deg,
+          rgba(253, 242, 248, 0.96) 0%,
+          rgba(255, 255, 255, 0.88) 45%,
+          rgba(252, 231, 243, 0.82) 100%
+        );
+      }
+      .nav-pill--regalos .nav-pill-ic {
+        color: #db2777;
+      }
+      .nav-pill--regalos:hover {
+        box-shadow:
+          0 4px 20px rgba(236, 72, 153, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.95),
+          0 0 22px rgba(249, 168, 212, 0.28);
+      }
+      .nav-pill--labores {
+        color: #155e75;
+        border-color: rgba(34, 211, 238, 0.5);
+        background: linear-gradient(
+          135deg,
+          rgba(236, 254, 255, 0.93) 0%,
+          rgba(255, 255, 255, 0.88) 40%,
+          rgba(207, 250, 254, 0.78) 100%
+        );
+      }
+      .nav-pill--labores .nav-pill-ic {
+        color: #0891b2;
+      }
+      .nav-pill--labores:hover {
+        box-shadow:
+          0 4px 20px rgba(6, 182, 212, 0.28),
+          inset 0 1px 0 rgba(255, 255, 255, 0.95),
+          0 0 22px rgba(103, 232, 249, 0.25);
+      }
       @keyframes frecuencia-levitar {
         0%,
         100% {
@@ -432,43 +601,43 @@
         <span class="flex items-center gap-1.5 flex-nowrap justify-center">
           <a
             href="retiros.html"
-            class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
-            >Retiros</a
+            class="nav-crystal-pill nav-pill-with-icon nav-pill--retiros text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
+            ><span class="material-icons nav-pill-ic" aria-hidden="true">nature_people</span> Retiros</a
           >
           <a
             href="sobre-mi.html"
-            class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
-            >Quién Soy</a
+            class="nav-crystal-pill nav-pill-with-icon nav-pill--quien-soy text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
+            ><span class="material-icons nav-pill-ic" aria-hidden="true">self_improvement</span> Quién Soy</a
           >
           <a
             href="canalizaciones.html"
-            class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
-            >Canalizaciones</a
+            class="nav-crystal-pill nav-pill-with-icon nav-pill--canalizaciones text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
+            ><span class="material-icons nav-pill-ic" aria-hidden="true">graphic_eq</span> Canalizaciones</a
           >
           <a
-            href="libro-viaje-guardiana.html"
-            class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
-            >Libro</a
+            href="libros.html"
+            class="nav-crystal-pill nav-pill-with-icon nav-pill--libros text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
+            ><span class="material-icons nav-pill-ic" aria-hidden="true">menu_book</span> Libros</a
           >
           <a
             href="eventos.html"
-            class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
-            >Eventos</a
+            class="nav-crystal-pill nav-pill-with-icon nav-pill--eventos text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
+            ><span class="material-icons nav-pill-ic" aria-hidden="true">event_available</span> Eventos</a
           >
           <a
             href="cursos-y-talleres.html"
-            class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
-            >Cursos y Talleres</a
+            class="nav-crystal-pill nav-pill-with-icon nav-pill--cursos text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
+            ><span class="material-icons nav-pill-ic" aria-hidden="true">school</span> Cursos y Talleres</a
           >
           <a
             href="regalos.html"
-            class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
-            >Regalos</a
+            class="nav-crystal-pill nav-pill-with-icon nav-pill--regalos text-sm font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
+            ><span class="material-icons nav-pill-ic" aria-hidden="true">card_giftcard</span> Regalos</a
           >
           <a
             href="labores-planetarias.html"
-            class="nav-crystal-pill text-sm font-semibold whitespace-nowrap px-3 py-1.5 rounded-full"
-            >✦ Red Rosas Cristal Labores planetarias</a
+            class="nav-crystal-pill nav-pill-with-icon nav-pill--labores text-sm font-semibold whitespace-nowrap px-3 py-1.5 rounded-full"
+            ><span class="material-icons nav-pill-ic" aria-hidden="true">public</span> ✦ Red Rosas Cristal Labores planetarias</a
           >
         </span>
       </div>
@@ -537,43 +706,43 @@
           <span class="flex flex-wrap justify-center items-center gap-2">
             <a
               href="retiros.html"
-              class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full"
-              >Retiros</a
+              class="nav-crystal-pill nav-pill-with-icon nav-pill--retiros text-sm font-semibold px-3 py-1.5 rounded-full"
+              ><span class="material-icons nav-pill-ic" aria-hidden="true">nature_people</span> Retiros</a
             >
             <a
               href="sobre-mi.html"
-              class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full"
-              >Quién Soy</a
+              class="nav-crystal-pill nav-pill-with-icon nav-pill--quien-soy text-sm font-semibold px-3 py-1.5 rounded-full"
+              ><span class="material-icons nav-pill-ic" aria-hidden="true">self_improvement</span> Quién Soy</a
             >
             <a
               href="canalizaciones.html"
-              class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full"
-              >Canalizaciones</a
+              class="nav-crystal-pill nav-pill-with-icon nav-pill--canalizaciones text-sm font-semibold px-3 py-1.5 rounded-full"
+              ><span class="material-icons nav-pill-ic" aria-hidden="true">graphic_eq</span> Canalizaciones</a
             >
             <a
-              href="libro-viaje-guardiana.html"
-              class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full"
-              >Libro</a
+              href="libros.html"
+              class="nav-crystal-pill nav-pill-with-icon nav-pill--libros text-sm font-semibold px-3 py-1.5 rounded-full"
+              ><span class="material-icons nav-pill-ic" aria-hidden="true">menu_book</span> Libros</a
             >
             <a
               href="eventos.html"
-              class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full"
-              >Eventos</a
+              class="nav-crystal-pill nav-pill-with-icon nav-pill--eventos text-sm font-semibold px-3 py-1.5 rounded-full"
+              ><span class="material-icons nav-pill-ic" aria-hidden="true">event_available</span> Eventos</a
             >
             <a
               href="cursos-y-talleres.html"
-              class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full"
-              >Cursos y Talleres</a
+              class="nav-crystal-pill nav-pill-with-icon nav-pill--cursos text-sm font-semibold px-3 py-1.5 rounded-full"
+              ><span class="material-icons nav-pill-ic" aria-hidden="true">school</span> Cursos y Talleres</a
             >
             <a
               href="regalos.html"
-              class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full"
-              >Regalos</a
+              class="nav-crystal-pill nav-pill-with-icon nav-pill--regalos text-sm font-semibold px-3 py-1.5 rounded-full"
+              ><span class="material-icons nav-pill-ic" aria-hidden="true">card_giftcard</span> Regalos</a
             >
             <a
               href="labores-planetarias.html"
-              class="nav-crystal-pill text-sm font-semibold px-3 py-1.5 rounded-full"
-              >✦ Red Rosas Cristal Labores planetarias</a
+              class="nav-crystal-pill nav-pill-with-icon nav-pill--labores text-sm font-semibold px-3 py-1.5 rounded-full"
+              ><span class="material-icons nav-pill-ic" aria-hidden="true">public</span> ✦ Red Rosas Cristal Labores planetarias</a
             >
           </span>
         </div>
