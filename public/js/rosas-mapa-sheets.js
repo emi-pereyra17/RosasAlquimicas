@@ -5,14 +5,31 @@
 (function () {
   "use strict";
 
-  function normalizeGoogleSheetCsvUrl(raw) {
-    var u = String(raw || "").trim();
+  /**
+   * Cualquier URL de la hoja (editar, export, gviz) → CSV vía Google Visualization (gviz).
+   * El /export?format=csv suele devolver 307/400 en fetch desde el sitio; gviz responde 200 con CSV.
+   */
+  function resolveGoogleSheetCsvFetchUrl(raw) {
+    var u = String(raw || "").trim().split("#")[0];
     if (!u) return "";
-    if (/docs\.google\.com\/spreadsheets\/d\//i.test(u) && /\/export\?[^#]*format=csv/i.test(u)) {
-      return u.split("#")[0].trim();
-    }
     var m = u.match(/docs\.google\.com\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/i);
     if (!m) return u;
+    var id = m[1];
+    var gid = "0";
+    var gidQ = u.match(/[#&?]gid=(\d+)/i);
+    if (gidQ) gid = gidQ[1];
+    return (
+      "https://docs.google.com/spreadsheets/d/" +
+      id +
+      "/gviz/tq?tqx=out:csv&gid=" +
+      gid
+    );
+  }
+
+  function googleSheetExportFallbackUrl(raw) {
+    var u = String(raw || "").trim().split("#")[0];
+    var m = u.match(/docs\.google\.com\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/i);
+    if (!m) return "";
     var id = m[1];
     var gid = "0";
     var gidQ = u.match(/[#&?]gid=(\d+)/i);
@@ -84,6 +101,12 @@
     if (val == null || val === "") return NaN;
     var t = String(val).trim().replace(/\s/g, "");
     if (/,/.test(t) && !/\./.test(t)) t = t.replace(",", ".");
+    else if (/,/.test(t) && /\./.test(t)) {
+      var lastComma = t.lastIndexOf(",");
+      var lastDot = t.lastIndexOf(".");
+      if (lastComma > lastDot) t = t.replace(/\./g, "").replace(",", ".");
+      else t = t.replace(/,/g, "");
+    }
     var x = parseFloat(t);
     return isNaN(x) ? NaN : x;
   }
@@ -225,9 +248,17 @@
    * @param {HTMLElement} mapaEl - contenedor #mapa-activaciones
    * @param {string} [csvUrl] - opcional; por defecto window.ROSAS_MAPA_CSV_URL
    */
+  function fetchCsvOk(url) {
+    return fetch(url, { cache: "no-store" }).then(function (res) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.text();
+    });
+  }
+
   function buildFromSheets(mapaEl, csvUrl) {
-    var url = normalizeGoogleSheetCsvUrl(csvUrl || (typeof window !== "undefined" && window.ROSAS_MAPA_CSV_URL) || "");
-    if (!url) {
+    var raw = csvUrl || (typeof window !== "undefined" && window.ROSAS_MAPA_CSV_URL) || "";
+    var primary = resolveGoogleSheetCsvFetchUrl(raw);
+    if (!primary) {
       showMapMessage(mapaEl, "Falta configurar ROSAS_MAPA_CSV_URL.");
       return;
     }
@@ -236,10 +267,12 @@
       return;
     }
 
-    fetch(url, { cache: "no-store" })
-      .then(function (res) {
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        return res.text();
+    var fallback = googleSheetExportFallbackUrl(raw);
+
+    fetchCsvOk(primary)
+      .catch(function () {
+        if (fallback && fallback !== primary) return fetchCsvOk(fallback);
+        throw new Error("fetch falló");
       })
       .then(function (text) {
         var rows = parseCSV(text, ",");
@@ -264,7 +297,7 @@
       .catch(function () {
         showMapMessage(
           mapaEl,
-          "No se pudieron cargar los lugares. Comprobá que la hoja sea pública (enlace de lectura) y la URL de exportación CSV."
+          "No se pudieron cargar los lugares. Comprobá que la hoja sea pública (Cualquier persona con el enlace → Lector) y que Latitud/Longitud sean números válidos."
         );
       });
   }

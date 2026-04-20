@@ -5,7 +5,8 @@
  * Opcional: Mostrar (sí/no) para ocultar filas sin borrarlas.
  *
  * Compartir: "Cualquiera con el enlace" → Lector.
- * URL: exportación CSV (si cambiás de pestaña, actualizá &gid= en la URL).
+ * Podés pegar el enlace de edición; el script usa el endpoint gviz (más fiable que /export en el navegador).
+ * Lat/Long: mejor como número con punto decimal o texto plano (evita que la hoja “coma” rompa el CSV).
  */
 window.ROSAS_MAPA_CSV_URL =
-  "https://docs.google.com/spreadsheets/d/1cIo1xHo6Dbev7dumLpqekLclKqhUggaW6UHWuRJ5z5o/export?format=csv&gid=0";
+  "https://docs.google.com/spreadsheets/d/1cIo1xHo6Dbev7dumLpqekLclKqhUggaW6UHWuRJ5z5o/edit?usp=sharing";
