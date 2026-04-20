@@ -2,7 +2,8 @@
  * Modal de inscripción / pago (pasos 1–2–3).
  * En cada página: botones con data-inscripcion-modal, data-producto, data-precio-badge.
  * Opcional: data-mp-url en el botón o window.ROSAS_MERCADOPAGO_URL (link de Mercado Pago).
- * Si no hay link de MP, el botón de pago abre WhatsApp pidiendo el enlace a Carla.
+ * data-mp-sin-enlace="true": el botón de Mercado Pago no navega (enlace pendiente).
+ * Si no hay link de MP y no va data-mp-sin-enlace, el botón de pago abre WhatsApp pidiendo el enlace a Carla.
  */
 (function () {
   "use strict";
@@ -13,6 +14,9 @@
   var overlay = null;
   var dialogEl = null;
   var lastFocus = null;
+  var mpNavPreventDefault = function (e) {
+    e.preventDefault();
+  };
 
   function injectStyles() {
     if (document.getElementById("rosas-inscripcion-modal-styles")) return;
@@ -45,6 +49,7 @@
       ".rosas-imodal-btn-mp{display:flex;width:100%;justify-content:center;align-items:center;gap:0.35rem;border:none;border-radius:9999px;padding:0.85rem 1.25rem;font-weight:700;font-size:0.9rem;color:#fff;cursor:pointer;background:linear-gradient(135deg,#7c3aed 0%,#c026d3 100%);box-shadow:0 8px 20px -6px rgba(109,40,217,0.55);text-decoration:none;transition:filter .15s,transform .1s;}" +
       ".rosas-imodal-btn-mp:hover{filter:brightness(1.06);}" +
       ".rosas-imodal-btn-mp:focus-visible{outline:2px solid #a855f7;outline-offset:2px;}" +
+      ".rosas-imodal-btn-mp[aria-disabled='true']{cursor:not-allowed;opacity:0.78;filter:grayscale(0.15);}" +
       ".rosas-imodal-link-transfer{display:block;margin-top:0.65rem;font-size:0.8125rem;color:#6d28d9;text-align:center;}" +
       ".rosas-imodal-link-transfer a{color:inherit;text-decoration:underline;text-underline-offset:2px;}" +
       ".rosas-imodal-tip{display:flex;gap:0.65rem;align-items:flex-start;background:#fffbeb;border-left:3px solid #d97706;padding:0.75rem 0.85rem;border-radius:0 0.5rem 0.5rem 0;margin-top:0.5rem;font-size:0.75rem;line-height:1.5;color:#713f12;}" +
@@ -165,7 +170,15 @@
     document.getElementById("rosas-imodal-precio").textContent = precioBadge;
 
     var mpA = document.getElementById("rosas-imodal-mp");
-    mpA.href = mpUrl || mpFallbackWa(producto);
+    mpA.removeEventListener("click", mpNavPreventDefault);
+    if (opts.mpSinEnlace) {
+      mpA.href = "#";
+      mpA.setAttribute("aria-disabled", "true");
+      mpA.addEventListener("click", mpNavPreventDefault);
+    } else {
+      mpA.removeAttribute("aria-disabled");
+      mpA.href = mpUrl || mpFallbackWa(producto);
+    }
 
     document.getElementById("rosas-imodal-wa").href = waUrl(producto);
 
@@ -179,6 +192,10 @@
 
   function closeModal() {
     if (!overlay) return;
+    var mpA = document.getElementById("rosas-imodal-mp");
+    if (mpA) {
+      mpA.removeEventListener("click", mpNavPreventDefault);
+    }
     overlay.setAttribute("hidden", "");
     overlay.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
@@ -196,6 +213,7 @@
           producto: btn.getAttribute("data-producto") || "",
           precioBadge: btn.getAttribute("data-precio-badge") || "",
           mpUrl: btn.getAttribute("data-mp-url"),
+          mpSinEnlace: btn.getAttribute("data-mp-sin-enlace") === "true",
         });
       });
     });
