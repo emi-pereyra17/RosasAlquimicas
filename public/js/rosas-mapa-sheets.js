@@ -1,40 +1,123 @@
 /**
- * Carga puntos del mapa desde CSV (Google Sheets) y dibuja Leaflet en #mapa-activaciones.
+ * Carga puntos del mapa desde Google Sheets y dibuja Leaflet en #mapa-activaciones.
  * Requiere: Leaflet global (L), ROSAS_MAPA_CSV_URL en rosas-mapa-config.js
+ *
+ * Importante: el CSV de gviz puede corromper decimales (p. ej. 51.1449 → 511.449).
+ * Por eso usamos la respuesta JSON de gviz y leemos el texto formateado (f) de cada celda numérica.
  */
 (function () {
   "use strict";
 
-  /**
-   * Cualquier URL de la hoja (editar, export, gviz) → CSV vía Google Visualization (gviz).
-   * El /export?format=csv suele devolver 307/400 en fetch desde el sitio; gviz responde 200 con CSV.
-   */
-  function resolveGoogleSheetCsvFetchUrl(raw) {
+  function sheetIdAndGid(raw) {
     var u = String(raw || "").trim().split("#")[0];
-    if (!u) return "";
+    if (!u) return null;
     var m = u.match(/docs\.google\.com\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/i);
-    if (!m) return u;
-    var id = m[1];
+    if (!m) return null;
     var gid = "0";
     var gidQ = u.match(/[#&?]gid=(\d+)/i);
     if (gidQ) gid = gidQ[1];
+    return { id: m[1], gid: gid };
+  }
+
+  /**
+   * JSON gviz (recomendado): números correctos vía campo "f" (formateado).
+   */
+  function resolveGoogleSheetJsonFetchUrl(raw) {
+    var sg = sheetIdAndGid(raw);
+    if (!sg) return "";
     return (
       "https://docs.google.com/spreadsheets/d/" +
-      id +
+      sg.id +
+      "/gviz/tq?tqx=out:json&gid=" +
+      sg.gid +
+      "&tq=" +
+      encodeURIComponent("select *")
+    );
+  }
+
+  /**
+   * CSV gviz (respaldo).
+   */
+  function resolveGoogleSheetCsvFetchUrl(raw) {
+    var sg = sheetIdAndGid(raw);
+    if (!sg) return String(raw || "").trim().split("#")[0];
+    return (
+      "https://docs.google.com/spreadsheets/d/" +
+      sg.id +
       "/gviz/tq?tqx=out:csv&gid=" +
-      gid
+      sg.gid
     );
   }
 
   function googleSheetExportFallbackUrl(raw) {
-    var u = String(raw || "").trim().split("#")[0];
-    var m = u.match(/docs\.google\.com\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/i);
-    if (!m) return "";
-    var id = m[1];
-    var gid = "0";
-    var gidQ = u.match(/[#&?]gid=(\d+)/i);
-    if (gidQ) gid = gidQ[1];
-    return "https://docs.google.com/spreadsheets/d/" + id + "/export?format=csv&gid=" + gid;
+    var sg = sheetIdAndGid(raw);
+    if (!sg) return "";
+    return "https://docs.google.com/spreadsheets/d/" + sg.id + "/export?format=csv&gid=" + sg.gid;
+  }
+
+  function extractGvizJsonObject(text) {
+    var needle = "google.visualization.Query.setResponse(";
+    var start = text.indexOf(needle);
+    if (start === -1) return null;
+    start += needle.length;
+    if (text[start] !== "{") return null;
+    var depth = 0;
+    var i = start;
+    for (; i < text.length; i++) {
+      var c = text[i];
+      if (c === "{") depth++;
+      else if (c === "}") {
+        depth--;
+        if (depth === 0) {
+          try {
+            return JSON.parse(text.substring(start, i + 1));
+          } catch (e) {
+            return null;
+          }
+        }
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Extrae filas tipo CSV desde la respuesta JSON de gviz.
+   * Para celdas number, prioriza "f" (texto formateado) sobre "v" (valor interno a menudo mal escalado).
+   */
+  function gvizJsonToDataRows(text) {
+    var parsed = extractGvizJsonObject(text);
+    if (!parsed || parsed.status !== "ok" || !parsed.table || !parsed.table.cols) return null;
+    var cols = parsed.table.cols;
+    var headers = cols.map(function (c) {
+      return (c && c.label) || "";
+    });
+    var rows = [headers];
+    var tableRows = parsed.table.rows || [];
+    for (var r = 0; r < tableRows.length; r++) {
+      var tr = tableRows[r];
+      var cells = (tr && tr.c) || [];
+      var out = [];
+      for (var i = 0; i < cols.length; i++) {
+        var col = cols[i];
+        var cell = cells[i];
+        out.push(gvizCellToString(col, cell));
+      }
+      rows.push(out);
+    }
+    return rows;
+  }
+
+  function gvizCellToString(col, cell) {
+    if (!cell) return "";
+    if (col && col.type === "number") {
+      if (cell.f != null && String(cell.f).trim() !== "") return String(cell.f).trim();
+    }
+    if (cell.v === null || cell.v === undefined) {
+      if (cell.f != null && cell.f !== undefined) return String(cell.f).trim();
+      return "";
+    }
+    if (typeof cell.v === "number" || typeof cell.v === "boolean") return String(cell.v);
+    return String(cell.v != null ? cell.v : "").trim();
   }
 
   function parseCSV(text, delim) {
@@ -267,7 +350,60 @@
       return;
     }
 
+    var jsonUrl = resolveGoogleSheetJsonFetchUrl(raw);
     var fallback = googleSheetExportFallbackUrl(raw);
+
+    function processRows(rows) {
+      if (!rows || !rows.length) {
+        showMapMessage(mapaEl, "La hoja no tiene datos aún.");
+        return;
+      }
+      var data = rowsToPoints(rows);
+      if (data.proximos.length === 0 && data.realizados.length === 0) {
+        showMapMessage(
+          mapaEl,
+          "No hay puntos válidos. Revisá Nombre, Latitud y Longitud en la hoja."
+        );
+        return;
+      }
+      mapaEl.innerHTML = "";
+      buildLeafletMap(mapaEl, data.proximos, data.realizados);
+    }
+
+    function tryCsv(text) {
+      var rows = parseCSV(text, ",");
+      if (rows.length && rows[0].length < 2 && text.indexOf(";") !== -1) {
+        rows = parseCSV(text, ";");
+      }
+      processRows(rows);
+    }
+
+    if (jsonUrl) {
+      fetchCsvOk(jsonUrl)
+        .then(function (text) {
+          var rows = gvizJsonToDataRows(text);
+          if (rows && rows.length > 1) {
+            processRows(rows);
+            return;
+          }
+          return fetchCsvOk(primary).then(tryCsv);
+        })
+        .catch(function () {
+          return fetchCsvOk(primary)
+            .catch(function () {
+              if (fallback && fallback !== primary) return fetchCsvOk(fallback);
+              throw new Error("fetch falló");
+            })
+            .then(tryCsv);
+        })
+        .catch(function () {
+          showMapMessage(
+            mapaEl,
+            "No se pudieron cargar los lugares. Comprobá que la hoja sea pública (Cualquier persona con el enlace → Lector) y que Latitud/Longitud sean números válidos."
+          );
+        });
+      return;
+    }
 
     fetchCsvOk(primary)
       .catch(function () {
