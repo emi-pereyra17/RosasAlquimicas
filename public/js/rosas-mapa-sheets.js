@@ -194,6 +194,25 @@
     return isNaN(x) ? NaN : x;
   }
 
+  /**
+   * Corrige coordenadas mal escaladas desde hojas con formato entero (#,##0) o decimales pegados.
+   * También casos ibéricos donde la longitud queda ~-86 en lugar de ~-9.
+   */
+  function normalizeLatLng(lat, lng) {
+    if (!isFinite(lat) || !isFinite(lng)) return { lat: lat, lng: lng };
+    while (Math.abs(lat) > 90 && lat !== 0) lat = lat / 10;
+    while (Math.abs(lng) > 180 && lng !== 0) lng = lng / 10;
+    if (
+      lat >= 36 &&
+      lat <= 42 &&
+      lng <= -80 &&
+      lng >= -95
+    ) {
+      lng = lng / 10;
+    }
+    return { lat: lat, lng: lng };
+  }
+
   function rowVisible(mostrarVal) {
     if (mostrarVal == null || mostrarVal === "") return true;
     var v = String(mostrarVal).trim().toLowerCase();
@@ -237,6 +256,10 @@
       var lng = parseCoord(obj.longitud);
       if (nombre === "" && isNaN(lat) && isNaN(lng)) continue;
       if (isNaN(lat) || isNaN(lng)) continue;
+      var norm = normalizeLatLng(lat, lng);
+      lat = norm.lat;
+      lng = norm.lng;
+      if (Math.abs(lat) > 90 || Math.abs(lng) > 180) continue;
       var desc = String(obj.descripcion || "").trim();
       var tipo = parseTipoCell(obj.tipo);
       var item = { nombre: nombre || "Lugar", coords: [lat, lng], desc: desc };
@@ -316,7 +339,7 @@
     });
 
     if (bounds.length > 0) {
-      mapa.fitBounds(bounds, { padding: [36, 36], maxZoom: 8 });
+      mapa.fitBounds(bounds, { padding: [28, 28], maxZoom: 12 });
     }
   }
 

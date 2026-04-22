@@ -1,8 +1,12 @@
 /**
  * Modal de inscripción / pago (pasos 1–2–3).
  * En cada página: botones con data-inscripcion-modal, data-producto, data-precio-badge.
- * Opcional: data-mp-url en el botón o window.ROSAS_MERCADOPAGO_URL (link de Mercado Pago).
- * data-mp-sin-enlace="true": el botón de Mercado Pago no navega (enlace pendiente).
+ * Opcional: data-mp-url en el botón o window.ROSAS_MERCADOPAGO_URL (un solo link ARS, modo clásico).
+ * Opcional: data-mp-url-mensual + data-mp-url-anual (dos links Mercado Pago en ARS) o
+ *   window.ROSAS_MERCADOPAGO_URL_MENSUAL / ROSAS_MERCADOPAGO_URL_ANUAL.
+ * Opcional: data-inscripcion-pla="mensual" o "anual" — con ambas URLs, abre un solo
+ *   flujo de pago (cuota o plan anual) en lugar de los dos botones en el modal.
+ * data-mp-sin-enlace="true": los botones de Mercado Pago no navegan (enlace pendiente).
  * Si no hay link de MP y no va data-mp-sin-enlace, el botón de pago abre WhatsApp pidiendo el enlace a Carla.
  */
 (function () {
@@ -82,16 +86,24 @@
       '<span class="rosas-imodal-num" aria-hidden="true">1</span>' +
       '<div class="rosas-imodal-step-body">' +
       '<h3 class="rosas-imodal-step-title">Elegí tu forma de pago</h3>' +
-      '<p class="rosas-imodal-step-p" style="margin-bottom:0.65rem"><strong>Pesos argentinos (ARS):</strong> Mercado Pago te permite usar diferentes medios de pago.</p>' +
+      '<p id="rosas-imodal-ars-p" class="rosas-imodal-step-p" style="margin-bottom:0.65rem"></p>' +
+      '<div id="rosas-imodal-mp-legacy-wrap">' +
       '<a id="rosas-imodal-mp" class="rosas-imodal-btn-mp" href="#" target="_blank" rel="noopener noreferrer">👉 Pagar con Mercado Pago (ARS)</a>' +
-      '<p class="rosas-imodal-step-p" style="margin-top:1rem;margin-bottom:0rem"><strong>Euros (€) o dólares (USD):</strong> Escribile a Carla por WhatsApp para coordinar el pago.</p>' +
-      "</div></div>" +
+      "</div>" +
+      '<div id="rosas-imodal-mp-dual-wrap" hidden>' +
+      '<a id="rosas-imodal-mp-mensual" class="rosas-imodal-btn-mp" href="#" target="_blank" rel="noopener noreferrer">💳 Membresía mensual (ARS)</a>' +
+      '<a id="rosas-imodal-mp-anual" class="rosas-imodal-btn-mp" style="margin-top:0.5rem" href="#" target="_blank" rel="noopener noreferrer">💳 Membresía anual — pago único (ARS)</a>' +
+      "</div>" +
+      '<p id="rosas-imodal-forex-p" class="rosas-imodal-step-p" style="margin-top:1rem;margin-bottom:0.35rem"></p>' +
+      '<a id="rosas-imodal-wa-forex" class="rosas-imodal-btn-wa" href="#" target="_blank" rel="noopener noreferrer">' +
+      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:1.35rem;height:1.35rem;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.883 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>' +
+      "Coordinar pago en USD o EUR</a></div></div>" +
       '<div class="rosas-imodal-step">' +
       '<span class="rosas-imodal-num" aria-hidden="true">2</span>' +
       '<div class="rosas-imodal-step-body">' +
       '<h3 class="rosas-imodal-step-title">Guardá el comprobante de pago</h3>' +
-      '<p class="rosas-imodal-step-p">Después de pagar, guardá una captura o descargá el comprobante que te muestra Mercado Pago.</p>' +
-      '<div class="rosas-imodal-tip"><span class="rosas-imodal-tip-icon" aria-hidden="true">💡</span><span>Si ves la opción <strong>Volver al sitio</strong>, podés usarla para regresar acá y seguir con el paso 3.</span></div>' +
+      '<p class="rosas-imodal-step-p">Después de pagar, guardá el comprobante o el registro del pago (en Mercado Pago, o lo que Carla te indique si abonaste por WhatsApp).</p>' +
+      '<div class="rosas-imodal-tip"><span class="rosas-imodal-tip-icon" aria-hidden="true">💡</span><span>Si pagaste con Mercado Pago y ves <strong>Volver al sitio</strong>, podés usarla para regresar acá y seguir con el paso 3.</span></div>' +
       "</div></div>" +
       '<div class="rosas-imodal-step">' +
       '<span class="rosas-imodal-num" aria-hidden="true">3</span>' +
@@ -127,6 +139,16 @@
     return "";
   }
 
+  function resolveDualMpUrl(attrVal, winKey) {
+    var a = (attrVal || "").trim();
+    if (a) return a;
+    if (typeof window !== "undefined" && window[winKey]) {
+      var w = String(window[winKey]).trim();
+      if (w) return w;
+    }
+    return "";
+  }
+
   function mpFallbackWa(producto) {
     var t =
       "Hola Carla, ¿me pasás el link de Mercado Pago para inscribirme a " + producto + "? Gracias.";
@@ -141,6 +163,32 @@
       "Mi nombre completo:\n" +
       "Mi email:\n\n" +
       "Gracias.";
+    return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(t);
+  }
+
+  function waUrlCoordinarForex(producto, frecuencia, pla) {
+    var t;
+    if (frecuencia && pla === "mensual") {
+      t =
+        "Hola Carla, quiero coordinar el pago en *dólares o euros* de la *cuota mensual* de: *" +
+        producto +
+        "*. Gracias.";
+    } else if (frecuencia && pla === "anual") {
+      t =
+        "Hola Carla, quiero coordinar el pago en *dólares o euros* del *plan anual* (pago único) de: *" +
+        producto +
+        "*. Gracias.";
+    } else if (frecuencia && !pla) {
+      t =
+        "Hola Carla, quiero coordinar el pago en *dólares o euros* de la inscripción a *" +
+        producto +
+        "* (mensual o anual, según acordemos). Gracias.";
+    } else {
+      t =
+        "Hola Carla, quiero coordinar el pago en *dólares o euros* de la inscripción a *" +
+        producto +
+        "*. Gracias.";
+    }
     return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(t);
   }
 
@@ -165,21 +213,109 @@
     var producto = opts.producto || "esta propuesta";
     var precioBadge = opts.precioBadge || "";
     var mpUrl = resolveMpUrl(opts.mpUrl);
+    var mpMensual = resolveDualMpUrl(
+      opts.mpUrlMensual,
+      "ROSAS_MERCADOPAGO_URL_MENSUAL"
+    );
+    var mpAnual = resolveDualMpUrl(
+      opts.mpUrlAnual,
+      "ROSAS_MERCADOPAGO_URL_ANUAL"
+    );
+    var frecuencia = !!(mpMensual && mpAnual);
+    var pla = (opts.pla || "").trim().toLowerCase();
+    if (pla !== "mensual" && pla !== "anual") pla = "";
+    var useDual = frecuencia && !pla;
 
     document.getElementById("rosas-imodal-producto").textContent = producto;
     document.getElementById("rosas-imodal-precio").textContent = precioBadge;
 
+    var wrapLegacy = document.getElementById("rosas-imodal-mp-legacy-wrap");
+    var wrapDual = document.getElementById("rosas-imodal-mp-dual-wrap");
     var mpA = document.getElementById("rosas-imodal-mp");
+    var mpM = document.getElementById("rosas-imodal-mp-mensual");
+    var mpN = document.getElementById("rosas-imodal-mp-anual");
+
     mpA.removeEventListener("click", mpNavPreventDefault);
-    if (opts.mpSinEnlace) {
-      mpA.href = "#";
-      mpA.setAttribute("aria-disabled", "true");
-      mpA.addEventListener("click", mpNavPreventDefault);
+    if (mpM) mpM.removeEventListener("click", mpNavPreventDefault);
+    if (mpN) mpN.removeEventListener("click", mpNavPreventDefault);
+
+    if (useDual) {
+      if (wrapLegacy) wrapLegacy.setAttribute("hidden", "");
+      if (wrapDual) wrapDual.removeAttribute("hidden");
+      if (opts.mpSinEnlace) {
+        if (mpM) {
+          mpM.href = "#";
+          mpM.setAttribute("aria-disabled", "true");
+          mpM.addEventListener("click", mpNavPreventDefault);
+        }
+        if (mpN) {
+          mpN.href = "#";
+          mpN.setAttribute("aria-disabled", "true");
+          mpN.addEventListener("click", mpNavPreventDefault);
+        }
+      } else {
+        if (mpM) {
+          mpM.removeAttribute("aria-disabled");
+          mpM.href = mpMensual;
+        }
+        if (mpN) {
+          mpN.removeAttribute("aria-disabled");
+          mpN.href = mpAnual;
+        }
+      }
     } else {
-      mpA.removeAttribute("aria-disabled");
-      mpA.href = mpUrl || mpFallbackWa(producto);
+      if (wrapDual) wrapDual.setAttribute("hidden", "");
+      if (wrapLegacy) wrapLegacy.removeAttribute("hidden");
+      var resolvedSingle = mpUrl;
+      if (pla === "mensual" && mpMensual) resolvedSingle = mpMensual;
+      else if (pla === "anual" && mpAnual) resolvedSingle = mpAnual;
+      else if (!resolvedSingle) resolvedSingle = mpMensual || mpAnual || "";
+      if (opts.mpSinEnlace) {
+        mpA.href = "#";
+        mpA.setAttribute("aria-disabled", "true");
+        mpA.addEventListener("click", mpNavPreventDefault);
+      } else {
+        mpA.removeAttribute("aria-disabled");
+        mpA.href = resolvedSingle || mpFallbackWa(producto);
+      }
     }
 
+    var waForex = document.getElementById("rosas-imodal-wa-forex");
+    if (waForex) {
+      waForex.href = waUrlCoordinarForex(producto, frecuencia, pla);
+    }
+    var forexP = document.getElementById("rosas-imodal-forex-p");
+    if (forexP) {
+      if (useDual) {
+        forexP.innerHTML =
+          "<strong>Euros (€) o dólares (USD):</strong> el pago no va por Mercado Pago; escribile a Carla por WhatsApp para coordinar (mensual: 33 € o 33 USD; anual: 222 € o 222 USD, según el plan que elijas).";
+      } else if (frecuencia && pla === "mensual") {
+        forexP.innerHTML =
+          "<strong>Euros (€) o dólares (USD):</strong> el pago no va por Mercado Pago; escribile a Carla por WhatsApp para coordinar (cuota mensual: 33 € o 33 USD).";
+      } else if (frecuencia && pla === "anual") {
+        forexP.innerHTML =
+          "<strong>Euros (€) o dólares (USD):</strong> el pago no va por Mercado Pago; escribile a Carla por WhatsApp para coordinar (plan anual, pago único: 222 € o 222 USD).";
+      } else {
+        forexP.innerHTML =
+          "<strong>Euros (€) o dólares (USD):</strong> escribile a Carla por WhatsApp para coordinar el pago.";
+      }
+    }
+    var arsP = document.getElementById("rosas-imodal-ars-p");
+    if (arsP) {
+      if (useDual) {
+        arsP.innerHTML =
+          "<strong>Pesos argentinos (ARS):</strong> con Mercado Pago podés abonar <strong>por mes</strong> o el <strong>plan anual</strong> (pago único).";
+      } else if (frecuencia && pla === "mensual") {
+        arsP.innerHTML =
+          "<strong>Pesos argentinos (ARS):</strong> con Mercado Pago podés abonar la <strong>cuota mensual</strong> de la membresía.";
+      } else if (frecuencia && pla === "anual") {
+        arsP.innerHTML =
+          "<strong>Pesos argentinos (ARS):</strong> con Mercado Pago podés abonar el <strong>plan anual</strong> (pago único).";
+      } else {
+        arsP.innerHTML =
+          "<strong>Pesos argentinos (ARS):</strong> Mercado Pago te permite usar diferentes medios de pago.";
+      }
+    }
     document.getElementById("rosas-imodal-wa").href = waUrl(producto);
 
     overlay.removeAttribute("hidden");
@@ -196,6 +332,10 @@
     if (mpA) {
       mpA.removeEventListener("click", mpNavPreventDefault);
     }
+    var mpM = document.getElementById("rosas-imodal-mp-mensual");
+    var mpN = document.getElementById("rosas-imodal-mp-anual");
+    if (mpM) mpM.removeEventListener("click", mpNavPreventDefault);
+    if (mpN) mpN.removeEventListener("click", mpNavPreventDefault);
     overlay.setAttribute("hidden", "");
     overlay.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
@@ -213,6 +353,9 @@
           producto: btn.getAttribute("data-producto") || "",
           precioBadge: btn.getAttribute("data-precio-badge") || "",
           mpUrl: btn.getAttribute("data-mp-url"),
+          mpUrlMensual: btn.getAttribute("data-mp-url-mensual"),
+          mpUrlAnual: btn.getAttribute("data-mp-url-anual"),
+          pla: btn.getAttribute("data-inscripcion-pla"),
           mpSinEnlace: btn.getAttribute("data-mp-sin-enlace") === "true",
         });
       });

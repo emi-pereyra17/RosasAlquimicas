@@ -188,6 +188,50 @@
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
       }
+      /* Texto bajo los botones de membresía (anula p/li globales) */
+      .membresia-bloque-beneficios p {
+        font-size: 0.92rem !important;
+        font-family: "Montserrat", "Lato", sans-serif !important;
+        line-height: 1.7 !important;
+        color: #374151 !important;
+        font-weight: 500 !important;
+        text-shadow: none !important;
+        letter-spacing: 0.01em !important;
+      }
+      .dark .membresia-bloque-beneficios p {
+        color: #e5e7eb !important;
+      }
+      .membresia-bloque-beneficios h3 {
+        font-size: 1.05rem !important;
+        font-weight: 700 !important;
+        text-shadow: none !important;
+        letter-spacing: 0.04em !important;
+      }
+      .membresia-bloque-beneficios ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0.5rem 0 0;
+      }
+      .membresia-bloque-beneficios li {
+        font-size: 0.88rem !important;
+        line-height: 1.6 !important;
+        padding-left: 1.15rem;
+        position: relative;
+        margin-bottom: 0.4rem;
+        text-shadow: none !important;
+      }
+      .membresia-bloque-beneficios li::before {
+        content: "✦";
+        position: absolute;
+        left: 0;
+        color: #b89b2c;
+        font-size: 0.75rem;
+        top: 0.2em;
+      }
+      .membresia-bloque-beneficios .precio-membresia-pill {
+        font-size: 0.8rem !important;
+        text-shadow: none !important;
+      }
       /* Card Camino de la Rosa — marco aurora + interior claro */
       .camino-rosa-card {
         position: relative;
@@ -457,8 +501,8 @@
           Planeta? Te doy la bienvenida a un círculo de devoción y alquimia.
         </p>
         <a
-          href="#obtener-membresia"
-          class="inline-block animate-glow bg-gradient-to-r from-pink-500 via-yellow-400 via-green-400 to-purple-500 text-white font-extrabold text-xl px-8 py-4 rounded-full shadow-xl hover:scale-105 hover:from-yellow-400 hover:to-pink-500 transition-all duration-300 uppercase tracking-wider border-4 border-white"
+          href="#membresia-opciones"
+          class="inline-block cursor-pointer animate-glow bg-gradient-to-r from-pink-500 via-yellow-400 via-green-400 to-purple-500 text-white font-extrabold text-xl px-8 py-4 rounded-full shadow-xl hover:scale-105 hover:from-yellow-400 hover:to-pink-500 transition-all duration-300 uppercase tracking-wider border-4 border-white"
           style="
             font-family: &quot;Montserrat&quot;, sans-serif;
             letter-spacing: 0.1em;
@@ -509,16 +553,55 @@
               class="membresia-presentacion px-4 sm:px-8 pt-6 sm:pt-9 pb-2 border-b border-amber-900/10 dark:border-stone-600/30"
             >
               <figure class="max-w-3xl mx-auto mb-8">
-                <video
-                  class="w-full rounded-2xl shadow-xl border-2 border-amber-200/80 bg-black/80 aspect-video object-contain"
-                  controls
-                  playsinline
-                  preload="metadata"
-                  aria-label="Video de presentación: membresía y Red Rosas Cristal"
+                <div
+                  class="rounded-2xl border-2 border-amber-200/80 bg-gradient-to-br from-amber-50/90 via-white to-violet-50/50 dark:from-stone-900/60 dark:via-stone-900/40 dark:to-violet-950/30 p-6 sm:p-8 text-center shadow-xl shadow-amber-900/5"
                 >
-                  <source src="public/membresia.mp4" type="video/mp4" />
-                  Tu navegador no reproduce video en HTML5.
-                </video>
+                  <h3
+                    class="font-title text-base sm:text-lg font-bold text-stone-800 dark:text-amber-100/95 mb-2"
+                    style="font-family: Montserrat, Lato, sans-serif"
+                  >
+                    Presentación en YouTube
+                  </h3>
+                  <p
+                    class="!text-sm !text-stone-600 dark:!text-stone-300 !mb-6 !max-w-md !mx-auto !leading-relaxed"
+                    style="font-family: Montserrat, Lato, sans-serif"
+                  >
+                    Video corto de bienvenida: membresía y Red Rosas Cristal. Se abre en YouTube en una pestaña nueva.
+                  </p>
+                  <a
+                    href="https://www.youtube.com/shorts/K9qFBkkQf7E?feature=share"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-b from-[#ff0000] to-[#cc0000] px-8 py-3.5 sm:py-4 text-white font-bold text-sm sm:text-base shadow-lg shadow-red-600/35 ring-2 ring-white/30 transition-all duration-200 hover:brightness-110 hover:scale-[1.02] hover:shadow-xl hover:shadow-red-500/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-red-500 focus-visible:ring-offset-amber-50 dark:focus-visible:ring-offset-stone-900"
+                    style="font-family: Montserrat, Lato, sans-serif"
+                    aria-label="Ver la presentación en YouTube (se abre en una pestaña nueva)"
+                  >
+                    <span
+                      class="inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-white/20 ring-1 ring-white/30"
+                      aria-hidden="true"
+                    >
+                      <svg
+                        class="h-5 w-5 sm:h-5 sm:w-5"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                        />
+                      </svg>
+                    </span>
+                    <span class="uppercase tracking-wide">Ver en YouTube</span>
+                    <span
+                      class="material-symbols-outlined text-xl opacity-90 group-hover:translate-x-0.5 transition-transform"
+                      aria-hidden="true"
+                      >open_in_new</span
+                    >
+                  </a>
+                </div>
+                <figcaption class="sr-only">
+                  Enlace a la presentación en YouTube Shorts: membresía y Red Rosas Cristal
+                </figcaption>
               </figure>
               <div
                 class="membresia-presentacion-text max-w-3xl mx-auto space-y-5 pb-6 sm:pb-8"
@@ -654,39 +737,259 @@
                 class="text-xs sm:text-sm uppercase tracking-[0.2em] font-bold text-teal-accent mb-3"
                 style="font-family: &quot;Montserrat&quot;, sans-serif"
               >
-                Escuela · Membresía anual
+                Escuela · Membresía mensual o anual
               </p>
               <h2
-                class="text-xl sm:text-2xl md:text-[1.4rem] lg:text-2xl font-serif font-bold leading-snug [text-wrap:balance] text-gray-900 dark:text-stone-900"
+                id="membresia-opciones"
+                class="text-xl sm:text-2xl md:text-[1.4rem] lg:text-2xl font-serif font-bold leading-snug [text-wrap:balance] text-gray-900 dark:text-stone-900 scroll-mt-32"
                 style="font-family: &quot;Playfair Display&quot;, serif"
               >
                 El Camino de la Rosa, Escuela Academia para acompañar el
                 recuerdo y la toma de conciencia amorosamente
               </h2>
-              <button
-                type="button"
-                data-inscripcion-modal
-                data-producto="El Camino de la Rosa — Escuela Academia (membresía anual)"
-                data-precio-badge="33 € · 33 USD · $33.000 ARS · Pago único anual"
-                aria-haspopup="dialog"
-                class="mt-8 inline-flex flex-col items-center justify-center gap-1 rounded-full bg-gradient-to-br from-violet-600 via-fuchsia-600 to-purple-700 px-8 py-4 text-white font-extrabold shadow-lg shadow-violet-900/25 hover:scale-[1.03] transition-transform border-2 border-white/90 min-w-[16rem]"
-                style="font-family: &quot;Montserrat&quot;, sans-serif"
+              <div
+                class="mt-8 w-full max-w-4xl mx-auto px-1"
               >
-                <span
-                  class="inline-flex items-center gap-2 text-sm uppercase tracking-wider"
+                <div
+                  class="flex flex-col sm:flex-row flex-wrap justify-center items-stretch gap-2 sm:gap-2.5"
+                  role="group"
+                  aria-label="Opciones de membresía y comunidad"
                 >
-                  <span
-                    class="material-symbols-outlined text-xl"
-                    aria-hidden="true"
-                    >shopping_bag</span
+                  <a
+                    href="https://t.me/rosasalquimicas"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="order-1 sm:order-none inline-flex flex-1 min-w-[9.5rem] max-w-[15rem] mx-auto sm:mx-0 flex-col items-stretch justify-start gap-1.5 rounded-xl border border-sky-400/80 bg-gradient-to-b from-sky-50/95 to-white text-sky-950 px-2.5 py-2.5 text-[0.7rem] shadow-sm hover:brightness-[1.02] hover:scale-[1.01] transition-all text-left"
+                    style="font-family: Montserrat, Lato, sans-serif"
                   >
-                  Obtener membresía
-                </span>
-                <span
-                  class="text-xs font-bold text-white/95 tracking-wide normal-case"
-                  >33 € · 33 USD · $33.000 ARS</span
+                    <span
+                      class="inline-flex items-center justify-center gap-1 text-[0.65rem] font-extrabold uppercase tracking-[0.1em] text-sky-900 text-center w-full"
+                    >
+                      <span
+                        class="material-symbols-outlined text-base"
+                        aria-hidden="true"
+                        >groups</span
+                      >
+                      Comunidad gratuita
+                    </span>
+                    <div
+                      class="mt-0 border-t border-sky-200/45 pt-1.5 space-y-1"
+                    >
+                      <p
+                        class="text-[0.55rem] sm:text-[0.58rem] leading-[1.5] text-sky-800/80 font-serif font-light tracking-[0.02em] normal-case"
+                        style="font-family: 'Playfair Display', Georgia, serif"
+                      >
+                        Con este enlace podés unirte a un grupo de la comunidad
+                        en Telegram.
+                      </p>
+                      <p
+                        class="text-[0.55rem] sm:text-[0.58rem] leading-[1.5] text-sky-800/75 font-serif font-light italic tracking-[0.02em] normal-case"
+                        style="font-family: 'Playfair Display', Georgia, serif"
+                      >
+                        Aquí podés recibir un regalo al inscribirte, con un
+                        taller para que sientas la energía de la propuesta.
+                      </p>
+                    </div>
+                    <span
+                      class="text-center text-[0.5rem] font-medium tracking-[0.16em] uppercase text-sky-700/60 pt-0.5"
+                      >Telegram · sin costo</span
+                    >
+                  </a>
+                  <button
+                    type="button"
+                    data-inscripcion-modal
+                    data-inscripcion-pla="mensual"
+                    data-producto="El Camino de la Rosa — Escuela Academia (membresía mensual)"
+                    data-mp-url-mensual="https://mpago.la/2GB91Ku"
+                    data-mp-url-anual="https://mpago.la/1qvq7k1"
+                    data-precio-badge="Membresía mensual: $33.000 ARS · 33 USD · 33 € · Mercado Pago en pesos; USD y EUR por WhatsApp"
+                    aria-haspopup="dialog"
+                    class="order-2 sm:order-none inline-flex flex-1 min-w-[9.5rem] max-w-[12rem] mx-auto sm:mx-0 flex-col items-center justify-center gap-0 rounded-xl bg-gradient-to-br from-violet-600 via-fuchsia-600 to-purple-700 px-2.5 py-2 text-white font-bold shadow-md shadow-violet-900/20 hover:scale-[1.01] transition-transform border border-white/80"
+                    style="font-family: Montserrat, Lato, sans-serif"
+                  >
+                    <span
+                      class="inline-flex items-center gap-1 text-[0.6rem] uppercase tracking-wide"
+                    >
+                      <span
+                        class="material-symbols-outlined text-sm"
+                        aria-hidden="true"
+                        >calendar_month</span
+                      >
+                      Pago mensual
+                    </span>
+                    <span
+                      class="text-[0.55rem] font-semibold text-white/95 tracking-wide normal-case [text-wrap:balance] leading-tight"
+                      >33 € · 33 USD · $33.000</span
+                    >
+                  </button>
+                  <button
+                    type="button"
+                    data-inscripcion-modal
+                    data-inscripcion-pla="anual"
+                    data-producto="El Camino de la Rosa — Escuela Academia (membresía anual)"
+                    data-mp-url-mensual="https://mpago.la/2GB91Ku"
+                    data-mp-url-anual="https://mpago.la/1qvq7k1"
+                    data-precio-badge="Membresía anual (pago único): $222.000 ARS · 222 USD · 222 € · Mercado Pago en pesos; USD y EUR por WhatsApp"
+                    aria-haspopup="dialog"
+                    class="order-3 sm:order-none inline-flex flex-1 min-w-[9.5rem] max-w-[12rem] mx-auto sm:mx-0 flex-col items-center justify-center gap-0 rounded-xl bg-gradient-to-br from-violet-700 via-purple-700 to-fuchsia-800 px-2.5 py-2 text-white font-bold shadow-md shadow-violet-900/25 hover:scale-[1.01] transition-transform border border-amber-200/70"
+                    style="font-family: Montserrat, Lato, sans-serif"
+                  >
+                    <span
+                      class="inline-flex items-center gap-1 text-[0.6rem] uppercase tracking-wide"
+                    >
+                      <span
+                        class="material-symbols-outlined text-sm"
+                        aria-hidden="true"
+                        >workspace_premium</span
+                      >
+                      Pago anual
+                    </span>
+                    <span
+                      class="text-[0.55rem] font-semibold text-white/95 tracking-wide normal-case [text-wrap:balance] leading-tight"
+                      >222 € · 222 USD · $222.000</span
+                    >
+                  </button>
+                </div>
+
+                <div
+                  class="membresia-bloque-beneficios mt-10 pt-8 border-t border-amber-200/50 dark:border-stone-600/40 text-left w-full max-w-3xl mx-auto px-1 sm:px-2 space-y-6"
                 >
-              </button>
+                  <div
+                    class="rounded-2xl border border-emerald-200/80 bg-gradient-to-br from-emerald-50/90 to-teal-50/50 dark:from-emerald-950/30 dark:to-teal-950/20 p-4 sm:p-5 shadow-sm text-center"
+                  >
+                    <p
+                      class="!text-[0.95rem] sm:!text-base !font-semibold !text-emerald-950 dark:!text-emerald-100/95 !mb-3"
+                    >
+                      <strong class="text-teal-700 dark:text-teal-300"
+                        >Gratis</strong
+                      >
+                      el ingreso: podés probar 7 días. Solo escribime por aquí:
+                    </p>
+                    <div class="flex justify-center w-full">
+                    <a
+                      href="https://wa.me/34641091383?text=Hola%20Carla%2C%20quiero%20probar%207%20d%C3%ADas%20gratis%20de%20la%20membres%C3%ADa%20El%20Camino%20de%20la%20Rosa.%20Gracias."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#25d366] to-[#128c7e] text-white font-bold px-5 py-2.5 text-sm shadow-md shadow-emerald-900/15 hover:scale-[1.02] transition-transform border border-white/80"
+                      style="font-family: Montserrat, Lato, sans-serif"
+                    >
+                      <svg
+                        class="w-5 h-5 shrink-0"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                        />
+                      </svg>
+                      Escribirme por WhatsApp
+                    </a>
+                    </div>
+                  </div>
+
+                  <div
+                    class="precio-membresia-pill text-center rounded-2xl border border-gold/40 bg-amber-50/80 dark:bg-stone-800/60 py-3 px-3 space-y-2"
+                  >
+                    <p class="!mb-0">
+                      <strong>Plan mensual (referencia):</strong> 33 USD · 33 €
+                      · $33.000 ARS
+                    </p>
+                    <p class="!mb-0 border-t border-gold/25 dark:border-stone-600/50 pt-2">
+                      <strong>Plan anual (pago único, referencia):</strong> 222
+                      USD · 222 € · $222.000 ARS
+                    </p>
+                  </div>
+
+                  <div class="space-y-4">
+                    <h3
+                      class="font-serif text-amber-900 dark:text-amber-100/90 border-b border-amber-200/60 dark:border-amber-800/30 pb-1.5"
+                      style="font-family: 'Playfair Display', Georgia, serif"
+                    >
+                      Encuentros, casa y labores
+                    </h3>
+                    <p>
+                      Encuentros en vivo semanales. Muchas actividades que
+                      hemos sostenido durante años para que puedas hacerlas
+                      <strong>en casa</strong>, acompañada o acompañado. También
+                      nos encontramos en vivo en las
+                      <strong>labores planetarias</strong>: esas conexiones son
+                      una preparación del cuerpo y de la conciencia. Realizaremos
+                      cantos, encuentros y
+                      <strong>viajes sonoros</strong> para encontrarnos en
+                      persona y seguir sintonizados con la
+                      <strong>frecuencia arcoíris</strong>. El llamado es
+                      también a la <strong>naturaleza</strong> y a la conexión
+                      con los <strong>reinos</strong>.
+                    </p>
+                  </div>
+
+                  <div
+                    class="rounded-xl border border-rose-200/60 dark:border-rose-900/30 bg-rose-50/40 dark:bg-rose-950/15 p-4 space-y-3"
+                  >
+                    <h3
+                      class="font-serif !text-base text-rose-900 dark:text-rose-100"
+                      style="font-family: 'Playfair Display', Georgia, serif"
+                    >
+                      Comunidad: caminar juntos
+                    </h3>
+                    <p>
+                      Conectá con una <strong>comunidad</strong> para caminar
+                      juntos. <strong>No estás sola, no estás solo.</strong> El
+                      Camino de la Rosa es el camino del
+                      <strong>corazón</strong>. Este año:
+                      <strong>foco y sostén</strong>. Tendremos
+                      <strong>danzas</strong> para que emerja tu deseo y tu
+                      arte, <strong>meditaciones</strong>, cantos sagrados y
+                      <strong>uso de la voz</strong> para reconocer la energía y
+                      volver al centro.
+                    </p>
+                  </div>
+
+                  <div class="space-y-3">
+                    <h3
+                      class="font-serif text-amber-900 dark:text-amber-100/90 border-b border-amber-200/60 dark:border-amber-800/30 pb-1.5"
+                      style="font-family: 'Playfair Display', Georgia, serif"
+                    >
+                      Cuatro cursos, práctica y acompañamiento
+                    </h3>
+                    <p>
+                      <strong>Cuatro cursos completos</strong> de práctica que
+                      te preparan hacia el final del año hacia una práctica de
+                      acompañamiento (a veces mal llamada «formación») para
+                      acompañar a otros, sobre todo en el
+                      <strong>uso de la energía</strong>, el
+                      <strong>arte como canal intuitivo</strong> y la
+                      <strong>reconexión con los registros akáshicos del
+                      cuerpo</strong>, con fractales y aplicación personal.
+                    </p>
+                    <p>
+                      Preparación para acompañar a otros: esto
+                      <strong>requiere una conexión especial</strong>, junto a
+                      un <strong>curso de fin de semana</strong> o un
+                      <strong>retiro intensivo</strong> para prepararte.
+                    </p>
+                  </div>
+
+                  <ul class="space-y-1.5" aria-label="Incluido en la propuesta">
+                    <li>Clases en vivo cada semana.</li>
+                    <li
+                      class="!text-[0.9rem] !leading-relaxed"
+                    >
+                      Meditaciones y ejercicios que te guían hacia la paz, la
+                      abundancia y la unidad.
+                    </li>
+                  </ul>
+
+                  <p
+                    class="!text-center !font-serif !text-base !font-semibold !text-primary dark:!text-amber-100/90 !pt-2"
+                    style="font-family: 'Playfair Display', Georgia, serif"
+                  >
+                    Empezá hoy mismo tu transformación.
+                  </p>
+                </div>
+              </div>
             </div>
             <div class="camino-rosa-card-body">
               <div
@@ -839,8 +1142,11 @@
                         >✦</span
                       >
                       <span
-                        ><strong>Membresía anual:</strong> 33 USD · 33 € ·
-                        $33.000 ARS (elegís una moneda).</span
+                        ><strong>Membresía mensual o anual:</strong> por mes, 33
+                        USD · 33 € · $33.000 ARS; anual (pago único), 222 USD · 222
+                        € · $222.000 ARS. Elegís moneda; en pesos, Mercado Pago en
+                        el modal; en USD o EUR, coordinación por
+                        WhatsApp.</span
                       >
                     </li>
                   </ul>
@@ -1570,36 +1876,6 @@
             transformará todo lo que creías saber sobre quién eres.
           </p>
         </div>
-      </div>
-    </section>
-    <section
-      id="obtener-membresia"
-      class="pt-8 pb-16 bg-gradient-to-r from-yellow-50 via-pink-50 to-red-100/40 relative scroll-mt-32"
-    >
-      <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-        <h2
-          class="text-4xl md:text-5xl font-serif font-bold text-primary mb-6 leading-tight drop-shadow"
-        >
-          Obtener Membresía
-        </h2>
-        <p
-          class="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed"
-        >
-          Da el siguiente paso para transformar tu vida. Al solicitar tu
-          membresía, agendaremos una llamada personal donde podrás conversar
-          directamente conmigo, resolver tus dudas y recibir orientación sobre
-          el proceso. Este espacio es para conocerte, entender tus necesidades y
-          asegurarnos de que la membresía sea el camino ideal para ti. ¡Tu viaje
-          comienza con una conversación auténtica y cercana!
-        </p>
-        <a
-          href="https://calendly.com/rosasalquimicas/sesion-de-diagnostico-gratuita-con-carla-calcaterra?month=2026-01"
-          target="_blank"
-          rel="noopener"
-          class="inline-block animate-glow bg-gradient-to-r from-pink-500 via-yellow-400 via-green-400 to-purple-500 text-white font-extrabold text-xl px-8 py-4 rounded-full shadow-xl hover:scale-105 hover:from-yellow-400 hover:to-pink-500 transition-all duration-300 uppercase tracking-wider border-4 border-white"
-        >
-          ¡Solicita tu llamada!
-        </a>
       </div>
     </section>
     <footer

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
@@ -15,7 +15,10 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Quicksand:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap"
+      rel="stylesheet"
+    />
     <link rel="preconnect" href="https://unpkg.com" crossorigin />
     <link rel="dns-prefetch" href="https://unpkg.com" />
     <link rel="preconnect" href="https://server.arcgisonline.com" />
@@ -49,7 +52,9 @@
       };
     </script>
     <style>
-      html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+      }
 
       /* Misma foto y velos del hero en toda la página (evita que abajo solo se vea el gradiente plano) */
       .labores-hero-fullpage {
@@ -99,23 +104,33 @@
       /* Pergamino cósmico — diferenciador principal */
       .pergamino {
         background:
-          radial-gradient(ellipse 120% 80% at 50% 0%, rgba(254,252,232,0.55) 0%, transparent 60%),
-          linear-gradient(160deg,
-            rgba(255,253,247,0.97) 0%,
-            rgba(253,244,255,0.96) 30%,
-            rgba(245,240,255,0.97) 60%,
-            rgba(255,252,240,0.96) 100%
+          radial-gradient(
+            ellipse 120% 80% at 50% 0%,
+            rgba(254, 252, 232, 0.55) 0%,
+            transparent 60%
+          ),
+          linear-gradient(
+            160deg,
+            rgba(255, 253, 247, 0.97) 0%,
+            rgba(253, 244, 255, 0.96) 30%,
+            rgba(245, 240, 255, 0.97) 60%,
+            rgba(255, 252, 240, 0.96) 100%
           );
-        border: 1px solid rgba(212,175,55,0.25);
+        border: 1px solid rgba(212, 175, 55, 0.25);
         box-shadow:
-          0 12px 48px rgba(109,40,217,0.10),
-          0 2px 0 rgba(212,175,55,0.15) inset,
-          0 -2px 0 rgba(212,175,55,0.10) inset;
+          0 12px 48px rgba(109, 40, 217, 0.1),
+          0 2px 0 rgba(212, 175, 55, 0.15) inset,
+          0 -2px 0 rgba(212, 175, 55, 0.1) inset;
       }
 
       /* Cita destacada */
       .cita-cosmica {
-        background: linear-gradient(135deg, rgba(109,40,217,0.07) 0%, rgba(192,38,211,0.07) 50%, rgba(212,175,55,0.08) 100%);
+        background: linear-gradient(
+          135deg,
+          rgba(109, 40, 217, 0.07) 0%,
+          rgba(192, 38, 211, 0.07) 50%,
+          rgba(212, 175, 55, 0.08) 100%
+        );
         border-left: 3px solid;
         border-image: linear-gradient(to bottom, #7c3aed, #d97706) 1;
         border-radius: 0 1rem 1rem 0;
@@ -133,24 +148,37 @@
       }
       .star-divider::before,
       .star-divider::after {
-        content: '';
+        content: "";
         flex: 1;
         height: 1px;
-        background: linear-gradient(to right, transparent, rgba(167,139,250,0.5), transparent);
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(167, 139, 250, 0.5),
+          transparent
+        );
       }
 
       /* Tarjeta de lugar */
       .lugar-card {
-        background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(245,240,255,0.90));
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.95),
+          rgba(245, 240, 255, 0.9)
+        );
         box-shadow:
-          0 6px 24px rgba(109,40,217,0.10),
-          0 0 0 1px rgba(167,139,250,0.20),
-          inset 0 1px 0 rgba(255,255,255,0.9);
-        transition: transform 0.35s cubic-bezier(0.175,0.885,0.32,1.275), box-shadow 0.35s ease;
+          0 6px 24px rgba(109, 40, 217, 0.1),
+          0 0 0 1px rgba(167, 139, 250, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        transition:
+          transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+          box-shadow 0.35s ease;
       }
       .lugar-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 16px 40px rgba(109,40,217,0.18), 0 0 0 1px rgba(167,139,250,0.35);
+        box-shadow:
+          0 16px 40px rgba(109, 40, 217, 0.18),
+          0 0 0 1px rgba(167, 139, 250, 0.35);
       }
       .lugar-foto {
         background: linear-gradient(135deg, #ede9fe, #fdf4ff);
@@ -162,7 +190,9 @@
         position: relative;
       }
       .lugar-foto img {
-        width: 100%; height: 100%; object-fit: cover;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
       .lugar-foto-placeholder {
         display: flex;
@@ -179,8 +209,15 @@
         animation: scroll-hint-bob 2.2s ease-in-out infinite;
       }
       @keyframes scroll-hint-bob {
-        0%, 100% { transform: translateY(0); opacity: 0.72; }
-        50% { transform: translateY(7px); opacity: 1; }
+        0%,
+        100% {
+          transform: translateY(0);
+          opacity: 0.72;
+        }
+        50% {
+          transform: translateY(7px);
+          opacity: 1;
+        }
       }
 
       /* ─── Galería de labores ─── */
@@ -204,21 +241,27 @@
       .labor-media-frame {
         position: relative;
         aspect-ratio: 4 / 3;
-        background:
-          radial-gradient(ellipse at center, rgba(124,58,237,0.10) 0%, rgba(30,11,54,0.92) 70%, #1a0530 100%);
+        background: radial-gradient(
+          ellipse at center,
+          rgba(124, 58, 237, 0.1) 0%,
+          rgba(30, 11, 54, 0.92) 70%,
+          #1a0530 100%
+        );
         border-radius: 1rem;
         overflow: hidden;
         box-shadow:
-          0 10px 30px rgba(46,16,101,0.18),
-          0 0 0 1px rgba(212,175,55,0.18),
-          inset 0 1px 0 rgba(255,255,255,0.06);
-        transition: transform 0.35s ease, box-shadow 0.35s ease;
+          0 10px 30px rgba(46, 16, 101, 0.18),
+          0 0 0 1px rgba(212, 175, 55, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        transition:
+          transform 0.35s ease,
+          box-shadow 0.35s ease;
       }
       .labor-media-frame:hover {
         transform: translateY(-3px);
         box-shadow:
-          0 16px 40px rgba(46,16,101,0.28),
-          0 0 0 1px rgba(212,175,55,0.32);
+          0 16px 40px rgba(46, 16, 101, 0.28),
+          0 0 0 1px rgba(212, 175, 55, 0.32);
       }
       .labor-media-frame > img,
       .labor-media-frame > video {
@@ -284,10 +327,222 @@
         width: 100%;
       }
 
+      /* Sección aparte (no dentro del article de la labor): destacados en fila de 3 */
+      .labor-destaque-seccion {
+        max-width: 72rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2.5rem;
+        padding: 1.5rem 1.25rem 1.75rem;
+        border-radius: 1.25rem;
+        border: 1px solid rgba(109, 40, 217, 0.22);
+        background: linear-gradient(
+          180deg,
+          rgba(245, 243, 255, 0.96) 0%,
+          rgba(255, 255, 255, 0.9) 100%
+        );
+        box-shadow:
+          0 12px 36px rgba(46, 16, 101, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.85);
+      }
+      @media (min-width: 768px) {
+        .labor-destaque-seccion {
+          padding: 1.75rem 2rem 2rem;
+        }
+      }
+      .labor-destaque-seccion--enmarcada {
+        position: relative;
+        margin-top: 0.5rem;
+        margin-bottom: 0.25rem;
+        padding: 1.5rem 1.25rem 1.6rem;
+        border: 2px solid rgba(180, 83, 9, 0.45);
+        background: linear-gradient(
+          165deg,
+          rgba(254, 252, 247, 0.98) 0%,
+          rgba(250, 245, 255, 0.95) 50%,
+          rgba(255, 251, 240, 0.96) 100%
+        );
+        box-shadow:
+          0 0 0 1px rgba(212, 175, 55, 0.35) inset,
+          0 16px 40px rgba(88, 28, 135, 0.12);
+      }
+      @media (min-width: 768px) {
+        .labor-destaque-seccion--enmarcada {
+          padding: 1.75rem 1.5rem 1.85rem;
+        }
+      }
+      .labor-destaque-seccion--enmarcada::after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 6%;
+        right: 6%;
+        bottom: -0.5rem;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(109, 40, 217, 0.35) 20%,
+          rgba(180, 83, 9, 0.4) 50%,
+          rgba(109, 40, 217, 0.35) 80%,
+          transparent
+        );
+      }
+      .labor-bloque--post-destaque-marco {
+        margin-top: 1.75rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid rgba(109, 40, 217, 0.12);
+      }
+
+      .labor-youtube-cta {
+        max-width: 28rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.25rem;
+        padding: 0 0.5rem;
+      }
+      .labor-youtube-cta__inner {
+        border-radius: 1rem;
+        border: 1px solid rgba(180, 83, 9, 0.4);
+        background: linear-gradient(
+          155deg,
+          rgba(255, 251, 240, 0.98) 0%,
+          rgba(245, 240, 255, 0.95) 45%,
+          rgba(255, 252, 245, 0.98) 100%
+        );
+        padding: 0.9rem 1.1rem 1rem;
+        box-shadow: 0 6px 22px rgba(88, 28, 135, 0.1);
+      }
+      .labor-youtube-cta__hint {
+        font-size: 0.8rem;
+        line-height: 1.5;
+        color: #4c1d95;
+        margin: 0 0 0.7rem 0;
+        text-align: center;
+        font-weight: 500;
+      }
+      .labor-youtube-cta__link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.6rem 1rem;
+        border-radius: 0.75rem;
+        background: linear-gradient(100deg, #6d28d9 0%, #a855f7 55%, #7c3aed 100%);
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: none;
+        letter-spacing: 0.02em;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 16px rgba(91, 33, 182, 0.35);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .labor-youtube-cta__link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 22px rgba(91, 33, 182, 0.45);
+        color: #fff;
+      }
+      .labor-youtube-cta__play {
+        font-size: 0.85em;
+        opacity: 0.95;
+      }
+
+      /* Tres ítems en una fila (p. ej. dos videos + imagen), con más aire entre columnas */
+      .labor-galeria--tres {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 72rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @media (min-width: 640px) {
+        .labor-galeria--tres {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 1.5rem 2rem;
+        }
+      }
+      .labor-galeria--tres > .labor-media-frame {
+        flex: none !important;
+        max-width: none !important;
+        width: 100%;
+      }
+
+      /* Continuación de la misma labor: solo galería, bajo la sección destacada */
+      .labor-bloque--solo-media {
+        margin-top: 0.25rem;
+      }
+
+      /* Cierre: último bloque de la galería de labores */
+      .labor-bloque--cierre {
+        margin-top: 3.5rem;
+        padding: 2rem 1rem 1.5rem;
+        border-radius: 1.5rem;
+        background: linear-gradient(
+          165deg,
+          rgba(30, 11, 54, 0.06) 0%,
+          rgba(91, 33, 182, 0.1) 45%,
+          rgba(180, 83, 9, 0.08) 100%
+        );
+        box-shadow:
+          0 0 0 1px rgba(212, 175, 55, 0.28),
+          inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+      .labor-bloque--cierre::before {
+        content: "✦ ✦ ✦";
+        display: block;
+        text-align: center;
+        font-size: 0.7rem;
+        letter-spacing: 0.5em;
+        color: #b45309;
+        opacity: 0.75;
+        margin-bottom: 0.75rem;
+      }
+      .cierre-ribbon {
+        text-align: center;
+        font-size: 0.65rem;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: rgba(180, 83, 9, 0.85);
+        margin-bottom: 0.4rem;
+      }
+      @media (min-width: 768px) {
+        .cierre-ribbon {
+          font-size: 0.7rem;
+        }
+      }
+      .labor-bloque--cierre .labor-titulo--cierre {
+        color: #4c1d95;
+        max-width: min(50ch, 100%);
+        line-height: 1.35;
+      }
+      @media (min-width: 768px) {
+        .labor-bloque--cierre .labor-titulo--cierre {
+          font-size: 1.3rem;
+        }
+      }
+      .labor-bloque--cierre .labor-cierre-sub {
+        color: #6b21a8;
+        max-width: 40ch;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.5rem;
+      }
+      .labor-bloque--cierre .labor-galeria > .labor-media-frame {
+        box-shadow:
+          0 12px 32px rgba(46, 16, 101, 0.15),
+          0 0 0 1px rgba(212, 175, 55, 0.22);
+      }
+
       /* Drop cap para párrafo inicial */
       .drop-cap::first-letter {
         float: left;
-        font-family: 'Playfair Display', serif;
+        font-family: "Playfair Display", serif;
         font-size: 3.5em;
         line-height: 0.8;
         padding-right: 0.12em;
@@ -298,8 +553,15 @@
 
       /* Panel oscuro cósmico */
       .panel-cosmico {
-        background: linear-gradient(135deg, #1e0b36 0%, #2e1065 50%, #1a0530 100%);
-        box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+        background: linear-gradient(
+          135deg,
+          #1e0b36 0%,
+          #2e1065 50%,
+          #1a0530 100%
+        );
+        box-shadow:
+          0 8px 32px rgba(0, 0, 0, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.05);
       }
 
       #mapa-activaciones {
@@ -316,7 +578,7 @@
         border-radius: 0.75rem;
         box-shadow: 0 4px 16px rgba(139, 92, 246, 0.2);
         border: 1px solid #e9d5ff;
-        font-family: 'Quicksand', sans-serif;
+        font-family: "Quicksand", sans-serif;
       }
       .leaflet-popup-tip {
         background: white;
@@ -359,7 +621,9 @@
         padding: 1rem;
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.25s ease, visibility 0.25s;
+        transition:
+          opacity 0.25s ease,
+          visibility 0.25s;
         cursor: zoom-out;
       }
       .img-lightbox-backdrop.is-open {
@@ -411,7 +675,9 @@
       </a>
     </div>
 
-    <header class="min-h-[320px] md:min-h-[400px] flex items-center justify-center relative overflow-hidden">
+    <header
+      class="min-h-[320px] md:min-h-[400px] flex items-center justify-center relative overflow-hidden"
+    >
       <div class="container mx-auto px-6 py-20 text-center relative z-10 pt-24">
         <span
           class="inline-block text-xs sm:text-sm uppercase tracking-[0.28em] font-semibold mb-4 px-4 py-1.5 rounded-full bg-gradient-to-r from-violet-600/90 via-purple-600/90 to-fuchsia-600/90 text-white shadow-md shadow-purple-500/25 border border-white/30"
@@ -422,140 +688,265 @@
         >
           Labores Planetarias
         </h1>
-        <p class="font-display italic text-violet-900 max-w-2xl mx-auto text-base md:text-lg leading-relaxed drop-shadow-sm px-2">
-          Cada ser humano tiene un rol sagrado en la evolución de la Tierra. Aquí encontrarás las misiones que nos unen en esta labor colectiva de luz.
+        <p
+          class="font-display italic text-violet-900 max-w-2xl mx-auto text-base md:text-lg leading-relaxed drop-shadow-sm px-2"
+        >
+          Cada ser humano tiene un rol sagrado en la evolución de la Tierra.
+          Aquí encontrarás las misiones que nos unen en esta labor colectiva de
+          luz.
         </p>
       </div>
     </header>
 
-    <main class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-24 md:pb-32 -mt-8 relative z-10">
-
+    <main
+      class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-24 md:pb-32 -mt-8 relative z-10"
+    >
       <!-- Mapa: nodos donde se sembraron las rosas -->
-      <section class="pergamino rounded-3xl p-6 md:p-10 mb-10" aria-labelledby="titulo-mapa-rosas">
+      <section
+        class="pergamino rounded-3xl p-6 md:p-10 mb-10"
+        aria-labelledby="titulo-mapa-rosas"
+      >
         <div class="text-center mb-6">
-          <p class="font-display text-lg md:text-2xl font-semibold text-violet-900 mb-4 tracking-wide">
-            Bienvenido a nuestra <span class="italic text-fuchsia-700">Red Rosas Cristal</span>
+          <p
+            class="font-display text-lg md:text-2xl font-semibold text-violet-900 mb-4 tracking-wide"
+          >
+            Bienvenido a nuestra
+            <span class="italic text-fuchsia-700">Red Rosas Cristal</span>
           </p>
-          <h2 id="titulo-mapa-rosas" class="font-title text-xl md:text-2xl font-bold text-violet-900 mb-2">
+          <h2
+            id="titulo-mapa-rosas"
+            class="font-title text-xl md:text-2xl font-bold text-violet-900 mb-2"
+          >
             Mapa de lugares donde se sembraron las rosas, en estos años
           </h2>
           <p class="text-sm text-violet-700/85 font-light max-w-xl mx-auto">
-            Cada punto en el mapa es un nodo de memoria viva, un lugar donde la Tierra y el alma se reencontraron.
+            Cada punto en el mapa es un nodo de memoria viva, un lugar donde la
+            Tierra y el alma se reencontraron.
           </p>
           <div class="flex items-center justify-center gap-5 mt-4 flex-wrap">
-            <span class="flex items-center gap-1.5 text-sm text-amber-800 font-semibold">
-              <span class="inline-block w-3.5 h-3.5 rounded-full bg-amber-400 border-2 border-amber-600 shadow"></span>
+            <span
+              class="flex items-center gap-1.5 text-sm text-amber-800 font-semibold"
+            >
+              <span
+                class="inline-block w-3.5 h-3.5 rounded-full bg-amber-400 border-2 border-amber-600 shadow"
+              ></span>
               Próximo 2026
             </span>
-            <span class="flex items-center gap-1.5 text-sm text-violet-800 font-semibold">
-              <span class="inline-block w-3.5 h-3.5 rounded-full bg-fuchsia-500 border-2 border-violet-700 shadow"></span>
+            <span
+              class="flex items-center gap-1.5 text-sm text-violet-800 font-semibold"
+            >
+              <span
+                class="inline-block w-3.5 h-3.5 rounded-full bg-fuchsia-500 border-2 border-violet-700 shadow"
+              ></span>
               Retiro realizado
             </span>
           </div>
         </div>
-        <div id="mapa-activaciones" aria-label="Mapa de lugares de activación de Rosas Alquímicas"></div>
+        <div
+          id="mapa-activaciones"
+          aria-label="Mapa de lugares de activación de Rosas Alquímicas"
+        ></div>
       </section>
 
       <!-- Pergamino principal -->
       <div class="pergamino rounded-3xl p-7 md:p-12 mb-10">
-
         <!-- Encabezado con símbolo -->
         <div class="text-center mb-10">
-          <span class="text-3xl md:text-4xl text-amber-500/80 drop-shadow-sm" aria-hidden="true">✧</span>
+          <span
+            class="text-3xl md:text-4xl text-amber-500/80 drop-shadow-sm"
+            aria-hidden="true"
+            >✧</span
+          >
           <div class="star-divider my-4 text-xs">✦ ✦ ✦</div>
         </div>
 
         <!-- Párrafo inicial con drop cap -->
-        <p class="drop-cap font-display text-base md:text-lg text-violet-900/90 leading-[1.9] mb-8">
-          Las labores planetarias son actos conscientes de servicio, presencia y conexión que nos invitan a recordar quiénes somos en esencia. En mi camino, apenas comencé, recibí el llamado de viajar a lugares de la Tierra. Sentí un llamado, participé de varios canalizadores y sus convocatorias hasta llegar a mi propio llamado: nuestra Rosa del corazón pedía recordar. Con el Altar de llamado al canto y la danza, mi cuerpo comenzó a recordar y, con el tiempo, comenzó la Academia y un llamado a compartir la importancia que se manifiesta cuando hacemos consciente la memoria de nuestro cuerpo. Gaia es una Diosa que nos ayuda a calmarnos, a transformarnos y a ser Faros.
+        <p
+          class="drop-cap font-display text-base md:text-lg text-violet-900/90 leading-[1.9] mb-8"
+        >
+          Las labores planetarias son actos conscientes de servicio, presencia y
+          conexión que nos invitan a recordar quiénes somos en esencia. En mi
+          camino, apenas comencé, recibí el llamado de viajar a lugares de la
+          Tierra. Sentí un llamado, participé de varios canalizadores y sus
+          convocatorias hasta llegar a mi propio llamado: nuestra Rosa del
+          corazón pedía recordar. Con el Altar de llamado al canto y la danza,
+          mi cuerpo comenzó a recordar y, con el tiempo, comenzó la Academia y
+          un llamado a compartir la importancia que se manifiesta cuando hacemos
+          consciente la memoria de nuestro cuerpo. Gaia es una Diosa que nos
+          ayuda a calmarnos, a transformarnos y a ser Faros.
         </p>
 
-        <p class="font-display italic text-amber-800/80 text-sm md:text-base leading-relaxed mb-10 text-center font-semibold">
-          Te comparto nuestro pedido de la Gran Madre cósmica en la labor de unidad que seguimos hasta hoy, desde una nueva visión en este año 1.
+        <p
+          class="font-display italic text-amber-800/80 text-sm md:text-base leading-relaxed mb-10 text-center font-semibold"
+        >
+          Te comparto nuestro pedido de la Gran Madre cósmica en la labor de
+          unidad que seguimos hasta hoy, desde una nueva visión en este año 1.
         </p>
 
         <div class="star-divider text-xs mb-10">✧ ✧ ✧</div>
 
         <!-- Bloque: Cuerpo como templo -->
         <div class="cita-cosmica px-6 py-5 mb-8 rounded-r-2xl">
-          <p class="font-display italic text-violet-900 text-base md:text-lg leading-relaxed">
-            "A través de prácticas ancestrales y de la memoria viva del cuerpo, este camino propone volver a habitar el cuerpo como templo: un espacio sagrado donde la energía, la conciencia y la materia se encuentran."
+          <p
+            class="font-display italic text-violet-900 text-base md:text-lg leading-relaxed"
+          >
+            "A través de prácticas ancestrales y de la memoria viva del cuerpo,
+            este camino propone volver a habitar el cuerpo como templo: un
+            espacio sagrado donde la energía, la conciencia y la materia se
+            encuentran."
           </p>
         </div>
 
-        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85] mb-7">
-          Estas enseñanzas, que emergen tanto de tradiciones antiguas como de la sabiduría interna que despierta en este tiempo, nos guían a refinar nuestra percepción, liberar memorias limitantes y expandir nuestra frecuencia.
+        <p
+          class="font-sans text-sm md:text-base text-gray-700 leading-[1.85] mb-7"
+        >
+          Estas enseñanzas, que emergen tanto de tradiciones antiguas como de la
+          sabiduría interna que despierta en este tiempo, nos guían a refinar
+          nuestra percepción, liberar memorias limitantes y expandir nuestra
+          frecuencia.
         </p>
 
-        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85] mb-7">
-          El cuerpo deja de ser solo biología para convertirse en un nodo de conexión: un puente entre la Tierra y el Cielo, entre lo visible y lo sutil.
+        <p
+          class="font-sans text-sm md:text-base text-gray-700 leading-[1.85] mb-7"
+        >
+          El cuerpo deja de ser solo biología para convertirse en un nodo de
+          conexión: un puente entre la Tierra y el Cielo, entre lo visible y lo
+          sutil.
         </p>
 
-        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85] mb-7">
-          Cada práctica, cada respiración, cada movimiento y, sobre todo, cada canto consciente, forman parte de una red mayor: una red de almas que, al recordar, activan nuevas formas de habitar la realidad desde el amor, la coherencia y la presencia. Y de esta manera, cuando sientes ese Amor que eres, te integras, integras tu cuerpo y tu espíritu, y puedes elegir vivir en una espiral de tiempo diferente: los lugares pasan a ser tus acompañantes y nueva familia de Almas. Como así también, toma fuerza la Red en consciencia.
+        <p
+          class="font-sans text-sm md:text-base text-gray-700 leading-[1.85] mb-7"
+        >
+          Cada práctica, cada respiración, cada movimiento y, sobre todo, cada
+          canto consciente, forman parte de una red mayor: una red de almas que,
+          al recordar, activan nuevas formas de habitar la realidad desde el
+          amor, la coherencia y la presencia. Y de esta manera, cuando sientes
+          ese Amor que eres, te integras, integras tu cuerpo y tu espíritu, y
+          puedes elegir vivir en una espiral de tiempo diferente: los lugares
+          pasan a ser tus acompañantes y nueva familia de Almas. Como así
+          también, toma fuerza la Red en consciencia.
         </p>
 
         <!-- Frase destacada -->
-        <div class="bg-gradient-to-r from-violet-50 via-fuchsia-50 to-amber-50 rounded-2xl border border-amber-200/60 px-6 py-5 mb-8 text-center">
-          <p class="font-title font-bold text-violet-800 text-base md:text-xl leading-snug">
+        <div
+          class="bg-gradient-to-r from-violet-50 via-fuchsia-50 to-amber-50 rounded-2xl border border-amber-200/60 px-6 py-5 mb-8 text-center"
+        >
+          <p
+            class="font-title font-bold text-violet-800 text-base md:text-xl leading-snug"
+          >
             Aquí, las labores no son tareas: son rituales vivos.<br />
-            <span class="text-fuchsia-700 font-semibold text-sm md:text-base font-sans italic">Son el llamado a encarnar la conciencia y a sostener una nueva frecuencia en la Tierra.</span>
+            <span
+              class="text-fuchsia-700 font-semibold text-sm md:text-base font-sans italic"
+              >Son el llamado a encarnar la conciencia y a sostener una nueva
+              frecuencia en la Tierra.</span
+            >
           </p>
         </div>
 
         <div class="star-divider text-xs mb-10">✦ ✦ ✦</div>
 
         <!-- Origen del llamado -->
-        <h3 class="font-title font-bold text-lg md:text-xl text-violet-800 mb-4 tracking-wide">
+        <h3
+          class="font-title font-bold text-lg md:text-xl text-violet-800 mb-4 tracking-wide"
+        >
           <span class="text-amber-500 mr-2">✧</span>El llamado y su origen
         </h3>
 
-        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85] mb-7">
-          Dentro de este camino, el llamado comenzó en el territorio de Tucumán, a través de una apertura del corazón y un pedido de anclaje de la frecuencia de la Rosa de Unidad en América. Desde allí, se inicia la conexión entre México y Argentina y, posteriormente, a través de la frecuencia de las Vírgenes Negras, la unión entre Europa y América, restaurando la vibración de unidad trina.
+        <p
+          class="font-sans text-sm md:text-base text-gray-700 leading-[1.85] mb-7"
+        >
+          Dentro de este camino, el llamado comenzó en el territorio de Tucumán,
+          a través de una apertura del corazón y un pedido de anclaje de la
+          frecuencia de la Rosa de Unidad en América. Desde allí, se inicia la
+          conexión entre México y Argentina y, posteriormente, a través de la
+          frecuencia de las Vírgenes Negras, la unión entre Europa y América,
+          restaurando la vibración de unidad trina.
         </p>
 
-        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85] mb-10">
-          La labor se resume así: el llamado de la Tierra fue respondido y en cada lugar recibí información que luego integraba y comparto en nuestra Academia. Por eso, cada lugar es un nodo. El llamado concreto fue el Despertar de las Memorias de las Madres Pleyadianas —consciencia Kryon, Pléyades, Arcturus y Sirio— para manifestar las Sacerdotisas de la Rosa que hoy emergen en una esencia cristal, estando aquí para Ser Faros, Guardianas de la Frecuencia de los nuevos niños que llegan a la Tierra.
+        <p
+          class="font-sans text-sm md:text-base text-gray-700 leading-[1.85] mb-10"
+        >
+          La labor se resume así: el llamado de la Tierra fue respondido y en
+          cada lugar recibí información que luego integraba y comparto en
+          nuestra Academia. Por eso, cada lugar es un nodo. El llamado concreto
+          fue el Despertar de las Memorias de las Madres Pleyadianas
+          —consciencia Kryon, Pléyades, Arcturus y Sirio— para manifestar las
+          Sacerdotisas de la Rosa que hoy emergen en una esencia cristal,
+          estando aquí para Ser Faros, Guardianas de la Frecuencia de los nuevos
+          niños que llegan a la Tierra.
         </p>
 
         <!-- Panel cósmico: Labores anteriores -->
-        <div class="panel-cosmico rounded-2xl px-7 py-8 mb-10 relative overflow-hidden">
-          <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 30px 30px;"></div>
-          <h3 class="font-title font-bold text-base md:text-lg text-purple-200 mb-5 tracking-widest uppercase relative z-10">
+        <div
+          class="panel-cosmico rounded-2xl px-7 py-8 mb-10 relative overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 opacity-5 pointer-events-none"
+            style="
+              background-image: radial-gradient(#fff 1px, transparent 1px);
+              background-size: 30px 30px;
+            "
+          ></div>
+          <h3
+            class="font-title font-bold text-base md:text-lg text-purple-200 mb-5 tracking-widest uppercase relative z-10"
+          >
             <span class="text-amber-400 mr-2">✦</span> Labores realizadas
           </h3>
           <ul class="space-y-3 relative z-10">
-            <li class="flex items-start gap-3 text-purple-100/90 text-sm md:text-base leading-relaxed">
+            <li
+              class="flex items-start gap-3 text-purple-100/90 text-sm md:text-base leading-relaxed"
+            >
               <span class="text-amber-400 mt-0.5 flex-shrink-0">✧</span>
               Conexión y recuerdo de los Discos Solares y Discos Lunares
             </li>
-            <li class="flex items-start gap-3 text-purple-100/90 text-sm md:text-base leading-relaxed">
+            <li
+              class="flex items-start gap-3 text-purple-100/90 text-sm md:text-base leading-relaxed"
+            >
               <span class="text-amber-400 mt-0.5 flex-shrink-0">✧</span>
-              Actualización del cuerpo sutil y energético · Preparación para el nuevo cuerpo de luz
+              Actualización del cuerpo sutil y energético · Preparación para el
+              nuevo cuerpo de luz
             </li>
-            <li class="flex items-start gap-3 text-purple-100/90 text-sm md:text-base leading-relaxed">
+            <li
+              class="flex items-start gap-3 text-purple-100/90 text-sm md:text-base leading-relaxed"
+            >
               <span class="text-amber-400 mt-0.5 flex-shrink-0">✧</span>
               Misión Puente Arco Iris Europa – América (desde 2018 hasta hoy)
             </li>
-            <li class="flex items-start gap-3 text-purple-100/90 text-sm md:text-base leading-relaxed">
+            <li
+              class="flex items-start gap-3 text-purple-100/90 text-sm md:text-base leading-relaxed"
+            >
               <span class="text-amber-400 mt-0.5 flex-shrink-0">✧</span>
-              Despertar de las memorias de las Madres Pleyadianas en nodos de poder
+              Despertar de las memorias de las Madres Pleyadianas en nodos de
+              poder
             </li>
-            <li class="flex items-start gap-3 text-purple-100/90 text-sm md:text-base leading-relaxed">
+            <li
+              class="flex items-start gap-3 text-purple-100/90 text-sm md:text-base leading-relaxed"
+            >
               <span class="text-amber-400 mt-0.5 flex-shrink-0">✧</span>
-              Activación de Sacerdotisas de la Rosa en esencia cristal · Faros y Guardianas
+              Activación de Sacerdotisas de la Rosa en esencia cristal · Faros y
+              Guardianas
             </li>
           </ul>
         </div>
 
         <aside
           class="rounded-2xl px-7 py-8 md:px-9 md:py-9 mb-10 relative overflow-hidden border border-amber-400/45 shadow-xl shadow-violet-900/25"
-          style="background: linear-gradient(145deg, rgba(46, 16, 101, 0.97) 0%, rgba(55, 20, 90, 0.96) 45%, rgba(76, 29, 120, 0.94) 100%);"
+          style="
+            background: linear-gradient(
+              145deg,
+              rgba(46, 16, 101, 0.97) 0%,
+              rgba(55, 20, 90, 0.96) 45%,
+              rgba(76, 29, 120, 0.94) 100%
+            );
+          "
           aria-label="Mensaje sobre ascensión y conciencia"
         >
           <div
             class="absolute inset-0 opacity-[0.07] pointer-events-none"
-            style="background-image: radial-gradient(#fde68a 1px, transparent 1px); background-size: 28px 28px;"
+            style="
+              background-image: radial-gradient(#fde68a 1px, transparent 1px);
+              background-size: 28px 28px;
+            "
             aria-hidden="true"
           ></div>
           <div
@@ -580,20 +971,41 @@
             >
               Ascensión
             </h3>
-            <div class="space-y-4 text-purple-50/95 text-sm md:text-base leading-[1.85] font-sans">
+            <div
+              class="space-y-4 text-purple-50/95 text-sm md:text-base leading-[1.85] font-sans"
+            >
               <p>
-                Intentar alcanzar un estado espiritual superior de conciencia puede parecer un proceso largo y lento. Sin embargo, recuerda que <strong class="text-amber-100 font-semibold">una parte de ti existe siempre en un estado espiritual superior</strong>. La conciencia superior es un conocimiento y una sabiduría mucho más allá de las palabras o explicaciones.
+                Intentar alcanzar un estado espiritual superior de conciencia
+                puede parecer un proceso largo y lento. Sin embargo, recuerda
+                que
+                <strong class="text-amber-100 font-semibold"
+                  >una parte de ti existe siempre en un estado espiritual
+                  superior</strong
+                >. La conciencia superior es un conocimiento y una sabiduría
+                mucho más allá de las palabras o explicaciones.
               </p>
               <p>
-                Es tu verdadera naturaleza, la luz eterna de tu alma. No tiene sentido intentar enseñarlo, así como no tiene sentido intentar escapar de tu realidad física. <strong class="text-amber-100 font-semibold">Ascender espiritualmente es aceptar y amar tu realidad física.</strong>
+                Es tu verdadera naturaleza, la luz eterna de tu alma. No tiene
+                sentido intentar enseñarlo, así como no tiene sentido intentar
+                escapar de tu realidad física.
+                <strong class="text-amber-100 font-semibold"
+                  >Ascender espiritualmente es aceptar y amar tu realidad
+                  física.</strong
+                >
               </p>
-              <p class="text-purple-100/90 md:text-[1.05rem] border-l-2 border-amber-400/60 pl-4 md:pl-5 italic font-display">
-                Una conciencia superior significa estar plenamente presente en cada momento. Deja de intentar alcanzarlo y quizás te des cuenta de que <span class="not-italic font-sans font-semibold text-amber-100">ya estás allí</span>.
+              <p
+                class="text-purple-100/90 md:text-[1.05rem] border-l-2 border-amber-400/60 pl-4 md:pl-5 italic font-display"
+              >
+                Una conciencia superior significa estar plenamente presente en
+                cada momento. Deja de intentar alcanzarlo y quizás te des cuenta
+                de que
+                <span class="not-italic font-sans font-semibold text-amber-100"
+                  >ya estás allí</span
+                >.
               </p>
             </div>
           </div>
         </aside>
-
       </div>
 
       <!-- Antes de la grilla de fotos: voz, rayo, Sara, peregrinaje -->
@@ -602,37 +1014,579 @@
           <span class="text-2xl text-amber-500/80" aria-hidden="true">✧</span>
           <div class="star-divider text-xs my-4">✦ ✦ ✦</div>
         </div>
-        <p class="font-display italic text-violet-900 text-base md:text-lg leading-relaxed text-center max-w-3xl mx-auto mb-5">
+        <p
+          class="font-display italic text-violet-900 text-base md:text-lg leading-relaxed text-center max-w-3xl mx-auto mb-5"
+        >
           Reconexión con la recodificación de la Voz de la Gran Mujer.
         </p>
-        <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85] text-center max-w-3xl mx-auto mb-4">
-          Reconexión de la frecuencia del Rayo. Esencia de Sara: nueva conexión crística.
+        <p
+          class="font-sans text-sm md:text-base text-gray-700 leading-[1.85] text-center max-w-3xl mx-auto mb-4"
+        >
+          Reconexión de la frecuencia del Rayo. Esencia de Sara: nueva conexión
+          crística.
         </p>
-        <p class="font-sans text-sm md:text-base text-violet-800/95 font-medium leading-relaxed text-center max-w-2xl mx-auto">
-          Aquí, varios años en peregrinaje en Salta y en algunos lugares del camino.
+        <p
+          class="font-sans text-sm md:text-base text-violet-800/95 font-medium leading-relaxed text-center max-w-2xl mx-auto"
+        >
+          Aquí, varios años en peregrinaje en Salta y en algunos lugares del
+          camino.
         </p>
         <div class="mt-8 pt-6 border-t border-amber-500/20 flex justify-center">
-          <span class="material-icons text-3xl md:text-4xl text-amber-600/90 scroll-hint-arrow select-none" aria-hidden="true">keyboard_double_arrow_down</span>
+          <span
+            class="material-icons text-3xl md:text-4xl text-amber-600/90 scroll-hint-arrow select-none"
+            aria-hidden="true"
+            >keyboard_double_arrow_down</span
+          >
         </div>
       </div>
 
       <!-- ─── Sección: Lugares y fotos ─── -->
       <div class="mb-6 text-center">
-        <span class="inline-block text-xs uppercase tracking-[0.3em] font-semibold px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/80 via-violet-600/80 to-fuchsia-600/80 text-white shadow-md border border-white/30 mb-4">
+        <span
+          class="inline-block text-xs uppercase tracking-[0.3em] font-semibold px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/80 via-violet-600/80 to-fuchsia-600/80 text-white shadow-md border border-white/30 mb-4"
+        >
           Nodos de Poder
         </span>
-        <h2 class="font-title text-2xl md:text-3xl font-bold bg-gradient-to-r from-violet-800 via-amber-700 to-fuchsia-700 bg-clip-text text-transparent mb-2">
+        <h2
+          class="font-title text-2xl md:text-3xl font-bold bg-gradient-to-r from-violet-800 via-amber-700 to-fuchsia-700 bg-clip-text text-transparent mb-2"
+        >
           Lugares Sagrados del Camino
         </h2>
-        <p class="font-display italic text-violet-700/80 text-sm md:text-base max-w-2xl mx-auto">
-          Fotos y videos de cada labor, agrupados según el lugar o el momento en el camino.
+        <p
+          class="font-display italic text-violet-700/80 text-sm md:text-base max-w-2xl mx-auto"
+        >
+          Fotos y videos de cada labor, agrupados según el lugar o el momento en
+          el camino. Fueron muchas labores en todos estos años, simplemente
+          dejamos la vibración para que conectes te invitamos a que te sumes.
         </p>
+        <p
+          class="font-display text-violet-900 text-sm md:text-base font-semibold max-w-2xl mx-auto mt-8 mb-5 leading-relaxed text-center"
+        >
+          Canalización del 2020, llamado a colaborar con la actualización de la
+          rejilla cristalina de gaia
+        </p>
+        <figure class="max-w-2xl mx-auto px-1">
+          <img
+            src="public/hexagono.jpg"
+            alt="Ilustración: Tierra, rejilla de luz y símbolos — canalización sobre la rejilla cristalina de Gaia"
+            class="w-full rounded-2xl border-2 border-amber-200/50 shadow-xl shadow-violet-900/20"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+
+        <h3
+          id="titulo-frecuencia-geometria"
+          class="font-title text-xl md:text-2xl font-bold text-violet-900 max-w-3xl mx-auto mt-12 mb-6 leading-snug text-center px-2"
+        >
+          Frecuencia y geometría de las Labores de los últimos 5 años
+        </h3>
+        <div
+          class="max-w-6xl mx-auto px-1 space-y-4 md:space-y-5"
+          aria-labelledby="titulo-frecuencia-geometria"
+        >
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5">
+            <figure class="m-0">
+              <div
+                class="relative overflow-hidden rounded-2xl border-2 border-amber-200/50 shadow-lg shadow-violet-900/15 aspect-[4/5] sm:aspect-square"
+              >
+                <img
+                  src="public/geometriaManto.jpg"
+                  alt="Geometría sagrada, rosa y manto de luz — frecuencia de las labores"
+                  class="absolute inset-0 w-full h-full object-cover object-center"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </figure>
+            <figure class="m-0">
+              <div
+                class="relative overflow-hidden rounded-2xl border-2 border-amber-200/50 shadow-lg shadow-violet-900/15 aspect-[4/5] sm:aspect-square"
+              >
+                <img
+                  src="public/manto.jpg"
+                  alt="Figura con manto de luz arcoíris y corazón radiante — presencia y manto sagrado"
+                  class="absolute inset-0 w-full h-full object-cover object-center"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </figure>
+            <figure class="m-0">
+              <div
+                class="relative overflow-hidden rounded-2xl border-2 border-amber-200/50 shadow-lg shadow-violet-900/15 aspect-[4/5] sm:aspect-square"
+              >
+                <img
+                  src="public/angeles.jpg"
+                  alt="Seres de luz y Tierra — presencia y guía en la labor planetaria"
+                  class="absolute inset-0 w-full h-full object-cover object-center"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </figure>
+          </div>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 max-w-lg sm:max-w-2xl mx-auto"
+          >
+            <figure class="m-0">
+              <div
+                class="relative overflow-hidden rounded-2xl border-2 border-amber-200/50 shadow-lg shadow-violet-900/15 aspect-[4/5] sm:aspect-square"
+              >
+                <img
+                  src="public/bebeRosa.jpg"
+                  alt="Bebé en la rosa y vínculo con la Tierra — nueva vida y Gaia"
+                  class="absolute inset-0 w-full h-full object-cover object-center"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </figure>
+            <figure class="m-0">
+              <div
+                class="relative overflow-hidden rounded-2xl border-2 border-amber-200/50 shadow-lg shadow-violet-900/15 aspect-[4/5] sm:aspect-square"
+              >
+                <img
+                  src="public/anclaje.jpg"
+                  alt="Anclaje y labor con la Tierra — altar, luz y comunión con Gaia"
+                  class="absolute inset-0 w-full h-full object-cover object-center"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </figure>
+          </div>
+        </div>
       </div>
 
-      <div id="labores-galeria-root" class="max-w-6xl mx-auto mb-12" aria-live="polite"></div>
+      <div
+        id="labores-galeria-root"
+        class="max-w-6xl mx-auto mb-12"
+        aria-live="polite"
+      ></div>
 
       <script type="application/json" id="labores-galeria-json">
-[{"t":"Amanecer en Iztaccíhuatl, foto del Popocatépetl, labor que camine en el camino de las vírgenes negras","f":"amanecer en Ittazigual foto del Popocatepek Labor que camine en el camino de las virgenes negras","a":["photo_5122859252497189817_x.jpg"]},{"t":"Anclaje de nuevas frecuencias de los niños: Fátima, amor, Sara del nuevo tiempo, aquí y ahora","f":"anclaje nueva frecuenicas de los niños Fatima Amor SAra del nuevo tiempo aqui y ahora","a":["photo_5122859252497189813_y.jpg"]},{"t":"Así comenzábamos a codificarlo","f":"asi comenzazabamos a codificarlo","a":["photo_5123044382767516649_w.jpg","photo_5123044382767516650_w.jpg","photo_5123044382767516651_w.jpg","photo_5123044382767516652_w.jpg","photo_5123044382767516653_w.jpg"]},{"t":"Barcelona y su magia","f":"barcelona  y su magia","a":["photo_5123044382767516645_w.jpg","photo_5123044382767516646_w.jpg","photo_5123044382767516647_w.jpg","photo_5123044382767516648_w.jpg"]},{"t":"Canto a las aguas","f":"canto a las Aguas","a":["photo_5122859252497189852_w.jpg","photo_5122859252497189853_w.jpg"]},{"t":"Cantos al amanecer Retiro Islas","f":"cantos al amanecer REtiro ISlas","a":["VID-20221124-WA0071.mp4"]},{"t":"Cerdeña tumbas del amor","f":"sardegna tumbas del amor","a":["photo_5122859252497189842_y.jpg"]},{"t":"Cerdeña y recodificación de los Pozos de Agua. Esta isla, en nuestra labor, nos ayuda a reconfigurar la Sabiduría ancestral y la reconexión con los reinos y con los pozos de agua REcodificadores","f":"Sardegna y recodificaciond e los Pozos de Agua Esta isla en nuestra labor nos ayuda a reconfigurar la Sabiduria ancestral y la reconexion con los reinos y los pozo de agua REcodificadores para l","m":"sardegna-pozos-agua","a":["photo_5122859252497189828_x.jpg"]},{"t":"Ceremonia de un matrimonio con nosotras mismas RENACER al amor","f":"ceremonia de un matrimonio con nostras mismas RENACER al amor","a":["photo_5122859252497189847_w.jpg","photo_5122859252497189848_w.jpg","photo_5122859252497189849_w.jpg","photo_5122859252497189850_w.jpg"]},{"t":"Ceremonia de yerba mate, Delta y Tigre","f":"ceremona yerba mate Delta  tigre","a":["photo_5122859252497189811_x.jpg","photo_5122859252497189815_x.jpg"]},{"t":"Cima del volcán Llullaillaco, Salta: reconocimiento de los niños arcoíris para hoy anclar esa esencia","f":"cima volvan Yuiaiyaco salta reconodcimiento de los niños arco iris para hoy anclar esa esencia","a":["photo_5122859252497189807_y.jpg","photo_5122859252497189808_y.jpg"]},{"t":"Cuando Resignificamos el camino","f":"cuando Resignificacmos el camino","a":["photo_5122859252497189843_w.jpg"]},{"t":"Danzas del Principito, lugar foco de Cerdeña que nos llevó la Gran Diosa Danza del REnacer","f":"danzas del Principito , lugar foco de Sargena que nos llevo la Grran Diosa Danza del REnacer","a":["photo_5122859252497189851_y.jpg"]},{"t":"Danzas en sierras de Tandil","f":"danzas en sierras de tandilia","a":["photo_5122859252497189814_x.jpg"]},{"t":"Delta y Buenos Aires: armonización al nuevo Nilo, unión de la sabiduría guaraní para anclar la nueva frecuencia Río Paraná desde Amazonas hasta Rosario, Río de la Plata y delta del Paraná, conservación","f":"delta buenos Aires Armonizacion al nuevo nilo union de la sabiduria guarani para anclar la nueva frecuencia Rio parana desde Amazonas hasta  Rosario rio de l aplata delta del parana coservacion","m":"delta-parana-nilo","a":["photo_5122859252497189816_x.jpg"]},{"t":"Despedida de panza en Cerdeña ceremonia de llegada a los nuevos niños","f":"despedida de panza en Sardegna ceremonia de llegada a los nuevo niños","a":["20250607_164335.mp4","20250610_115414.mp4","20250610_115512.mp4","document_5122859252037191536.mp4","document_5122859252037191537.mp4","photo_5122859252497189854_y.jpg","photo_5122859252497189855_y.jpg","photo_5122859252497189856_w (1).jpg","photo_5122859252497189856_w.jpg","photo_5122859252497189859_w.jpg","photo_5122859252497189861_y.jpg","photo_5122859252497189862_y.jpg","photo_5122859252497189863_y.jpg","photo_5122859252497189864_y.jpg","photo_5122859252497189865_y.jpg","photo_5122859252497189866_y.jpg","photo_5122859252497189867_y.jpg","photo_5122859252497189868_y.jpg","photo_5122859252497189869_w.jpg","photo_5122859252497189870_y.jpg","photo_5122859252497189871_y.jpg","photo_5122859252497189872_w.jpg","photo_5122859252497189873_w.jpg","photo_5122859252497189874_w.jpg","photo_5122859252497189875_w.jpg","photo_5123044382767516644_w.jpg"]},{"t":"Egipto","f":"egypto","a":["VID_20241218_131659_465.web.mp4"]},{"t":"Egipto y el llamado a reconectar con el camino crístico","f":"Egypto y el llamado a reconectra con el camino cristico","a":["photo_5122859252497189837_y.jpg"]},{"t":"Génova resignificación de los ancestros","f":"genova resignificacion de  los ancestros","a":["photo_5122859252497189823_x.jpg"]},{"t":"Glastonbury, Inglaterra. Fuente del Masculino sagrado, corazón de la Tierra, Avalon. Muchas familias en el camino para poder seguir sembrando la Rosa del Amor","f":"GLtombery Inglaterra Fuente del Masculino sagrado corazon de la Tierra AValon Muchos  familia en el camino para poder seguir sembrando la Rosa del Amor","a":["photo_5122859252497189826_x.jpg","photo_5122859252497189827_x.jpg"]},{"t":"Isla de la Magdalena","f":"isla de la Magdalena","a":["photo_5122859252497189829_x.jpg"]},{"t":"Italia","f":"Italia","a":["photo_5122859252497189821_x.jpg"]},{"t":"La Guadalupe en Italia: único lugar, pulso de la tierra, sosteniendo la labor sutil de la frecuencia niña original de las sacerdotisas negras del origen","f":"la Guadalupe en Italia unico lugar pulso de la tierra sosteniendo la labor sutil de la frecuenica niña original de las sacerdotisas negras del origen","a":["photo_5122859252497189824_x.jpg"]},{"t":"La Rioja y el valle de la Luna","f":"La rioja y el valle de la luna","a":["photo_5122859252497189838_x.jpg","photo_5122859252497189839_x.jpg","photo_5122859252497189840_x.jpg","photo_5122859252497189841_x.jpg"]},{"t":"Labor cumplida norte de Cerdeña","f":"labor cumplida norte de sardegna","a":["photo_5122859252497189831_x.jpg"]},{"t":"Labor en Roma Italia reconfiguración de las Rosas y el Femenino en Roma y apertura del camino de Magdalena en unión con las islas del Mediterráneo","f":"Labor en Roma Italia reconfiguracion de la s Rosas y el Femeniono en Roma y apertura del camino de magdalena en union con las islas del mediterraneo","a":["photo_5122859252497189819_x.jpg","photo_5122859252497189822_x.jpg"]},{"t":"Más de Cerdeña los niños siempre son nuestra guía","f":"MAs de Sardegna los niños siempre son nuestra guia","a":["photo_5122859252497189832_w.jpg","photo_5122859252497189833_w.jpg","photo_5122859252497189834_w.jpg","photo_5122859252497189835_w.jpg","photo_5122859252497189836_w.jpg"]},{"t":"México Activación en unión del ser masculino y femenino","f":"Mexico Activacio en unon del ser masculino y femenino","a":["photo_5122859252497189810_x.jpg"]},{"t":"Mont Saint-Michel, Francia: uno de los puntos de cobertura de la línea de Arcángel Miguel como custodio del camino crístico. Cada uno de los templos sostuvo, a través de la Voz, la frecuencia para ho","f":"mont sain michel Frnacia uno de los puntos de cobertura de la line de Arcangel miguel como custodio del camino ciristico, CAda uno de los templos sostubo a traves de la Voz la frecuencia para ho","m":"mont-saint-michel-francia","a":["photo_5122859252497189825_x.jpg"]},{"t":"Nuestra labor el próximo año: cantos con nuestra Esencia de niños, elevar la voz de la Rosa arcoíris","f":"nestra labor este proximo año cantos con nuestra Esencia de niños  elevar la voz de la Rosa arco iris","a":["VID_20241212_140043_434.web.mp4"]},{"t":"Ostia canto sagrados montañas de la Diosa","f":"Ostia canto sagrados montañas de la Diosa","a":["photo_5122859252497189830_x.jpg"]},{"t":"Portugal","f":"portugal","a":["photo_5123044382767516654_w.jpg","photo_5123044382767516655_w.jpg","photo_5123044382767516656_w.jpg"]},{"t":"Pozo Santa Cristina canto sagrados","f":"pozo Santa Cristina canto sagrados","a":["VID-20221124-WA0142.mp4"]},{"t":"Próxima siembra será con Cantos entre Todos","f":"Proxima siembra sera con CAntos entre Todos","a":["VID_20241123_040410_877.web.mp4"]},{"t":"Retiro Cerdeña","f":"retiro SArdegna","a":["VID-20221203-WA0012.mp4"]},{"t":"Retiro Tigre: REtrato de Magdalena que apareció para que comience el camino que se completaron 9 años del sur de Francia para REcordarnos","f":"retiro Tigre  REtrato de Magdalnea que aparecio para que comience el camino que se completarion 9 años de l sur de Frnacia para REcordarnos","a":["photo_5122859252497189820_x.jpg"]},{"t":"Salar de Uyuni","f":"salar de Uyumi","a":["photo_5122859252497189806_y.jpg"]},{"t":"Salta","f":"Salta","a":["photo_5122859252497189803_y.jpg","photo_5122859252497189804_y.jpg","photo_5122859252497189805_w.jpg"]},{"t":"Tandil: recodificación de la Gran Mujer, purificación y registros de las nuevas frecuencias madre en el útero cósmico, sostenido por los antiguos","f":"tandil recoficiacion gran mujer purificacion y registros de las nuevas frecuenica madre , en el utero cosmico sostenido por los antiguos","a":["photo_5122859252497189812_x.jpg"]},{"t":"Tenemos muchos guías","f":"tenemos muchos guias","a":["VID_20241126_123513_698.web.mp4"]},{"t":"Unidas sostenemos el amor","f":"unidas sosstenemos el amor","a":["photo_5122859252497189844_w.jpg","photo_5122859252497189845_w.jpg","photo_5122859252497189846_w.jpg"]}]
+        
+        
+        [
+          {
+            "t": "Amanecer en Iztaccíhuatl, foto del Popocatépetl, labor que camine en el camino de las vírgenes negras",
+            "f": "amanecer en Ittazigual foto del Popocatepek Labor que camine en el camino de las virgenes negras",
+            "a": [
+              "photo_5122859252497189817_x.jpg"
+            ]
+          },
+          {
+            "t": "Así comenzábamos a codificarlo",
+            "f": "asi comenzazabamos a codificarlo",
+            "a": [
+              {
+                "lab": "anclaje nueva frecuenicas de los niños Fatima Amor SAra del nuevo tiempo aqui y ahora",
+                "file": "photo_5122859252497189813_y.jpg"
+              },
+              "photo_5123044382767516649_w.jpg",
+              "photo_5123044382767516650_w.jpg",
+              "photo_5123044382767516651_w.jpg",
+              "photo_5123044382767516652_w.jpg",
+              "photo_5123044382767516653_w.jpg"
+            ],
+            "s": "Unión entre Europa y América. Femenino y masculino en América del Norte y del Sur, para el nacimiento del Ser Trino."
+          },
+          {
+            "t": "Inglaterra",
+            "f": "GLtombery Inglaterra Fuente del Masculino sagrado corazon de la Tierra AValon Muchos  familia en el camino para poder seguir sembrando la Rosa del Amor",
+            "destaqueMarco": true,
+            "aHeadTres": [
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "20250610_115414.mp4"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "20250610_115512.mp4"
+              },
+              {
+                "p": "public",
+                "file": "dibujo.jpg"
+              }
+            ],
+            "a": [
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "20250607_164335.mp4"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "document_5122859252037191536.mp4"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "document_5122859252037191537.mp4"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "photo_5122859252497189873_w.jpg"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "photo_5122859252497189874_w.jpg"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "photo_5122859252497189875_w.jpg"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "photo_5123044382767516644_w.jpg"
+              },
+              {
+                "lab": "GLtombery Inglaterra Fuente del Masculino sagrado corazon de la Tierra AValon Muchos  familia en el camino para poder seguir sembrando la Rosa del Amor",
+                "file": "photo_5122859252497189826_x.jpg"
+              },
+              {
+                "lab": "GLtombery Inglaterra Fuente del Masculino sagrado corazon de la Tierra AValon Muchos  familia en el camino para poder seguir sembrando la Rosa del Amor",
+                "file": "photo_5122859252497189827_x.jpg"
+              },
+              { "p": "public", "file": "manto2.jpg" },
+              { "p": "public", "file": "manto3.jpg" },
+              {
+                "lab": "barcelona  y su magia",
+                "file": "photo_5123044382767516645_w.jpg"
+              },
+              {
+                "lab": "barcelona  y su magia",
+                "file": "photo_5123044382767516646_w.jpg"
+              },
+              {
+                "lab": "barcelona  y su magia",
+                "file": "photo_5123044382767516647_w.jpg"
+              },
+              {
+                "lab": "barcelona  y su magia",
+                "file": "photo_5123044382767516648_w.jpg"
+              }
+            ]
+          },
+          {
+            "t": "Cerdeña",
+            "f": "sardegna tumbas del amor",
+            "s": "Esta isla, en nuestra labor, nos ayuda a reconfigurar la Sabiduría ancestral y la reconexión con los reinos y con los pozos de agua REcodificadores",
+            "a": [
+              "photo_5122859252497189842_y.jpg",
+              {
+                "lab": "canto a las Aguas",
+                "file": "photo_5122859252497189852_w.jpg"
+              },
+              {
+                "lab": "canto a las Aguas",
+                "file": "photo_5122859252497189853_w.jpg"
+              },
+              {
+                "lab": "cantos al amanecer REtiro ISlas",
+                "file": "VID-20221124-WA0071.mp4"
+              },
+              {
+                "lab": "sardegna-pozos-agua",
+                "file": "photo_5122859252497189828_x.jpg"
+              },
+              {
+                "lab": "ceremonia de un matrimonio con nostras mismas RENACER al amor",
+                "file": "photo_5122859252497189847_w.jpg"
+              },
+              {
+                "lab": "ceremonia de un matrimonio con nostras mismas RENACER al amor",
+                "file": "photo_5122859252497189848_w.jpg"
+              },
+              {
+                "lab": "ceremonia de un matrimonio con nostras mismas RENACER al amor",
+                "file": "photo_5122859252497189849_w.jpg"
+              },
+              {
+                "lab": "ceremonia de un matrimonio con nostras mismas RENACER al amor",
+                "file": "photo_5122859252497189850_w.jpg"
+              },
+              {
+                "lab": "danzas del Principito , lugar foco de Sargena que nos llevo la Grran Diosa Danza del REnacer",
+                "file": "photo_5122859252497189851_y.jpg"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "photo_5122859252497189859_w.jpg"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "photo_5122859252497189869_w.jpg"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "photo_5122859252497189870_y.jpg"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "photo_5122859252497189871_y.jpg"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "photo_5122859252497189872_w.jpg"
+              },
+              {
+                "lab": "labor cumplida norte de sardegna",
+                "file": "photo_5122859252497189831_x.jpg"
+              },
+              {
+                "lab": "MAs de Sardegna los niños siempre son nuestra guia",
+                "file": "photo_5122859252497189832_w.jpg"
+              },
+              {
+                "lab": "MAs de Sardegna los niños siempre son nuestra guia",
+                "file": "photo_5122859252497189833_w.jpg"
+              },
+              {
+                "lab": "MAs de Sardegna los niños siempre son nuestra guia",
+                "file": "photo_5122859252497189834_w.jpg"
+              },
+              {
+                "lab": "MAs de Sardegna los niños siempre son nuestra guia",
+                "file": "photo_5122859252497189835_w.jpg"
+              },
+              {
+                "lab": "MAs de Sardegna los niños siempre son nuestra guia",
+                "file": "photo_5122859252497189836_w.jpg"
+              },
+              {
+                "lab": "retiro SArdegna",
+                "file": "VID-20221203-WA0012.mp4"
+              },
+              {
+                "lab": "Ostia canto sagrados montañas de la Diosa",
+                "file": "photo_5122859252497189830_x.jpg"
+              }
+            ]
+          },
+          {
+            "t": "Egipto",
+            "p": "public",
+            "a": [
+              "e1.jpg",
+              "e2.jpg",
+              "e3.jpg",
+              "e4.jpg",
+              "e5.jpg",
+              "e6.jpg",
+              "e7.jpg",
+              "e8.jpg",
+              {
+                "lab": "Egypto y el llamado a reconectra con el camino cristico",
+                "file": "photo_5122859252497189837_y.jpg"
+              },
+              {
+                "lab": "egypto",
+                "file": "VID_20241218_131659_465.web.mp4"
+              }
+            ]
+          },
+          {
+            "t": "Argentina (Salta, Delta y Tigre, Tandil, Río Paraná, La Rioja, Mendoza)",
+            "f": "cima volvan Yuiaiyaco salta reconodcimiento de los niños arco iris para hoy anclar esa esencia",
+            "youtube": "https://www.youtube.com/watch?v=XX0OK_L6rLs&list=PLwfH6nfCiKFqPbLhrrC5qbXzXSNhSv8E2&index=22",
+            "youtubeHint": "Video de la labor en Tandil. Haz clic en el enlace de abajo para abrirlo en YouTube (se abre en una pestaña nueva).",
+            "a": [
+              {
+                "lab": "cima volvan Yuiaiyaco salta reconodcimiento de los niños arco iris para hoy anclar esa esencia",
+                "file": "photo_5122859252497189807_y.jpg"
+              },
+              {
+                "lab": "cima volvan Yuiaiyaco salta reconodcimiento de los niños arco iris para hoy anclar esa esencia",
+                "file": "photo_5122859252497189808_y.jpg"
+              },
+              {
+                "lab": "ceremona yerba mate Delta  tigre",
+                "file": "photo_5122859252497189811_x.jpg"
+              },
+              {
+                "lab": "ceremona yerba mate Delta  tigre",
+                "file": "photo_5122859252497189815_x.jpg"
+              },
+              {
+                "lab": "danzas en sierras de tandilia",
+                "file": "photo_5122859252497189814_x.jpg"
+              },
+              {
+                "lab": "delta-parana-nilo",
+                "file": "photo_5122859252497189816_x.jpg"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "photo_5122859252497189861_y.jpg"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "photo_5122859252497189862_y.jpg"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "photo_5122859252497189863_y.jpg"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "photo_5122859252497189864_y.jpg"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "photo_5122859252497189865_y.jpg"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "photo_5122859252497189866_y.jpg"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "photo_5122859252497189867_y.jpg"
+              },
+              {
+                "lab": "despedida de panza en Sardegna ceremonia de llegada a los nuevo niños",
+                "file": "photo_5122859252497189868_y.jpg"
+              },
+              {
+                "lab": "tandil recoficiacion gran mujer purificacion y registros de las nuevas frecuenica madre , en el utero cosmico sostenido por los antiguos",
+                "file": "photo_5122859252497189812_x.jpg"
+              },
+              {
+                "lab": "Salta",
+                "file": "photo_5122859252497189803_y.jpg"
+              },
+              {
+                "lab": "Salta",
+                "file": "photo_5122859252497189804_y.jpg"
+              },
+              {
+                "lab": "Salta",
+                "file": "photo_5122859252497189805_w.jpg"
+              },
+              {
+                "lab": "retiro Tigre  REtrato de Magdalnea que aparecio para que comience el camino que se completarion 9 años de l sur de Frnacia para REcordarnos",
+                "file": "photo_5122859252497189820_x.jpg"
+              },
+              {
+                "lab": "La rioja y el valle de la luna",
+                "file": "photo_5122859252497189838_x.jpg"
+              },
+              {
+                "lab": "La rioja y el valle de la luna",
+                "file": "photo_5122859252497189839_x.jpg"
+              },
+              {
+                "lab": "La rioja y el valle de la luna",
+                "file": "photo_5122859252497189840_x.jpg"
+              },
+              {
+                "lab": "La rioja y el valle de la luna",
+                "file": "photo_5122859252497189841_x.jpg"
+              }
+            ]
+          },
+          {
+            "t": "Isla de la Magdalena",
+            "f": "isla de la Magdalena",
+            "a": [
+              "photo_5122859252497189829_x.jpg"
+            ]
+          },
+          {
+            "t": "Italia (Génova, La Guadalupe, Roma)",
+            "f": "Italia",
+            "a": [
+              "photo_5122859252497189821_x.jpg",
+              {
+                "lab": "genova resignificacion de  los ancestros",
+                "file": "photo_5122859252497189823_x.jpg"
+              },
+              {
+                "lab": "la Guadalupe en Italia unico lugar pulso de la tierra sosteniendo la labor sutil de la frecuenica niña original de las sacerdotisas negras del origen",
+                "file": "photo_5122859252497189824_x.jpg"
+              },
+              {
+                "lab": "Labor en Roma Italia reconfiguracion de la s Rosas y el Femeniono en Roma y apertura del camino de magdalena en union con las islas del mediterraneo",
+                "file": "photo_5122859252497189819_x.jpg"
+              },
+              {
+                "lab": "Labor en Roma Italia reconfiguracion de la s Rosas y el Femeniono en Roma y apertura del camino de magdalena en union con las islas del mediterraneo",
+                "file": "photo_5122859252497189822_x.jpg"
+              }
+            ]
+          },
+          {
+            "t": "México Activación en unión del ser masculino y femenino",
+            "f": "Mexico Activacio en unon del ser masculino y femenino",
+            "youtube": "https://www.youtube.com/watch?v=l_QcaQlQB4o&list=PLwfH6nfCiKFr9LWBI_N_rIiZaWzCzgWXM&index=1",
+            "youtubeHint": "Video de la labor en México. Haz clic en el enlace de abajo para abrirlo en YouTube (se abre en una pestaña nueva).",
+            "a": [
+              "photo_5122859252497189810_x.jpg"
+            ]
+          },
+          {
+            "t": "Mont Saint-Michel, Francia: uno de los puntos de cobertura de la línea de Arcángel Miguel como custodio del camino crístico. Cada uno de los templos sostuvo, a través de la Voz, la frecuencia para ho",
+            "f": "mont sain michel Frnacia uno de los puntos de cobertura de la line de Arcangel miguel como custodio del camino ciristico, CAda uno de los templos sostubo a traves de la Voz la frecuencia para ho",
+            "m": "mont-saint-michel-francia",
+            "a": [
+              "photo_5122859252497189825_x.jpg"
+            ]
+          },
+          {
+            "t": "Nuestra labor el próximo año: cantos con nuestra Esencia de niños, elevar la voz de la Rosa arcoíris",
+            "f": "nestra labor este proximo año cantos con nuestra Esencia de niños  elevar la voz de la Rosa arco iris",
+            "a": [
+              "VID_20241212_140043_434.web.mp4"
+            ]
+          },
+          {
+            "t": "Portugal",
+            "f": "portugal",
+            "a": [
+              "photo_5123044382767516654_w.jpg",
+              "photo_5123044382767516655_w.jpg",
+              "photo_5123044382767516656_w.jpg"
+            ]
+          },
+          {
+            "t": "Pozo Santa Cristina canto sagrados",
+            "f": "pozo Santa Cristina canto sagrados",
+            "a": [
+              "VID-20221124-WA0142.mp4"
+            ]
+          },
+          {
+            "t": "Salar de Uyuni",
+            "f": "salar de Uyumi",
+            "a": [
+              "photo_5122859252497189806_y.jpg"
+            ]
+          },
+          {
+            "t": "Unidas sostenemos el amor",
+            "f": "unidas sosstenemos el amor",
+            "a": [
+              "photo_5122859252497189844_w.jpg",
+              "photo_5122859252497189845_w.jpg",
+              "photo_5122859252497189846_w.jpg"
+            ]
+          },
+          {
+            "t": "Tenemos muchos guías, y la próxima siembra: cantos entre todos",
+            "f": "tenemos muchos guias",
+            "cierre": true,
+            "s": "Cierre de este recorrido por las labores.",
+            "a": [
+              "VID_20241126_123513_698.web.mp4",
+              {
+                "lab": "Proxima siembra sera con CAntos entre Todos",
+                "file": "VID_20241123_040410_877.web.mp4"
+              }
+            ]
+          }
+        ]
+      
+      
       </script>
       <script>
         (function () {
@@ -649,60 +1603,190 @@
           }
 
           function mediaUrl(row, file) {
+            if (row.p) {
+              var pre = String(row.p).replace(/\/+$/, "");
+              return pre + "/" + encodeURIComponent(file);
+            }
             var folder = row.m || row.f;
-            return base + encodeURIComponent(folder) + "/" + encodeURIComponent(file);
+            return (
+              base + encodeURIComponent(folder) + "/" + encodeURIComponent(file)
+            );
+          }
+
+          function resolveUrl(row, item) {
+            if (item && typeof item === "object" && item.lab && item.file) {
+              return (
+                base +
+                encodeURIComponent(item.lab) +
+                "/" +
+                encodeURIComponent(item.file)
+              );
+            }
+            if (
+              item &&
+              typeof item === "object" &&
+              item.file &&
+              item.p != null &&
+              String(item.p) !== ""
+            ) {
+              var prefix = String(item.p).replace(/\/+$/, "");
+              return prefix + "/" + encodeURIComponent(item.file);
+            }
+            return mediaUrl(row, item);
+          }
+
+          function mediaItemName(item) {
+            if (item && typeof item === "object" && item.file) return item.file;
+            return item;
           }
 
           function isVideo(name) {
             return /\.(mp4|webm|mov)$/i.test(name);
           }
 
-          data.forEach(function (row) {
-            var art = document.createElement("article");
-            art.className = "labor-bloque scroll-mt-28 text-center";
+          function appendMediaCell(grid, row, item, solo) {
+            var cell = document.createElement("div");
+            cell.className =
+              "labor-media-frame" + (solo ? " is-solo w-full" : "");
 
-            var h = document.createElement("h3");
-            h.className =
-              "font-title font-bold text-violet-800 text-lg md:text-xl mb-6 leading-snug mx-auto labor-titulo";
-            h.textContent = row.t;
-            art.appendChild(h);
-
-            var n = row.a.length;
-            var solo = n === 1;
-            var grid = document.createElement("div");
-            if (solo) {
-              grid.className = "flex justify-center";
-            } else if (n === 4) {
-              grid.className = "labor-galeria labor-galeria--cuatro";
+            var u = resolveUrl(row, item);
+            var fileName = mediaItemName(item);
+            if (isVideo(fileName)) {
+              var v = document.createElement("video");
+              v.setAttribute("controls", "");
+              v.setAttribute("playsinline", "");
+              v.setAttribute("preload", "metadata");
+              v.setAttribute("controlsList", "nodownload");
+              v.src = u;
+              cell.appendChild(v);
             } else {
-              grid.className = "labor-galeria";
+              var img = document.createElement("img");
+              img.src = u;
+              img.alt = row.t;
+              img.loading = "lazy";
+              img.decoding = "async";
+              cell.appendChild(img);
+            }
+            grid.appendChild(cell);
+          }
+
+          data.forEach(function (row) {
+            var head = row.aHeadTres;
+
+            function appendTitleBlock(targetArt) {
+              if (row.cierre) {
+                var rib = document.createElement("p");
+                rib.className = "cierre-ribbon";
+                rib.textContent = "Cierre del recorrido";
+                targetArt.appendChild(rib);
+              }
+              var h = document.createElement("h3");
+              h.className =
+                "font-title font-bold text-violet-800 text-lg md:text-xl leading-snug mx-auto labor-titulo" +
+                (row.cierre ? " labor-titulo--cierre" : "") +
+                (row.s ? " mb-3" : " mb-6");
+              h.textContent = row.t;
+              targetArt.appendChild(h);
+
+              if (row.s) {
+                var sub = document.createElement("p");
+                sub.className =
+                  "font-display italic text-violet-700/90 text-sm md:text-base max-w-3xl mx-auto leading-relaxed px-2 " +
+                  (row.cierre ? "labor-cierre-sub" : "mb-6");
+                sub.textContent = row.s;
+                targetArt.appendChild(sub);
+              }
             }
 
-            row.a.forEach(function (file) {
-              var cell = document.createElement("div");
-              cell.className = "labor-media-frame" + (solo ? " is-solo w-full" : "");
-
-              var u = mediaUrl(row, file);
-              if (isVideo(file)) {
-                var v = document.createElement("video");
-                v.setAttribute("controls", "");
-                v.setAttribute("playsinline", "");
-                v.setAttribute("preload", "metadata");
-                v.setAttribute("controlsList", "nodownload");
-                v.src = u;
-                cell.appendChild(v);
+            function buildMainGrid() {
+              var n = row.a.length;
+              var solo = n === 1;
+              var grid = document.createElement("div");
+              if (solo) {
+                grid.className = "flex justify-center";
+              } else if (n === 4) {
+                grid.className = "labor-galeria labor-galeria--cuatro";
               } else {
-                var img = document.createElement("img");
-                img.src = u;
-                img.alt = row.t;
-                img.loading = "lazy";
-                img.decoding = "async";
-                cell.appendChild(img);
+                grid.className = "labor-galeria";
               }
-              grid.appendChild(cell);
-            });
+              row.a.forEach(function (item) {
+                appendMediaCell(grid, row, item, solo);
+              });
+              return grid;
+            }
 
-            art.appendChild(grid);
+            function appendYoutubeCta(targetArt) {
+              if (!row.youtube) return;
+              var box = document.createElement("div");
+              box.className = "labor-youtube-cta";
+              var inner = document.createElement("div");
+              inner.className = "labor-youtube-cta__inner";
+              var hint = document.createElement("p");
+              hint.className = "labor-youtube-cta__hint";
+              hint.textContent = row.youtubeHint
+                ? row.youtubeHint
+                : "Haz clic en el enlace de abajo para abrir el video en YouTube (se abre en una pestaña nueva).";
+              var a = document.createElement("a");
+              a.href = String(row.youtube);
+              a.target = "_blank";
+              a.rel = "noopener noreferrer";
+              a.className = "labor-youtube-cta__link";
+              a.setAttribute("aria-label", "Abrir el video de esta labor en YouTube");
+              var play = document.createElement("span");
+              play.className = "labor-youtube-cta__play";
+              play.setAttribute("aria-hidden", "true");
+              play.textContent = "▶";
+              a.appendChild(play);
+              a.appendChild(document.createTextNode(" Abrir en YouTube"));
+              inner.appendChild(hint);
+              inner.appendChild(a);
+              box.appendChild(inner);
+              targetArt.appendChild(box);
+            }
+
+            if (head && head.length) {
+              var artCab = document.createElement("article");
+              artCab.className =
+                "labor-bloque scroll-mt-28 text-center" +
+                (row.cierre ? " labor-bloque--cierre" : "");
+              appendTitleBlock(artCab);
+              appendYoutubeCta(artCab);
+              root.appendChild(artCab);
+
+              var secDest = document.createElement("section");
+              secDest.className =
+                "labor-destaque-seccion" +
+                (row.destaqueMarco ? " labor-destaque-seccion--enmarcada" : "");
+              secDest.setAttribute(
+                "aria-label",
+                row.t + " — videos e imagen destacados"
+              );
+              var gridHead = document.createElement("div");
+              gridHead.className = "labor-galeria labor-galeria--tres";
+              head.forEach(function (item) {
+                appendMediaCell(gridHead, row, item, false);
+              });
+              secDest.appendChild(gridHead);
+              root.appendChild(secDest);
+
+              var artRest = document.createElement("article");
+              artRest.className =
+                "labor-bloque labor-bloque--solo-media text-center" +
+                (row.destaqueMarco
+                  ? " labor-bloque--post-destaque-marco"
+                  : "");
+              artRest.appendChild(buildMainGrid());
+              root.appendChild(artRest);
+              return;
+            }
+
+            var art = document.createElement("article");
+            art.className =
+              "labor-bloque scroll-mt-28 text-center" +
+              (row.cierre ? " labor-bloque--cierre" : "");
+            appendTitleBlock(art);
+            appendYoutubeCta(art);
+            art.appendChild(buildMainGrid());
             root.appendChild(art);
           });
         })();
@@ -710,89 +1794,162 @@
 
       <!-- ─── Nuevas activaciones, anclajes y tejido planetario ─── -->
       <div class="pergamino rounded-3xl p-7 md:p-12 mb-12 space-y-10">
-
         <div class="text-center">
           <span class="text-2xl text-amber-500/80" aria-hidden="true">✧</span>
-          <h2 class="font-title text-xl md:text-2xl font-bold text-violet-800 mt-3 mb-1 tracking-wide">
+          <h2
+            class="font-title text-xl md:text-2xl font-bold text-violet-800 mt-3 mb-1 tracking-wide"
+          >
             Nuevas activaciones y anclajes
           </h2>
           <div class="star-divider text-xs my-4">✧ ✧ ✧</div>
         </div>
 
         <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
-          Activaciones en varios lugares de Argentina: reconfiguración de <em>Argentum</em>, la Diosa Solar; conexión con ciudades intraterrenas e intraoceánicas; pedido de recodificación de las frecuencias de México y Argentina en un puente de unión. Reconfiguración de la unión Europa y América. Reconexión a la frecuencia crística desde la frecuencia de los hijos y niños del nuevo tiempo. Cada lugar es convocado libremente en algunas labores y, en otras, se requiere un retiro donde, conscientemente, varias personas ahora nos reunimos con más conciencia para recordar que es posible compartir una nueva manera de caminar como ser aquí en Gaia.
+          Activaciones en varios lugares de Argentina: reconfiguración de
+          <em>Argentum</em>, la Diosa Solar; conexión con ciudades intraterrenas
+          e intraoceánicas; pedido de recodificación de las frecuencias de
+          México y Argentina en un puente de unión. Reconfiguración de la unión
+          Europa y América. Reconexión a la frecuencia crística desde la
+          frecuencia de los hijos y niños del nuevo tiempo. Cada lugar es
+          convocado libremente en algunas labores y, en otras, se requiere un
+          retiro donde, conscientemente, varias personas ahora nos reunimos con
+          más conciencia para recordar que es posible compartir una nueva manera
+          de caminar como ser aquí en Gaia.
         </p>
 
         <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
-          Este proceso implica tomar el lugar como canales conscientes de esta frecuencia, respondiendo al llamado de los discos solares y de territorios ya recorridos, activando nodos energéticos de la Tierra. Cada encuentro se manifiesta a través de la danza, el canto y la presencia en unidad, generando una irradiación que impacta en el campo colectivo.
+          Este proceso implica tomar el lugar como canales conscientes de esta
+          frecuencia, respondiendo al llamado de los discos solares y de
+          territorios ya recorridos, activando nodos energéticos de la Tierra.
+          Cada encuentro se manifiesta a través de la danza, el canto y la
+          presencia en unidad, generando una irradiación que impacta en el campo
+          colectivo.
         </p>
 
         <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
-          Estas prácticas permiten que cada ser fortalezca su conexión con el campo cuántico y realice su aporte vibracional, sosteniendo y expandiendo la frecuencia en el planeta.
+          Estas prácticas permiten que cada ser fortalezca su conexión con el
+          campo cuántico y realice su aporte vibracional, sosteniendo y
+          expandiendo la frecuencia en el planeta.
         </p>
 
         <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
-          En estos tiempos de mayor integración, esta labor de unificación —solicitada años atrás— nos invita a encarnar los atributos de la Madre Cósmica, anclando una nueva grilla de conciencia. A través de las Rosas Cristal Diamante y el canto en cada nodo, se armonizan las aguas internas y se activan memorias profundas ligadas a la recodificación del ADN, en resonancia con los nodos de la Tierra.
+          En estos tiempos de mayor integración, esta labor de unificación
+          —solicitada años atrás— nos invita a encarnar los atributos de la
+          Madre Cósmica, anclando una nueva grilla de conciencia. A través de
+          las Rosas Cristal Diamante y el canto en cada nodo, se armonizan las
+          aguas internas y se activan memorias profundas ligadas a la
+          recodificación del ADN, en resonancia con los nodos de la Tierra.
         </p>
 
         <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
-          La espiral de la Rosa nos guía a cada territorio, donde la meditación, el sonido y la presencia siembran una frecuencia de amor verdadero, sostenida por códigos vivos que se expresan a través del arte, el cuerpo y la conciencia en neutralidad.
+          La espiral de la Rosa nos guía a cada territorio, donde la meditación,
+          el sonido y la presencia siembran una frecuencia de amor verdadero,
+          sostenida por códigos vivos que se expresan a través del arte, el
+          cuerpo y la conciencia en neutralidad.
         </p>
 
         <div class="star-divider text-xs">✦ ✦ ✦</div>
 
         <div class="cita-cosmica px-6 py-5 rounded-r-2xl">
-          <p class="font-display italic text-violet-900 text-sm md:text-base leading-relaxed">
-            En el año 2020 se revela una nueva etapa de esta labor, guiada por la conciencia de Magdalena y la energía crística, acompañada por linajes sagrados que sostienen el anclaje del nuevo cuerpo y la soberanía de los sacerdotes: aquellos seres que responden al llamado de su espíritu, más allá de toda estructura religiosa, guiados únicamente por el amor.
+          <p
+            class="font-display italic text-violet-900 text-sm md:text-base leading-relaxed"
+          >
+            En el año 2020 se revela una nueva etapa de esta labor, guiada por
+            la conciencia de Magdalena y la energía crística, acompañada por
+            linajes sagrados que sostienen el anclaje del nuevo cuerpo y la
+            soberanía de los sacerdotes: aquellos seres que responden al llamado
+            de su espíritu, más allá de toda estructura religiosa, guiados
+            únicamente por el amor.
           </p>
         </div>
 
         <div class="star-divider text-xs">✧ ✧ ✧</div>
 
-        <h3 class="font-title text-lg md:text-xl font-bold text-violet-800 flex items-center gap-2">
+        <h3
+          class="font-title text-lg md:text-xl font-bold text-violet-800 flex items-center gap-2"
+        >
           <span class="text-amber-500">✧</span> El tejido planetario
         </h3>
 
         <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
-          En el último tiempo, se manifestó una labor especial: la creación de un tejido planetario como acto simbólico y energético.
+          En el último tiempo, se manifestó una labor especial: la creación de
+          un tejido planetario como acto simbólico y energético.
         </p>
 
         <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
-          Personas de distintas partes del mundo se unieron para tejer, con lanas de colores, un manto que representa un acto psicomágico colectivo: la declaración de que estamos creando un nuevo tejido para la humanidad.
+          Personas de distintas partes del mundo se unieron para tejer, con
+          lanas de colores, un manto que representa un acto psicomágico
+          colectivo: la declaración de que estamos creando un nuevo tejido para
+          la humanidad.
         </p>
 
         <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
-          Este manto —de luz arcoíris— fue sostenido por tejedoras y activadores que respondieron al llamado, comprendiendo que el cuerpo es el espacio donde esta nueva frecuencia debe anclarse para manifestarse.
+          Este manto —de luz arcoíris— fue sostenido por tejedoras y activadores
+          que respondieron al llamado, comprendiendo que el cuerpo es el espacio
+          donde esta nueva frecuencia debe anclarse para manifestarse.
         </p>
 
         <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
-          Su materialización fue impulsada desde el corazón de antiguos territorios, y recorrió durante 2024 y 2025 distintos puntos de Europa: el sur de Francia, España (Montserrat, Tarragona, Valencia), Andorra, Italia, Inglaterra y Avalon. En cada lugar, el canto y la presencia establecieron una frecuencia de unidad, conectando el corazón de Avalon con el corazón de Argentina.
+          Su materialización fue impulsada desde el corazón de antiguos
+          territorios, y recorrió durante 2024 y 2025 distintos puntos de
+          Europa: el sur de Francia, España (Montserrat, Tarragona, Valencia),
+          Andorra, Italia, Inglaterra y Avalon. En cada lugar, el canto y la
+          presencia establecieron una frecuencia de unidad, conectando el
+          corazón de Avalon con el corazón de Argentina.
         </p>
 
         <p class="font-sans text-sm md:text-base text-gray-700 leading-[1.85]">
-          Finalmente, esta energía fue traída a Argentina, anclándose en puntos clave como ERKS, Capilla del Monte y otros territorios sagrados, completando así un circuito de conexión entre continentes.
+          Finalmente, esta energía fue traída a Argentina, anclándose en puntos
+          clave como ERKS, Capilla del Monte y otros territorios sagrados,
+          completando así un circuito de conexión entre continentes.
         </p>
 
-        <div class="panel-cosmico rounded-2xl px-7 py-8 relative overflow-hidden">
-          <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 30px 30px;"></div>
-          <h3 class="font-title font-bold text-base md:text-lg text-purple-200 mb-5 tracking-widest uppercase relative z-10">
+        <div
+          class="panel-cosmico rounded-2xl px-7 py-8 relative overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 opacity-5 pointer-events-none"
+            style="
+              background-image: radial-gradient(#fff 1px, transparent 1px);
+              background-size: 30px 30px;
+            "
+          ></div>
+          <h3
+            class="font-title font-bold text-base md:text-lg text-purple-200 mb-5 tracking-widest uppercase relative z-10"
+          >
             Misión principal global
           </h3>
-          <div class="space-y-4 text-purple-100/90 text-sm md:text-base leading-relaxed relative z-10">
+          <div
+            class="space-y-4 text-purple-100/90 text-sm md:text-base leading-relaxed relative z-10"
+          >
             <p>
-              Recordar la presencia de las Madres Pleyadianas como guía en la nueva Tierra, unir cielo y tierra y navegar en las infinitas posibilidades, recordando que somos seres multidimensionales. A la vez recordamos la conexión a una nueva práctica que nace de esta práctica en este tiempo, con los cantos y la conexión a la nueva Tierra Cristal arcoíris.
+              Recordar la presencia de las Madres Pleyadianas como guía en la
+              nueva Tierra, unir cielo y tierra y navegar en las infinitas
+              posibilidades, recordando que somos seres multidimensionales. A la
+              vez recordamos la conexión a una nueva práctica que nace de esta
+              práctica en este tiempo, con los cantos y la conexión a la nueva
+              Tierra Cristal arcoíris.
             </p>
             <p>
-              En este momento estamos siendo llamados a ser esa Rosa que emane su frecuencia en cada lugar, a sembrar amor y mantener el foco y el sostén, recordando que estamos aquí como caminantes crísticos en misión amorosa profunda, y que esto lo haces tú y es para todos.
+              En este momento estamos siendo llamados a ser esa Rosa que emane
+              su frecuencia en cada lugar, a sembrar amor y mantener el foco y
+              el sostén, recordando que estamos aquí como caminantes crísticos
+              en misión amorosa profunda, y que esto lo haces tú y es para
+              todos.
             </p>
             <p>
-              Cada nodo está en conexión. El llamado de toda la labor es encender el corazón de la Tierra para acompañar a anclar la rejilla actual de la Tierra: con la imagen que te comparto —hexágonos en geometría de luz— y cantos sagrados para la recodificación de nuestro ADN, podemos vibrar en la unidad crística hoy. Es una labor diaria en la que aquí nos acompañamos con presencia constante y prácticas: las artes del templo, recreando nuestro templo interno.
+              Cada nodo está en conexión. El llamado de toda la labor es
+              encender el corazón de la Tierra para acompañar a anclar la
+              rejilla actual de la Tierra: con la imagen que te comparto
+              —hexágonos en geometría de luz— y cantos sagrados para la
+              recodificación de nuestro ADN, podemos vibrar en la unidad
+              crística hoy. Es una labor diaria en la que aquí nos acompañamos
+              con presencia constante y prácticas: las artes del templo,
+              recreando nuestro templo interno.
             </p>
           </div>
         </div>
-
       </div>
-
     </main>
 
     <script src="public/js/rosas-mapa-config.js"></script>
@@ -810,7 +1967,10 @@
           var script = document.createElement("script");
           script.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
           script.onload = function () {
-            if (window.RosasMapaSheets && typeof window.RosasMapaSheets.buildFromSheets === "function") {
+            if (
+              window.RosasMapaSheets &&
+              typeof window.RosasMapaSheets.buildFromSheets === "function"
+            ) {
               window.RosasMapaSheets.buildFromSheets(mapaEl);
             }
           };
@@ -824,7 +1984,7 @@
               observer.disconnect();
             }
           },
-          { rootMargin: "200px" }
+          { rootMargin: "200px" },
         );
         observer.observe(mapaEl);
       })();
