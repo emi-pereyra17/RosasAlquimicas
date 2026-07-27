@@ -70,8 +70,8 @@
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
-    if (n === "fecha") return "fecha";
-    if (n === "titulo" || n === "título") return "titulo";
+    if (n === "fecha" || n === "fecha evento" || n === "date") return "fecha";
+    if (n === "titulo" || n === "título" || n === "titulo evento" || n === "nombre") return "titulo";
     if (n === "lugar") return "lugar";
     if (n === "descripcion" || n === "descripción") return "descripcion";
     if (n === "enlace" || n === "link" || n === "url") return "enlace";
@@ -86,18 +86,8 @@
   }
 
   function parseFechaSortValue(fechaStr) {
-    if (!fechaStr) return 0;
-    const s = String(fechaStr).trim();
-    const iso = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
-    if (iso) {
-      return new Date(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3])).getTime();
-    }
-    const es = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);
-    if (es) {
-      return new Date(Number(es[3]), Number(es[2]) - 1, Number(es[1])).getTime();
-    }
-    const t = Date.parse(s);
-    return isNaN(t) ? 0 : t;
+    const d = parseEventDate(fechaStr);
+    return d ? d.getTime() : -1;
   }
 
   function rowVisible(mostrarVal) {
@@ -143,6 +133,18 @@
     return s.trim();
   }
 
+  function resolveImageUrl(raw) {
+    const extracted = extractImageUrlFromCell(raw);
+    if (!extracted) return "";
+    const http = safeHttpUrl(extracted);
+    if (http) return http;
+    let rel = extracted.replace(/^\.?\//, "").trim();
+    if (!rel || rel.includes("..")) return "";
+    if (/^public\//i.test(rel)) return rel;
+    if (/\.(jpe?g|png|gif|webp|svg|avif)(\?.*)?$/i.test(rel)) return "public/" + rel.replace(/^public\//i, "");
+    return "";
+  }
+
   function rowsToObjects(rows) {
     if (!rows.length) return [];
     const headers = rows[0].map(mapHeaderToKey);
@@ -152,10 +154,10 @@
       const o = {};
       for (let c = 0; c < headers.length; c++) {
         const key = headers[c];
-        if (key) o[key] = cells[c] != null ? cells[c] : "";
+        if (key) o[key] = cells[c] != null ? String(cells[c]).trim() : "";
       }
       if (!rowVisible(o.mostrar)) continue;
-      const tieneImagen = safeHttpUrl(extractImageUrlFromCell(o.imagen));
+      const tieneImagen = resolveImageUrl(o.imagen) !== "";
       const tieneLugar = String(o.lugar || "").trim() !== "";
       const tieneEnlace = String(o.enlace || "").trim().match(/^https?:\/\//i);
       const tieneModalidad = String(o.modalidad || "").trim() !== "";
@@ -213,15 +215,61 @@
     "diciembre",
   ];
 
+  const MESES_ABBR = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+
+  function monthNameToIndex(name) {
+    const n = String(name || "")
+      .trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+    for (let i = 0; i < MESES_ES.length; i++) {
+      if (n === MESES_ES[i] || n === MESES_ABBR[i] || n.indexOf(MESES_ES[i]) === 0) return i;
+    }
+    return -1;
+  }
+
+  function parseGoogleSheetsSerial(value) {
+    const n = Number(String(value).replace(",", ".").trim());
+    if (!isFinite(n) || n < 20000 || n > 80000) return null;
+    const utc = Math.round((n - 25569) * 86400000);
+    const d = new Date(utc);
+    return isNaN(d.getTime()) ? null : d;
+  }
+
   function parseEventDate(fechaStr) {
-    if (!fechaStr) return null;
+    if (fechaStr == null || fechaStr === "") return null;
     const s = String(fechaStr).trim();
+    if (!s) return null;
+
+    const serial = parseGoogleSheetsSerial(s);
+    if (serial) return serial;
+
     const iso = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
     if (iso) return new Date(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3]));
-    const es = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);
-    if (es) return new Date(Number(es[3]), Number(es[2]) - 1, Number(es[1]));
+
+    const esSlash = s.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})/);
+    if (esSlash) return new Date(Number(esSlash[3]), Number(esSlash[2]) - 1, Number(esSlash[1]));
+
+    const esLong = s.match(/^(\d{1,2})\s+de\s+([a-záéíóúñA-ZÁÉÍÓÚÑ]+)\s+(?:de\s+)?(\d{4})/i);
+    if (esLong) {
+      const mi = monthNameToIndex(esLong[2]);
+      if (mi >= 0) return new Date(Number(esLong[3]), mi, Number(esLong[1]));
+    }
+
+    const esShort = s.match(/^(\d{1,2})\s+([a-záéíóúñA-ZÁÉÍÓÚÑ\.]+)\.?\s+(\d{4})/i);
+    if (esShort) {
+      const mi = monthNameToIndex(esShort[2]);
+      if (mi >= 0) return new Date(Number(esShort[3]), mi, Number(esShort[1]));
+    }
+
     const t = Date.parse(s);
     return isNaN(t) ? null : new Date(t);
+  }
+
+  function formatFechaCortaEs(d) {
+    if (!d) return "";
+    return d.getDate() + " " + MESES_ABBR[d.getMonth()] + " " + d.getFullYear();
   }
 
   function monthYearKey(d) {
@@ -281,7 +329,7 @@
   }
 
   function groupEventosByMonth(eventos) {
-    const sorted = eventos.slice().sort((a, b) => parseFechaSortValue(a.fecha) - parseFechaSortValue(b.fecha));
+    const sorted = eventos.slice().sort((a, b) => parseFechaSortValue(b.fecha) - parseFechaSortValue(a.fecha));
     const groups = [];
     let curKey = null;
     let curLabel = "";
@@ -375,7 +423,7 @@
     const descRaw = String(ev.descripcion || "").trim();
     const enlace = String(ev.enlace || "").trim();
     const enlaceSafe = enlace.match(/^https?:\/\//i) ? enlace : "";
-    const imagenSrc = safeHttpUrl(extractImageUrlFromCell(ev.imagen));
+    const imagenSrc = resolveImageUrl(ev.imagen);
     const destacado = isDestacado(ev.destacado);
     const d = parseEventDate(fechaRaw);
     const fechaLarga = d ? formatFechaLargaEs(d) : "";
@@ -527,7 +575,7 @@
       const modalidad = String(ev.modalidad || "").trim();
       const lugar = String(ev.lugar || "").trim();
       const desc = escapeHtml(ev.descripcion || "");
-      const imagenSrc = safeHttpUrl(extractImageUrlFromCell(ev.imagen));
+      const imagenSrc = resolveImageUrl(ev.imagen);
       const destacado = isDestacado(ev.destacado);
       const d = parseEventDate(ev.fecha);
 
@@ -535,11 +583,12 @@
       const diaSem = d ? weekdayShortEs(d) : "";
 
       const metaParts = [];
-      if (fechaRaw) metaParts.push(escapeHtml(fechaRaw));
+      const fechaMostrar = d ? formatFechaCortaEs(d) : fechaRaw;
+      if (fechaMostrar) metaParts.push(escapeHtml(fechaMostrar));
       if (hora) metaParts.push(escapeHtml(hora));
       const metaLine =
         metaParts.length > 0
-          ? '<span class="text-gray-500 text-sm">' + metaParts.join(" · ") + "</span>"
+          ? '<span class="text-violet-700/80 text-sm font-medium">' + metaParts.join(" · ") + "</span>"
           : "";
 
       const categoriaHtml = categoria
@@ -578,13 +627,13 @@
         '<span class="material-icons text-sm">touch_app</span>Clic para ver la información completa</p>';
 
       const thumbCol = imagenSrc
-        ? '<div class="shrink-0 self-start md:self-center w-full max-w-sm sm:max-w-xs mx-auto md:mx-0 md:w-52 lg:w-60">' +
-          '<div class="aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 border border-gray-200 shadow-sm">' +
+        ? '<div class="shrink-0 self-start md:self-stretch w-full max-w-sm sm:max-w-xs mx-auto md:mx-0 md:w-52 lg:w-64">' +
+          '<div class="rounded-xl overflow-hidden bg-gradient-to-br from-violet-50 via-fuchsia-50/80 to-white border border-fuchsia-200/70 shadow-sm flex items-center justify-center min-h-[10rem] md:min-h-[11rem] p-2">' +
           '<img src="' +
           escapeHtml(imagenSrc) +
           '" alt="' +
           escapeHtml(tituloPlain) +
-          '" class="w-full h-full object-cover" loading="lazy" decoding="async" referrerpolicy="no-referrer" />' +
+          '" class="w-full h-auto max-h-52 object-contain object-center" loading="lazy" decoding="async" referrerpolicy="no-referrer" />' +
           "</div></div>"
         : "";
 
@@ -596,15 +645,16 @@
         myIdx +
         '" aria-label="Ver detalles: ' +
         ariaTit +
-        '" class="flex flex-col md:flex-row gap-6 md:gap-8 py-8 md:py-10 border-b border-gray-200/90 last:border-b-0 text-left rounded-xl -mx-1 px-1 cursor-pointer transition-colors hover:bg-fuchsia-50/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2' +
+        '" class="flex flex-col md:flex-row gap-5 md:gap-8 py-6 md:py-8 px-3 md:px-4 mb-3 last:mb-0 text-left rounded-2xl border border-fuchsia-100/80 bg-white/70 shadow-sm shadow-fuchsia-900/[0.03] cursor-pointer transition-all hover:bg-fuchsia-50/60 hover:border-fuchsia-200/90 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2' +
         barClass +
         '">' +
-        '<div class="flex flex-col items-start md:items-center gap-1 shrink-0 md:w-20 pt-0.5">' +
-        (diaSem ? '<span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">' + escapeHtml(diaSem) + "</span>" : "") +
-        '<span class="text-3xl md:text-4xl font-bold text-gray-900 tabular-nums leading-none">' +
+        '<div class="flex flex-row md:flex-col items-center md:items-center gap-3 md:gap-1 shrink-0 md:w-20 pt-0.5">' +
+        '<div class="flex flex-col items-center justify-center rounded-xl bg-gradient-to-br from-violet-100/80 to-fuchsia-100/70 border border-fuchsia-200/60 px-3 py-2 md:px-2 md:py-3 min-w-[4.5rem]">' +
+        (diaSem ? '<span class="text-[0.65rem] font-bold text-violet-600 uppercase tracking-wider">' + escapeHtml(diaSem) + "</span>" : "") +
+        '<span class="text-2xl md:text-3xl font-bold text-violet-950 tabular-nums leading-none">' +
         escapeHtml(diaNum) +
         "</span>" +
-        "</div>" +
+        "</div></div>" +
         '<div class="flex-1 min-w-0">' +
         '<div class="flex flex-wrap items-center gap-x-1 gap-y-1">' +
         destacadoHtml +
@@ -612,7 +662,7 @@
         categoriaHtml +
         modalidadHtml +
         "</div>" +
-        '<h3 class="font-sans text-xl md:text-2xl font-bold text-gray-900 mt-2 leading-snug">' +
+        '<h3 class="font-title text-xl md:text-2xl font-bold text-violet-950 mt-2 leading-snug">' +
         titulo +
         "</h3>" +
         lugarHtml +
@@ -630,11 +680,12 @@
       groups
         .map(function (g) {
           return (
-            '<section class="mb-2">' +
-            '<h2 class="text-xl md:text-2xl font-bold text-gray-900 capitalize tracking-tight pt-6 first:pt-0 pb-4 border-b border-gray-200">' +
+            '<section class="mb-8 last:mb-0">' +
+            '<h2 class="font-title text-xl md:text-2xl font-bold text-violet-950 capitalize tracking-tight pt-2 first:pt-0 pb-3 mb-4 border-b-2 border-fuchsia-200/70 flex items-center gap-2">' +
+            '<span class="material-icons text-fuchsia-600 text-2xl" aria-hidden="true">calendar_month</span>' +
             escapeHtml(g.label) +
             "</h2>" +
-            '<div class="bg-white/60">' +
+            '<div class="space-y-0">' +
             g.items.map(renderRow).join("") +
             "</div></section>"
           );
