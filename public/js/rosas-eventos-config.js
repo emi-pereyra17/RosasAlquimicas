@@ -18,4 +18,4 @@
  * En la página, cada fila es clicable: abre un modal con la descripción completa y el botón al enlace.
  */
 window.ROSAS_EVENTOS_CSV_URL =
-  "https://docs.google.com/spreadsheets/d/1rxRU756Gnood651U2M7odpYB77fcOo8i1YsmHjleVXs/export?format=csv&gid=0";
+  "https://docs.google.com/spreadsheets/d/1rxRU756Gnood651U2M7odpYB77fcOo8i1YsmHjleVXs/export?format=csv";

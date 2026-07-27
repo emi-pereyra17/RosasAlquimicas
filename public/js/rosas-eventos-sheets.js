@@ -17,10 +17,12 @@
     const m = u.match(/docs\.google\.com\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/i);
     if (!m) return u;
     const id = m[1];
-    let gid = "0";
+    let gid = "";
     const gidQ = u.match(/[#&?]gid=(\d+)/i);
     if (gidQ) gid = gidQ[1];
-    return "https://docs.google.com/spreadsheets/d/" + id + "/export?format=csv&gid=" + gid;
+    return gid
+      ? "https://docs.google.com/spreadsheets/d/" + id + "/export?format=csv&gid=" + gid
+      : "https://docs.google.com/spreadsheets/d/" + id + "/export?format=csv";
   }
 
   function parseCSV(text, delim) {
@@ -722,11 +724,21 @@
       status.classList.remove("hidden");
     }
 
-    fetch(url, { cache: "no-store" })
-      .then((res) => {
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        return res.text();
-      })
+    function fetchCsv(url) {
+      return fetch(url, { cache: "no-store" }).then((res) => {
+        if (res.ok) return res.text();
+        if (res.status === 400 && /[?&]gid=/.test(url)) {
+          const fallback = url.replace(/([?&])gid=\d+&?/, "$1").replace(/\?$/, "");
+          return fetch(fallback, { cache: "no-store" }).then((res2) => {
+            if (!res2.ok) throw new Error("HTTP " + res2.status);
+            return res2.text();
+          });
+        }
+        throw new Error("HTTP " + res.status);
+      });
+    }
+
+    fetchCsv(url)
       .then((text) => {
         const rows = parseCsvAutoDelimiter(text);
         const eventos = rowsToObjects(rows);
