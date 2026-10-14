@@ -7,7 +7,11 @@
  * Compartir: "Cualquiera con el enlace" → Lector.
  * Podés pegar el enlace de edición; el script usa el endpoint gviz (más fiable que /export en el navegador).
  * Lat/Long: idealmente columna “Número” o “Texto plano” con decimales (-34.42, -64.18). Evitá formato #,##0 sin decimales.
- * El script corrige escalados típicos (p. ej. 511 → 51.1) y algunos errores de longitud en la península ibérica; igual conviene revisar la hoja.
+ *
+ * Importar datos: Archivo → Importar → public/data/mapa-lugares-para-google-sheets.csv
+ * Respaldo local si falla la hoja: ROSAS_MAPA_FALLBACK_CSV_URL
  */
 window.ROSAS_MAPA_CSV_URL =
-  "https://docs.google.com/spreadsheets/d/1XzpYpqRkXpFqcofgotGgtTL24w6GjWLM82wDUQPVZbI/edit?usp=sharing";
+  "https://docs.google.com/spreadsheets/d/1SNgnnlZEZHC27Dsnpx0GHTXsLMTwmWH4pvxOzI-BoR4/edit?usp=sharing";
+
+window.ROSAS_MAPA_FALLBACK_CSV_URL = "public/labores-mapa-datos.csv";

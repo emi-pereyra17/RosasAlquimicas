@@ -361,20 +361,27 @@
     });
   }
 
+  function mapFallbackCsvUrl() {
+    if (typeof window === "undefined") return "";
+    return String(
+      window.ROSAS_MAPA_FALLBACK_CSV_URL || "public/labores-mapa-datos.csv"
+    ).trim();
+  }
+
+  var MAP_LOAD_ERROR_MSG =
+    "No se pudieron cargar los lugares. Comprobá que la hoja sea pública (Cualquier persona con el enlace → Lector) y que Latitud/Longitud sean números válidos.";
+
   function buildFromSheets(mapaEl, csvUrl) {
     var raw = csvUrl || (typeof window !== "undefined" && window.ROSAS_MAPA_CSV_URL) || "";
-    var primary = resolveGoogleSheetCsvFetchUrl(raw);
-    if (!primary) {
-      showMapMessage(mapaEl, "Falta configurar ROSAS_MAPA_CSV_URL.");
-      return;
-    }
+    var sheetRef = sheetIdAndGid(raw);
+    var primary = sheetRef ? resolveGoogleSheetCsvFetchUrl(raw) : "";
     if (typeof L === "undefined") {
       showMapMessage(mapaEl, "No se cargó el mapa (Leaflet).");
       return;
     }
 
-    var jsonUrl = resolveGoogleSheetJsonFetchUrl(raw);
-    var fallback = googleSheetExportFallbackUrl(raw);
+    var jsonUrl = sheetRef ? resolveGoogleSheetJsonFetchUrl(raw) : "";
+    var fallback = sheetRef ? googleSheetExportFallbackUrl(raw) : "";
 
     function processRows(rows) {
       if (!rows || !rows.length) {
@@ -401,6 +408,28 @@
       processRows(rows);
     }
 
+    function tryLocalFallback() {
+      var local = mapFallbackCsvUrl();
+      if (!local) return Promise.reject(new Error("sin respaldo local"));
+      return fetchCsvOk(local).then(tryCsv);
+    }
+
+    function afterSheetFetchFailed() {
+      return tryLocalFallback().catch(function () {
+        showMapMessage(mapaEl, MAP_LOAD_ERROR_MSG);
+      });
+    }
+
+    if (!sheetRef) {
+      tryLocalFallback().catch(function () {
+        showMapMessage(
+          mapaEl,
+          "Falta configurar ROSAS_MAPA_CSV_URL (enlace de Google Sheets en rosas-mapa-config.js)."
+        );
+      });
+      return;
+    }
+
     if (jsonUrl) {
       fetchCsvOk(jsonUrl)
         .then(function (text) {
@@ -420,10 +449,7 @@
             .then(tryCsv);
         })
         .catch(function () {
-          showMapMessage(
-            mapaEl,
-            "No se pudieron cargar los lugares. Comprobá que la hoja sea pública (Cualquier persona con el enlace → Lector) y que Latitud/Longitud sean números válidos."
-          );
+          return afterSheetFetchFailed();
         });
       return;
     }
@@ -454,10 +480,7 @@
         buildLeafletMap(mapaEl, data.proximos, data.realizados);
       })
       .catch(function () {
-        showMapMessage(
-          mapaEl,
-          "No se pudieron cargar los lugares. Comprobá que la hoja sea pública (Cualquier persona con el enlace → Lector) y que Latitud/Longitud sean números válidos."
-        );
+        return afterSheetFetchFailed();
       });
   }
 
