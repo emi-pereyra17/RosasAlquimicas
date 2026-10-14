@@ -1,7 +1,7 @@
 /**
  * Eventos desde Google Sheets (CSV público)
  * -----------------------------------------
- * Hoja: https://docs.google.com/spreadsheets/d/1rxRU756Gnood651U2M7odpYB77fcOo8i1YsmHjleVXs/edit
+ * Hoja: https://docs.google.com/spreadsheets/d/12lgt1xCdiv7YlkZM616LV97vPVx3gvgZuonJ07wETKE/edit
  *
  * 1. Primera fila: Fecha, Titulo, Lugar, Descripcion, Enlace, Imagen, Hora, Modalidad
  *    (+ opcionales: Categoría, Precio, Mostrar, Destacado = sí/1 para barra violeta).
@@ -18,4 +18,4 @@
  * En la página, cada fila es clicable: abre un modal con la descripción completa y el botón al enlace.
  */
 window.ROSAS_EVENTOS_CSV_URL =
-  "https://docs.google.com/spreadsheets/d/1rxRU756Gnood651U2M7odpYB77fcOo8i1YsmHjleVXs/export?format=csv";
+  "https://docs.google.com/spreadsheets/d/12lgt1xCdiv7YlkZM616LV97vPVx3gvgZuonJ07wETKE/export?format=csv";
